@@ -1,0 +1,69 @@
+<!--
+Syd Adams
+777-200 EICAS
+-->
+
+<PropertyList>
+
+ <path>eicas.ac</path>
+ 
+  <animation>
+  <type>scale</type>
+  <x-offset>0.70</x-offset>
+  <y-offset>0.70</y-offset>
+  <z-offset>0.70</z-offset>
+ </animation>
+ 
+
+ <animation>
+  <type>material</type>
+  <object-name>EFIS.bezel</object-name>
+  <emission>
+   <red>0.5</red>
+   <green>0.45</green>
+   <blue>0.2</blue>
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+  </emission>
+ </animation>
+
+
+
+    <panel>
+        <path>Aircraft/757-200/Models/Instruments/EICAS/eicas-panel.xml</path>
+        <bottom-left>
+            <x-m>0.003</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>0.003</x-m>
+            <y-m>0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>0.003</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>0.094</z-m>
+        </top-left>
+    </panel>
+
+    <panel>
+        <path>Aircraft/757-200/Models/Instruments/EICAS/eicas-text-panel.xml</path>
+        <bottom-left>
+            <x-m>0.004</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>0.004</x-m>
+            <y-m>0.090</y-m>
+            <z-m>-0.087</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>0.004</x-m>
+            <y-m>-0.090</y-m>
+            <z-m>0.094</z-m>
+        </top-left>
+    </panel>
+
+</PropertyList>

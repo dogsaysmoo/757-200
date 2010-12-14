@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<sim>
+		<description>Boeing 757-200</description>
+		<status>alpha</status>
+		<author>Liam Gathercole (3d), Skyop (FDM, instruments, systmems, etc.), Isais Prestes (3d cockpit shell)</author>
+		<flight-model>yasim</flight-model>
+		<aero>757-200</aero>
+
+		<model>
+			<path>Aircraft/757-200/Models/757-200.xml</path>
+			<livery>
+				<file>BAW</file>
+			</livery>
+
+			<B757>
+				<heading-bug-deg type="double">0</heading-bug-deg>
+				<nav1-track-deg type="double">0</nav1-track-deg>
+				<nav1-bug-deg type="double">0</nav1-bug-deg>
+				<nav2-bug-deg type="double">0</nav2-bug-deg>
+				<adf-bug-deg type="double">0</adf-bug-deg>
+				<unimplemented-controls type="bool">false</unimplemented-controls>
+			</B757>
+		</model>
+
+		<startup>
+			<splash-texture>Aircraft/757-200/splash.png</splash-texture>
+		</startup>
+
+		<sound>
+			<path>Aircraft/757-200/757-sound.xml</path>
+		</sound>
+
+		<systems>
+			<autopilot>
+				<name>Autopilot</name>
+				<path>Aircraft/757-200/Systems/757-autopilot.xml</path>
+			</autopilot>
+			<autopilot>
+				<name>Autopilot helpers</name>
+				<path>Aircraft/Generic/generic-autopilot-helper.xml</path>
+			</autopilot>
+			<autopilot>
+				<name>Autobrake</name>
+				<path>Aircraft/757-200/Systems/757-autobrake.xml</path>
+			</autopilot>
+		</systems>
+
+		<weight n="0">
+			<name>Crew</name>
+			<weight-lb>250</weight-lb>
+			<max-lb>600</max-lb>
+			<min-lb>120</min-lb>
+		</weight>
+		<weight n="1">
+			<name>First class</name>
+			<weight-lb>29211</weight-lb>
+			<max-lb>38948</max-lb>
+			<min-lb>0</min-lb>
+		</weight>
+		<weight n="2">
+			<name>Economy class</name>
+			<weight-lb>9737</weight-lb>
+			<max-lb>12983</max-lb>
+			<min-lb>0</min-lb>
+		</weight>
+
+		<view n="0">
+			<name>Pilot View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<x-offset-m archive="y">-0.5</x-offset-m>
+				<y-offset-m archive="y">1.3</y-offset-m>
+				<z-offset-m archive="y">2.3</z-offset-m>
+				<pitch-offset-deg>0</pitch-offset-deg>
+			</config>
+		</view>
+		<!-- Helicopter View -->
+		<view n="1">
+			<internal archive="y">false</internal>
+			<config>
+				<target-z-offset-m archive="y">24</target-z-offset-m>
+			</config>
+		</view>
+		<!-- Chase View -->
+		<view n="2">
+			<internal archive="y">false</internal>
+			<config>
+				<target-z-offset-m archive="y">24</target-z-offset-m>
+			</config>
+		</view>
+		<!-- Tower View -->
+		<view n="3">
+			<internal archive="y">false</internal>
+			<config>
+				<target-z-offset-m archive="y">24</target-z-offset-m>
+			</config>
+		</view>
+		<!-- Chase View Without Yaw -->
+		<view n="5">
+			<internal archive="y">false</internal>
+			<config>
+				<target-z-offset-m archive="y">24</target-z-offset-m>
+			</config>
+		</view>
+		<!-- Fly-by View -->
+		<view n="6">
+			<internal archive="y">false</internal>
+			<config>
+				<target-z-offset-m archive="y">24</target-z-offset-m>
+			</config>
+		</view>
+		<view n="100">
+			<name>Wing View</name>
+			<type>lookfrom</type>
+			<internal archive="y">false</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">2</x-offset-m>
+				<y-offset-m archive="y">2</y-offset-m>
+				<z-offset-m archive="y">25</z-offset-m>
+				<heading-offset-deg>270</heading-offset-deg>
+				<pitch-offset-deg>0</pitch-offset-deg>
+			</config>
+		</view>
+		<view n="101">
+			<name>Gear View</name>
+			<type>lookfrom</type>
+			<internal archive="y">false</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0</x-offset-m>
+				<y-offset-m archive="y">-2</y-offset-m>
+				<z-offset-m archive="y">33</z-offset-m>
+				<pitch-offset-deg>0</pitch-offset-deg>
+			</config>
+		</view>
+		<view n="102">
+			<name>Copilot View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0.5</x-offset-m>
+				<y-offset-m archive="y">1.3</y-offset-m>
+				<z-offset-m archive="y">2.3</z-offset-m>
+				<pitch-offset-deg>0</pitch-offset-deg>
+			</config>
+		</view>
+		<chase-distance-m>-45</chase-distance-m>
+ 
+		<flaps>
+			<setting>0.000</setting>
+			<setting>0.125</setting>
+			<setting>0.250</setting>
+			<setting>0.375</setting>
+			<setting>0.500</setting>
+			<setting>0.625</setting>
+			<setting>0.750</setting>
+			<setting>0.875</setting>
+			<setting>1.000</setting>
+		</flaps>
+
+		<menubar>
+			<default>
+				<menu n="3">
+					<item>
+						<name>autopilot</name>
+						<label>Autopilot Settings</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							 var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/757-200/Systems/autopilot-dlg.xml");
+							 autopilot.open();
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="100">			
+					<label>Boeing 757-200</label>
+					<enabled type="bool">true</enabled>
+
+					<item>
+						<label>Autostart</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>sim/model/start-idling</property>
+						</binding>
+					</item>
+					<item>
+						<label>Select Livery</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							 aircraft.livery.dialog.toggle();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Pushback</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>pushback</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Lights</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							 var lights = gui.Dialog.new("sim/gui/dialogs/lights/dialog", "Aircraft/757-200/Systems/lights-dlg.xml");
+							 lights.open();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Failures</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							 var failures = gui.Dialog.new("sim/gui/dialogs/failures/dialog", "Aircraft/757-200/Systems/failures-dlg.xml");
+							 failures.open();
+							</script>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+
+		<help>
+			<title>Boeing 757-200</title>
+			<key>
+				<name>Delete</name>
+				<desc>toggle thrust reversers</desc>
+			</key>
+			<key>
+				<name>Ctrl-b</name>
+				<desc>cycle speedbrake setting</desc>
+			</key>
+			<key>
+				<name>Tab</name>
+				<desc>cycle autobrake setting</desc>
+			</key>
+			<key>
+				<name>Ctrl-z</name>
+				<desc>toggle autopilot master arm switch</desc>
+			</key>
+			<key>
+				<name>Ctrl-y</name>
+				<desc>toggle autothrottle switch</desc>
+			</key>
+			<key>
+				<name>Ctrl-o</name>
+				<desc>toggle autothrottle TO/GA hold</desc>
+			</key>
+			<key>
+				<name>w</name>
+				<desc>walk forward toward view direction</desc>
+			</key>
+			<line>Autobrake help:</line>
+			<line>-------------------------</line>
+			<line>RTO........activate emergency brake if throttles are idle during takeoff</line>
+			<line>Off........do nothing</line>
+			<line>Disarmed...do nothing</line>
+			<line>1..........activate brakes with target acceleration -4 ft/s/s on touchdown</line>
+			<line>2..........activate brakes with target acceleration -5 ft/s/s on touchdown</line>
+			<line>3..........activate brakes with target acceleration -6 ft/s/s on touchdown</line>
+			<line>4..........activate brakes with target acceleration -7 ft/s/s on touchdown</line>
+			<line>MAX........activate brakes with target acceleration -11 ft/s/s on touchdown</line>
+			<line />
+			<line>Speedbrake setting help:</line>
+			<line>-------------------------</line>
+			<line>Off........do nothing</line>
+			<line>Arm........deploy speedbrakes on touchdown</line>
+			<line>Deploy.....deploy speedbrakes</line>
+			<line />
+			<line>Autopilot key commands listed here apply to the 757-200 only.</line>
+			<line>For a full list of autopilot key commands not specific to this aircraft, check the documentation included with FlightGear.</line>
+		</help>
+
+		<airport>
+			<runways>
+				<start-offset-m>35</start-offset-m>
+			</runways>
+		</airport>
+	</sim>
+
+	<consumables>
+		<fuel>
+			<tank n="0">
+				<name>LH Main</name>
+			</tank>
+			<tank n="1">
+				<name>RH Main</name>
+			</tank>
+			<tank n="2">
+				<name>Center</name>
+			</tank>
+		</fuel>
+	</consumables>
+
+	<autopilot>
+		<autobrake>
+			<config>
+				<idle-throttle type="double">0.1</idle-throttle>
+				<pilot-input type="double">0</pilot-input>
+			</config>
+			<step type="int">-1</step>
+		</autobrake>
+
+		<settings>
+			<autothrottle type="bool">false</autothrottle>
+			<engaged type="bool">false</engaged>
+			<flight-director type="bool">false</flight-director>
+			<speed-mode>knots</speed-mode>
+			<heading-bug-deg type="double">360</heading-bug-deg>
+			<target-speed-kt type="double">200</target-speed-kt>
+			<target-speed-mach type="double">0</target-speed-mach>
+			<target-altitude-ft type="double">10000</target-altitude-ft>
+			<vertical-speed-fpm type="double">1800</vertical-speed-fpm>
+			<minimum-bank-deg type="double">-25</minimum-bank-deg>
+			<maximum-bank-deg type="double">25</maximum-bank-deg>
+		</settings>
+
+		<disengaged-btn type="int">0</disengaged-btn>
+	</autopilot>
+
+	<engines>
+		<engine n="0">
+			<rpm type="double">0</rpm>
+			<failed type="bool">false</failed>
+			<on-fire type="bool">false</on-fire>
+			<running type="bool">false</running>
+			<started type="bool">false</started>
+		</engine>
+		<engine n="1">
+			<rpm type="double">0</rpm>
+			<failed type="bool">false</failed>
+			<on-fire type="bool">false</on-fire>
+			<running type="bool">false</running>
+			<started type="bool">false</started>
+		</engine>
+	</engines>
+
+	<controls>
+		<flight>
+			<speedbrake-lever type="int">0</speedbrake-lever>
+		</flight>
+		<lighting>
+			<beacon type="bool">false</beacon>
+			<landing-lights n="0" type="bool">false</landing-lights>
+			<landing-lights n="1" type="bool">false</landing-lights>
+			<landing-lights n="2" type="bool">false</landing-lights>
+			<nav-lights type="bool">false</nav-lights>
+			<strobe type="bool">false</strobe>
+			<logo-lights type="bool">false</logo-lights>
+			<cones type="bool">true</cones>
+		</lighting>
+		<gear>
+			<autobrakes type="int">1</autobrakes>
+			<brake-parking type="bool">true</brake-parking>
+		</gear>
+	</controls>
+
+	<gear>
+		<gear n="0">
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+		<gear n="1">
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+		</gear>
+		<gear n="2">
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+		</gear>
+	</gear>
+
+	<input>
+		<keyboard>
+			<key n="127">
+				<name>Delete</name>
+				<desc>Toggle reverse thrust</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					 reversethrust.togglereverser();
+					</script>
+				</binding>
+			</key>
+			<key n="2">
+				<name>Ctrl-b</name>
+				<desc>Cycle speedbrake setting</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>controls/flight/speedbrake-lever</property>
+					<value>0</value>
+					<value>1</value>
+					<value>2</value>
+				</binding>
+			</key>
+			<key n="9">
+				<name>Tab</name>
+				<desc>Cycle autobrake setting</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>autopilot/autobrake/step</property>
+					<value>-2</value>
+					<value>-1</value>
+					<value>0</value>
+					<value>1</value>
+					<value>2</value>
+					<value>3</value>
+					<value>4</value>
+					<value>5</value>
+				</binding>
+			</key>
+
+			<!-- Custom autopilot hotkeys -->
+			<key n="15">
+				<name>Ctrl-O</name>
+				<desc>Toggle TO/GA lock</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					 var node = props.globals.getNode("/autopilot/settings/speed", 1);
+					 if (node.getValue() == "speed-to-ga")
+					  {
+					  node.setValue("");
+					  }
+					 else
+					  {
+					  node.setValue("speed-to-ga");
+					  }
+					</script>
+				</binding>
+			</key>
+			<key n="26">
+				<name>Ctrl-Z</name>
+				<desc>Toggle master autopilot switch</desc>
+				<binding>
+					<command>property-toggle</command>
+					<property>autopilot/settings/engaged</property>
+				</binding>
+			</key>
+			<key n="25">
+				<name>Ctrl-Y</name>
+				<desc>Toggle autothrottle switch</desc>
+				<binding>
+					<command>property-toggle</command>
+					<property>autopilot/settings/autothrottle</property>
+				</binding>
+			</key>
+
+			<!-- Autopilot dialog override -->
+			<key n="267">
+				<name>F11</name>
+				<desc>Open autopilot dialog</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					 var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/757-200/Systems/autopilot-dlg.xml");
+					 autopilot.open();
+					</script>
+				</binding>
+			</key>
+		</keyboard>
+	</input>
+
+	<nasal>
+		<systems>
+			<file>Aircraft/757-200/Nasal/systems.nas</file>
+		</systems>
+		<electrical>
+			<file>Aircraft/757-200/Nasal/electrical.nas</file>
+		</electrical>
+		<reversethrust>
+			<file>Aircraft/757-200/Nasal/reversethrust.nas</file>
+		</reversethrust>
+		<tyresmoke>
+			<file>Aircraft/757-200/Nasal/tyresmoke.nas</file>
+		</tyresmoke>
+	</nasal>
+
+	<aircraft>
+		<jetway-pos>
+			<x-tra>-1.5</x-tra>
+			<y-rot>-1</y-rot>
+			<z-rot>23</z-rot>
+			<hood-rot>2</hood-rot>
+		</jetway-pos>
+		<jetway2-pos>
+			<x-tra>2.5</x-tra>
+			<y-rot>-3</y-rot>
+			<z-rot>59</z-rot>
+			<hood-rot>2</hood-rot>
+		</jetway2-pos>
+	</aircraft>
+
+</PropertyList>
