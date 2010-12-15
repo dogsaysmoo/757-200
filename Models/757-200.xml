@@ -353,11 +353,13 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Flap1</object-name>
+		<object-name>FlapTk1</object-name>
+		<object-name>FlapTk2</object-name>
 		<property>surface-positions/flap-pos-norm</property>
 		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.100</ind><dep>0.0</dep></entry>
-			<entry><ind>1.0</ind><dep>35.0</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.1</ind><dep>0</dep></entry>
+			<entry><ind>1</ind><dep>30</dep></entry>
 		</interpolation>
  		<axis>
   			<x1-m>28.1183</x1-m>
@@ -371,12 +373,14 @@
 	<animation>
 		<type>translate</type>
 		<object-name>Flap1</object-name>
+		<object-name>FlapTk1</object-name>
+		<object-name>FlapTk2</object-name>
 		<property>surface-positions/flap-pos-norm</property>
 		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.033</ind><dep>0.0</dep></entry>
-			<entry><ind>0.167</ind><dep>0.45</dep></entry>
-			<entry><ind>1</ind><dep>0.45</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.033</ind><dep>0</dep></entry>
+			<entry><ind>0.167</ind><dep>0.3</dep></entry>
+			<entry><ind>1</ind><dep>0.3</dep></entry>
 		</interpolation>
 		<axis>
 			<x>1.00</x>
@@ -384,16 +388,16 @@
 			<z>-0.05</z>
 		</axis>
 	</animation>
-
-	<!-- Flaps -->	
 	<animation>
 		<type>rotate</type>
 		<object-name>Flap2</object-name>
+		<object-name>FlapTk3</object-name>
+		<object-name>FlapTk4</object-name>
 		<property>surface-positions/flap-pos-norm</property>
 		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.100</ind><dep>0.0</dep></entry>
-			<entry><ind>1.0</ind><dep>35.0</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.1</ind><dep>0</dep></entry>
+			<entry><ind>1</ind><dep>30</dep></entry>
 		</interpolation>
  		<axis>
   			<x1-m>25.9494</x1-m>
@@ -407,219 +411,95 @@
 	<animation>
 		<type>translate</type>
 		<object-name>Flap2</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.033</ind><dep>0.0</dep></entry>
-			<entry><ind>0.167</ind><dep>0.4</dep></entry>
-			<entry><ind>1</ind><dep>0.4</dep></entry>
-		</interpolation>
-		<axis>
-			<x>1.00</x>
-			<y>0.00</y>
-			<z>-0.05</z>
-		</axis>
-	</animation>
-	<animation>
-		<type>rotate</type>
-		<object-name>Flap3</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.100</ind><dep>0.0</dep></entry>
-			<entry><ind>1.0</ind><dep>-35.0</dep></entry>
-		</interpolation>
- 		<axis>
-  			<x1-m>25.9494</x1-m>
-  			<y1-m>7.3727</y1-m>
-  			<z1-m>0.84347</z1-m>
-  			<x2-m>26.0398</x2-m>
-  			<y2-m>1.9231</y2-m>
-  			<z2-m>0.4013</z2-m>
- 		</axis>
-	</animation>
-	<animation>
-		<type>translate</type>
-		<object-name>Flap3</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.033</ind><dep>0.0</dep></entry>
-			<entry><ind>0.167</ind><dep>0.4</dep></entry>
-
-
-
-
-			<entry><ind>1</ind><dep>0.4</dep></entry>
-		</interpolation>
-		<axis>
-			<x>1.00</x>
-			<y>0.00</y>
-			<z>-0.05</z>
-		</axis>
-	</animation>
-	<animation>
-		<type>rotate</type>
-		<object-name>Flap4</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.100</ind><dep>0.0</dep></entry>
-			<entry><ind>1.0</ind><dep>-35.0</dep></entry>
-		</interpolation>
- 		<axis>
-  			<x1-m>28.118</x1-m>
-  			<y1-m>14.0472</y1-m>
-  			<z1-m>1.40642</z1-m>
-  			<x2-m>25.9916</x2-m>
-  			<y2-m>7.65195</y2-m>
-  			<z2-m>0.865996</z2-m>
- 		</axis>
-	</animation>
-	<animation>
-		<type>translate</type>
-		<object-name>Flap4</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<interpolation>
-			<entry><ind>0.0</ind><dep>0.0</dep></entry>
-			<entry><ind>0.033</ind><dep>0.0</dep></entry>
-			<entry><ind>0.167</ind><dep>0.45</dep></entry>
-			<entry><ind>1</ind><dep>0.45</dep></entry>
-		</interpolation>
-		<axis>
-			<x>1.00</x>
-			<y>0.00</y>
-			<z>-0.05</z>
-		</axis>
-	</animation>
-	<!-- Animations for flap track fairings. -->
-	<animation>
-		<type>rotate</type>
-		<object-name>FlapTk1</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<factor>42</factor>
-		<center>
-			<x-m>27.68</x-m>
-			<y-m>12.6338</y-m>
-			<z-m>0.921234</z-m>
-		</center>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	<animation>
-		<type>rotate</type>
-		<object-name>FlapTk2</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<factor>40</factor>
-		<center>
-			<x-m>26.53</x-m>
-			<y-m>9.26953</y-m>
-			<z-m>0.509779</z-m>
-		</center>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	<animation>
-		<type>rotate</type>
 		<object-name>FlapTk3</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<factor>37</factor>
-		<center>
-			<x-m>25.92</x-m>
-			<y-m>6.02787</y-m>
-			<z-m>0.026652</z-m>
-		</center>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	<animation>
-		<type>rotate</type>
 		<object-name>FlapTk4</object-name>
 		<property>surface-positions/flap-pos-norm</property>
-		<factor>30</factor>
-		<center>
-			<x-m>26.03</x-m>
-			<y-m>4.19557</y-m>
-			<z-m>0.0553142</z-m>
-		</center>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.033</ind><dep>0</dep></entry>
+			<entry><ind>0.167</ind><dep>0.25</dep></entry>
+			<entry><ind>1</ind><dep>0.25</dep></entry>
+		</interpolation>
 		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
+			<x>1.00</x>
+			<y>0.00</y>
+			<z>-0.05</z>
 		</axis>
 	</animation>
 	<animation>
 		<type>rotate</type>
+		<object-name>Flap3</object-name>
 		<object-name>FlapTk5</object-name>
-		<property>surface-positions/flap-pos-norm</property>
-		<factor>30</factor>
-		<center>
-			<x-m>26.03</x-m>
-			<y-m>-4.17045</y-m>
-			<z-m>0.0553199</z-m>
-		</center>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-	</animation>
-	<animation>
-		<type>rotate</type>
 		<object-name>FlapTk6</object-name>
 		<property>surface-positions/flap-pos-norm</property>
-		<factor>37</factor>
-		<center>
-			<x-m>25.92</x-m>
-			<y-m>-6.00275</y-m>
-			<z-m>0.02666</z-m>
-		</center>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.1</ind><dep>0</dep></entry>
+			<entry><ind>1</ind><dep>30</dep></entry>
+		</interpolation>
+ 		<axis>
+  			<x1-m>26.0398</x1-m>
+  			<y1-m>1.9231</y1-m>
+  			<z1-m>0.4013</z1-m>
+  			<x2-m>25.9494</x2-m>
+  			<y2-m>7.3727</y2-m>
+  			<z2-m>0.84347</z2-m>
+ 		</axis>
 	</animation>
 	<animation>
-		<type>rotate</type>
-		<object-name>FlapTk7</object-name>
+		<type>translate</type>
+		<object-name>Flap3</object-name>
+		<object-name>FlapTk5</object-name>
+		<object-name>FlapTk6</object-name>
 		<property>surface-positions/flap-pos-norm</property>
-		<factor>40</factor>
-		<center>
-			<x-m>26.53</x-m>
-			<y-m>-9.24369</y-m>
-			<z-m>0.509779</z-m>
-		</center>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.033</ind><dep>0</dep></entry>
+			<entry><ind>0.167</ind><dep>0.25</dep></entry>
+			<entry><ind>1</ind><dep>0.25</dep></entry>
+		</interpolation>
 		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
+			<x>1.00</x>
+			<y>0.00</y>
+			<z>-0.05</z>
 		</axis>
 	</animation>
-	
 	<animation>
 		<type>rotate</type>
+		<object-name>Flap4</object-name>
+		<object-name>FlapTk7</object-name>
 		<object-name>FlapTk8</object-name>
 		<property>surface-positions/flap-pos-norm</property>
-		<factor>42</factor>
-		<center>
-			<x-m>27.68</x-m>
-			<y-m>-12.6081</y-m>
-			<z-m>0.921234</z-m>
-		</center>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.1</ind><dep>0</dep></entry>
+			<entry><ind>1</ind><dep>30</dep></entry>
+		</interpolation>
+ 		<axis>
+  			<x1-m>25.9916</x1-m>
+  			<y1-m>7.65195</y1-m>
+  			<z1-m>0.865996</z1-m>
+  			<x2-m>28.118</x2-m>
+  			<y2-m>14.0472</y2-m>
+  			<z2-m>1.40642</z2-m>
+ 		</axis>
+	</animation>
+	<animation>
+		<type>translate</type>
+		<object-name>Flap4</object-name>
+		<object-name>FlapTk7</object-name>
+		<object-name>FlapTk8</object-name>
+		<property>surface-positions/flap-pos-norm</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.033</ind><dep>0</dep></entry>
+			<entry><ind>0.167</ind><dep>0.3</dep></entry>
+			<entry><ind>1</ind><dep>0.3</dep></entry>
+		</interpolation>
 		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
+			<x>1.00</x>
+			<y>0.00</y>
+			<z>-0.05</z>
 		</axis>
 	</animation>
 

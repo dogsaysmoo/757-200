@@ -267,9 +267,9 @@
 		<object-name>VOR R FREQ</object-name>
 		<object-name>VOR R DME</object-name>
 		<emission>
-			<red>0</red>
-			<green>0.8</green>
-			<blue>0</blue>
+			<red>0.28</red>
+			<green>0.81</green>
+			<blue>0.21</blue>
 		</emission>
 	</animation>
 	<animation>

@@ -5,7 +5,7 @@
 	<sim>
 		<description>Boeing 757-200</description>
 		<status>alpha</status>
-		<author>Liam Gathercole (3d), Skyop (FDM, instruments, systmems, etc.), Isais Prestes (3d cockpit shell)</author>
+		<author>Liam Gathercole (3d), Skyop (FDM, instruments, systems, etc.), Isais Prestes (3d cockpit shell)</author>
 		<flight-model>yasim</flight-model>
 		<aero>757-200</aero>
 
@@ -154,13 +154,11 @@
  
 		<flaps>
 			<setting>0.000</setting>
-			<setting>0.125</setting>
-			<setting>0.250</setting>
-			<setting>0.375</setting>
+			<setting>0.033</setting>
+			<setting>0.166</setting>
 			<setting>0.500</setting>
-			<setting>0.625</setting>
-			<setting>0.750</setting>
-			<setting>0.875</setting>
+			<setting>0.666</setting>
+			<setting>0.833</setting>
 			<setting>1.000</setting>
 		</flaps>
 
