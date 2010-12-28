@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 for FlightGear -->
+<!-- Overhead Panel -->
+
+<PropertyList>
+
+	<path>OHpanel.ac</path>
+
+	<!-- ANIMATIONS -->
+	<!-- Passenger signs -->
+	<animation>
+		<name>No smoking sign pick</name>
+		<type>pick</type>
+		<object-name>NoSmokingSwtch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/switches/no-smoking-sign</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>No smoking sign rotate</name>
+		<type>rotate</type>
+		<object-name>NoSmokingSwtch</object-name>
+		<property>controls/switches/no-smoking-sign</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>65</dep></entry>
+			<entry><ind>1</ind><dep>-65</dep></entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.1533</y-m>
+			<z-m>0.072</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>Seatbelt sign pick</name>
+		<type>pick</type>
+		<object-name>SeatbeltSwtch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/switches/seatbelt-sign</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Seatbelt sign rotate</name>
+		<type>rotate</type>
+		<object-name>SeatbeltSwtch</object-name>
+		<property>controls/switches/seatbelt-sign</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>65</dep></entry>
+			<entry><ind>1</ind><dep>-65</dep></entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.2513</y-m>
+			<z-m>0.072</z-m>
+		</center>
+	</animation>
+
+</PropertyList>

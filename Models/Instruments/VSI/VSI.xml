@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>VSI.ac</path>
+
+	<animation>
+		<name>VSI needle</name>
+		<type>rotate</type>
+		<object-name>Needle</object-name>
+		<property>velocities/vertical-speed-fps</property>
+		<interpolation>
+			<entry><ind>-33.333</ind><dep>173.5</dep></entry>
+			<entry><ind>-25</ind><dep>131.5</dep></entry>
+			<entry><ind>-16.667</ind><dep>81.5</dep></entry>
+			<entry><ind>-8.333</ind><dep>35.3</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>8.333</ind><dep>-35.7</dep></entry>
+			<entry><ind>16.667</ind><dep>-81.5</dep></entry>
+			<entry><ind>25</ind><dep>-131</dep></entry>
+			<entry><ind>33.333</ind><dep>-172.9</dep></entry>
+		</interpolation>
+<!--		<property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+		<interpolation>
+			<entry><ind>-2000</ind><dep>173.5</dep></entry>
+			<entry><ind>-1500</ind><dep>131.5</dep></entry>
+			<entry><ind>-1000</ind><dep>81.5</dep></entry>
+			<entry><ind>-500</ind><dep>35.3</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>500</ind><dep>-35.7</dep></entry>
+			<entry><ind>1000</ind><dep>-81.5</dep></entry>
+			<entry><ind>1500</ind><dep>-131</dep></entry>
+			<entry><ind>2000</ind><dep>-172.9</dep></entry>
+		</interpolation>-->
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 Autopilot Configuration -->
+
+<PropertyList>
+
+	<!-- PREDICTION FILTERS -->
+	<predict-simple>
+		<input>/autopilot/internal/nav1-track-error-deg</input>
+		<output>/autopilot/internal/nav1-track-error-lookahead-deg</output>
+		<seconds>8</seconds>
+		<filter-gain>0</filter-gain>
+	</predict-simple>
+
+	<!-- AUTOTHROTTLE -->
+	<!-- IAS hold -->
+	<logic>
+		<name>IAS hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/autothrottle</property>
+				<equals>
+					<property>/autopilot/settings/speed</property>
+					<value>speed-with-throttle</value>
+				</equals>
+				<equals>
+					<property>/autopilot/settings/speed-mode</property>
+					<value>knots</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/speed-hold-kt</output>
+	</logic>
+	<pid-controller>
+		<name>IAS hold</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/speed-hold-kt</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/autopilot/internal/lookahead-5-sec-airspeed-kt</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/settings/target-speed-kt</prop>
+		</reference>
+		<output>
+			<prop>/controls/engines/engine[0]/throttle</prop>
+			<prop>/controls/engines/engine[1]/throttle</prop>
+		</output>
+		<config>
+			<Kp>0.05</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>0</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- Mach hold -->
+	<logic>
+		<name>Mach hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/autothrottle</property>
+				<equals>
+					<property>/autopilot/settings/speed</property>
+					<value>speed-with-throttle</value>
+				</equals>
+				<equals>
+					<property>/autopilot/settings/speed-mode</property>
+					<value>mach</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/speed-hold-mach</output>
+	</logic>
+	<pid-controller>
+		<name>Mach hold</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/speed-hold-mach</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/velocities/mach</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/settings/target-speed-mach</prop>
+		</reference>
+		<output>
+			<prop>/controls/engines/engine[0]/throttle</prop>
+			<prop>/controls/engines/engine[1]/throttle</prop>
+		</output>
+		<config>
+			<Kp>20</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>0</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- AUTOPILOT -->
+	<!-- Heading hold -->
+	<!-- Magnetic heading -->
+	<logic>
+		<name>Magnetic heading hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/engaged</property>
+				<equals>
+					<property>/autopilot/settings/heading</property>
+					<value>dg-heading-hold</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/heading-hold-deg</output>
+	</logic>
+	<pid-controller>
+		<name>Magnetic heading hold stage 1</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/heading</prop>
+			<value>dg-heading-hold</value>
+		</enable>
+		<input>
+			<prop>/autopilot/internal/fdm-heading-bug-error-deg</prop>
+		</input>
+		<reference>
+			<value>0</value>
+		</reference>
+		<output>
+			<prop>/autopilot/internal/target-roll-deg</prop>
+		</output>
+		<config>
+			<Kp>-5</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>
+				<prop>/autopilot/settings/minimum-bank-deg</prop>
+			</u_min>
+			<u_max>
+				<prop>/autopilot/settings/maximum-bank-deg</prop>
+			</u_max>
+		</config>
+	</pid-controller>
+	<pid-controller>
+		<name>Magnetic heading hold stage 2</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/heading-hold-deg</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/orientation/roll-deg</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/internal/target-roll-deg</prop>
+		</reference>
+		<output>
+			<prop>/controls/flight/aileron</prop>
+		</output>
+		<config>
+			<Kp>0.025</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-1</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- NAV hold -->
+	<logic>
+		<name>NAV hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/engaged</property>
+				<equals>
+					<property>/autopilot/settings/heading</property>
+					<value>nav1-hold</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/heading-hold-nav</output>
+	</logic>
+	<pid-controller>
+		<name>NAV hold stage 1</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/heading</prop>
+			<value>nav1-hold</value>
+		</enable>
+		<input>
+			<prop>/autopilot/internal/nav1-track-error-deg</prop>
+		</input>
+		<reference>
+			<value>0</value>
+		</reference>
+		<output>
+			<prop>/autopilot/internal/target-roll-deg</prop>
+		</output>
+		<config>
+			<Kp>-1.5</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>15</Ti>
+			<Td>0.000000001</Td>
+			<u_min>
+					<prop>/autopilot/settings/minimum-bank-deg</prop>
+			</u_min>
+			<u_max>
+					<prop>/autopilot/settings/maximum-bank-deg</prop>
+			</u_max>
+		</config>
+	</pid-controller>
+	<pid-controller>
+		<name>NAV hold stage 2</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/heading-hold-nav</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/orientation/roll-deg</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/internal/target-roll-deg</prop>
+		</reference>
+		<output>
+			<prop>/controls/flight/aileron</prop>
+		</output>
+		<config>
+			<Kp>0.025</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.000000001</Td>
+			<u_min>-1</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- True heading [LNAV] -->
+	<logic>
+		<name>True heading hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/engaged</property>
+				<equals>
+					<property>/autopilot/settings/heading</property>
+					<value>true-heading-hold</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/heading-hold-true</output>
+	</logic>
+	<pid-controller>
+		<name>True heading hold stage 1</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/heading</prop>
+			<value>true-heading-hold</value>
+		</enable>
+		<input>
+			<prop>/autopilot/internal/true-heading-error-deg</prop>
+		</input>
+		<reference>
+			<value>0</value>
+		</reference>
+		<output>
+			<prop>/autopilot/internal/target-roll-deg</prop>
+		</output>
+		<config>
+			<Kp>-5</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>
+				<prop>/autopilot/settings/minimum-bank-deg</prop>
+			</u_min>
+			<u_max>
+				<prop>/autopilot/settings/maximum-bank-deg</prop>
+			</u_max>
+		</config>
+	</pid-controller>
+	<pid-controller>
+		<name>True heading hold stage 2</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/heading-hold-true</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/orientation/roll-deg</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/internal/target-roll-deg</prop>
+		</reference>
+		<output>
+			<prop>/controls/flight/aileron</prop>
+		</output>
+		<config>
+			<Kp>0.025</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-1</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- Glideslope hold -->
+	<logic>
+		<name>Glideslope hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/engaged</property>
+				<equals>
+					<property>/autopilot/settings/altitude</property>
+					<value>gs1-hold</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/glideslope-hold</output>
+	</logic>
+	<pid-controller>
+		<name>Glideslope hold</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/glideslope-hold</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/velocities/vertical-speed-fps</prop>
+		</input>
+		<reference>
+			<prop>/instrumentation/nav[0]/gs-rate-of-climb</prop>
+		</reference>
+		 <output>
+			<prop>/controls/flight/elevator-trim</prop>
+		</output>
+		<config>
+			<Kp>-0.0075</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-1</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- Altitude hold -->
+	<logic>
+		<name>Altitude hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/engaged</property>
+				<equals>
+					<property>/autopilot/settings/altitude</property>
+					<value>altitude-hold</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/altitude-hold</output>
+	</logic>
+	<pi-simple-controller>
+		<name>Altitude hold stage 1</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/altitude</prop>
+			<value>altitude-hold</value>
+		</enable>
+		<input>
+			<prop>/instrumentation/altimeter/indicated-altitude-ft</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/settings/target-altitude-ft</prop>
+		</reference>
+		<output>
+			<prop>/autopilot/internal/target-climb-rate-fps</prop>
+		</output>
+		<config>
+			<Kp>0.3</Kp>
+			<Ki>0</Ki>
+			<u_min>-1.667</u_min>
+			<u_max>33.333</u_max>
+		</config>
+	</pi-simple-controller>
+	<pid-controller>
+		<name>Altitude hold stage 2</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/altitude-hold</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/velocities/vertical-speed-fps</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/internal/target-climb-rate-fps</prop>
+		</reference>
+		<output>
+			<prop>/controls/flight/elevator-trim</prop>
+		</output>
+		<config>
+			<Kp>-0.01</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-1</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- Vertical speed hold -->
+	<logic>
+		<name>Vertical speed hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/engaged</property>
+				<equals>
+					<property>/autopilot/settings/altitude</property>
+					<value>vertical-speed-hold</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/vertical-speed-hold</output>
+	</logic>
+	<pid-controller>
+		<name>Vertical speed hold</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/vertical-speed-hold</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/velocities/vertical-speed-fps</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/settings/vertical-speed-fpm</prop>
+			<scale>0.01667</scale>
+		</reference>
+		<output>
+			<prop>/controls/flight/elevator-trim</prop>
+		</output>
+		<config>
+			<Kp>-0.0025</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-1</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
+	<!-- Flight director controllers -->
+	<pid-controller>
+		<name>Glideslope hold flight director</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/altitude</prop>
+			<value>gs1-hold</value>
+		</enable>
+		<input>
+			<prop>/velocities/vertical-speed-fps</prop>
+		</input>
+		<reference>
+			<prop>/instrumentation/nav[0]/gs-rate-of-climb</prop>
+		</reference>
+		 <output>
+			<prop>/autopilot/internal/target-pitch-deg</prop>
+		</output>
+		<config>
+			<Kp>0.1875</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-25</u_min>
+			<u_max>25</u_max>
+		</config>
+	</pid-controller>
+	<pid-controller>
+		<name>Altitude hold stage 2 flight director</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/altitude</prop>
+			<value>altitude-hold</value>
+		</enable>
+		<input>
+			<prop>/velocities/vertical-speed-fps</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/internal/target-climb-rate-fps</prop>
+		</reference>
+		<output>
+			<prop>/autopilot/internal/target-pitch-deg</prop>
+		</output>
+		<config>
+			<Kp>0.25</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-25</u_min>
+			<u_max>25</u_max>
+		</config>
+	</pid-controller>
+	<pid-controller>
+		<name>Vertical speed hold flight director</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/altitude</prop>
+			<value>vertical-speed-hold</value>
+		</enable>
+		<input>
+			<prop>/velocities/vertical-speed-fps</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/settings/vertical-speed-fpm</prop>
+			<scale>0.01667</scale>
+		</reference>
+		<output>
+			<prop>/autopilot/internal/target-pitch-deg</prop>
+		</output>
+		<config>
+			<Kp>0.0625</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-25</u_min>
+			<u_max>25</u_max>
+		</config>
+	</pid-controller>
+
+</PropertyList>
