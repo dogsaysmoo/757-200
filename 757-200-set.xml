@@ -397,11 +397,19 @@
 		<cdu>
 			<display>IDENT</display>
 			<ident>
-				<type>757-200</type>
+				<model>757-200</model>
 				<engines>-535E4</engines>
 			</ident>
 			<input />
 		</cdu>
+		<fmc>
+			<to-flap type="double">5</to-flap>
+			<vspeeds>
+				<V1 type="double">0</V1>
+				<VR type="double">0</VR>
+				<V2 type="double">0</V2>
+			</vspeeds>
+		</fmc>
 	</instrumentation>
 
 	<input>
@@ -505,6 +513,9 @@
 		<electrical>
 			<file>Aircraft/757-200/Nasal/electrical.nas</file>
 		</electrical>
+		<v-speeds>
+			<file>Aircraft/757-200/Nasal/v-speeds.nas</file>
+		</v-speeds>
 		<reversethrust>
 			<file>Aircraft/757-200/Nasal/reversethrust.nas</file>
 		</reversethrust>
