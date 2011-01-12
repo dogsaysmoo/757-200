@@ -14,7 +14,6 @@
 			<livery>
 				<file>BAW</file>
 			</livery>
-
 			<B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>
 				<nav1-track-deg type="double">0</nav1-track-deg>
@@ -22,6 +21,11 @@
 				<nav2-bug-deg type="double">0</nav2-bug-deg>
 				<adf-bug-deg type="double">0</adf-bug-deg>
 			</B757>
+			<pushback>
+				<kp type="double">-0.05</kp>
+				<ti type="double">10</ti>
+				<td type="double">0.00001</td>
+			</pushback>
 		</model>
 
 		<startup>
@@ -47,6 +51,10 @@
 			<autopilot>
 				<name>Autobrake</name>
 				<path>Aircraft/757-200/Systems/757-autobrake.xml</path>
+			</autopilot>
+			<autopilot>
+				<name>Pushback</name>
+				<path>Aircraft/757-200/Systems/pushback.xml</path>
 			</autopilot>
 		</systems>
 
@@ -384,6 +392,18 @@
 		</gear>
 	</gear>
 
+	<instrumentation>
+		<!-- CDU stuff: http://wiki.flightgear.org/index.php/Howto:_Implement_a_Control_Display_Unit -->
+		<cdu>
+			<display>IDENT</display>
+			<ident>
+				<type>757-200</type>
+				<engines>-535E4</engines>
+			</ident>
+			<input />
+		</cdu>
+	</instrumentation>
+
 	<input>
 		<keyboard>
 			<key n="127">
@@ -479,6 +499,9 @@
 		<systems>
 			<file>Aircraft/757-200/Nasal/systems.nas</file>
 		</systems>
+		<cdu>
+			<file>Aircraft/Instruments-3d/cdu/boeing.nas</file>
+		</cdu>
 		<electrical>
 			<file>Aircraft/757-200/Nasal/electrical.nas</file>
 		</electrical>

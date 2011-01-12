@@ -99,8 +99,8 @@
 
 	<!-- LANDING GEARS -->
 	<!-- Pushback -->
-	<thruster x="-5.306" y="0.0" z="-3.37" vx="1" vy="0" vz="0" thrust="12000">
-		<control-input axis="/sim/model/pushback/target-speed-fps" control="THROTTLE" src0="-1" src1="1" dst0="-1" dst1="1" />
+	<thruster x="11.837" y="0.0" z="-3.747" vx="1" vy="0" vz="0" thrust="42000">
+		<control-input axis="/sim/model/pushback/force" control="THROTTLE" src0="-1" src1="1" dst0="-1" dst1="1" />
 	</thruster>
 
 	<!-- Nosegear -->

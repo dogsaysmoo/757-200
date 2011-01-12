@@ -145,7 +145,7 @@
 		</offsets>
 	</model>
 
-	<!-- EICAS -->
+	<!-- Engine Instrumentation and Crew Alert System -->
 	<model>
 		<path>Aircraft/757-200/Models/Instruments/EICAS/eicas.xml</path>
 		<offsets>
@@ -163,6 +163,34 @@
 			<z-m>0.931</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
+	</model>
+
+	<!-- Control Display Unit -->
+	<model>
+		<name>Pilot control display unit</name>
+		<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
+		<offsets>
+			<x-m>1.83</x-m>
+			<y-m>-0.162</y-m>
+			<z-m>0.743</z-m>
+			<pitch-deg>-74.5</pitch-deg>
+		</offsets>
+		<overlay>
+			<texture>boeing_brown.png</texture>
+		</overlay>
+	</model>
+	<model>
+		<name>Copilot control display unit</name>
+		<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
+		<offsets>
+			<x-m>1.83</x-m>
+			<y-m>0.162</y-m>
+			<z-m>0.743</z-m>
+			<pitch-deg>-74.5</pitch-deg>
+		</offsets>
+		<overlay>
+			<texture>boeing_brown.png</texture>
+		</overlay>
 	</model>
 
 	<!-- Vertical Speed Indicator -->

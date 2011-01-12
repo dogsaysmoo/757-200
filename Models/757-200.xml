@@ -273,8 +273,32 @@
 	<!-- Elevators -->
 	<animation>
 		<type>rotate</type>
+		<object-name>HorzStab1</object-name>
+		<object-name>HorzStab2</object-name>
 		<object-name>Elevator1</object-name>
-		<property>surface-positions/elevator-pos-norm</property>
+		<object-name>Elevator2</object-name>
+		<property>controls/flight/elevator-trim</property>
+		<interpolation>
+			<entry><ind>1.0</ind><dep>16.0</dep></entry>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>-1.0</ind><dep>-16.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>42.794</x-m>
+			<y-m>0</y-m>
+			<z-m>1.795</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Elevator1</object-name>
+		<property>controls/flight/elevator</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
@@ -292,7 +316,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Elevator2</object-name>
-		<property>surface-positions/elevator-pos-norm</property>
+		<property>controls/flight/elevator</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>-25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
@@ -327,6 +351,7 @@
 			<x2-m>28.4941</x2-m>
 			<y2-m>-14.6114</y2-m>
 			<z2-m>1.40642</z2-m>
+
 		</axis>
 	</animation>
 	<animation>
