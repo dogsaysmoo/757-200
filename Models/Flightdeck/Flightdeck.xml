@@ -568,4 +568,73 @@
 		</center>
 	</animation>
 
+	<!-- Cutoff switches -->
+	<animation>
+		<name>Engine 1 cutoff switch pick</name>
+		<type>pick</type>
+		<object-name>Eng1Cutoff</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/engines/engine[0]/cutoff</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Engine 1 cutoff switch</name>
+		<type>rotate</type>
+		<object-name>Eng1Cutoff</object-name>
+		<property>controls/engines/engine[0]/cutoff</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>2.231</x-m>
+			<y-m>0</y-m>
+			<z-m>0.718</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>Engine 2 cutoff switch pick</name>
+		<type>pick</type>
+		<object-name>Eng2Cutoff</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/engines/engine[1]/cutoff</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Engine 2 cutoff switch</name>
+		<type>rotate</type>
+		<object-name>Eng2Cutoff</object-name>
+		<property>controls/engines/engine[1]/cutoff</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>2.231</x-m>
+			<y-m>0</y-m>
+			<z-m>0.718</z-m>
+		</center>
+	</animation>
+
 </PropertyList>

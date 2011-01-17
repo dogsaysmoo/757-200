@@ -160,6 +160,18 @@
 				<pitch-offset-deg>0</pitch-offset-deg>
 			</config>
 		</view>
+		<view n="103">
+			<name>Overhead Panel View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0</x-offset-m>
+				<y-offset-m archive="y">1.3</y-offset-m>
+				<z-offset-m archive="y">3</z-offset-m>
+				<pitch-offset-deg>30</pitch-offset-deg>
+			</config>
+		</view>
 		<chase-distance-m>-45</chase-distance-m>
  
 		<flaps>
@@ -337,6 +349,11 @@
 	</autopilot>
 
 	<engines>
+		<APU>
+			<rpm type="double">0</rpm>
+			<running type="bool">false</running>
+			<serviceable type="bool">true</serviceable>
+		</APU>
 		<engine n="0">
 			<rpm type="double">0</rpm>
 			<failed type="bool">false</failed>

@@ -49,6 +49,43 @@ setlistener("controls/switches/no-smoking-sign", func
 # engines/engine[X]/failed			When triggered the engine is "failed" and cannot be restarted
 # engines/engine[X]/on-fire			Self-explanatory
 
+# APU loop function
+var apuLoop = func
+ {
+ var setting = getprop("controls/APU/off-start-run");
+
+ if (props.globals.getNode("engines/APU/serviceable").getBoolValue() and setting != 0)
+  {
+  if (setting == 1)
+   {
+   var rpm = getprop("engines/APU/rpm");
+   rpm += getprop("sim/time/delta-realtime-sec") * 25;
+   if (rpm >= 100)
+    {
+    rpm = 100;
+    }
+   setprop("engines/APU/rpm", rpm);
+   }
+  elsif (setting == 2 and getprop("engines/APU/rpm") == 100)
+   {
+   props.globals.getNode("engines/APU/running").setBoolValue(1);
+   }
+  }
+ else
+  {
+  props.globals.getNode("engines/APU/running").setBoolValue(0);
+
+  var rpm = getprop("engines/APU/rpm");
+  rpm -= getprop("sim/time/delta-realtime-sec") * 30;
+  if (rpm < 0)
+   {
+   rpm = 0;
+   }
+  setprop("engines/APU/rpm", rpm);
+  }
+
+ settimer(apuLoop, 0);
+ };
 # main loop function
 var engineLoop = func(engine_no)
  {
@@ -83,12 +120,12 @@ var engineLoop = func(engine_no)
   props.globals.getNode(engineOutTree ~ "started").setBoolValue(0);
   setprop(engineCtlTree ~ "throttle-lever", 0);
   }
- elsif (props.globals.getNode(engineCtlTree ~ "starter").getBoolValue())
+ elsif (props.globals.getNode(engineCtlTree ~ "starter").getBoolValue() and props.globals.getNode("engines/APU/running").getBoolValue())
   {
   props.globals.getNode(engineCtlTree ~ "cutoff").setBoolValue(0);
 
   var rpm = getprop(engineOutTree ~ "rpm");
-  rpm += getprop("sim/time/delta-realtime-sec") * 3.0;
+  rpm += getprop("sim/time/delta-realtime-sec") * 3;
   setprop(engineOutTree ~ "rpm", rpm);
 
   if (rpm >= getprop(engineOutTree ~ "n1"))
@@ -128,27 +165,48 @@ setlistener("sim/signals/fdm-initialized", func
   {
   engineLoop(0);
   engineLoop(1);
+  apuLoop();
   }, 2);
  });
 
 # startup/shutdown functions
 var startup = func
  {
+ setprop("controls/APU/off-start-run", 1);
  setprop("controls/engines/engine[0]/cutoff", 0);
  setprop("controls/engines/engine[1]/cutoff", 0);
- setprop("engines/engine[0]/started", 1);
- setprop("engines/engine[1]/started", 1);
-# setprop("controls/engines/engine[0]/starter", 1);
-# setprop("controls/engines/engine[1]/starter", 1);
- setprop("controls/electric/avionics-switch", 1);
+ setprop("controls/engines/engine[0]/starter", 1);
+ setprop("controls/engines/engine[1]/starter", 1);
  setprop("controls/electric/battery-switch", 1);
+ setprop("controls/electric/APU-generator", 1);
+
+ var listener1 = setlistener("engines/APU/rpm", func
+  {
+  if (getprop("engines/APU/rpm") >= 100)
+   {
+   setprop("controls/APU/off-start-run", 2);
+   removelistener(listener1);
+   }
+  }, 0, 0);
+ var listener2 = setlistener("engines/engine[0]/rpm", func
+  {
+  if (getprop("engines/engine[0]/rpm") >= getprop("engines/engine[0]/n1"))
+   {
+   settimer(func
+    {
+    setprop("controls/APU/off-start-run", 0);
+    setprop("controls/electric/APU-generator", 0);
+    }, 2);
+   removelistener(listener2);
+   }
+  }, 0, 0);
  };
 var shutdown = func
  {
  setprop("controls/engines/engine[0]/cutoff", 1);
  setprop("controls/engines/engine[1]/cutoff", 1);
- setprop("controls/electric/avionics-switch", 0);
  setprop("controls/electric/battery-switch", 0);
+ setprop("controls/electric/APU-generator", 0);
  };
 
 # listener to activate these functions accordingly

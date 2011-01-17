@@ -15,6 +15,9 @@
 		<control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.5" />
 		<control-setting axis="/controls/flight/flaps" value="1.0" />
 		<control-setting axis="/controls/gear/gear-down" value="1.0" />
+		<solve-weight idx="0" weight="600" />
+		<solve-weight idx="1" weight="38948" />
+		<solve-weight idx="2" weight="12983" />
 	</approach>
 
 	<cruise speed="458" alt="35000" fuel="0.8">
@@ -22,6 +25,9 @@
 		<control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.8" />
 		<control-setting axis="/controls/flight/flaps" value="0.0" />
 		<control-setting axis="/controls/gear/gear-down" value="0.0" />
+		<solve-weight idx="0" weight="600" />
+		<solve-weight idx="1" weight="38948" />
+		<solve-weight idx="2" weight="12983" />
 	</cruise>
 
 	<cockpit x="-2.25" y="0.5" z="1.4" />
@@ -35,10 +41,10 @@
 	<fuselage ax="-36.338" ay="0.0" az="0.991" bx="-46.923" by="0.0" bz="1.656" width="4.326" taper="0.25" midpoint="0.0" />
 
 	<!-- WINGS -->
-	<wing x="-23.019" y="1.833" z="0.076" length="18.5" chord="8.932" sweep="20.8" taper="0.206" dihedral="6.35" camber="0.1" incidence="1.0" twist="-1.0" idrag="1.0">
+	<wing x="-23.019" y="1.833" z="0.076" length="18.5" chord="8.932" sweep="20.8" taper="0.206" camber="0.1" incidence="2.5" twist="-1.0">
 		<stall aoa="15" width="5" peak="0.8" />
-		<flap0 start="0.01" end="0.72" lift="1.3" drag="1.9" />
-		<flap1 start="0.745" end="0.985" lift="1.2" drag="1.9" />
+		<flap0 start="0.01" end="0.72" lift="1.5" drag="2.0" />
+		<flap1 start="0.745" end="0.985" lift="1.2" drag="1.5" />
 		<slat start="0.02" end="0.985" aoa="3.0" drag="1.1" />
 		<spoiler start="0.11" end="0.7" lift="0.0" drag="1.0" />
 		<control-input axis="/controls/flight/flaps" control="FLAP0" />
@@ -57,9 +63,9 @@
 	</wing>
 
 	<!-- ELEVATORS -->
-	<hstab x="-42.763" y="1.299" z="1.723" length="6.85" chord="4.53" incidence="1.5" twist="0.0" taper="0.4" sweep="26.5" dihedral="11.0" idrag="1.0" camber="0.1">
+	<hstab x="-42.763" y="1.299" z="1.723" length="6.85" chord="4.53" twist="0.0" taper="0.4" sweep="26.5" camber="0.1">
 		<stall aoa="20" width="7" peak="1.5" />
-		<flap0 start="0.0" end="1.0" lift="1.6" drag="1.3" />
+		<flap0 start="0.0" end="1.0" lift="1.5" drag="1.3" />
 		<control-input axis="/controls/flight/elevator" control="FLAP0" />
 		<control-input axis="/controls/flight/elevator-trim" control="FLAP0" />
 		<control-output control="FLAP0"  prop="/surface-positions/elevator-pos-norm" />
@@ -161,6 +167,5 @@
 
 	<!-- Ballast to adjust center of gravity -->
 	<ballast x="-3.0" y="0.0" z="0.0" mass="10000" />
-	<ballast x="-45.0" y="0.0" z="0.0" mass="-10000" />
 
 </airplane>
