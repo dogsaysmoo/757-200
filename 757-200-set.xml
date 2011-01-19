@@ -401,6 +401,7 @@
 				<engines>-535E4</engines>
 			</ident>
 			<input />
+			<serviceable>1</serviceable>
 		</cdu>
 		<fmc>
 			<to-flap type="double">5</to-flap>
