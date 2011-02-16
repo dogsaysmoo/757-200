@@ -173,12 +173,14 @@ setlistener("sim/signals/fdm-initialized", func
 var startup = func
  {
  setprop("controls/APU/off-start-run", 1);
+ setprop("controls/electric/APU-generator", 1);
+ setprop("controls/electric/battery-switch", 1);
+ setprop("controls/electric/engine[0]/generator", 1);
+ setprop("controls/electric/engine[1]/generator", 1);
  setprop("controls/engines/engine[0]/cutoff", 0);
  setprop("controls/engines/engine[1]/cutoff", 0);
  setprop("controls/engines/engine[0]/starter", 1);
  setprop("controls/engines/engine[1]/starter", 1);
- setprop("controls/electric/battery-switch", 1);
- setprop("controls/electric/APU-generator", 1);
 
  var listener1 = setlistener("engines/APU/rpm", func
   {
@@ -196,6 +198,7 @@ var startup = func
     {
     setprop("controls/APU/off-start-run", 0);
     setprop("controls/electric/APU-generator", 0);
+    setprop("controls/electric/battery-switch", 0);
     }, 2);
    removelistener(listener2);
    }
@@ -203,10 +206,10 @@ var startup = func
  };
 var shutdown = func
  {
+ setprop("controls/electric/engine[0]/generator", 0);
+ setprop("controls/electric/engine[1]/generator", 0);
  setprop("controls/engines/engine[0]/cutoff", 1);
  setprop("controls/engines/engine[1]/cutoff", 1);
- setprop("controls/electric/battery-switch", 0);
- setprop("controls/electric/APU-generator", 0);
  };
 
 # listener to activate these functions accordingly

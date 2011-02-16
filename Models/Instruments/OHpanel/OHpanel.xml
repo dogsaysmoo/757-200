@@ -102,6 +102,112 @@
 		</axis>
 	</animation>
 
+	<!-- Left engine generator -->
+	<animation>
+		<name>Left engine bus tie button pick</name>
+		<type>pick</type>
+		<object-name>LBusTieBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/engine[0]/bus-tie</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Left engine bus tie button textranslate</name>
+		<type>textranslate</type>
+		<object-name>LBusTieBtn</object-name>
+		<property>controls/electric/engine[0]/bus-tie</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<name>Left engine generator button pick</name>
+		<type>pick</type>
+		<object-name>LGenBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/engine[0]/generator</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Left engine generator button textranslate</name>
+		<type>textranslate</type>
+		<object-name>LGenBtn</object-name>
+		<property>controls/electric/engine[0]/generator</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Right engine generator -->
+	<animation>
+		<name>Right engine bus tie button pick</name>
+		<type>pick</type>
+		<object-name>RBusTieBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/engine[1]/bus-tie</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Right engine bus tie button textranslate</name>
+		<type>textranslate</type>
+		<object-name>RBusTieBtn</object-name>
+		<property>controls/electric/engine[1]/bus-tie</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<name>Right engine generator button pick</name>
+		<type>pick</type>
+		<object-name>RGenBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/engine[1]/generator</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Right engine generator button textranslate</name>
+		<type>textranslate</type>
+		<object-name>RGenBtn</object-name>
+		<property>controls/electric/engine[1]/generator</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
 	<!-- APU indicators -->
 	<animation>
 		<name>APU running</name>

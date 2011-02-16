@@ -6,7 +6,7 @@
 <PropertyList>
 
 	<logic>
-		<name>Pushback logic</name>
+		<name>Pushback engage logic</name>
 		<input>
 			<and>
 				<greater-than>
@@ -22,6 +22,21 @@
 		</input>
 		<output>/systems/pushback/linked</output>
 	</logic>
+	<filter>
+		<name>Pushback cancel force logic</name>
+		<type>gain</type>
+		<gain>1</gain>
+		<debug type="bool">false</debug>
+		<enable>
+			<not>
+				<property>/systems/pushback/linked</property>
+			</not>
+		</enable>
+		<input>
+			<value>0</value>
+		</input>
+		<output>/sim/model/pushback/force</output>
+	</filter>
 	<pid-controller>
 		<name>Pushback controller</name>
 		<debug type="bool">false</debug>
