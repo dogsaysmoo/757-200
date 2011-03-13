@@ -276,7 +276,7 @@
 			<input>
 				<row>0</row>
 				<col>1</col>
-				<property>autopilot/settings/target-altitude-ft</property>
+				<property>autopilot/settings/altitude-setting-ft</property>
 				<live type="bool">true</live>
 				<binding>
 					<command>dialog-apply</command>
@@ -303,6 +303,26 @@
 		<group>
 			<layout>hbox</layout>
 
+			<button>
+				<legend>VNAV</legend>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					 var node = props.globals.getNode("/autopilot/settings/altitude", 1);
+					 if (node.getValue() == "vnav")
+					  {
+					  node.setValue("");
+					  }
+					 else
+					  {
+					  node.setValue("vnav");
+					  }
+					</script>
+				</binding>
+			</button>
 			<button>
 				<legend>ALT</legend>
 				<binding>

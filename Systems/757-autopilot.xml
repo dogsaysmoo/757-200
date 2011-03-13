@@ -370,6 +370,71 @@
 		</config>
 	</pid-controller>
 
+	<!-- VNAV hold -->
+	<logic>
+		<name>VNAV hold logic</name>
+		<input>
+			<and>
+				<property>/autopilot/settings/engaged</property>
+				<equals>
+					<property>/autopilot/settings/altitude</property>
+					<value>vnav</value>
+				</equals>
+			</and>
+		</input>
+		<output>/autopilot/internal/vnav-hold</output>
+	</logic>
+	<pi-simple-controller>
+		<name>VNAV hold stage 1</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/settings/altitude</prop>
+			<value>vnav</value>
+		</enable>
+		<input>
+			<prop>/instrumentation/altimeter/indicated-altitude-ft</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/settings/target-altitude-ft</prop>
+		</reference>
+		<output>
+			<prop>/autopilot/internal/target-climb-rate-fps</prop>
+		</output>
+		<config>
+			<Kp>0.3</Kp>
+			<Ki>0</Ki>
+			<u_min>-16.667</u_min>
+			<u_max>33.333</u_max>
+		</config>
+	</pi-simple-controller>
+	<pid-controller>
+		<name>VNAV hold stage 2</name>
+		<debug type="bool">false</debug>
+		<enable>
+			<prop>/autopilot/internal/vnav-hold</prop>
+			<value type="bool">true</value>
+		</enable>
+		<input>
+			<prop>/velocities/vertical-speed-fps</prop>
+		</input>
+		<reference>
+			<prop>/autopilot/internal/target-climb-rate-fps</prop>
+		</reference>
+		<output>
+			<prop>/controls/flight/elevator-trim</prop>
+		</output>
+		<config>
+			<Kp>-0.01</Kp>
+			<beta>1</beta>
+			<alpha>0.1</alpha>
+			<gamma>0</gamma>
+			<Ti>10</Ti>
+			<Td>0.00001</Td>
+			<u_min>-1</u_min>
+			<u_max>1</u_max>
+		</config>
+	</pid-controller>
+
 	<!-- Altitude hold -->
 	<logic>
 		<name>Altitude hold logic</name>
@@ -395,7 +460,7 @@
 			<prop>/instrumentation/altimeter/indicated-altitude-ft</prop>
 		</input>
 		<reference>
-			<prop>/autopilot/settings/target-altitude-ft</prop>
+			<prop>/autopilot/settings/altitude-setting-ft</prop>
 		</reference>
 		<output>
 			<prop>/autopilot/internal/target-climb-rate-fps</prop>
@@ -403,7 +468,7 @@
 		<config>
 			<Kp>0.3</Kp>
 			<Ki>0</Ki>
-			<u_min>-1.667</u_min>
+			<u_min>-16.667</u_min>
 			<u_max>33.333</u_max>
 		</config>
 	</pi-simple-controller>
@@ -561,5 +626,35 @@
 			<u_max>25</u_max>
 		</config>
 	</pid-controller>
+	<filter>
+		<name>Flight director pitch computer</name>
+		<debug type="bool">false</debug>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<dif>
+					<property>/autopilot/internal/target-pitch-deg</property>
+					<property>/orientation/pitch-deg</property>
+				</dif>
+			</expression>
+		</input>
+		<output>/autopilot/internal/flight-director-pitch-deg</output>
+	</filter>
+	<filter>
+		<name>Flight director roll computer</name>
+		<debug type="bool">false</debug>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<dif>
+					<property>/autopilot/internal/target-roll-deg</property>
+					<property>/orientation/roll-deg</property>
+				</dif>
+			</expression>
+		</input>
+		<output>/autopilot/internal/flight-director-roll-deg</output>
+	</filter>
 
 </PropertyList>

@@ -10,9 +10,9 @@
 -->
 
 <airplane mass="127520">
-	<approach speed="130" aoa="0.5" fuel="0.2">
-		<control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.5" />
-		<control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.5" />
+	<approach speed="130" aoa="1.0" fuel="0.2">
+		<control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.4" />
+		<control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.4" />
 		<control-setting axis="/controls/flight/flaps" value="1.0" />
 		<control-setting axis="/controls/gear/gear-down" value="1.0" />
 		<solve-weight idx="0" weight="600" />
@@ -41,9 +41,9 @@
 	<fuselage ax="-36.338" ay="0.0" az="0.991" bx="-46.923" by="0.0" bz="1.656" width="4.326" taper="0.25" midpoint="0.0" />
 
 	<!-- WINGS -->
-	<wing x="-23.019" y="1.833" z="0.076" length="18.5" chord="8.932" sweep="20.8" taper="0.206" camber="0.1" incidence="2.5" twist="-1.0">
+	<wing x="-22.019" y="1.833" z="0.076" length="18.5" chord="8.932" sweep="20.8" taper="0.206" camber="0.1" incidence="3.0" twist="-1.0">
 		<stall aoa="15" width="5" peak="0.8" />
-		<flap0 start="0.01" end="0.72" lift="1.5" drag="2.0" />
+		<flap0 start="0.01" end="0.72" lift="1.6" drag="2.0" />
 		<flap1 start="0.745" end="0.985" lift="1.2" drag="1.5" />
 		<slat start="0.02" end="0.985" aoa="3.0" drag="1.1" />
 		<spoiler start="0.11" end="0.7" lift="0.0" drag="1.0" />
@@ -51,15 +51,15 @@
 		<control-input axis="/controls/flight/flaps" control="SLAT" src0="0.0" src1="0.177" dst0="0.0" dst1="1.0" />
 		<control-input axis="/controls/flight/aileron" control="FLAP1" split="true" />
 		<control-input axis="/controls/flight/aileron-trim" control="FLAP1" split="true" />
-		<control-input axis="/controls/flight/speedbrake" control="SPOILER" />
+		<control-input axis="/controls/flight/fdm-speedbrake" control="SPOILER" />
 		<control-output control="FLAP0" prop="/surface-positions/flap-pos-norm" />
 		<control-output control="FLAP1" side="left" prop="/surface-positions/left-aileron-pos-norm" />
 		<control-output control="FLAP1" side="right" prop="/surface-positions/right-aileron-pos-norm" />
 		<control-output control="SLAT" prop="/surface-positions/slats" />
-		<control-output control="SPOILER" prop="/surface-positions/speedbrake-pos-norm" />
+		<control-output control="SPOILER" prop="/surface-positions/fdm-speedbrake-pos-norm" />
 		<control-speed control="FLAP0" transition-time="64.0" />
 		<control-speed control="SLAT" transition-time="15.0" />
-		<control-speed control="SPOILER" transition-time="0.7" />
+		<control-speed control="SPOILER" transition-time="1.5" />
 	</wing>
 
 	<!-- ELEVATORS -->
@@ -161,7 +161,7 @@
 
 	<!-- Crew -->
 	<weight x="-2.5" y="0.0" z="1.0" mass-prop="/sim/weight[0]/weight-lb" size="0.0" solve-weight="0.0" idx="0" weight="600.0" />
-	<!-- PAX -->
+	<!-- PAX/Cargo -->
 	<weight x="-9.5" y="0.0" z="1.0" mass-prop="/sim/weight[1]/weight-lb" size="0.0" solve-weight="0.0" idx="0" weight="38948.0" />
 	<weight x="-25.5" y="0.0" z="1.0" mass-prop="/sim/weight[2]/weight-lb" size="0.0" solve-weight="0.0" idx="0" weight="12983.0" />
 

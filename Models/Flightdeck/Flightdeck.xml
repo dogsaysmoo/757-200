@@ -21,7 +21,7 @@
 		<path>Aircraft/757-200/Models/Instruments/AI/AI.xml</path>
 		<offsets>
 			<x-m>1.683</x-m>
-			<y-m>-0.516</y-m>
+			<y-m>-0.496</y-m>
 			<z-m>1.054</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
@@ -30,7 +30,7 @@
 		<path>Aircraft/757-200/Models/Instruments/AI/AI.xml</path>
 		<offsets>
 			<x-m>1.683</x-m>
-			<y-m>0.516</y-m>
+			<y-m>0.466</y-m>
 			<z-m>1.054</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
@@ -41,7 +41,7 @@
 		<path>Aircraft/757-200/Models/Instruments/EHSI/EHSI.xml</path>
 		<offsets>
 			<x-m>1.71</x-m>
-			<y-m>-0.516</y-m>
+			<y-m>-0.496</y-m>
 			<z-m>0.912</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
@@ -50,7 +50,7 @@
 		<path>Aircraft/757-200/Models/Instruments/EHSI/EHSI.xml</path>
 		<offsets>
 			<x-m>1.71</x-m>
-			<y-m>0.516</y-m>
+			<y-m>0.466</y-m>
 			<z-m>0.912</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
@@ -58,29 +58,29 @@
 
 	<!-- Altimeter -->
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/Altimeter/boeing747-400-alt-jw.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/Altimeter/altimeter.xml</path>
 		<offsets>
-			<x-m>1.684</x-m>
-			<y-m>-0.369</y-m>
-			<z-m>1.054</z-m>
+			<x-m>1.675</x-m>
+			<y-m>-0.319</y-m>
+			<z-m>1.062</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/Altimeter/boeing747-400-alt-jw.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/Altimeter/altimeter.xml</path>
 		<offsets>
-			<x-m>1.684</x-m>
-			<y-m>0.676</y-m>
-			<z-m>1.054</z-m>
+			<x-m>1.689</x-m>
+			<y-m>-0.218</y-m>
+			<z-m>0.99</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/Altimeter/boeing747-400-alt-jw.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/Altimeter/altimeter.xml</path>
 		<offsets>
-			<x-m>1.712</x-m>
-			<y-m>-0.234</y-m>
-			<z-m>0.911</z-m>
+			<x-m>1.675</x-m>
+			<y-m>0.643</y-m>
+			<z-m>1.062</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
@@ -89,58 +89,58 @@
 	<model>
 		<path>Aircraft/757-200/Models/Instruments/Stby-AI/stby-ai.xml</path>
 		<offsets>
-			<x-m>1.679</x-m>
-			<y-m>-0.238</y-m>
-			<z-m>1.083</z-m>
+			<x-m>1.67</x-m>
+			<y-m>-0.218</y-m>
+			<z-m>1.081</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 
 	<!-- Clock -->
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/Clock/chronometer.xml</path>
+		<path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
 		<offsets>
-			<x-m>1.716</x-m>
-			<y-m>-0.369</y-m>
-			<z-m>0.894</z-m>
+			<x-m>1.709</x-m>
+			<y-m>-0.365</y-m>
+			<z-m>0.879</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/Clock/chronometer.xml</path>
+		<path>Aircraft/Instruments-3d/chronometer/chronometer.xml</path>
 		<offsets>
-			<x-m>1.716</x-m>
-			<y-m>0.676</y-m>
-			<z-m>0.894</z-m>
+			<x-m>1.709</x-m>
+			<y-m>0.597</y-m>
+			<z-m>0.879</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 
 	<!-- Airspeed Indicator -->
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/IAS/asi.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/ASI/asi.xml</path>
 		<offsets>
-			<x-m>1.686</x-m>
-			<y-m>-0.655</y-m>
-			<z-m>1.047</z-m>
+			<x-m>1.68</x-m>
+			<y-m>-0.634</y-m>
+			<z-m>1.037</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/IAS/asi.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/ASI/asi.xml</path>
 		<offsets>
-			<x-m>1.696</x-m>
-			<y-m>-0.24</y-m>
-			<z-m>0.995</z-m>
+			<x-m>1.706</x-m>
+			<y-m>-0.218</y-m>
+			<z-m>0.899</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
-		<path>Aircraft/757-200/Models/Instruments/IAS/asi.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/ASI/asi.xml</path>
 		<offsets>
-			<x-m>1.686</x-m>
-			<y-m>0.38</y-m>
-			<z-m>1.047</z-m>
+			<x-m>1.68</x-m>
+			<y-m>0.328</y-m>
+			<z-m>1.037</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
@@ -149,90 +149,109 @@
 	<model>
 		<path>Aircraft/757-200/Models/Instruments/EICAS/eicas.xml</path>
 		<offsets>
-			<x-m>1.679</x-m>
+			<x-m>1.683</x-m>
 			<y-m>0</y-m>
-			<z-m>1.085</z-m>
+			<z-m>1.054</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/757-200/Models/Instruments/EICAS/eicas.xml</path>
 		<offsets>
-			<x-m>1.708</x-m>
+			<x-m>1.712</x-m>
 			<y-m>0</y-m>
-			<z-m>0.931</z-m>
+			<z-m>0.907</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 
 	<!-- Control Display Unit -->
 	<model>
-		<name>Pilot control display unit</name>
 		<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
+		<overlay>
+			<texture>boeing_brown.png</texture>
+		</overlay>
 		<offsets>
 			<x-m>1.83</x-m>
 			<y-m>-0.162</y-m>
 			<z-m>0.743</z-m>
 			<pitch-deg>-74.5</pitch-deg>
 		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
 		<overlay>
 			<texture>boeing_brown.png</texture>
 		</overlay>
-	</model>
-	<model>
-		<name>Copilot control display unit</name>
-		<path>Aircraft/Instruments-3d/cdu/boeing.xml</path>
 		<offsets>
 			<x-m>1.83</x-m>
 			<y-m>0.162</y-m>
 			<z-m>0.743</z-m>
 			<pitch-deg>-74.5</pitch-deg>
 		</offsets>
-		<overlay>
-			<texture>boeing_brown.png</texture>
-		</overlay>
 	</model>
 
 	<!-- Vertical Speed Indicator -->
 	<model>
-		<name>Pilot vertical speed indicator</name>
 		<path>Aircraft/757-200/Models/Instruments/VSI/VSI.xml</path>
 		<offsets>
-			<x-m>1.7</x-m>
-			<y-m>-0.369</y-m>
-			<z-m>0.975</z-m>
+			<x-m>1.692</x-m>
+			<y-m>-0.365</y-m>
+			<z-m>0.97</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
-		<name>Copilot vertical speed indicator</name>
 		<path>Aircraft/757-200/Models/Instruments/VSI/VSI.xml</path>
 		<offsets>
-			<x-m>1.7</x-m>
-			<y-m>0.676</y-m>
-			<z-m>0.975</z-m>
+			<x-m>1.692</x-m>
+			<y-m>0.597</y-m>
+			<z-m>0.97</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 
 	<!-- VOR -->
 	<model>
-		<name>Pilot vertical speed indicator</name>
-		<path>Aircraft/Instruments-3d/vor/vor.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/VOR/VOR.xml</path>
+		<overlay>
+			<params>
+				<indicated-heading-deg>orientation/heading-magnetic-deg</indicated-heading-deg>
+				<nav-display n="0">instrumentation/nav-compass[0]/nav-display[0]</nav-display>
+				<nav-display n="1">instrumentation/nav-compass[0]/nav-display[1]</nav-display>
+			</params>
+		</overlay>
 		<offsets>
-			<x-m>1.705</x-m>
-			<y-m>-0.653</y-m>
-			<z-m>0.947</z-m>
+			<x-m>1.694</x-m>
+			<y-m>-0.628</y-m>
+			<z-m>0.951</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
 	<model>
-		<name>Copilot VOR display</name>
-		<path>Aircraft/Instruments-3d/vor/vor.xml</path>
+		<path>Aircraft/757-200/Models/Instruments/VOR/VOR.xml</path>
+		<overlay>
+			<params>
+				<indicated-heading-deg>orientation/heading-magnetic-deg</indicated-heading-deg>
+				<nav-display n="0">instrumentation/nav-compass[1]/nav-display[0]</nav-display>
+				<nav-display n="1">instrumentation/nav-compass[1]/nav-display[1]</nav-display>
+			</params>
+		</overlay>
 		<offsets>
-			<x-m>1.705</x-m>
-			<y-m>0.382</y-m>
-			<z-m>0.947</z-m>
+			<x-m>1.694</x-m>
+			<y-m>0.334</y-m>
+			<z-m>0.951</z-m>
+			<pitch-deg>-11</pitch-deg>
+		</offsets>
+	</model>
+
+	<!-- Autobrakes -->
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Autobrakes/autobrakes.xml</path>
+		<offsets>
+			<x-m>1.71</x-m>
+			<y-m>-0.12</y-m>
+			<z-m>0.879</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
 	</model>
@@ -248,34 +267,12 @@
 		</offsets>
 	</model>
 
-	<!-- ILS Markers -->
-	<model>
-		<path>Aircraft/757-200/Models/Instruments/GSmarkers/marker_beacons.xml</path>
-		<offsets>
-			<x-m>1.673</x-m>
-			<y-m>-0.369</y-m>
-			<z-m>1.113</z-m>
-			<roll-deg>-90</roll-deg>
-			<pitch-deg>-11</pitch-deg>
-		</offsets>
-	</model>
-	<model>
-		<path>Aircraft/757-200/Models/Instruments/GSmarkers/marker_beacons.xml</path>
-		<offsets>
-			<x-m>1.673</x-m>
-			<y-m>0.369</y-m>
-			<z-m>1.113</z-m>
-			<roll-deg>-90</roll-deg>
-			<pitch-deg>-11</pitch-deg>
-		</offsets>
-	</model>
-
 	<!-- Mode Control Panel -->
 	<model>
 		<path>Aircraft/757-200/Models/Instruments/MCP/MCP.xml</path>
 		<offsets>
 			<x-m>1.703</x-m>
-			<y-m>0</y-m>
+			<y-m>-0.03</y-m>
 			<z-m>1.184</z-m>
 			<pitch-deg>-11</pitch-deg>
 		</offsets>
@@ -289,6 +286,111 @@
 			<y-m>0</y-m>
 			<z-m>1.837</z-m>
 			<pitch-deg>62</pitch-deg>
+		</offsets>
+	</model>
+
+	<!-- Radio Control Panels -->
+	<!-- These panels overlap the MCP -->
+<!--	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
+		<overlay>
+			<params>
+				<selected-mhz>instrumentation/nav[0]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/nav[0]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>108</minimum-mhz>
+				<maximum-mhz>117.95</maximum-mhz>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>1.712</x-m>
+			<y-m>-0.315</y-m>
+			<z-m>1.183</z-m>
+			<pitch-deg>-11</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
+		<overlay>
+			<params>
+				<selected-mhz>instrumentation/nav[1]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/nav[1]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>108</minimum-mhz>
+				<maximum-mhz>117.95</maximum-mhz>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>1.712</x-m>
+			<y-m>0.315</y-m>
+			<z-m>1.183</z-m>
+			<pitch-deg>-11</pitch-deg>
+		</offsets>
+	</model>-->
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
+		<overlay>
+			<params>
+				<selected-mhz>instrumentation/nav[0]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/nav[0]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>108</minimum-mhz>
+				<maximum-mhz>117.95</maximum-mhz>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>2.375</x-m>
+			<y-m>-0.108</y-m>
+			<z-m>0.693</z-m>
+			<pitch-deg>-90</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
+		<overlay>
+			<params>
+				<selected-mhz>instrumentation/nav[1]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/nav[1]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>108</minimum-mhz>
+				<maximum-mhz>117.95</maximum-mhz>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>2.375</x-m>
+			<y-m>0.108</y-m>
+			<z-m>0.693</z-m>
+			<pitch-deg>-90</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
+		<overlay>
+			<params>
+				<selected-mhz>instrumentation/comm[0]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/comm[0]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>118</minimum-mhz>
+				<maximum-mhz>136</maximum-mhz>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>2.575</x-m>
+			<y-m>-0.108</y-m>
+			<z-m>0.703</z-m>
+			<pitch-deg>-90</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
+		<overlay>
+			<params>
+				<selected-mhz>instrumentation/comm[1]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/comm[1]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>118</minimum-mhz>
+				<maximum-mhz>136</maximum-mhz>
+			</params>
+		</overlay>
+		<offsets>
+			<x-m>2.575</x-m>
+			<y-m>0.108</y-m>
+			<z-m>0.703</z-m>
+			<pitch-deg>-90</pitch-deg>
 		</offsets>
 	</model>
 
@@ -315,19 +417,89 @@
 		</emission>
 	</animation>
 
-	<!-- Instrument lighting -->
+	<!-- Gear indicator lights -->
 	<animation>
-		<type>material</type>
-		<object-name>Pilot vertical speed indicator</object-name>
-		<object-name>Copilot vertical speed indicator</object-name>
-		<object-name>Pilot VOR display</object-name>
-		<object-name>Copilot VOR display</object-name>
-		<emission>
-			<red>1</red>
-			<green>1</green>
-			<blue>1</blue>
-			<factor-prop>controls/lighting/panel-norm</factor-prop>
-		</emission>
+		<name>Left gear indicator</name>
+		<type>textranslate</type>
+		<object-name>GearLInd</object-name>
+		<property>gear/gear[1]/position-norm</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.000001</ind><dep>0.25</dep></entry>
+			<entry><ind>0.999999</ind><dep>0.25</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Nose gear indicator</name>
+		<type>textranslate</type>
+		<object-name>GearNInd</object-name>
+		<property>gear/gear[0]/position-norm</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.000001</ind><dep>0.25</dep></entry>
+			<entry><ind>0.999999</ind><dep>0.25</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Right gear indicator</name>
+		<type>textranslate</type>
+		<object-name>GearRInd</object-name>
+		<property>gear/gear[2]/position-norm</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>0.000001</ind><dep>0.25</dep></entry>
+			<entry><ind>0.999999</ind><dep>0.25</dep></entry>
+			<entry><ind>1</ind><dep>0</dep></entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+
+	<!-- Gear lever -->
+	<animation>
+		<name>Gear lever rotate</name>
+		<type>rotate</type>
+		<object-name>GearLever</object-name>
+		<property>controls/gear/gear-down</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>-50</dep></entry>
+			<entry><ind>1</ind><dep>50</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>1.657</x-m>
+			<y-m>0</y-m>
+			<z-m>1.002</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>Gear lever pick</name>
+		<type>pick</type>
+		<object-name>GearLever</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/gear/gear-down</property>
+			</binding>
+		</action>
 	</animation>
 
 	<!-- Pitch trim slider -->
@@ -352,6 +524,7 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
+
 				<property>controls/flight/elevator-trim</property>
 				<step type="double">-0.01</step>
 				<min>-1</min>
@@ -391,8 +564,8 @@
 			<binding>
 				<command>property-adjust</command>
 				<property>controls/flight/speedbrake-lever</property>
-				<step type="double">1</step>
-				<max>2</max>
+				<step type="int">1</step>
+				<max>3</max>
 			</binding>
 		</action>
 		<action>
@@ -401,7 +574,7 @@
 			<binding>
 				<command>property-adjust</command>
 				<property>controls/flight/speedbrake-lever</property>
-				<step type="double">-1</step>
+				<step type="int">-1</step>
 				<min>0</min>
 			</binding>
 		</action>
@@ -414,7 +587,8 @@
 		<interpolation>
 			<entry><ind>0</ind><dep>-80</dep></entry>
 			<entry><ind>1</ind><dep>-55</dep></entry>
-			<entry><ind>2</ind><dep>0</dep></entry>
+			<entry><ind>2</ind><dep>-27</dep></entry>
+			<entry><ind>3</ind><dep>0</dep></entry>
 		</interpolation>
 		<axis>
 			<x>0</x>
@@ -460,7 +634,7 @@
 		<name>Engine 1 throttle lever</name>
 		<type>rotate</type>
 		<object-name>LHthrottle</object-name>
-		<object-name>LHthrottle.001</object-name>
+		<object-name>LHreverser</object-name>
 		<property>controls/engines/engine[0]/throttle</property>
 		<factor>40</factor>
 		<axis>
@@ -474,6 +648,37 @@
 			<z-m>0.5</z-m>
 		</center>
 	</animation>
+	<animation>
+		<name>Engine 1 reverser lever pick</name>
+		<type>pick</type>
+		<object-name>LHreverser</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/engines/engine[0]/reverser</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Engine 1 reverser lever</name>
+		<type>rotate</type>
+		<object-name>LHreverser</object-name>
+		<property>controls/engines/engine[0]/reverser</property>
+		<factor>50</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>2.19</x-m>
+			<y-m>0</y-m>
+			<z-m>0.805</z-m>
+		</center>
+	</animation>
+
 	<animation>
 		<name>Engine 2 throttle lever pick</name>
 		<type>pick</type>
@@ -505,7 +710,7 @@
 		<name>Engine 2 throttle lever</name>
 		<type>rotate</type>
 		<object-name>RHthrottle</object-name>
-		<object-name>RHthrottle.001</object-name>
+		<object-name>RHreverser</object-name>
 		<property>controls/engines/engine[1]/throttle</property>
 		<factor>40</factor>
 		<axis>
@@ -517,6 +722,36 @@
 			<x-m>2.1</x-m>
 			<y-m>0</y-m>
 			<z-m>0.5</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>Engine 2 reverser lever pick</name>
+		<type>pick</type>
+		<object-name>RHreverser</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/engines/engine[1]/reverser</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Engine 2 reverser lever</name>
+		<type>rotate</type>
+		<object-name>RHreverser</object-name>
+		<property>controls/engines/engine[1]/reverser</property>
+		<factor>50</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>2.19</x-m>
+			<y-m>0</y-m>
+			<z-m>0.805</z-m>
 		</center>
 	</animation>
 
@@ -634,6 +869,38 @@
 			<x-m>2.231</x-m>
 			<y-m>0</y-m>
 			<z-m>0.718</z-m>
+		</center>
+	</animation>
+
+	<!-- Parking brake -->
+	<animation>
+		<name>Parking brake lever pick</name>
+		<type>pick</type>
+		<object-name>ParkingBrake</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/gear/brake-parking</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Parking brake lever</name>
+		<type>rotate</type>
+		<object-name>ParkingBrake</object-name>
+		<property>controls/gear/brake-parking</property>
+		<factor>50</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>2.278</x-m>
+			<y-m>0</y-m>
+			<z-m>0.702</z-m>
 		</center>
 	</animation>
 

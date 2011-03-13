@@ -52,41 +52,50 @@ setlistener("controls/switches/no-smoking-sign", func
 # APU loop function
 var apuLoop = func
  {
+ if (props.globals.getNode("engines/apu/on-fire").getBoolValue())
+  {
+  props.globals.getNode("engines/apu/serviceable").setBoolValue(0);
+  }
+ if (props.globals.getNode("controls/APU/fire-switch").getBoolValue())
+  {
+  props.globals.getNode("engines/apu/on-fire").setBoolValue(0);
+  }
+
  var setting = getprop("controls/APU/off-start-run");
 
- if (props.globals.getNode("engines/APU/serviceable").getBoolValue() and setting != 0)
+ if (props.globals.getNode("engines/apu/serviceable").getBoolValue() and setting != 0)
   {
   if (setting == 1)
    {
-   var rpm = getprop("engines/APU/rpm");
+   var rpm = getprop("engines/apu/rpm");
    rpm += getprop("sim/time/delta-realtime-sec") * 25;
    if (rpm >= 100)
     {
     rpm = 100;
     }
-   setprop("engines/APU/rpm", rpm);
+   setprop("engines/apu/rpm", rpm);
    }
-  elsif (setting == 2 and getprop("engines/APU/rpm") == 100)
+  elsif (setting == 2 and getprop("engines/apu/rpm") == 100)
    {
-   props.globals.getNode("engines/APU/running").setBoolValue(1);
+   props.globals.getNode("engines/apu/running").setBoolValue(1);
    }
   }
  else
   {
-  props.globals.getNode("engines/APU/running").setBoolValue(0);
+  props.globals.getNode("engines/apu/running").setBoolValue(0);
 
-  var rpm = getprop("engines/APU/rpm");
+  var rpm = getprop("engines/apu/rpm");
   rpm -= getprop("sim/time/delta-realtime-sec") * 30;
   if (rpm < 0)
    {
    rpm = 0;
    }
-  setprop("engines/APU/rpm", rpm);
+  setprop("engines/apu/rpm", rpm);
   }
 
  settimer(apuLoop, 0);
  };
-# main loop function
+# engine loop function
 var engineLoop = func(engine_no)
  {
  # control the throttles and main engine properties
@@ -120,7 +129,7 @@ var engineLoop = func(engine_no)
   props.globals.getNode(engineOutTree ~ "started").setBoolValue(0);
   setprop(engineCtlTree ~ "throttle-lever", 0);
   }
- elsif (props.globals.getNode(engineCtlTree ~ "starter").getBoolValue() and props.globals.getNode("engines/APU/running").getBoolValue())
+ elsif (props.globals.getNode(engineCtlTree ~ "starter").getBoolValue() and props.globals.getNode("engines/apu/running").getBoolValue())
   {
   props.globals.getNode(engineCtlTree ~ "cutoff").setBoolValue(0);
 
@@ -182,9 +191,9 @@ var startup = func
  setprop("controls/engines/engine[0]/starter", 1);
  setprop("controls/engines/engine[1]/starter", 1);
 
- var listener1 = setlistener("engines/APU/rpm", func
+ var listener1 = setlistener("engines/apu/rpm", func
   {
-  if (getprop("engines/APU/rpm") >= 100)
+  if (getprop("engines/apu/rpm") >= 100)
    {
    setprop("controls/APU/off-start-run", 2);
    removelistener(listener1);
@@ -319,137 +328,4 @@ var instruments =
 setlistener("sim/signals/fdm-initialized", func
  {
  settimer(instruments.loop, 2);
- });
-
-## AUTOBRAKES/SPEEDBRAKES
-#########################
-
-# autobrake setting listener
-setlistener("autopilot/autobrake/step", func
- {
- var setting = getprop("autopilot/autobrake/step");
- if (setting == -2)
-  {
-  gui.popupTip("Autobrakes set to RTO.");
-  }
- elsif (setting == -1)
-  {
-  gui.popupTip("Autobrakes off.");
-  }
- elsif (setting == 0)
-  {
-  gui.popupTip("Autobrakes disarmed.");
-  }
- elsif (setting == 1)
-  {
-  gui.popupTip("Autobrakes set to 1.");
-  }
- elsif (setting == 2)
-  {
-  gui.popupTip("Autobrakes set to 2.");
-  }
- elsif (setting == 3)
-  {
-  gui.popupTip("Autobrakes set to 3.");
-  }
- elsif (setting == 4)
-  {
-  gui.popupTip("Autobrakes set to 4.");
-  }
- elsif (setting == 5)
-  {
-  gui.popupTip("Autobrakes set to maximum power.");
-  }
- }, 0, 0);
-
-# function to deploy speedbrakes on touchdown
-var speedbrakes =
- {
- inair: "false",
- landed: "false",
- loop: func
-  {
-  # set in air/landed values
-  if (speedbrakes.inair == "true" and getprop("gear/gear[1]/wow") == 1)
-   {
-   speedbrakes.inair = "false";
-   speedbrakes.landed = "true";
-   }
-  if (speedbrakes.inair == "false" and getprop("gear/gear[1]/wow") == 0)
-   {
-   speedbrakes.inair = "true";
-   speedbrakes.landed = "false";
-   }
-
-  if (props.globals.getNode("autopilot/autobrake/engaged").getBoolValue() and props.globals.getNode("autopilot/autobrake/rto-selected").getBoolValue())
-   {
-   setprop("controls/flight/speedbrake-lever", 2);
-   }
-  if (speedbrakes.landed == "true" and getprop("controls/flight/speedbrake-lever") == 1)
-   {
-   setprop("controls/flight/speedbrake-lever", 2);
-
-   speedbrakes.landed = "false";
-   }
-  if (getprop("velocities/groundspeed-kt") < 60)
-   {
-   speedbrakes.landed = "false";
-   }
-
-  # rerun after 1/5 of a second
-  settimer(speedbrakes.loop, 0.2);
-  }
- };
-# start the loop 2 seconds after the FDM initializes
-setlistener("sim/signals/fdm-initialized", func
- {
- settimer(speedbrakes.loop, 2);
- });
-
-# speedbrake setting listener
-setlistener("controls/flight/speedbrake-lever", func
- {
- var setting = getprop("controls/flight/speedbrake-lever");
- if (setting == 0)
-  {
-  gui.popupTip("Speedbrakes retracted.");
-  setprop("controls/flight/speedbrake", 0);
-  }
- elsif (setting == 1)
-  {
-  gui.popupTip("Speedbrakes armed to deploy on touchdown.");
-  }
- elsif (setting == 2)
-  {
-  gui.popupTip("Speedbrakes deployed.");
-  setprop("controls/flight/speedbrake", 1);
-  }
- }, 0, 0);
-
-## AUTOPILOT
-############
-
-# flight director pitch/roll computer
-var flightDirectorLoop = func
- {
- var apPitch = getprop("autopilot/internal/target-pitch-deg");
- var acPitch = getprop("orientation/pitch-deg");
- if (apPitch and acPitch)
-  {
-  setprop("autopilot/internal/flight-director-pitch-deg", apPitch - acPitch);
-  }
-
- var apRoll = getprop("autopilot/internal/target-roll-deg");
- var acRoll = getprop("orientation/roll-deg");
- if (apRoll and acRoll)
-  {
-  setprop("autopilot/internal/flight-director-roll-deg", apRoll - acRoll);
-  }
-
- settimer(flightDirectorLoop, 0.05);
- };
-# start the loop 2 seconds after the FDM initializes
-setlistener("sim/signals/fdm-initialized", func
- {
- settimer(flightDirectorLoop, 2);
  });

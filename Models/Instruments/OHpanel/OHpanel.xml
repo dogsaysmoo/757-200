@@ -214,7 +214,7 @@
 		<type>select</type>
 		<object-name>APURunInd</object-name>
 		<condition>
-			<property>engines/APU/running</property>
+			<property>engines/apu/running</property>
 		</condition>
 	</animation>
 	<animation>
@@ -223,7 +223,7 @@
 		<object-name>APUFaultInd</object-name>
 		<condition>
 			<not>
-				<property>engines/APU/serviceable</property>
+				<property>engines/apu/serviceable</property>
 			</not>
 		</condition>
 	</animation>
@@ -277,7 +277,6 @@
 	</animation>
 
 	<!-- Engine start knobs -->
-	<!-- APU knob -->
 	<animation>
 		<name>Engine 1 starter knob pick</name>
 		<type>pick</type>

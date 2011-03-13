@@ -5,7 +5,7 @@
 	<sim>
 		<description>Boeing 757-200</description>
 		<status>alpha</status>
-		<author>Liam Gathercole (3d), Skyop (FDM, instruments, systmems, etc.), Isais Prestes (3d cockpit shell)</author>
+		<author>Liam Gathercole (3d), Skyop (FDM, instruments, systems, etc.), Isais Prestes (3d cockpit shell)</author>
 		<flight-model>yasim</flight-model>
 		<aero>757-200</aero>
 
@@ -51,6 +51,10 @@
 			<autopilot>
 				<name>Autobrake</name>
 				<path>Aircraft/757-200/Systems/757-autobrake.xml</path>
+			</autopilot>
+			<autopilot>
+				<name>Spoilers</name>
+				<path>Aircraft/757-200/Systems/757-spoilers.xml</path>
 			</autopilot>
 			<autopilot>
 				<name>Pushback</name>
@@ -330,7 +334,6 @@
 			</config>
 			<step type="int">-1</step>
 		</autobrake>
-
 		<settings>
 			<autothrottle type="bool">false</autothrottle>
 			<engaged type="bool">false</engaged>
@@ -339,7 +342,8 @@
 			<heading-bug-deg type="double">360</heading-bug-deg>
 			<target-speed-kt type="double">200</target-speed-kt>
 			<target-speed-mach type="double">0</target-speed-mach>
-			<target-altitude-ft type="double">10000</target-altitude-ft>
+			<target-altitude-ft type="double">0</target-altitude-ft>
+			<altitude-setting-ft type="double">10000</altitude-setting-ft>
 			<vertical-speed-fpm type="double">1800</vertical-speed-fpm>
 			<minimum-bank-deg type="double">-25</minimum-bank-deg>
 			<maximum-bank-deg type="double">25</maximum-bank-deg>
@@ -349,11 +353,12 @@
 	</autopilot>
 
 	<engines>
-		<APU>
+		<apu>
 			<rpm type="double">0</rpm>
+			<on-fire type="bool">false</on-fire>
 			<running type="bool">false</running>
 			<serviceable type="bool">true</serviceable>
-		</APU>
+		</apu>
 		<engine n="0">
 			<rpm type="double">0</rpm>
 			<failed type="bool">false</failed>
@@ -372,7 +377,12 @@
 
 	<controls>
 		<flight>
+			<fdm-speedbrake type="double">0</fdm-speedbrake>
+			<ground-spoilers-cmd-norm type="double">0</ground-spoilers-cmd-norm>
+			<left-speedbrake-cmd-norm type="double">0</left-speedbrake-cmd-norm>
+			<right-speedbrake-cmd-norm type="double">0</right-speedbrake-cmd-norm>
 			<speedbrake-lever type="int">0</speedbrake-lever>
+			<speedbrake-cmd-norm type="double">0</speedbrake-cmd-norm>
 		</flight>
 		<lighting>
 			<beacon type="bool">false</beacon>
@@ -418,7 +428,7 @@
 				<engines>-535E4</engines>
 			</ident>
 			<input />
-			<serviceable>1</serviceable>
+			<serviceable type="bool">true</serviceable>
 		</cdu>
 		<fmc>
 			<to-flap type="double">5</to-flap>
@@ -428,6 +438,14 @@
 				<V2 type="double">0</V2>
 			</vspeeds>
 		</fmc>
+		<nav-compass n="0">
+			<nav-display n="0" type="int">0</nav-display>
+			<nav-display n="1" type="int">0</nav-display>
+		</nav-compass>
+		<nav-compass n="1">
+			<nav-display n="0" type="int">0</nav-display>
+			<nav-display n="1" type="int">0</nav-display>
+		</nav-compass>
 	</instrumentation>
 
 	<input>
@@ -448,9 +466,10 @@
 				<binding>
 					<command>property-cycle</command>
 					<property>controls/flight/speedbrake-lever</property>
-					<value>0</value>
-					<value>1</value>
-					<value>2</value>
+					<value>0</value> <!-- DOWN -->
+					<value>1</value> <!-- ARMED -->
+					<value>2</value> <!-- 50% -->
+					<value>3</value> <!-- UP -->
 				</binding>
 			</key>
 			<key n="9">
@@ -459,14 +478,14 @@
 				<binding>
 					<command>property-cycle</command>
 					<property>autopilot/autobrake/step</property>
-					<value>-2</value>
-					<value>-1</value>
-					<value>0</value>
-					<value>1</value>
-					<value>2</value>
-					<value>3</value>
-					<value>4</value>
-					<value>5</value>
+					<value>-2</value> <!-- RTO -->
+					<value>-1</value> <!-- OFF -->
+					<value>0</value> <!-- DISARM -->
+					<value>1</value> <!-- 1 -->
+					<value>2</value> <!-- 2 -->
+					<value>3</value> <!-- 3 -->
+					<value>4</value> <!-- 4 -->
+					<value>5</value> <!-- MAX -->
 				</binding>
 			</key>
 
