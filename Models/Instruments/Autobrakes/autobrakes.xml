@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 
@@ -35,14 +35,14 @@
 		<object-name>Knob</object-name>
 		<property>autopilot/autobrake/step</property>
 		<interpolation>
-			<entry><ind>-2</ind><dep>120</dep></entry>
-			<entry><ind>-1</ind><dep>90</dep></entry>
-			<entry><ind>0</ind><dep>60</dep></entry>
-			<entry><ind>1</ind><dep>34</dep></entry>
-			<entry><ind>2</ind><dep>0</dep></entry>
-			<entry><ind>3</ind><dep>-34</dep></entry>
-			<entry><ind>4</ind><dep>-60</dep></entry>
-			<entry><ind>5</ind><dep>-90</dep></entry>
+			<entry><ind>-2</ind><dep>60</dep></entry>
+			<entry><ind>-1</ind><dep>0</dep></entry>
+			<entry><ind>0</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-60</dep></entry>
+			<entry><ind>2</ind><dep>-90</dep></entry>
+			<entry><ind>3</ind><dep>-120</dep></entry>
+			<entry><ind>4</ind><dep>-150</dep></entry>
+			<entry><ind>5</ind><dep>-180</dep></entry>
 		</interpolation>
 		<axis>
 			<x>1</x>
@@ -50,10 +50,28 @@
 			<z>0</z>
 		</axis>
 		<center>
-			<x-m>0</x-m>
-			<y-m>0</y-m>
-			<z-m>-0.007</z-m>
+			<x-m>1.0483</x-m>
+			<y-m>0.003227</y-m>
+			<z-m>-0.006792</z-m>
 		</center>
+	</animation>
+	
+	    				<!-- lights -->
+	        <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+   <object-name>autobrake_light</object-name>
+    </effect>
+    
+    		<animation>
+		<name>instrument lighting</name>
+		<type>material</type>
+		<object-name>autobrake_light</object-name>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+			<factor-prop>controls/lighting/cockpit2-panel-norm</factor-prop>
+		</emission>
 	</animation>
 
 </PropertyList>

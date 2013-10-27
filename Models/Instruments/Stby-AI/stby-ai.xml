@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 
@@ -9,6 +9,30 @@
 		<indicated-pitch-deg>orientation/pitch-deg</indicated-pitch-deg>
 		<indicated-roll-deg>orientation/roll-deg</indicated-roll-deg>
 	</params>
+
+	<!-- Power on/off -->
+
+		<animation>
+		<name>Power on/off</name>
+		<type>rotate</type>
+		<object-name>ball</object-name>
+    <object-name>rollarrow</object-name>
+				<property>systems/electrical/outputs/efis</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>15</ind><dep>40</dep></entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+	</animation>
 
 	<!-- ANIMATIONS -->
 	<!-- Lighting -->
@@ -30,7 +54,6 @@
 		<object-name>ball</object-name>
 		<object-name>riminside</object-name>
 		<object-name>rollarrow</object-name>
-		<object-name>rollindex</object-name>
 		<emission>
 			<red>0.14</red>
 			<green>0.05</green>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- Boeing 757-200 for FlightGear -->
 <!-- Mode Control Panel -->
@@ -21,9 +21,9 @@
 			<z>0</z>
 		</axis>
 		<center>
-			<x-m>0.002</x-m>
+			<x-m>-0.000185</x-m>
 			<y-m>0</y-m>
-			<z-m>0.008</z-m>
+			<z-m>0.007645</z-m>
 		</center>
 	</animation>
 	<animation>
@@ -39,6 +39,8 @@
 			</binding>
 		</action>
 	</animation>
+	
+
 
 	<!-- Speed hold -->
 	<animation>
@@ -53,9 +55,9 @@
 			<z>0</z>
 		</axis>
 		<center>
-			<x-m>0.002</x-m>
+			<x-m>-0.002156</x-m>
 			<y-m>0</y-m>
-			<z-m>0.033</z-m>
+			<z-m>0.02522</z-m>
 		</center>
 	</animation>
 	<animation>
@@ -297,8 +299,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>-0.1331</y-m>
-			<z-m>-0.0117</z-m>
+			<y-m>-0.1557</y-m>
+			<z-m>-0.01398</z-m>
 		</center>
 	</animation>
 	<animation>
@@ -314,8 +316,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>-0.1331</y-m>
-			<z-m>-0.0117</z-m>
+			<y-m>-0.1557</y-m>
+			<z-m>-0.01398</z-m>
 		</center>
 	</animation>
 
@@ -499,8 +501,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>-0.0353</y-m>
-			<z-m>0.0024</z-m>
+			<y-m>-0.07656</y-m>
+			<z-m>0.000745</z-m>
 		</center>
 	</animation>
 
@@ -541,8 +543,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>-0.0353</y-m>
-			<z-m>0.0024</z-m>
+			<y-m>-0.07656</y-m>
+			<z-m>0.000745</z-m>
 		</center>
 	</animation>
 
@@ -586,10 +588,10 @@
 	<animation>
 		<name>Vertical speed positive setting select</name>
 		<type>select</type>
-		<object-name>VS.led1</object-name>
-		<object-name>VS.led2</object-name>
-		<object-name>VS.led3</object-name>
-		<object-name>VS.led4</object-name>
+		<object-name>VS.circle1</object-name>
+		<object-name>VS.circle2</object-name>
+		<object-name>VS.circle3</object-name>
+		<object-name>VS.circle4</object-name>
 		<condition>
 			<greater-than-equals>
 				<property>autopilot/settings/vertical-speed-fpm</property>
@@ -600,7 +602,7 @@
 	<animation>
 		<name>Vertical speed setting 1,000's</name>
 		<type>textranslate</type>
-		<object-name>VS.led1</object-name>
+		<object-name>VS.circle1</object-name>
 		<property>autopilot/settings/vertical-speed-fpm</property>
 		<factor>0.0001</factor>
 		<step>1000</step>
@@ -612,7 +614,7 @@
 	<animation>
 		<name>Vertical speed setting 100's</name>
 		<type>textranslate</type>
-		<object-name>VS.led2</object-name>
+		<object-name>VS.circle2</object-name>
 		<property>autopilot/settings/vertical-speed-fpm</property>
 		<factor>0.001</factor>
 		<step>100</step>
@@ -624,7 +626,7 @@
 	<animation>
 		<name>Vertical speed setting 10's</name>
 		<type>textranslate</type>
-		<object-name>VS.led3</object-name>
+		<object-name>VS.circle3</object-name>
 		<property>autopilot/settings/vertical-speed-fpm</property>
 		<factor>0.01</factor>
 		<step>10</step>
@@ -636,7 +638,7 @@
 	<animation>
 		<name>Vertical speed setting 1's</name>
 		<type>textranslate</type>
-		<object-name>VS.led4</object-name>
+		<object-name>VS.circle4</object-name>
 		<property>autopilot/settings/vertical-speed-fpm</property>
 		<factor>0.1</factor>
 		<step>1</step>
@@ -648,7 +650,7 @@
 	<animation>
 		<name>Vertical speed negative setting select</name>
 		<type>select</type>
-		<object-name>VS-.led1</object-name>
+		<object-name>VS-.circle1</object-name>
 		<object-name>VS-.led2</object-name>
 		<object-name>VS-.led3</object-name>
 		<object-name>VS-.led4</object-name>
@@ -663,7 +665,7 @@
 	<animation>
 		<name>Vertical speed negative setting 1,000's</name>
 		<type>textranslate</type>
-		<object-name>VS-.led1</object-name>
+		<object-name>VS-.circle1</object-name>
 		<property>autopilot/settings/vertical-speed-fpm</property>
 		<factor>0.0001</factor>
 		<step>1000</step>
@@ -777,7 +779,7 @@
 	<animation>
 		<name>Altitude setting 10,000's</name>
 		<type>textranslate</type>
-		<object-name>ALT.led1</object-name>
+		<object-name>alt.circle1</object-name>
 		<property>autopilot/settings/altitude-setting-ft</property>
 		<factor>0.00001</factor>
 		<step>10000</step>
@@ -789,7 +791,7 @@
 	<animation>
 		<name>Altitude setting 1,000's</name>
 		<type>textranslate</type>
-		<object-name>ALT.led2</object-name>
+		<object-name>alt.circle2</object-name>
 		<property>autopilot/settings/altitude-setting-ft</property>
 		<factor>0.0001</factor>
 		<step>1000</step>
@@ -801,7 +803,7 @@
 	<animation>
 		<name>Altitude setting 100's</name>
 		<type>textranslate</type>
-		<object-name>ALT.led3</object-name>
+		<object-name>alt.circle3</object-name>
 		<property>autopilot/settings/altitude-setting-ft</property>
 		<factor>0.001</factor>
 		<step>100</step>
@@ -813,7 +815,7 @@
 	<animation>
 		<name>Altitude setting 10's</name>
 		<type>textranslate</type>
-		<object-name>ALT.led4</object-name>
+		<object-name>alt.circle4</object-name>
 		<property>autopilot/settings/altitude-setting-ft</property>
 		<factor>0.01</factor>
 		<step>10</step>
@@ -824,10 +826,10 @@
 	</animation>
 	<animation>
 		<name>Altitude setting 1's</name>
-		<type>textranslate</type>
-		<object-name>ALT.led5</object-name>
+		<type>rotate</type>
+		<object-name>alt.circle5</object-name>
 		<property>autopilot/settings/altitude-setting-ft</property>
-		<factor>0.1</factor>
+		<factor>36</factor>
 		<step>1</step>
 		<axis>
 			<x>0</x>
@@ -875,8 +877,8 @@
 		</axis>
 		<center>
 			<x-m>0</x-m>
-			<y-m>0.12487</y-m>
-			<z-m>0.0048</z-m>
+			<y-m>0.0668</y-m>
+			<z-m>0.003035</z-m>
 		</center>
 	</animation>
 
@@ -1032,6 +1034,52 @@
 				<property>autopilot/settings/engaged</property>
 			</binding>
 		</action>
+	</animation>
+	
+				<!-- lights -->
+	        <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+   <object-name>mcp_lights</object-name>
+  <object-name>mcp_lights2</object-name>
+ <object-name>numbers</object-name>
+    </effect>
+
+	<animation>
+		<name>Panel lighting</name>
+		<type>material</type>
+		<object-name>mcp_lights</object-name>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+			<factor-prop>controls/lighting/mcp2-panel-norm</factor-prop>
+		</emission>
+	</animation>
+	
+		<animation>
+		<name>MCP Panel lighting</name>
+		<type>material</type>
+		<object-name>Cube.1257</object-name>
+				<object-name>Cube.003</object-name>
+						<object-name>Cube.000</object-name>
+		<emission>
+			<red>1</red>
+			<green>0.8</green>
+			<blue>0.4</blue>
+			<factor-prop>controls/lighting/mcp-panel-norm</factor-prop>
+		</emission>
+	</animation>
+	
+		<animation>
+		<name>Power on/off</name>
+		<type>select</type>
+		<object-name>numbers</object-name>
+		<condition>
+			<greater-than>
+				<property>systems/electrical/outputs/efis</property>
+				<value>15</value>
+			</greater-than>
+		</condition>
 	</animation>
 
 	<!-- Disengage -->

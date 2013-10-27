@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
  <particlesystem>
@@ -20,7 +20,7 @@
        </greater-than>
        <less-than>
          <property>environment/temperature-degc</property>
-         <value>-40</value>
+         <value>-30</value>
        </less-than>
        <property>engines/engine[1]/running</property>
      </and>

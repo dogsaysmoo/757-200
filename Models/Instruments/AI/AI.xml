@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- Boeing 757-200 for FlightGear -->
 <!-- Electronic Attitude Indicator -->
@@ -34,6 +34,7 @@
 			</less-than>
 		</condition>
 	</animation>
+	
 
 	<!-- Attitude indicator -->
 	<animation>
@@ -136,6 +137,41 @@
 			<y>0</y>
 			<z>1</z>
 		</axis>
+	</animation>
+	
+	        	<text>
+		<name>A/T ON</name>
+		<offsets>
+			<x-m>0.001</x-m>
+			<y-m>-0.04</y-m>
+			<z-m>-0.03</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">A/T</format>
+		<property>autopilot/serviceable</property>
+		<font>default.txf</font>
+		<character-size>0.005</character-size>
+		<character-aspect-ratio type="double">1.2</character-aspect-ratio>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>A/T ON</object-name>
+		<condition>
+		<property>autopilot/settings/autothrottle</property>
+		</condition>
+	</animation>
+	
+		<animation>
+		<name>Green text</name>
+		<type>material</type>
+		<object-name>A/T ON</object-name>
+		<emission>
+			<red>0</red>
+			<green>1</green>
+			<blue>0</blue>
+		</emission>
 	</animation>
 
 </PropertyList>

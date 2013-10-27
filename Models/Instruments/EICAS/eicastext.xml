@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 
 
 <PropertyList>
@@ -27,7 +27,7 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-115</offset>
+                <offset>-20</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
@@ -56,7 +56,7 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-92</offset>
+                <offset>10</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
@@ -65,11 +65,12 @@
         </transformations>
     </layer>
 
+
     <layer>
         <name>EPRtxt</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>5</point-size>
+        <point-size>7</point-size>
         <color>
             <red>0.25</red>
             <green>0.5</green>
@@ -84,11 +85,38 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-67</offset>
+                <offset>50</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <offset>62</offset>
+                <offset>50</offset>
+            </transformation>
+        </transformations>
+    </layer>
+        <layer>
+        <name>VVV</name>
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>8</point-size>
+        <color>
+            <red>0.25</red>
+            <green>0.5</green>
+            <blue>0.7</blue>
+        </color>
+        <chunks>
+            <chunk>
+                <type>literal</type>
+                <text>V V V V V V V</text>
+            </chunk>
+        </chunks>
+        <transformations>
+            <transformation>
+                <type>x-shift</type>
+                <offset>-100</offset>
+            </transformation>
+            <transformation>
+                <type>y-shift</type>
+                <offset>-120</offset>
             </transformation>
         </transformations>
     </layer>
@@ -97,7 +125,7 @@
         <name>N1</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>5</point-size>
+        <point-size>7</point-size>
         <color>
             <red>0.25</red>
             <green>0.5</green>
@@ -112,20 +140,19 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-67</offset>
+                <offset>52</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <offset>10</offset>
+                <offset>-41</offset>
             </transformation>
         </transformations>
     </layer>
-
-    <layer>
-        <name>TTL Fuel</name>
+        <layer>
+        <name>EGT</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>5</point-size>
+        <point-size>7</point-size>
         <color>
             <red>0.25</red>
             <green>0.5</green>
@@ -134,116 +161,27 @@
         <chunks>
             <chunk>
                 <type>literal</type>
-                <text>TOTAL FUEL             LBS X</text>
+                <text>EGT</text>
             </chunk>
         </chunks>
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>20</offset>
+                <offset>50</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <offset>-112</offset>
+                <offset>-125</offset>
             </transformation>
         </transformations>
     </layer>
-
-    <layer>
-        <name>TTL Fuel2</name>
-        <type>text</type>
-        <font>arial_black</font>
-        <point-size>5</point-size>
-        <color>
-            <red>0.25</red>
-            <green>0.5</green>
-            <blue>0.7</blue>
-        </color>
-        <chunks>
-            <chunk>
-                <type>literal</type>
-                <text>TEMP                  1000</text>
-            </chunk>
-        </chunks>
-        <transformations>
-            <transformation>
-                <type>x-shift</type>
-                <offset>36</offset>
-            </transformation>
-            <transformation>
-                <type>y-shift</type>
-                <offset>-123</offset>
-            </transformation>
-        </transformations>
-    </layer>
-
-
-    <layer>
-        <name>Fuel</name>
-        <type>text</type>
-        <font>arial_black</font>
-        <point-size>6</point-size>
-        <color>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </color>
-        <chunks>
-            <chunk>
-                <type>number-value</type>
-                <property>consumables/fuel/total-fuel-lbs</property>
-                <scale>0.001</scale>
-                <format>%3.1f</format>
-            </chunk>
-        </chunks>
-        <transformations>
-            <transformation>
-                <type>x-shift</type>
-                <offset>70</offset>
-            </transformation>
-            <transformation>
-                <type>y-shift</type>
-                <offset>-113</offset>
-            </transformation>
-        </transformations>
-    </layer>
-
-    <layer>
-        <name>temp2</name>
-        <type>text</type>
-        <font>arial_black</font>
-        <point-size>6</point-size>
-        <color>
-            <red>0.7</red>
-            <green>0.7</green>
-            <blue>0.7</blue>
-        </color>
-        <chunks>
-            <chunk>
-                <type>number-value</type>
-                <property>environment/temperature-degc</property>
-                <format>%2.0fc</format>
-            </chunk>
-        </chunks>
-        <transformations>
-            <transformation>
-                <type>x-shift</type>
-                <offset>62</offset>
-            </transformation>
-            <transformation>
-                <type>y-shift</type>
-                <offset>-124</offset>
-            </transformation>
-        </transformations>
-    </layer>
-
 <!-- engines-->
 
     <layer>
         <name>epr01</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>6</point-size>
+        <point-size>8</point-size>
         <color>
             <red>0.7</red>
             <green>0.7</green>
@@ -253,17 +191,17 @@
             <chunk>
                 <type>number-value</type>
                 <property>engines/engine[0]/epr</property>
-                <format>%1.3f</format>
+                <format>%1.2f</format>
             </chunk>
         </chunks>
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-93</offset>
+                <offset>24</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <offset>90</offset>
+                <offset>92</offset>
             </transformation>
         </transformations>
     </layer>
@@ -272,7 +210,7 @@
         <name>epr02</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>6</point-size>
+        <point-size>8</point-size>
         <color>
             <red>0.7</red>
             <green>0.7</green>
@@ -282,17 +220,17 @@
             <chunk>
                 <type>number-value</type>
                 <property>engines/engine[1]/epr</property>
-                <format>%1.3f</format>
+                <format>%1.2f</format>
             </chunk>
         </chunks>
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-27</offset>
+                <offset>99</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <offset>90</offset>
+                <offset>92</offset>
             </transformation>
         </transformations>
     </layer>
@@ -301,7 +239,7 @@
         <name>n101</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>6</point-size>
+        <point-size>8</point-size>
         <color>
             <red>0.7</red>
             <green>0.7</green>
@@ -317,11 +255,11 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-93</offset>
+                <offset>23</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <offset>36</offset>
+                <offset>8</offset>
             </transformation>
         </transformations>
     </layer>
@@ -330,7 +268,7 @@
         <name>n102</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>6</point-size>
+        <point-size>8</point-size>
         <color>
             <red>0.7</red>
             <green>0.7</green>
@@ -346,11 +284,11 @@
         <transformations>
             <transformation>
                 <type>x-shift</type>
-                <offset>-27</offset>
+                <offset>98</offset>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <offset>36</offset>
+                <offset>8</offset>
             </transformation>
         </transformations>
     </layer>

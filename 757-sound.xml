@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 
 <PropertyList>
 
@@ -8,7 +8,7 @@
 
     <engine>
         <name>left engine</name>
-        <path>Sounds/jet.wav</path>
+        <path>Sounds/jet-trent2.wav</path>
         <mode>looped</mode>
         <condition>
             <greater-than>
@@ -26,9 +26,9 @@
             <property>sim/sound/effects/volume</property>
         </volume>
         <position>
-            <x>0</x>
-            <y>9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>6.39</y>
+            <z>-1</z>
         </position>
         <reference-dist>200.0</reference-dist>
         <max-dist>500.0</max-dist>
@@ -36,7 +36,7 @@
 
     <engine>
         <name>left n1</name>
-        <path>Sounds/whine.wav</path>
+        <path>Sounds/jet-trent1.wav</path>
         <mode>looped</mode>
         <condition>
             <greater-than>
@@ -61,9 +61,9 @@
             <property>sim/sound/effects/volume</property>
         </volume>
         <position>
-            <x>0</x>
-            <y>9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>6.39</y>
+            <z>-1</z>
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>30.0</max-dist>
@@ -94,9 +94,9 @@
             <property>sim/sound/effects/volume</property>
         </volume>
         <position>
-            <x>0</x>
-            <y>9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>6.39</y>
+            <z>-1</z>
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>30.0</max-dist>
@@ -104,7 +104,7 @@
 
     <engine>
         <name>left engine inside</name>
-        <path>Sounds/whine.wav</path>
+        <path>Sounds/jet-trent1.wav</path>
         <mode>looped</mode>
         <condition>
             <and>
@@ -125,9 +125,9 @@
             <property>sim/sound/effects/volume</property>
         </volume>
         <position>
-            <x>0</x>
-            <y>9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>6.39</y>
+            <z>-1</z>
         </position>
         <reference-dist>200.0</reference-dist>
         <max-dist>500.0</max-dist>
@@ -135,7 +135,7 @@
 
     <engine>
         <name>right engine</name>
-        <path>Sounds/jet.wav</path>
+        <path>Sounds/jet-trent2.wav</path>
         <mode>looped</mode>
         <condition>
             <greater-than>
@@ -144,18 +144,18 @@
             </greater-than>
         </condition>
         <volume>
-            <property>/engines/engine[1]/thrust-lbs</property>
-            <factor><factor>0.000015</factor></factor>
+            <property>engines/engine[1]/thrust-lbs</property>
+            <factor>0.000015</factor>
             <min>0.0</min>
-            <max>1.0</max>
+            <max>1</max>
         </volume>
         <volume>
             <property>sim/sound/effects/volume</property>
         </volume>
         <position>
-            <x>0</x>
-            <y>-9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>-6.39</y>
+            <z>-1</z>
         </position>
         <reference-dist>200.0</reference-dist>
         <max-dist>500.0</max-dist>
@@ -163,7 +163,7 @@
 
     <engine>
         <name>right n1</name>
-        <path>Sounds/whine.wav</path>
+        <path>Sounds/jet-trent1.wav</path>
         <mode>looped</mode>
         <condition>
             <greater-than>
@@ -188,9 +188,9 @@
             <max>2.0</max>
         </pitch>
         <position>
-            <x>0</x>
-            <y>-9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>-6.4</y>
+            <z>-1</z>
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>30.0</max-dist>
@@ -221,9 +221,9 @@
             <property>sim/sound/effects/volume</property>
         </volume>
         <position>
-            <x>0</x>
-            <y>9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>-6.4</y>
+            <z>-1</z>
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>30.0</max-dist>
@@ -231,7 +231,7 @@
 
     <engine>
         <name>right engine inside</name>
-        <path>Sounds/whine.wav</path>
+        <path>Sounds/jet-trent1.wav</path>
         <mode>looped</mode>
         <condition>
             <and>
@@ -252,9 +252,9 @@
             <property>sim/sound/effects/volume</property>
         </volume>
         <position>
-            <x>0</x>
-            <y>-9.8</y>
-            <z>-3</z>
+            <x>16.9</x>
+            <y>-6.4</y>
+            <z>-1</z>
         </position>
         <reference-dist>200.0</reference-dist>
         <max-dist>500.0</max-dist>
@@ -608,6 +608,26 @@
             <property>sim/sound/effects/volume</property>
         </volume>
     </overspeed>
+            <avhum>
+            <path>/Sounds/avionics-400Hz.wav</path>
+            <mode>looped</mode>
+            <type>avionics</type>
+            <property>/systems/electrical/outputs/efis</property>
+            <volume>
+                <factor>0.1</factor>
+            </volume>
+        </avhum>
+        
+          <stall>
+   <name>stall</name>
+   <path>Sounds/stall.wav</path>
+   <property>/sim/alarms/stall-warning</property>
+   <volume>
+    <property>/velocities/airspeed-kt</property>
+    <min>30.0</min>
+   </volume>
+  </stall>
+        
 
 </fx>
 
