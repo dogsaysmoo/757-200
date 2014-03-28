@@ -1,0 +1,172 @@
+﻿	<PropertyList>
+
+<path>yokes.ac</path>
+
+
+<!-- CAPTAIN -->
+ 
+<animation>
+ <type>rotate</type>
+ <object-name>left_chart</object-name>
+ <object-name>left_column</object-name>
+ <object-name>left_yoke</object-name>
+  <object-name>autopilot_disengage</object-name>
+ <property>controls/flight/elevator</property>
+ <factor>15</factor>
+ <center>
+  <x-m> 1.2448</x-m>
+  <y-m>0</y-m>
+  <z-m>0.2937</z-m>
+ </center>
+ <axis>
+  <x>0.0</x>
+  <y>-1.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>left_chart</object-name>
+ <object-name>left_yoke</object-name>
+  <object-name>autopilot_disengage</object-name>
+ <property>controls/flight/aileron</property>
+ <factor>45</factor>
+ <center>
+  <x-m>1.3</x-m>
+  <y-m>-0.550</y-m>
+  <z-m> 1.0913</z-m>
+ </center>
+ <axis>
+  <x>-1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<!-- FIRST OFFICER -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>right_chart</object-name>
+ <object-name>right_column</object-name>
+ <object-name>right_yoke</object-name>
+  <object-name>autopilot_disengage2</object-name>
+ <property>controls/flight/elevator</property>
+ <factor>15</factor>
+ <center>
+  <x-m> 1.2448</x-m>
+  <y-m>0</y-m>
+  <z-m>0.2937</z-m>
+ </center>
+ <axis>
+  <x>0.0</x>
+  <y>-1.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+ 
+<animation>
+ <type>rotate</type>
+ <object-name>right_chart</object-name>
+ <object-name>right_yoke</object-name>
+ <object-name>EFB2</object-name>
+ <object-name>autopilot_disengage2</object-name>
+ <property>controls/flight/aileron</property>
+ <factor>45</factor>
+ <center>
+  <x-m> 1.3</x-m>
+  <y-m> 0.550</y-m>
+  <z-m>1.0913</z-m>
+ </center>
+ <axis>
+  <x>-1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<!-- PEDALS -->
+
+<animation>
+ <type>translate</type>
+ <object-name>LHPedal</object-name>
+ <property>controls/flight/rudder</property>
+ <factor>0.08</factor>
+ <axis>
+  <x>1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>translate</type>
+ <object-name>RHPedal</object-name>
+ <property>controls/flight/rudder</property>
+ <factor>-0.08</factor>
+ <axis>
+  <x>1.0</x>
+  <y>0.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>LHPedal</object-name>
+ <property>controls/gear/brake-left</property>
+ <factor>-10</factor>
+ <axis>
+  <x>0.0</x>
+  <y>1.0</y>
+  <z>0.0</z>
+ </axis>
+ <center>
+  <x-m>0.757</x-m>
+  <y-m>0</y-m>
+  <z-m>0.057</z-m>
+ </center>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>RHPedal</object-name>
+ <property>controls/gear/brake-right</property>
+ <factor>-10</factor>
+ <axis>
+  <x>0.0</x>
+  <y>1.0</y>
+  <z>0.0</z>
+ </axis>
+ <center>
+  <x-m>0.757</x-m>
+  <y-m>0</y-m>
+  <z-m>0.057</z-m>
+ </center>
+</animation>
+
+	<animation>
+		<name>Disengage bar pick</name>
+		<type>pick</type>
+		<object-name>autopilot_disengage</object-name>
+    <object-name>autopilot_disengage2</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-cycle</command>
+				<property>autopilot/disengaged-btn</property>
+				<value>0</value>
+				<value>1</value>
+			</binding>
+			<binding>
+				<command>property-assign</command>
+				<property>autopilot/settings/engaged</property>
+				<value type="bool">false</value>
+			</binding>
+		</action>
+	</animation>
+
+</PropertyList>
+

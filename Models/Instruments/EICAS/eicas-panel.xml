@@ -1,0 +1,129 @@
+﻿<?xml version="1.0"?>
+<PropertyList>
+
+<name>EFIS Panel</name>
+<background>Aircraft/757-200/Models/Instruments/EICAS/transparent.png</background>
+<w>256</w>
+<h>256</h>
+
+<instruments>
+
+    <instrument include="LHepr.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>LHepr</name>
+        <x>150</x>
+        <y>214.8</y>
+        <w>70</w>
+        <h>70</h>
+    </instrument>
+
+    <instrument include="RHepr.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>RHepr</name>
+        <x>225</x>
+        <y>214.8</y>
+        <w>70</w>
+        <h>70</h>
+    </instrument>
+
+    <instrument include="LHn1.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>LHn1</name>
+        <x>150</x>
+        <y>130</y>
+        <w>70</w>
+        <h>70</h>
+    </instrument>
+
+    <instrument include="RHn1.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>RHn1</name>
+        <x>225</x>
+        <y>130</y>
+        <w>70</w>
+        <h>70</h>
+    </instrument>
+        <instrument include="EGT.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>LHn1</name>
+        <x>150</x>
+        <y>45.2</y>
+        <z>20</z>
+        <w>70</w>
+        <h>70</h>
+    </instrument>
+
+    <instrument include="EGT2.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>RHn1</name>
+        <x>225</x>
+        <y>45.2</y>
+        <w>70</w>
+        <h>70</h>
+    </instrument>
+
+<!--
+    <instrument include="LHegt.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>LHegt</name>
+        <x>33.3</x>
+        <y>105.7</y>
+        <w>55</w>
+        <h>55</h>
+    </instrument>
+
+    <instrument include="RHegt.xml">
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+        <name>RHegt</name>
+        <x>99.9</x>
+        <y>105.7</y>
+        <w>55</w>
+        <h>55</h>
+    </instrument>
+-->
+
+
+
+</instruments>
+
+</PropertyList>

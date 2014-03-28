@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>stab_trim.ac</path>
+
+	<!-- ANIMATIONS -->
+		<animation>
+		<name>Parking brake lever</name>
+		<type>translate</type>
+		<object-name>neeeeeedle</object-name>
+				<property>controls/flight/elevator-trim</property>
+		<factor>-0.018</factor>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

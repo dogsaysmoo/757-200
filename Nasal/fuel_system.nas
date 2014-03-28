@@ -1,0 +1,191 @@
+# 757 fuel system, John Williams, March 2014
+
+var fuelsys = {
+    new : func {
+        m = { parents : [fuelsys] };
+
+	m.controls = props.globals.getNode("controls/fuel",1);
+	m.tanks = props.globals.getNode("consumables/fuel",1);
+	
+	m.pumpL = m.controls.initNode("tank/pump",0,"BOOL");
+	m.pumpR = m.controls.initNode("tank[1]/pump",0,"BOOL");
+	m.pumpC = m.controls.initNode("tank[2]/pump",0,"BOOL");
+	m.xfeed = m.controls.initNode("x-feed",0,"BOOL");
+
+	m.sel = [ m.tanks.getNode("tank/selected",1),
+		m.tanks.getNode("tank[1]/selected",1),
+		m.tanks.getNode("tank[2]/selected",1) ];
+
+	m.lev = [ m.tanks.getNode("tank/level-lbs",1),
+		m.tanks.getNode("tank[1]/level-lbs",1),
+		m.tanks.getNode("tank[2]/level-lbs",1) ];
+
+	m.emp = [ m.tanks.getNode("tank/empty",1),
+		m.tanks.getNode("tank[1]/empty",1),
+		m.tanks.getNode("tank[2]/empty",1) ];
+
+	return m;
+    },
+
+    update : func {
+	var Lsel = 0;
+	var Rsel = 0;
+	var Csel = 0;
+
+	var n1L = getprop("engines/engine[0]/rpm");
+	var n1R = getprop("engines/engine[1]/rpm");
+
+	# Cut out pumps on empty tanks
+	if (me.pumpL.getBoolValue() and me.emp[0].getBoolValue())
+		 setprop("controls/fuel/tank[0]/pump",0);
+	if (me.pumpR.getBoolValue() and me.emp[1].getBoolValue())
+		 setprop("controls/fuel/tank[1]/pump",0);
+	if (me.pumpC.getBoolValue() and me.emp[2].getBoolValue())
+		 setprop("controls/fuel/tank[2]/pump",0);
+
+	# Pump status
+	if (me.pumpL.getBoolValue())
+		Lsel = 1;
+	if (me.pumpR.getBoolValue())
+		Rsel = 1;
+	if (me.pumpC.getBoolValue())
+		Csel = 1;
+
+	# Center tank pumps are inhibited when N2 < 50%
+	# Otherwise, center tank pumps override wing tank pumps
+	if (Lsel == 1 and Rsel == 1 and Csel == 1) {
+		if (n1L < 55 and n1R < 55) {
+			Csel = 0;
+		} else {
+			Lsel = 0;
+			Rsel = 0;
+		}
+	}
+
+	# Engine suction and Engine cutouts
+	if (Lsel == 0 and Csel == 0 and !(Rsel == 1 and me.xfeed.getBoolValue())) {
+		if (n1L > 46 and n1L < 89 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
+			Lsel = 1;
+		} else {
+			if (getprop("engines/engine[0]/running"))
+			    setprop("engines/engine[0]/started",0);
+		}
+	
+	}
+	if (Rsel == 0 and Csel == 0 and !(Lsel == 1 and me.xfeed.getBoolValue())) {
+		if (n1R > 46 and n1R < 89 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
+			Rsel = 1;
+		} else {
+			if (getprop("engines/engine[1]/running"))
+			    setprop("engines/engine[1]/started",0);
+		}
+	}
+
+	# Deselect empty tanks and set the tank selection statuses
+	if (me.emp[0].getBoolValue()) Lsel = 0;
+	if (me.emp[1].getBoolValue()) Rsel = 0;
+	if (me.emp[2].getBoolValue()) Csel = 0;
+
+	me.sel[0].setBoolValue(Lsel);
+	me.sel[1].setBoolValue(Rsel);
+	me.sel[2].setBoolValue(Csel);
+
+	me.elec_update();
+	settimer(func { me.update();},0.5);
+    },
+
+    elec_update : func {
+	var busL = getprop("systems/electrical/left-bus");
+	var busR = getprop("systems/electrical/right-bus");
+	var tieL = getprop("systems/electrical/bus-tie[0]");
+	var tieR = getprop("systems/electrical/bus-tie[1]");
+
+	var left = 0;
+	var right = 0;
+
+	if (busL > 25 or (busR > 25 and tieR and tieL))
+		left = 1;
+	if (busR > 25 or (busL > 25 and tieR and tieL))
+		right = 1;
+
+	if (autostarting == 1) {
+		left = 1;
+		right = 1;
+	}
+
+	if (left == 0)
+		me.pumpL.setBoolValue(0);
+	if (right == 0)
+		me.pumpR.setBoolValue(0);
+	if (left == 0 and right == 0)
+		me.pumpC.setBoolValue(0);
+    },
+
+    apu_fuelcon : func (dt,src) {
+	var rate = 541;  #lbs/hr
+
+	var cons = (rand() * rate) * dt / 3600;
+	var surcharge = 0.0;
+
+	if (src < 0) src = 0;
+
+	# Insert surcharges here:
+
+	cons = cons * (1 + surcharge);
+
+	if (!me.emp[src].getBoolValue()) {
+		me.lev[src].setValue(me.lev[src].getValue() - cons);
+	} else {
+		setprop("controls/APU/off-start-run",0);
+	}
+    },
+
+    idle_fuelcon : func {
+	var dt = getprop("sim/time/delta-sec");
+
+	var get_src = func (side) {
+		var src = -1;
+		var otherside = abs(side - 1);
+
+		if (me.sel[2].getBoolValue()) {
+			src = 2;
+		} elsif (me.sel[side].getBoolValue()) {
+			src = side;
+		} elsif (me.sel[otherside].getBoolValue() and me.xfeed.getBoolValue()) {
+			src = otherside;
+		}
+		return src;
+	}
+
+	var idle_ff = func (eng,src) {
+		var rate = getprop("engines/engine[" ~eng~ "]/n1") * (26.0 + rand());
+		#lbs/hr
+		var cons = rate * dt / 3600;
+		var cutoff = getprop("controls/engines/engine[" ~eng~ "]/cutoff");
+		var frate = getprop("engines/engine[" ~eng~ "]/fuel-flow-gph");
+
+		if (!cutoff and !me.emp[src].getBoolValue() and frate<10)
+			me.lev[src].setValue(me.lev[src].getValue() - cons);
+	}
+
+	if (getprop("engines/engine[0]/running")) idle_ff(0,get_src(0));
+	if (getprop("engines/engine[1]/running")) idle_ff(1,get_src(1));
+	if (getprop("engines/apu/running")) me.apu_fuelcon(dt,get_src(0));
+
+	settimer(func{me.idle_fuelcon();},0);
+    }
+};
+var autostarting = 0;
+var B757fuel = fuelsys.new();
+setlistener("/sim/signals/fdm-initialized", func {
+	B757fuel.update();
+	B757fuel.idle_fuelcon();
+},0,0);
+setlistener("/sim/model/start-idling", func (auto) {
+	if (auto.getBoolValue()) {
+		autostarting = 1;
+		settimer(func {autostarting = 0;},30);
+	}
+},0,0);
+
+

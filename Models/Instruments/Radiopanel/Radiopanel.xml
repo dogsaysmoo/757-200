@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 for FlightGear -->
+<!-- Radio Frequency Pedestal Panel -->
+
+<PropertyList>
+
+	<path>Radiopanel.ac</path>
+
+	<!-- PARAMETERS -->
+	<params>
+		<selected-mhz>instrumentation/nav[0]/frequencies/selected-mhz</selected-mhz>
+		<standby-mhz>instrumentation/nav[0]/frequencies/standby-mhz</standby-mhz>
+		<minimum-mhz>108</minimum-mhz>
+		<maximum-mhz>117.95</maximum-mhz>
+	</params>
+
+	<!-- POWER -->
+	<animation>
+		<type>select</type>
+		<object-name>Active100</object-name>
+		<object-name>Active10</object-name>
+		<object-name>Active1</object-name>
+		<object-name>Active.1</object-name>
+		<object-name>Active.01</object-name>
+		<object-name>Active.001</object-name>
+		<object-name>Standby100</object-name>
+		<object-name>Standby10</object-name>
+		<object-name>Standby1</object-name>
+		<object-name>Standby.1</object-name>
+		<object-name>Standby.01</object-name>
+		<object-name>Standby.001</object-name>
+		<object-name>decimal</object-name>
+		<condition>
+		    <greater-than>
+			<property>systems/electrical/outputs/comm</property>
+			<value>15</value>
+		    </greater-than>
+		</condition>
+	</animation>
+
+	<!-- ANIMATIONS -->
+	<!-- Active frequency -->
+	<animation>
+		<name>Active frequency 100's</name>
+		<type>textranslate</type>
+		<object-name>Active100</object-name>
+		<property alias="../../params/selected-mhz" />
+		<factor>0.001</factor>
+		<bias>0.0001</bias>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Active frequency 10's</name>
+		<type>textranslate</type>
+		<object-name>Active10</object-name>
+		<property alias="../../params/selected-mhz" />
+		<factor>0.01</factor>
+		<bias>0.0001</bias>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Active frequency 1's</name>
+		<type>textranslate</type>
+		<object-name>Active1</object-name>
+		<property alias="../../params/selected-mhz" />
+		<factor>0.1</factor>
+		<bias>0.0001</bias>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Active frequency .1's</name>
+		<type>textranslate</type>
+		<object-name>Active.1</object-name>
+		<property alias="../../params/selected-mhz" />
+		<bias>0.0001</bias>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Active frequency .01's</name>
+		<type>textranslate</type>
+		<object-name>Active.01</object-name>
+		<property alias="../../params/selected-mhz" />
+		<factor>10</factor>
+		<bias>0.0001</bias>
+		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Active frequency .001's</name>
+		<type>textranslate</type>
+		<object-name>Active.001</object-name>
+		<property alias="../../params/selected-mhz" />
+		<factor>100</factor>
+		<bias>0.0001</bias>
+		<step>0.001</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+
+	<!-- Frequency swap button -->
+	<animation>
+		<name>Swap button pick</name>
+		<type>pick</type>
+		<object-name>Swap</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-swap</command>
+				<property alias="../../../../params/selected-mhz" />
+				<property alias="../../../../params/standby-mhz" />
+			</binding>
+		</action>
+	</animation>
+
+	<!-- Standby frequency -->
+	<animation>
+		<name>Standby frequency 100's</name>
+		<type>textranslate</type>
+		<object-name>Standby100</object-name>
+		<property alias="../../params/standby-mhz" />
+		<factor>0.001</factor>
+		<bias>0.0001</bias>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Standby frequency 10's</name>
+		<type>textranslate</type>
+		<object-name>Standby10</object-name>
+		<property alias="../../params/standby-mhz" />
+		<factor>0.01</factor>
+		<bias>0.0001</bias>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Standby frequency 1's</name>
+		<type>textranslate</type>
+		<object-name>Standby1</object-name>
+		<property alias="../../params/standby-mhz" />
+		<factor>0.1</factor>
+		<bias>0.0001</bias>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Standby frequency .1's</name>
+		<type>textranslate</type>
+		<object-name>Standby.1</object-name>
+		<property alias="../../params/standby-mhz" />
+		<bias>0.0001</bias>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Standby frequency .01's</name>
+		<type>textranslate</type>
+		<object-name>Standby.01</object-name>
+		<property alias="../../params/standby-mhz" />
+		<factor>10</factor>
+		<bias>0.0001</bias>
+		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Standby frequency .001's</name>
+		<type>textranslate</type>
+		<object-name>Standby.001</object-name>
+		<property alias="../../params/standby-mhz" />
+		<factor>100</factor>
+		<bias>0.0001</bias>
+		<step>0.001</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+
+	<!-- Frequency adjust knobs -->
+	<animation>
+		<name>Standby small step knob</name>
+		<type>pick</type>
+		<object-name>SmallKnobL</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/selected-mhz" />
+				<step>0.02500</step>
+				<max alias="../../../../params/maximum-mhz" />
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/selected-mhz" />
+				<step>-0.02500</step>
+				<min alias="../../../../params/minimum-mhz" />
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Standby big step knob</name>
+		<type>pick</type>
+		<object-name>BigKnobL</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/selected-mhz" />
+				<step>1</step>
+				<max alias="../../../../params/maximum-mhz" />
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/selected-mhz" />
+				<step>-1</step>
+				<min alias="../../../../params/minimum-mhz" />
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<name>Active small step knob</name>
+		<type>pick</type>
+		<object-name>SmallKnobR</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/standby-mhz" />
+				<step>0.02500</step>
+				<max alias="../../../../params/maximum-mhz" />
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/standby-mhz" />
+				<step>-0.02500</step>
+				<min alias="../../../../params/minimum-mhz" />
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Active big step knob</name>
+		<type>pick</type>
+		<object-name>BigKnobR</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/standby-mhz" />
+				<step>1</step>
+				<max alias="../../../../params/maximum-mhz" />
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/standby-mhz" />
+				<step>-1</step>
+				<min alias="../../../../params/minimum-mhz" />
+			</binding>
+		</action>
+	</animation>
+
+</PropertyList>

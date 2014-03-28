@@ -1,0 +1,128 @@
+Changes I have made:
+-Show/Hide yokes
+-Fixed case-sensitve loading for Models/seats/seats.xml and Models/seats/seats.ac
+-Fixed beacon light initialization to off
+-Linked recog light bulbs to nav lights
+-Linked landing light bulbs to landing light switches
+-Fixed nose gear so it turns the right way
+-Replaced Radio dialog
+-Set F11 and F12 keys to open and close AP and Radio windows.
+-Added altimeter setting readout in hPa
+-Made text on EHSI bigger
+-Set TAS to true airspeed instead of indicated airspeed on EHSI
+-Added Systems/instrumentation.xml from 748
+-Set up DMEs
+-Tied DME displays on EHSI to instrumentation/dme[0,1]/in-range
+-Fixed CDI to go to the correct side of the nav course
+-Fixed nighttime lighting on ASIs, Altimeters, VSIs, Stby-AIs
+-Fixed needle directions on EHSI
+-Fixed needle directions on VOR
+-Fixed COMM radio panels on pedestal (added 0.001 digit, knobs step by 0.025)
+-Implemented ADF on pedestal
+-Implemented NAV1 radio on pedestal
+-Switched out CDU with improved version from 748
+-Activated glareshield NAV radios
+-Raised pilot's view angle by 5 cm so you can see the taxi ways
+-Cleaned up -set.xml file a little bit
+-Added max takeoff and landing weights to fuel/payload dialog
+-Fixed APU knob: left-click to start, automatically switches to running, middle-click to shut off
+-Overhauled FDM
+-Switched out AP with AFDS from 748
+-New AP dialog
+-Enabled MK-VIII GPWS
+-Added wind speed indicator to EHSI screen
+-Added waypoint ID, dist, eta to EHSI screen
+-Added digital readouts for IAS and MACH on main air speed indicators
+-Added annunciators for AP and AT modes on AI screen
+-Added Decision-Height and Radar Altimeter readout on AI screen
+-Re-tuned FDM
+-Set separate left and right bus-ties in electrical system
+-Changed APU generator output to 28 volts instead of 24
+-Set up fuel system model with pumps and x-feed
+-Engines consume fuel at idle
+-APU consumes fuel
+-Scaled textures to 1024x1024 max
+-Reworked engine starting sequence
+-Added second needle to Bleed Air pressure gauge
+-Activated and assigned textures to Bleed buttons
+-Built pneumatic system
+
+FILES
+Changed:
+757-200.xml
+757-200-set.xml
+Models/757-200.xml
+Models/Flightdeck/Flightdeck.xml
+Models/Flightdeck/flightdeck.ac
+Models/Instruments/Altimeter/altimeter.xml
+Models/Instruments/Altimeter/altimeter.ac
+Models/Instruments/EHSI/EHSI.ac
+Models/Instruments/EHSI/EHSI.xml
+Models/Instruments/ASI_big/asi.xml
+Models/Instruments/ASI_big/asi.ac
+Models/Instruments/ASI_big/stby-asi.png
+Models/Instruments/ASI/asi.xml
+Models/Instruments/AI/AI.xml
+Models/Instruments/Stby-AI/stby-ai.xml
+Models/Instruments/VSI/VSI.xml
+Models/Instruments/VOR/VOR.xml
+Models/Instruments/Radiopanel/Radiopanel.xml
+Models/Instruments/Radiopanel/Radiopanel.ac
+Models/Instruments/cdu/boeing.xml
+Models/Instruments/MCP/MCP.xml
+Models/Instruments/MCP/MCP.ac
+Models/Instruemnts/MCP/MCP_texture.png
+Models/Instruemnts/OHPanel/OHPanel.xml
+Models/Instruemnts/OHPanel/OHPanel.ac
+Nasal/lights.nas
+Nasal/reversethrust.nas
+Nasal/systems.nas
+Nasal/electrical.nas
+
+(2048x2048 textures)
+Models/FIN.png
+Models/BOE.png
+Models/BAW.png
+Models/AIR.png
+Models/AAL.png
+Models/BLN.png
+Models/testitesti.png
+Models/toinen.png
+Models/paintkit.xcf
+Models/Flightdeck/center_consol.png
+Models/Flightdeck/cockpit_2.png
+Models/Flightdeck/cockpit_3.png
+Models/Flightdeck/cockpit_4.png
+Models/Flightdeck/cockpit_light2.png
+Models/Flightdeck/cockpit_panels.png
+Models/Flightdeck/panels.png
+Models/Flightdeck/side_panels.png
+Models/Flightdeck/text_center.png
+Models/Flightdeck/toinen.png
+Models/seats/testitesti.png
+Models/Instruments/OHpanel/breaker_panel.png
+Models/Instruments/OHpanel/breaker_panel_lights.png
+Models/Instruments/OHpanel/ohpanel.png
+Models/Instruments/OHpanel/ohpanel_2.png
+Models/Instruments/OHpanel/ohpanel_lights.png
+Models/Instruments/OHpanel/ohpanel_lights2.png
+Models/Instruments/MCP/MCP_lights.png
+Models/Instruments/MCP/MCP_textures.png
+
+Added:
+Models/Instruments/Radiopanel/ADF.xml
+Models/Instruments/Radiopanel/ADF.ac
+Models/Instruments/Radiopanel/NAV.xml
+Models/Instruments/Radiopanel/NAV.ac
+Models/Instruments/Radiopanel/cockpit_2.png
+Modesl/Instruments/ASI_big/digits.png
+Nasal/AFDS.nas
+Nasal/boeing_cdu.nas
+Nasal/dialogs.nas
+Nasal/fuel_system.nas
+Nasal/pneumatic.nas
+Systems/instrumentation.xml
+Systems/tranceivers.xml
+Systems/757-autopilot.xml (replaced old one)
+Systems/autopilot-dlg.xml (replaced old one)
+Systems/757-autothrottle.xml
