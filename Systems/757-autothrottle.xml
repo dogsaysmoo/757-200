@@ -33,10 +33,10 @@
             <expression>
                 <table>
                     <property>/controls/flight/flaps</property> 
-                    <entry><ind>0.033</ind><dep>285</dep></entry>
-                    <entry><ind>0.167</ind><dep>265</dep></entry>
-                    <entry><ind>0.500</ind><dep>245</dep></entry>
-                    <entry><ind>0.667</ind><dep>220</dep></entry>
+                    <entry><ind>0.033</ind><dep>265</dep></entry>
+                    <entry><ind>0.167</ind><dep>245</dep></entry>
+                    <entry><ind>0.500</ind><dep>235</dep></entry>
+                    <entry><ind>0.667</ind><dep>225</dep></entry>
                     <entry><ind>0.833</ind><dep>210</dep></entry>
                     <entry><ind>1.0</ind><dep>185</dep></entry>
                 </table>
@@ -59,8 +59,8 @@
             <expression>
                 <table>
                     <property>instrumentation/altimeter/indicated-altitude-ft</property> 
-                    <entry><ind>0</ind><dep>330</dep></entry> <!-- clean Vmo -->
-                    <entry><ind>30000</ind><dep>330</dep></entry>
+                    <entry><ind>0</ind><dep>350</dep></entry> <!-- clean Vmo -->
+                    <entry><ind>30000</ind><dep>300</dep></entry>
                     <entry><ind>41300</ind><dep>248</dep></entry>
                 </table>
             </expression>

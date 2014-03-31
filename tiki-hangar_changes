@@ -46,6 +46,11 @@ Changes I have made:
 -Added second needle to Bleed Air pressure gauge
 -Activated and assigned textures to Bleed buttons
 -Built pneumatic system
+-Set up V-speed and stall speed calculator
+-Added V-speed and stall speed markers on ASI
+-Replaced face and needle movement on VSI 
+-Implemented digital engine status display on main panel
+
 
 FILES
 Changed:
@@ -65,19 +70,21 @@ Models/Instruments/ASI/asi.xml
 Models/Instruments/AI/AI.xml
 Models/Instruments/Stby-AI/stby-ai.xml
 Models/Instruments/VSI/VSI.xml
+Models/Instruments/VSI/vsi-face.png
 Models/Instruments/VOR/VOR.xml
 Models/Instruments/Radiopanel/Radiopanel.xml
 Models/Instruments/Radiopanel/Radiopanel.ac
 Models/Instruments/cdu/boeing.xml
 Models/Instruments/MCP/MCP.xml
 Models/Instruments/MCP/MCP.ac
-Models/Instruemnts/MCP/MCP_texture.png
-Models/Instruemnts/OHPanel/OHPanel.xml
-Models/Instruemnts/OHPanel/OHPanel.ac
+Models/Instruments/MCP/MCP_texture.png
+Models/Instruments/OHPanel/OHPanel.xml
+Models/Instruments/OHPanel/OHPanel.ac
 Nasal/lights.nas
 Nasal/reversethrust.nas
 Nasal/systems.nas
 Nasal/electrical.nas
+Nasal/v-speeds.nas
 
 (2048x2048 textures)
 Models/FIN.png
@@ -110,6 +117,7 @@ Models/Instruments/MCP/MCP_lights.png
 Models/Instruments/MCP/MCP_textures.png
 
 Added:
+Models/Flightdeck/digits.png
 Models/Instruments/Radiopanel/ADF.xml
 Models/Instruments/Radiopanel/ADF.ac
 Models/Instruments/Radiopanel/NAV.xml

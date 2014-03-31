@@ -56,7 +56,7 @@ var fuelsys = {
 	if (Lsel == 1 and Rsel == 1 and Csel == 1) {
 		if (n1L < 55 and n1R < 55) {
 			Csel = 0;
-		} else {
+		} elsif (me.lev[2].getValue() > 50) {
 			Lsel = 0;
 			Rsel = 0;
 		}
@@ -64,7 +64,7 @@ var fuelsys = {
 
 	# Engine suction and Engine cutouts
 	if (Lsel == 0 and Csel == 0 and !(Rsel == 1 and me.xfeed.getBoolValue())) {
-		if (n1L > 46 and n1L < 89 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
+		if (n1L > 21 and n1L < 89 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
 			Lsel = 1;
 		} else {
 			if (getprop("engines/engine[0]/running"))
@@ -73,7 +73,7 @@ var fuelsys = {
 	
 	}
 	if (Rsel == 0 and Csel == 0 and !(Lsel == 1 and me.xfeed.getBoolValue())) {
-		if (n1R > 46 and n1R < 89 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
+		if (n1R > 21 and n1R < 89 and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") > 180) {
 			Rsel = 1;
 		} else {
 			if (getprop("engines/engine[1]/running"))
