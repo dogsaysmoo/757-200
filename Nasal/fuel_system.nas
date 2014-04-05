@@ -130,6 +130,16 @@ var fuelsys = {
 	if (src < 0) src = 0;
 
 	# Insert surcharges here:
+	if (getprop("controls/electrical/APU-generator"))
+		surcharge = surcharge + 0.003;
+	if (getprop("controls/pneumatic/apu-bleed"))
+		surcharge = surcharge + 0.02;
+	if (getprop("systems/pneumatic/packs/pack[0]") == 1)
+		surcharge = surcharge + 0.02;
+	if (getprop("systems/pneumatic/packs/pack[1]") == 1)
+		surcharge = surcharge + 0.02;
+	if (getprop("controls/engines/engine[0]/starter")) surcharge = surcharge + 0.2;
+	if (getprop("controls/engines/engine[1]/starter")) surcharge = surcharge + 0.2;
 
 	cons = cons * (1 + surcharge);
 
@@ -168,8 +178,8 @@ var fuelsys = {
 			me.lev[src].setValue(me.lev[src].getValue() - cons);
 	}
 
-	if (getprop("engines/engine[0]/running")) idle_ff(0,get_src(0));
-	if (getprop("engines/engine[1]/running")) idle_ff(1,get_src(1));
+	if (getprop("engines/engine[0]/started")) idle_ff(0,get_src(0));
+	if (getprop("engines/engine[1]/started")) idle_ff(1,get_src(1));
 	if (getprop("engines/apu/running")) me.apu_fuelcon(dt,get_src(0));
 
 	settimer(func{me.idle_fuelcon();},0);

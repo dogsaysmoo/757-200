@@ -2109,7 +2109,7 @@
 		<object-name>shadow</object-name>
     </effect>
     
-    <!--effect>
+    <effect>
         <inherits-from>Aircraft/757-200/Models/Effects/reflect</inherits-from>
 		<object-name>Fuselage</object-name>
 		<object-name>Rudder</object-name>
@@ -2144,7 +2144,7 @@
     		<object-name>SpoilInR3</object-name>
     		<object-name>SpoilInR4</object-name>
     		<object-name>SpoilInR1</object-name>
-    </effect-->
+    </effect>
     
     <animation>
 	<type>rotate</type>
