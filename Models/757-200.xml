@@ -27,7 +27,8 @@
 
 	<!-- Pushback -->
 	<model>
-		<path>Models/Airport/Pushback/Goldhofert.xml</path>
+		<!--path>Models/Airport/Pushback/Goldhofert.xml</path-->
+		<path>Models/Airport/Pushback/PLX.xml</path>
 		<offsets>
 			<x-m>5.1</x-m>
 			<y-m>0</y-m>
@@ -2123,8 +2124,10 @@
 		<object-name>NoseGear.RightDr1</object-name>
 		<object-name>NoseGear.LeftDr1</object-name>
 		<object-name>NoseGear.LeftDr2</object-name>
+    		<object-name>MainGearDr1</object-name>
     		<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
+    		<object-name>MainGearDr4</object-name>
     		<object-name>Fuseage.001</object-name>
     		<object-name>SpoilOutL1</object-name>
     		<object-name>SpoilOutL2</object-name>
@@ -2143,6 +2146,10 @@
     		<object-name>SpoilInR3</object-name>
     		<object-name>SpoilInR4</object-name>
     		<object-name>SpoilInR1</object-name>
+    		<object-name>Slat1</object-name>
+    		<object-name>Slat2</object-name>
+    		<object-name>Slat3</object-name>
+    		<object-name>Slat4</object-name>
     </effect>
     
     <animation>
