@@ -50,6 +50,7 @@ Changes I have made:
 -Added V-speed and stall speed markers on ASI
 -Replaced face and needle movement on VSI 
 -Implemented digital engine status display on main panel
+-Built hydraulic system
 
 
 FILES
@@ -128,6 +129,7 @@ Nasal/AFDS.nas
 Nasal/boeing_cdu.nas
 Nasal/dialogs.nas
 Nasal/fuel_system.nas
+Nasal/hydraulic.nas
 Nasal/pneumatic.nas
 Systems/instrumentation.xml
 Systems/tranceivers.xml

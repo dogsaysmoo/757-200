@@ -495,6 +495,7 @@
 		<gear>
 			<autobrakes type="int">1</autobrakes>
 			<brake-parking type="bool">true</brake-parking>
+			<alt-gear type="bool">0</alt-gear>
 		</gear>
 	</controls>
 
@@ -701,12 +702,17 @@
 	</input>
 
 	<nasal>
-		<systems>
+		<Boeing757>
+			<file>Aircraft/757-200/Nasal/wipers.nas</file>
+			<file>Aircraft/757-200/Nasal/gpws.nas</file>
+			<file>Aircraft/757-200/Nasal/AFDS.nas</file>
 			<file>Aircraft/757-200/Nasal/systems.nas</file>
 			<file>Aircraft/757-200/Nasal/fuel_system.nas</file>
 			<file>Aircraft/757-200/Nasal/pneumatic.nas</file>
-		</systems>
-				<lights>
+			<file>Aircraft/757-200/Nasal/hydraulic.nas</file>
+			<file>Aircraft/Generic/limits.nas</file>
+		</Boeing757>
+		<lights>
 			<file>Aircraft/757-200/Nasal/light.nas</file>
 		</lights>
 		<cdu>
@@ -731,11 +737,6 @@
   		<erj>
 			<file>Aircraft/757-200/Nasal/doors.nas</file>
 		</erj>
-		<Boeing757>
-			<file>Aircraft/757-200/Nasal/wipers.nas</file>
-			<file>Aircraft/757-200/Nasal/gpws.nas</file>
-			<file>Aircraft/757-200/Nasal/AFDS.nas</file>
-		</Boeing757>
 		<dialogs>
 			<file>Aircraft/757-200/Nasal/dialogs.nas</file>
 		</dialogs>

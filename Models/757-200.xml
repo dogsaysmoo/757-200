@@ -554,7 +554,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Elevator1</object-name>
-		<property>controls/flight/elevator</property>
+		<property>controls/flight/elevator-pos</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>-25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
@@ -572,7 +572,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Elevator2</object-name>
-		<property>controls/flight/elevator</property>
+		<property>controls/flight/elevator-pos</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>

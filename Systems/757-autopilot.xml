@@ -201,7 +201,7 @@
     </output>
     <config>
       <Kp>-0.6</Kp>
-      <Ki>0.0</Ki>
+      <Ki>0.00</Ki>
         <u_min>
             <prop>instrumentation/afds/settings/bank-min</prop>
         </u_min>

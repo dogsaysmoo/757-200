@@ -81,7 +81,7 @@ var apuLoop = func {
 	    setprop("engines/apu/rpm", rpm);
 	}
 
-	settimer(apuLoop, 0);
+#	settimer(apuLoop, 0);
 };
 
 ## Engine loop function
@@ -148,18 +148,49 @@ var engineLoop = func(engine_no) {
 	    setprop(engineCtlTree ~ "throttle-lever", 0);
 	}
 
-	settimer(func {
-	    engineLoop(engine_no);
-	}, 0);
+#	settimer(func {
+#	    engineLoop(engine_no);
+#	}, 0);
 };
+
+## FLIGHT CONTROLS
+##################
+var fltctrls = props.globals.getNode("controls/flight",1);
+var ailnctrl = fltctrls.getNode("aileron",1);
+var elevctrl = fltctrls.getNode("elevator",1);
+var rudrctrl = fltctrls.getNode("rudder",1);
+var ailnpos = fltctrls.initNode("aileron-pos",0,"DOUBLE");
+var elevpos = fltctrls.initNode("elevator-pos",0,"DOUBLE");
+var rudrpos = fltctrls.initNode("rudder-pos",0,"DOUBLE");
+
+var set_fltctrls = func {
+    if (getprop("systems/hydraulic/equipment/enable-sfc")) {
+	ailnpos.setValue(ailnctrl.getValue());
+	elevpos.setValue(elevctrl.getValue());
+	rudrpos.setValue(rudrctrl.getValue());
+    }
+#    settimer(set_fltctrls,0);
+}
+
+## System updater function, updates each frame
+var update_systems = func {
+	engineLoop(0);
+	engineLoop(1);
+	apuLoop();
+	set_fltctrls();
+	settimer(update_systems,0);
+}
+
 # start the loop 2 seconds after the FDM initializes
 setlistener("sim/signals/fdm-initialized", func {
+	props.globals.initNode("engines/engine[0]/n2-ind",0,"DOUBLE");
+	props.globals.initNode("engines/engine[1]/n2-ind",0,"DOUBLE");
 	settimer(func {
-	    props.globals.initNode("engines/engine[0]/n2-ind",0,"DOUBLE");
-	    props.globals.initNode("engines/engine[1]/n2-ind",0,"DOUBLE");
-	    engineLoop(0);
-	    engineLoop(1);
-	    apuLoop();
+#	    engineLoop(0);
+#	    engineLoop(1);
+#	    apuLoop();
+#	    set_fltctrls();
+	    update_systems();
 	}, 2);
 });
 
@@ -181,6 +212,12 @@ var startup = func {
 	setprop("controls/pneumatic/apu-bleed", 1);
 	setprop("controls/pneumatic/eng-bleed[0]", 1);
 	setprop("controls/pneumatic/eng-bleed[1]", 1);
+	setprop("controls/hydraulic/engine-pump[0]",1);
+	setprop("controls/hydraulic/engine-pump[1]",1);
+	setprop("controls/hydraulic/electric-pump[0]",1);
+	setprop("controls/hydraulic/electric-pump[1]",1);
+	setprop("controls/hydraulic/electric-pump[2]",1);
+	
 
 	var listener1 = setlistener("engines/apu/rpm", func {
 	    if (getprop("engines/apu/rpm") >= 100) {
@@ -216,6 +253,11 @@ var shutdown = func {
 	setprop("controls/fuel/tank[2]/pump", 0);
 	setprop("controls/pneumatic/eng-bleed[0]", 0);
 	setprop("controls/pneumatic/eng-bleed[1]", 0);
+	setprop("controls/hydraulic/engine-pump[0]",0);
+	setprop("controls/hydraulic/engine-pump[1]",0);
+	setprop("controls/hydraulic/electric-pump[0]",0);
+	setprop("controls/hydraulic/electric-pump[1]",0);
+	setprop("controls/hydraulic/electric-pump[2]",0);
 };
 
 # listener to activate these functions accordingly
@@ -232,12 +274,62 @@ setlistener("sim/model/start-idling", func(idle) {
 #######
 
 # prevent retraction of the landing gear when any of the wheels are compressed
-setlistener("controls/gear/gear-down", func {
-	var down = props.globals.getNode("controls/gear/gear-down").getBoolValue();
-	if (!down and (getprop("gear/gear[0]/wow") or getprop("gear/gear[1]/wow") or getprop("gear/gear[2]/wow"))) {
-	    props.globals.getNode("controls/gear/gear-down").setBoolValue(1);
-	}
-});
+controls.gearDown = func(v) {
+    var wow = getprop("gear/gear[0]/wow") or getprop("gear/gear[1]/wow") or getprop("gear/gear[2]/wow");
+    if (v < 0 and getprop("systems/hydraulic/equipment/enable-flap")) {
+        # flaps and gear up have the same hydraulic requirements
+        if(!wow) setprop("/controls/gear/gear-down", 0);
+    }
+        elsif (v > 0 and getprop("systems/hydraulic/equipment/enable-gear")) {
+      setprop("/controls/gear/gear-down", 1);
+    }
+}
+
+setlistener("controls/gear/alt-gear", func (alt) {
+        if (alt.getBoolValue()) {
+                setprop("controls/gear/gear-down",1);
+                setlistener("controls/gear/gear-down", func {
+                    setprop("controls/gear/gear-down",1);
+                },0,0);
+        }
+},0,0);
+
+## FLAPS
+########
+
+controls.flapsDown = func(step) {
+    if (getprop("systems/hydraulic/equipment/enable-flap") or getprop("controls/flight/alt-flaps") != 0) {
+        if(step == 0) return;
+        if(props.globals.getNode("/sim/flaps") != nil) {
+                globals.controls.stepProps("/controls/flight/flaps", "/sim/flaps", step);
+                return;
+        }
+        # Hard-coded flaps movement in 3 equal steps:
+        var val = 0.3333334 * step + getprop("/controls/flight/flaps");
+        setprop("/controls/flight/flaps", val > 1 ? 1 : val < 0 ? 0 : val);
+    }
+}
+
+var altflapspos = props.globals.initNode("controls/flight/alt-flaps-pos",-1,"INT");
+var altflap = props.globals.initNode("controls/flight/alt-flaps",0,"INT");
+var altn_flapsDown = func (step) {
+    if (step == 0) return;
+    if (step < 0 and altflapspos.getValue() == -1) return;
+    if (step > 0 and altflapspos.getValue() == 6) return;
+    altflapspos.setValue(altflapspos.getValue() + step);
+    if (altflapspos.getValue() > 0) {
+	altflap.setValue(step);
+	settimer(func {altflap.setValue(0);}, 0.15);
+	controls.flapsDown(step);
+    }
+}
+
+## SPEEDBRAKES
+##############
+
+setlistener("controls/flight/speedbrake-lever", func (spoiler) {
+	if (spoiler.getValue() > 1 and !getprop("systems/hydraulic/equipment/enable-spoil")) setprop("controls/flight/speedbrake-lever",1);
+},0,0);
 
 ## INSTRUMENTS
 ##############

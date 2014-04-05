@@ -4,12 +4,12 @@
 var togglereverser = func
  {
  var reversing = props.globals.getNode("controls/engines/engine[0]/reverser").getBoolValue();
- if (reversing)
+ if (reversing and props.globals.getNode("systems/hydraulic/equipment/enable-threv").getBoolValue())
   {
   props.globals.getNode("controls/engines/engine[0]/reverser").setBoolValue(0);
   props.globals.getNode("controls/engines/engine[1]/reverser").setBoolValue(0);
   }
- elsif (getprop("controls/engines/engine[0]/throttle") == 0 and getprop("controls/engines/engine[1]/throttle") == 0)
+ elsif (getprop("controls/engines/engine[0]/throttle") == 0 and getprop("controls/engines/engine[1]/throttle") == 0  and props.globals.getNode("systems/hydraulic/equipment/enable-threv").getBoolValue())
   {
   props.globals.getNode("controls/engines/engine[0]/reverser").setBoolValue(1);
   props.globals.getNode("controls/engines/engine[1]/reverser").setBoolValue(1);
