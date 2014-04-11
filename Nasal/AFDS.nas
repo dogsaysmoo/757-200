@@ -122,10 +122,8 @@ var AFDS = {
                     btn = 0;
             }
 	    if (btn==2) {
-#		me.alt_setting.setValue(me.alt_display.getValue());
-		if ((me.vertical_mode.getValue() == 8) or (me.vertical_mode.getValue() == 12)) {
-		    me.flch_mode.setBoolValue(1);
-		}
+		# V/S Mode
+		me.flch_mode.setBoolValue(1);
 		if (vs_now > 6000) {
 		    me.vs_setting.setValue(6000);
 		} elsif (vs_now < -8000) {
@@ -146,6 +144,7 @@ var AFDS = {
 #               me.vnav_alt.setValue(me.FMS_alt.getValue());   
             }
 	    if (btn==8) {
+		# FLCH mode
 		if (me.vertical_mode.getValue() == 2) {
 		    btn = 2;
 		    if (me.flch_mode.getBoolValue()) {
@@ -194,8 +193,10 @@ var AFDS = {
                 me.uses_autocoord = 1;
                 setprop("controls/flight/auto-coordination",0);
         }
-        if (output == 1 and (me.uses_autocoord == 1))
-                    setprop("controls/flight/auto-coordination",1);
+        if (output == 1 and (me.uses_autocoord == 1)) {
+                me.uses_autocoord = 0;
+        	setprop("controls/flight/auto-coordination",1);
+	}
         me.AP_passive.setValue(output);
     },
 ###################
