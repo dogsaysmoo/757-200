@@ -28,6 +28,8 @@ var AFDS = {
         m.step=0;
 	m.heading_change_rate = 0;
 
+	m.uses_autocoord = 0;
+
         m.AFDS_node = props.globals.getNode("instrumentation/afds",1);
         m.AFDS_inputs = m.AFDS_node.getNode("inputs",1);
         m.AFDS_apmodes = m.AFDS_node.getNode("ap-modes",1);
@@ -188,6 +190,12 @@ var AFDS = {
         if((disabled)and(output==0)){output = 1;me.AP.setValue(0);}
         setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
         setprop("autopilot/internal/target-roll-deg",0);
+	if (output == 0 and getprop("controls/flight/auto-coordination")) {
+                me.uses_autocoord = 1;
+                setprop("controls/flight/auto-coordination",0);
+        }
+        if (output == 1 and (me.uses_autocoord == 1))
+                    setprop("controls/flight/auto-coordination",1);
         me.AP_passive.setValue(output);
     },
 ###################
