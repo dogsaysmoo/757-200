@@ -51,6 +51,10 @@ Changes I have made:
 -Replaced face and needle movement on VSI 
 -Implemented digital engine status display on main panel
 -Built hydraulic system
+-Added function to turn off autocoordination with AP on
+-Made FLCH automatic with V/S mode
+-Split for PW4020 and RB211 variants
+-Changed door handle texture in liveries
 
 
 FILES
@@ -58,6 +62,7 @@ Changed:
 757-200.xml
 757-200-set.xml
 Models/757-200.xml
+Models/757-200.ac
 Models/Flightdeck/Flightdeck.xml
 Models/Flightdeck/flightdeck.ac
 Models/Instruments/Altimeter/altimeter.xml

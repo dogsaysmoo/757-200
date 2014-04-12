@@ -16,11 +16,13 @@
 		<aero>757-200-RB211</aero>
 
 		<model>
-			<path>Aircraft/757-200/Models/757-200-RR.xml</path>
+			<path>Aircraft/757-200/Models/757-200.xml</path>
 			<livery>
 				<file>FIN</file>
 			</livery>
 		</model>
+	
+		<engines>RR</engines>
 		
 		<weight n="0">
 			<name>Crew</name>

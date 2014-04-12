@@ -56,6 +56,11 @@
 			<entry><ind>300</ind><dep>-265.5</dep></entry>
 			<entry><ind>450</ind><dep>-331</dep></entry>
 		</interpolation>
+		<center>
+			<x-m>0.004</x-m>
+			<y-m>0.002</y-m>
+			<z-m>-0.001</z-m>
+		</center>
 		<axis>
 			<x>1</x>
 			<y>0</y>
