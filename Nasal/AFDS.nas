@@ -173,6 +173,11 @@ var AFDS = {
             var arm = 1-((me.loc_armed.getValue() or (4==me.lateral_mode.getValue())));
             if (btn==1){
                 # toggle G/S and LOC arm
+		if (me.vertical_mode.getValue() == 8 or me.vertical_mode.getValue() == 12) {
+		    me.input(1,2);
+		    me.flch_mode.setBoolValue(0);
+		} elsif (me.vertical_mode.getValue() == 5)
+		    me.vertical_mode.setValue(1);
                 var arm = arm or (1-(me.gs_armed.getValue() or (6==me.vertical_mode.getValue())));
                 me.gs_armed.setValue(arm);
                 if ((arm==0)and(6==me.vertical_mode.getValue())) me.vertical_mode.setValue(0);
