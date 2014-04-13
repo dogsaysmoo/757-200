@@ -58,7 +58,7 @@
 
 	<!-- Pushback -->
 	<model>
-		<path>Aircraft/757-200//Pushback/pushback.xml</path>
+		<path>Aircraft/757-200/Models/Pushback/pushback.xml</path>
 		<offsets>
 			<x-m>5.1</x-m>
 			<y-m>0</y-m>
