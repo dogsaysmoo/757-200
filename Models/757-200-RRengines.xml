@@ -1,69 +1,112 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 
 
-  <path>757-200PWengines.ac</path>
+  <path>757-200RB211engines.ac</path>
 
 	<animation>
                 <type>spin</type>
-                <object-name>keskiosa_2</object-name>
-                <object-name>turbofan_2</object-name>
-                <factor>67</factor>
-                <property>engines/engine[0]/rpm</property>
-                <center>
-                        <x-m>16.5414</x-m>
-                        <y-m>-6.3737 </y-m>
-                        <z-m>-1.0562</z-m>
-                </center>
-                <axis>
-                        <x>-1</x>
-                        <y>0</y>
-                        <z>0</z>
-                </axis>
-        </animation>
-
-
-        <animation>
-                <type>spin</type>
-                <object-name>keskiosa_1</object-name>
+                <object-name>center.1</object-name>
                 <object-name>turbofan_1</object-name>
-                <factor>67</factor>
+                <factor>-30</factor>
+                <property>engines/engine[0]/rpm</property>
+ 		<axis>
+  			<x1-m>17.5104</x1-m>
+  			<y1-m>-6.4877</y1-m>
+  			<z1-m>-1.0457</z1-m>
+  			<x2-m>16.561</x2-m>
+  			<y2-m>-6.4384</y2-m>
+  			<z2-m>-1.0457</z2-m>
+ 		</axis>
+        </animation>
+        
+        	<animation>
+                <type>spin</type>
+                <object-name>engine.1.fan2</object-name>
+                <factor>-30</factor>
+                <property>engines/engine[0]/rpm</property>
+ 		<axis>
+  			<x1-m>20.4944</x1-m>
+  			<y1-m>-6.6441</y1-m>
+  			<z1-m>-1.0935</z1-m>
+  			<x2-m>21.2236</x2-m>
+  			<y2-m>-6.6823</y2-m>
+  			<z2-m>-1.0935</z2-m>
+ 		</axis>
+        </animation>
+
+
+        <animation>
+                <type>spin</type>
+                <object-name>center.2</object-name>
+                <object-name>turbofan_2</object-name>
+                <factor>-30</factor>
                 <property>engines/engine[1]/rpm</property>
-                <center>
-                        <x-m>16.5414</x-m>
-                        <y-m>6.3672</y-m>
-                        <z-m>-1.0562</z-m>
-                </center>
-                <axis>
-                         <x>1</x>
-                        <y>0</y>
-                        <z>0</z>
-                </axis>
+ 		<axis>
+  			<x1-m>17.5104</x1-m>
+  			<y1-m>6.4877</y1-m>
+  			<z1-m>-1.0457</z1-m>
+  			<x2-m>16.561</x2-m>
+  			<y2-m>6.4384</y2-m>
+  			<z2-m>-1.0457</z2-m>
+ 		</axis>
+        </animation>
+        
+                	<animation>
+                <type>spin</type>
+                <object-name>engine.2.fan2</object-name>
+                <factor>-30</factor>
+                <property>engines/engine[0]/rpm</property>
+ 		<axis>
+  			<x1-m>20.4944</x1-m>
+  			<y1-m>6.6441</y1-m>
+  			<z1-m>-1.0935</z1-m>
+  			<x2-m>21.2236</x2-m>
+  			<y2-m>6.6823</y2-m>
+  			<z2-m>-1.0935</z2-m>
+ 		</axis>
         </animation>
 
 	<animation>
                 <type>translate</type>
-                <object-name>LReverserTurbofan</object-name>
+                <object-name>left.reverser</object-name>
                 <property>surface-positions/left-reverser-pos-norm</property>
-                <factor>0.4</factor>
-                <axis>
-                        <x>1</x>
-                        <y>0</y>
-                        <z>0</z>
-                </axis>
+                <factor>0.7</factor>
+ 		<axis>
+  			<x1-m>18.9763</x1-m>
+  			<y1-m>-6.1173</y1-m>
+  			<z1-m>-0.0486</z1-m>
+  			<x2-m>20.413</x2-m>
+  			<y2-m>-6.2829</y2-m>
+  			<z2-m>-0.2317</z2-m>
+ 		</axis>
         </animation>
         <animation>
                 <type>translate</type>
-                <object-name>RReverserTurbofan</object-name>
+                <object-name>right.reverser</object-name>
                 <property>surface-positions/right-reverser-pos-norm</property>
-                <factor>0.4</factor>
-                <axis>
-                        <x>1</x>
-                        <y>0</y>
-                        <z>0</z>
-                </axis>
+                <factor>0.7</factor>
+ 		<axis>
+  			<x1-m>18.9763</x1-m>
+  			<y1-m>6.1173</y1-m>
+  			<z1-m>-0.0486</z1-m>
+  			<x2-m>20.413</x2-m>
+  			<y2-m>6.2829</y2-m>
+  			<z2-m>-0.2317</z2-m>
+ 		</axis>
         </animation>
+        
+        	<animation>
+		<type>material</type>
+    		<object-name>engine.1</object-name>
+    		<object-name>engine.2</object-name>
+    		<object-name>left.reverser</object-name>
+    		<object-name>right.reverser</object-name>
+		<property-base>sim/model/livery</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>FIN.png</texture>
+	</animation>
 
 </PropertyList>
 

@@ -16,8 +16,6 @@
 		<control-setting axis="/controls/flight/flaps" value="1.0" />
 		<control-setting axis="/controls/gear/gear-down" value="1.0" />
 		<solve-weight idx="0" weight="600" />
-		<!--solve-weight idx="1" weight="12983" />
-		<solve-weight idx="2" weight="38948" /-->
 		<solve-weight idx="1" weight="51931" />
 	</approach>
 
@@ -27,8 +25,6 @@
 		<control-setting axis="/controls/flight/flaps" value="0.0" />
 		<control-setting axis="/controls/gear/gear-down" value="0.0" />
 		<solve-weight idx="0" weight="600" />
-		<!--solve-weight idx="1" weight="12983" />
-		<solve-weight idx="2" weight="38948" /-->
 		<solve-weight idx="1" weight="51931" />
 	</cruise>
 
@@ -161,14 +157,9 @@
 	<!-- Main fuel tank -->
 	<tank x="-21.5" y="0.0" z="-0.75" jet="true" capacity="46391" />
 
-	<!--tank x="-18.641" y="0.0" z="-0.75" jet="true" capacity="15000" />
-	<tank x="-28.641" y="0.0" z="-0.75" jet="true" capacity="15000" /-->
-
 	<!-- Crew -->
 	<weight x="-2.5" y="0.0" z="1.0" mass-prop="/sim/weight[0]/weight-lb" size="0.0" solve-weight="0.0" idx="0" weight="600.0" />
 	<!-- PAX/Cargo -->
-	<!--weight x="-9.5" y="0.0" z="1.0" mass-prop="/sim/weight[1]/weight-lb" size="0.0" solve-weight="0.0" idx="0" weight="38948.0" />
-	<weight x="-25.5" y="0.0" z="1.0" mass-prop="/sim/weight[2]/weight-lb" size="0.0" solve-weight="0.0" idx="0" weight="12983.0" /-->
 	<weight x="-23.421" y="0.0" z="1.0" mass-prop="/sim/weight[1]/weight-lb" />
 
 	<!-- Ballast to adjust center of gravity -->

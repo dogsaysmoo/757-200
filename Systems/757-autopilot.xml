@@ -308,10 +308,10 @@
       <Ti>5</Ti>
       <Td>0.0</Td>
       <u_min>
-        <value>-0.5</value>
+        <value>-0.4</value>
       </u_min>
       <u_max>
-        <value>0.5</value>
+        <value>0.4</value>
       </u_max>
     </config>
   </pid-controller>
