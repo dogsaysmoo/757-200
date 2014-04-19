@@ -84,8 +84,7 @@ var AFDS = {
         m.AP_speed_mode = m.AFDS_apmodes.initNode("speed-mode","");
         m.AP_annun = m.AFDS_apmodes.initNode("mode-annunciator"," ");
 
-#        m.FMS = props.globals.initNode("instrumentation/nav/slaved-to-gps");
-#        m.FMS.setValue(0);
+	m.AP_disengage_alarm = m.AFDS_settings.initNode("alarm",0,"BOOL");
 
 	m.remaining_distance = m.AFDS_inputs.initNode("remaining-distance",0,"DOUBLE");
 
@@ -203,6 +202,10 @@ var AFDS = {
         	setprop("controls/flight/auto-coordination",1);
 	}
         me.AP_passive.setValue(output);
+	if (!me.AP.getBoolValue()) {
+		me.AP_disengage_alarm.setValue(1);
+		settimer (func {me.AP_disengage_alarm.setBoolValue(0);},2);
+	}
     },
 ###################
     setbank : func{

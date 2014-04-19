@@ -1997,13 +1997,13 @@
 			<property>controls/lighting/landing-lights[2]</property>
 		</condition>
 	</animation>
-	
+
 		<!-- beacon lighting -->
  
   <animation>
    <type>select</type>
      <object-name>beacon_1</object-name>
-      <object-name>beacon_2</object-name>
+     <object-name>beacon_2</object-name>
    <condition>
      <property>sim/model/lights/lighting/beacon/state</property>
    </condition>
