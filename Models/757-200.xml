@@ -1966,37 +1966,150 @@
 	<animation>
 		<name>Left landing light</name>
 		<type>select</type>
-		<object-name>LHLND.spot</object-name>
 		<object-name>light_wing4</object-name>
 		<condition>
 			<property>controls/lighting/landing-lights[0]</property>
 		</condition>
 	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>light_wing4</object-name>
+        	<center>
+        	    <x-m> 17.367</x-m>
+        	    <y-m> -2.457</y-m>
+        	    <z-m>0.0</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>-0.1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+
+	<animation>
+		<name>Right landing light</name>
+		<type>select</type>
+		<object-name>light_wing3</object-name>
+		<condition>
+			<property>controls/lighting/landing-lights[2]</property>
+		</condition>
+	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>light_wing3</object-name>
+        	<center>
+        	    <x-m> 17.367</x-m>
+        	    <y-m>  2.457</y-m>
+        	    <z-m>0.0</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>0.1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+
 
 	<animation>
 		<name>Nose gear landing light</name>
 		<type>select</type>
 		<object-name>CTRLND.spot</object-name>
 		<condition>
-			<and>
-				<property>controls/lighting/landing-lights[1]</property>
-				<equals>
-					<property>gear/gear[0]/position-norm</property>
-					<value>1</value>
-				</equals>
-			</and>
+		    <and>
+			<property>controls/lighting/landing-lights[1]</property>
+			<equals>
+			  <property>gear/gear[0]/position-norm</property>
+			  <value>1</value>
+			</equals>
+			<less-than>
+			  <property>position/altitude-agl-ft</property>
+			  <value>220</value>
+			</less-than>
+		    </and>
 		</condition>
 	</animation>
-
 	<animation>
-		<name>Right landing light</name>
+		<type>select</type>
+		<object-name>LHLND.spot</object-name>
+		<condition>
+		    <and>
+			<property>controls/lighting/landing-lights[0]</property>
+			<less-than>
+			  <property>position/altitude-agl-ft</property>
+			  <value>220</value>
+			</less-than>
+		    </and>
+		</condition>
+	</animation>
+	<animation>
 		<type>select</type>
 		<object-name>RHLND.spot</object-name>
-		<object-name>light_wing3</object-name>
 		<condition>
+		    <and>
 			<property>controls/lighting/landing-lights[2]</property>
+			<less-than>
+			  <property>position/altitude-agl-ft</property>
+			  <value>220</value>
+			</less-than>
+		    </and>
 		</condition>
 	</animation>
+			
+	<animation>
+   		<type>translate</type>
+        	<object-name>RHLND.spot</object-name>
+        	<object-name>LHLND.spot</object-name>
+        	<object-name>CTRLND.spot</object-name>
+   		<property>position/altitude-agl-ft</property>
+   		<factor>-0.305</factor>
+		<offset-m>3.346</offset-m>
+   		<center>
+     		    <x-m> 0 </x-m>
+     		    <y-m> 0 </y-m>
+     		    <z-m> 0 </z-m>
+   		</center>
+	   	<axis>
+		    <x> 0 </x>
+		    <y> 0 </y>
+		    <z> 1 </z>
+   		</axis>
+	</animation>
+	<!--animation>
+            	<type>dist-scale</type>
+                <object-name>RHLND.spot</object-name>
+                <object-name>LHLND.spot</object-name>
+                <object-name>CTRLND.spot</object-name>
+            	<interpolation>
+                    <entry>
+                        <ind> 0 </ind>
+                        <dep> 1 </dep>
+                    </entry>
+                    <entry>
+                        <ind> 100 </ind>
+                        <dep> 1 </dep>
+                    </entry>
+                    <entry>
+                        <ind> 120 </ind>
+                        <dep> 1.5 </dep>
+                    </entry>
+                    <entry>
+                        <ind> 1500 </ind>
+                        <dep> 15.00 </dep>
+                    </entry>
+            	</interpolation>
+      </animation-->
 
 		<!-- beacon lighting -->
  
