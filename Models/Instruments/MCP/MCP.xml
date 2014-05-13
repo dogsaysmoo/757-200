@@ -177,21 +177,9 @@
 		</condition>
 	</animation>
 	<animation>
-		<name>Mach setting 1's</name>
-		<type>textranslate</type>
-		<object-name>MACH.led1</object-name>
-		<property>autopilot/settings/target-speed-mach</property>
-		<factor>0.1</factor>
-		<step>1</step>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-		</axis>
-	</animation>
-	<animation>
 		<name>Mach setting .1's</name>
 		<type>textranslate</type>
-		<object-name>MACH.led2</object-name>
+		<object-name>MACH.led1</object-name>
 		<property>autopilot/settings/target-speed-mach</property>
 		<step>0.1</step>
 		<axis>
@@ -202,10 +190,22 @@
 	<animation>
 		<name>Mach setting .01's</name>
 		<type>textranslate</type>
-		<object-name>MACH.led3</object-name>
+		<object-name>MACH.led2</object-name>
 		<property>autopilot/settings/target-speed-mach</property>
 		<factor>10</factor>
 		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Mach setting .001's</name>
+		<type>textranslate</type>
+		<object-name>MACH.led3</object-name>
+		<property>autopilot/settings/target-speed-mach</property>
+		<factor>100</factor>
+		<step>0.001</step>
 		<axis>
 			<x>0</x>
 			<y>1</y>
@@ -238,7 +238,7 @@
                         	</condition>
                         	<command>property-adjust</command>
                         	<property>/autopilot/settings/target-speed-mach</property>
-                        	<step>0.01</step>
+                        	<step>0.001</step>
                         	<min>0.40</min>
                         	<max>0.95</max>
 			</binding>
@@ -265,7 +265,7 @@
                 	        </condition>
                         	<command>property-adjust</command>
 	                        <property>/autopilot/settings/target-speed-mach</property>
-        	                <step>-0.01</step>
+        	                <step>-0.001</step>
                 	        <min>0.40</min>
                         	<max>0.95</max>
 			</binding>
@@ -446,7 +446,7 @@
 		<type>pick</type>
 		<object-name>HDG.knob</object-name>
 		<action>
-			<button>0</button>
+			<!--button>0</button-->
 			<button>3</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
@@ -459,7 +459,7 @@
 			</binding>
 		</action>
 		<action>
-			<button>1</button>
+			<!--button>1</button-->
 			<button>4</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
@@ -469,6 +469,14 @@
 				<min>0</min>
 				<max>360</max>
 				<wrap>true</wrap>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.afds.input(0,1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -566,7 +574,7 @@
 		<condition>
 			<equals>
 				<property>instrumentation/afds/ap-modes/roll-mode</property>
-				<value>HDG SEL</value>
+				<value>HDG HOLD</value>
 			</equals>
 		</condition>
 	</animation>
@@ -580,7 +588,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>Boeing757.afds.input(0,1);</script>
+				<script>Boeing757.afds.input(0,2);</script>
 			</binding>
 		</action>
 	</animation>

@@ -28,8 +28,6 @@ var AFDS = {
         m.step=0;
 	m.heading_change_rate = 0;
 
-	m.uses_autocoord = 0;
-
         m.AFDS_node = props.globals.getNode("instrumentation/afds",1);
         m.AFDS_inputs = m.AFDS_node.getNode("inputs",1);
         m.AFDS_apmodes = m.AFDS_node.getNode("ap-modes",1);
@@ -61,7 +59,6 @@ var AFDS = {
         m.vs_setting = m.AP_settings.initNode("vertical-speed-fpm",0); # -8000 to +6000 #
         m.hdg_setting = m.AP_settings.initNode("heading-bug-deg",360,"INT");
         m.fpa_setting = m.AP_settings.initNode("flight-path-angle",0); # -9.9 to 9.9 #
-#        m.alt_setting = m.AP_settings.initNode("target-altitude-ft",10000,"DOUBLE");
         m.alt_setting = m.AP_settings.initNode("altitude-setting-ft",10000,"DOUBLE");
         m.FMS_alt = m.AP_settings.getNode("target-altitude-ft",1);
         m.auto_brake_setting = m.AP_settings.initNode("autobrake",0.000,"DOUBLE");
@@ -96,6 +93,16 @@ var AFDS = {
         return m;
     },
 
+####    Yoke AP Disconnect Button    ####
+###################
+    APyokebtn : func {
+        if (me.AP.getBoolValue()) {
+            me.AP.setBoolValue(0);
+        } else {
+	    me.autothrottle_mode.setValue(0);
+        }
+    },
+
 ####    Inputs    ####
 ###################
     input : func(mode,btn){
@@ -103,9 +110,11 @@ var AFDS = {
         if(mode==0){
             # horizontal AP controls
             if(me.lateral_mode.getValue() ==btn) btn=0;
-#            if(btn==3)fms=1;
+	    if (btn == 2) {
+                var hdg_now = int(getprop("orientation/heading-magnetic-deg")+0.5);
+                me.hdg_setting.setValue(hdg_now);
+            }
             me.lateral_mode.setValue(btn);
-#            me.FMS.setValue(fms);
         }elsif(mode==1){
             # vertical AP controls
             if(me.vertical_mode.getValue() ==btn) btn=0;
@@ -140,7 +149,6 @@ var AFDS = {
                     if (me.FMS_alt.getValue() > alt) me.FMS_alt.setValue(alt);
                 }
 		me.alt_display.setValue(me.FMS_alt.getValue());
-#               me.vnav_alt.setValue(me.FMS_alt.getValue());   
             }
 	    if (btn==8) {
 		# FLCH mode
@@ -169,7 +177,7 @@ var AFDS = {
             if(getprop("position/altitude-agl-ft")<200 or !me.at1.getBoolValue()) btn=0;
             me.autothrottle_mode.setValue(btn);
         }elsif(mode==3){
-            var arm = 1-((me.loc_armed.getValue() or (4==me.lateral_mode.getValue())));
+            var arm = 1-((me.loc_armed.getBoolValue() or (4==me.lateral_mode.getValue())));
             if (btn==1){
                 # toggle G/S and LOC arm
 		if (me.vertical_mode.getValue() == 8 or me.vertical_mode.getValue() == 12) {
@@ -177,11 +185,11 @@ var AFDS = {
 		    me.flch_mode.setBoolValue(0);
 		} elsif (me.vertical_mode.getValue() == 5)
 		    me.vertical_mode.setValue(1);
-                var arm = arm or (1-(me.gs_armed.getValue() or (6==me.vertical_mode.getValue())));
-                me.gs_armed.setValue(arm);
+                var arm = arm or (1-(me.gs_armed.getBoolValue() or (6==me.vertical_mode.getValue())));
+                me.gs_armed.setBoolValue(arm);
                 if ((arm==0)and(6==me.vertical_mode.getValue())) me.vertical_mode.setValue(0);
             }
-            me.loc_armed.setValue(arm);
+            me.loc_armed.setBoolValue(arm);
             if((arm==0)and(4==me.lateral_mode.getValue())) me.lateral_mode.setValue(0);
         }
     },
@@ -193,14 +201,6 @@ var AFDS = {
         if((disabled)and(output==0)){output = 1;me.AP.setValue(0);}
         setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
         setprop("autopilot/internal/target-roll-deg",0);
-	if (output == 0 and getprop("controls/flight/auto-coordination")) {
-                me.uses_autocoord = 1;
-                setprop("controls/flight/auto-coordination",0);
-        }
-        if (output == 1 and (me.uses_autocoord == 1)) {
-                me.uses_autocoord = 0;
-        	setprop("controls/flight/auto-coordination",1);
-	}
         me.AP_passive.setValue(output);
 	if (!me.AP.getBoolValue()) {
 		me.AP_disengage_alarm.setValue(1);
@@ -255,33 +255,39 @@ var AFDS = {
 
         if(me.step==0){ ### glideslope armed ?###
             msg="";
-            if(me.gs_armed.getValue()){
+            if(me.gs_armed.getBoolValue()){
                 msg="G/S";
                 var gsdefl = getprop("instrumentation/nav/gs-needle-deflection");
                 var gsrange = getprop("instrumentation/nav/gs-in-range");
                 if(gsdefl< 0.5 and gsdefl>-0.5){
                     if(gsrange){
                         me.vertical_mode.setValue(6);
-                        me.gs_armed.setValue(0);
+                        me.gs_armed.setBoolValue(0);
                     }
                 }
             }
             me.AP_pitch_arm.setValue(msg);
 
         }elsif(me.step==1){ ### localizer armed ? ###
-            msg="";
-            if(me.loc_armed.getValue()){
-                msg="LOC";
+            if(me.loc_armed.getBoolValue()){
                 var hddefl = getprop("instrumentation/nav/heading-needle-deflection");
                 if(hddefl< 8 and hddefl>-8){
                     me.lateral_mode.setValue(4);
-                    me.loc_armed.setValue(0);
+                    me.loc_armed.setBoolValue(0);
                 }
             }
-            me.AP_roll_arm.setValue(msg);
 
         }elsif(me.step==2){ ### check lateral modes  ###
             var idx=me.lateral_mode.getValue();
+	    msg = "";
+            if (idx == 1) {
+                msg = "HDG HOLD";
+                if (abs(me.hdg_setting.getValue() - getprop("orientation/heading-magnetic-deg")) < 5) {
+                    me.lateral_mode.setValue(2);
+                }
+            }
+            if (me.loc_armed.getBoolValue()) msg = "LOC";
+            me.AP_roll_arm.setValue(msg);
             me.AP_roll_mode.setValue(me.roll_list[idx]);
             me.AP_roll_engaged.setBoolValue(idx>0);
 
@@ -342,6 +348,15 @@ var AFDS = {
             me.AP_pitch_engaged.setBoolValue(idx>0);
 
         }elsif(me.step==4){             ### check speed modes  ###
+	    if (me.ias_mach_selected.getBoolValue()) {
+                var target = int(getprop("instrumentation/airspeed-indicator/indicated-speed-kt")+0.5);
+                if (target >= 100 and target <= 399)
+                    me.ias_setting.setValue(target);
+            } else {
+                var target = getprop("instrumentation/airspeed-indicator/indicated-mach");
+                if (target >= 0.4 and target <= 0.95)
+                    me.mach_setting.setValue(target);
+            }
             if (getprop("controls/engines/engine/reverser")) {
                 # auto-throttle disables when reverser is enabled
                 me.autothrottle_mode.setValue(0);
@@ -349,7 +364,7 @@ var AFDS = {
 	    if (!me.at1.getBoolValue())
 		me.autothrottle_mode.setValue(0);
         }elsif(me.step==5){
-	    if (getprop("/autopilot/route-manager/active")){
+	    if (getprop("/autopilot/route-manager/active") and getprop("/autopilot/route-manager/route/num") >= 2) {
 		max_wpt=getprop("/autopilot/route-manager/route/num");
 		atm_wpt=getprop("/autopilot/route-manager/current-wp");
 

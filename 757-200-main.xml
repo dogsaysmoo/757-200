@@ -659,6 +659,9 @@
 		<dialogs>
 			<file>Aircraft/757-200/Nasal/dialogs.nas</file>
 		</dialogs>
+		<auto-coord>
+			<file>Aircraft/757-200/Nasal/auto_coord.nas</file>
+		</auto-coord>
 	</nasal>
 
 	<aircraft>
