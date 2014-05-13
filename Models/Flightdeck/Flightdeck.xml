@@ -323,8 +323,8 @@
 		</offsets>
 	</model>
 	
-	
-	    <animation>
+<!-- Rudder trim -->
+    <animation>
         <type>translate</type>
         <object-name>ruddertrim.needle</object-name>
         <property>controls/flight/rudder-trim</property>
@@ -369,7 +369,7 @@
             </binding>
         </action>
     </animation>
-        <animation>
+    <animation>
         <type>pick</type>
         <object-name>Rudder.trim</object-name>
         <action>
@@ -385,6 +385,75 @@
             <wrap>0</wrap>
             </binding>
         </action>
+    </animation>
+
+<!-- Aileron Trim -->
+    <animation>
+        <type>pick</type>
+        <object-name>aileron_trim</object-name>
+        <action>
+                <button>0</button>
+                <repeatable>true</repeatable>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/aileron-trim</property>
+                        <step>0.05</step>
+                        <min>-0.5</min>
+                        <max>0.5</max>
+                </binding>
+                <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>1</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>0</value>
+                    </binding>
+                </mod-up>
+        </action>
+        <action>
+                <button>1</button>
+                <repeatable>true</repeatable>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/aileron-trim</property>
+                        <step>-0.05</step>
+                        <min>-0.5</min>
+                        <max>0.5</max>
+                </binding>
+                <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>-1</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>0</value>
+                    </binding>
+                </mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>aileron_trim</object-name>
+        <property>controls/switches/aileron-trim</property>
+        <factor>-20</factor>
+        <center>
+            <x-m> 1.919</x-m>
+            <y-m>-0.038</y-m>
+            <z-m> 0.795</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
     </animation>
     
 	<!-- Engine Instrumentation and Crew Alert System -->

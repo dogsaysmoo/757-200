@@ -66,4 +66,5 @@ Changes I have made:
 -Set AT to track IAS when in mach mode and track mach when in IAS mode
 -Set yoke button to cut AP on one push, cut AT on second push
 -Added functionality for IRS knobs
+-Implemented Aileron trim switches
 
