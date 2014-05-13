@@ -1914,5 +1914,119 @@
                 </axis>
         </animation>
 
+<!-- IRS Knobs -->
+	<animation>
+		<type>pick</type>
+		<object-name>INSLKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSl.knob(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSl.knob(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>INSLKnb</object-name>
+		<property>controls/inertial-reference/position[0]</property>
+		<factor>-45</factor>
+		<offset-deg>90</offset-deg>
+		<center>
+		    <x-m> 0.003</x-m>
+		    <y-m>-0.358</y-m>
+		    <z-m> 0.000</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>INSCKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSc.knob(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSc.knob(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>INSCKnb</object-name>
+		<property>controls/inertial-reference/position[1]</property>
+		<factor>-45</factor>
+		<offset-deg>90</offset-deg>
+		<center>
+		    <x-m> 0.003</x-m>
+		    <y-m>-0.310</y-m>
+		    <z-m> 0.000</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>INSRKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSr.knob(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSr.knob(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>INSRKnb</object-name>
+		<property>controls/inertial-reference/position[2]</property>
+		<factor>-45</factor>
+		<offset-deg>90</offset-deg>
+		<center>
+		    <x-m> 0.003</x-m>
+		    <y-m>-0.265</y-m>
+		    <z-m> 0.000</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
 
 </PropertyList>

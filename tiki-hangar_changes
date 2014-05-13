@@ -62,4 +62,8 @@ Changes I have made:
 -Added AP disengage sound
 -Translate light cones to ground
 -Added direction brightness effect to landing lights
+-Added proper HDG HOLD and HDG SEL modes to AP
+-Set AT to track IAS when in mach mode and track mach when in IAS mode
+-Set yoke button to cut AP on one push, cut AT on second push
+-Added functionality for IRS knobs
 
