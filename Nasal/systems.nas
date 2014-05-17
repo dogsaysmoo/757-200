@@ -229,6 +229,16 @@ var startup = func {
 	setprop("controls/hydraulic/electric-pump[0]",1);
 	setprop("controls/hydraulic/electric-pump[1]",1);
 	setprop("controls/hydraulic/electric-pump[2]",1);
+	setprop("controls/inertial-reference/position",2);
+	setprop("controls/inertial-reference/position[1]",2);
+	setprop("controls/inertial-reference/position[2]",2);
+	setprop("systems/inertial-reference/mode",2);
+	setprop("systems/inertial-reference/mode[1]",2);
+	setprop("systems/inertial-reference/mode[2]",2);
+	setprop("systems/inertial-reference/alignment",2);
+	setprop("systems/inertial-reference/alignment[1]",2);
+	setprop("systems/inertial-reference/alignment[2]",2);
+
 	if (!getprop("gear/gear[0]/wow"))
 	    setprop("controls/gear/brake-parking",0);
 	

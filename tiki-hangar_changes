@@ -67,4 +67,5 @@ Changes I have made:
 -Set yoke button to cut AP on one push, cut AT on second push
 -Added functionality for IRS knobs
 -Implemented Aileron trim switches
+-Added EICAS messages
 

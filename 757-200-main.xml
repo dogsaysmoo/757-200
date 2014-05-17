@@ -624,6 +624,7 @@
 		<Boeing757>
 			<file>Aircraft/757-200/Nasal/wipers.nas</file>
 			<file>Aircraft/757-200/Nasal/gpws.nas</file>
+			<file>Aircraft/757-200/Nasal/eicas.nas</file>
 			<file>Aircraft/757-200/Nasal/AFDS.nas</file>
 			<file>Aircraft/757-200/Nasal/systems.nas</file>
 			<file>Aircraft/757-200/Nasal/fuel_system.nas</file>

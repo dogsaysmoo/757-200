@@ -30,10 +30,10 @@
             </greater-than>
         </condition>
         <name>messages</name>
-        <x>315.0</x>
-        <y>192.0</y>
+        <x>75.0</x>
+        <y>142.0</y>
         <w>180</w>
-        <h>110</h>
+        <h>222</h>
     </instrument>
 
     <!--instrument include="AIR.xml">
