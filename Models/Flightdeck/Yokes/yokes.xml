@@ -150,11 +150,15 @@
 		<name>Disengage bar pick</name>
 		<type>pick</type>
 		<object-name>autopilot_disengage</object-name>
-    <object-name>autopilot_disengage2</object-name>
+    		<object-name>autopilot_disengage2</object-name>
 		<action>
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
+				<command>nasal</command>
+				<script>Boeing757.afds.APyokebtn();</script>
+			</binding>
+			<!--binding>
 				<command>property-cycle</command>
 				<property>autopilot/disengaged-btn</property>
 				<value>0</value>
@@ -164,7 +168,7 @@
 				<command>property-assign</command>
 				<property>autopilot/settings/engaged</property>
 				<value type="bool">false</value>
-			</binding>
+			</binding-->
 		</action>
 	</animation>
 

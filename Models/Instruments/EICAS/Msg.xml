@@ -8,10 +8,10 @@
     <layers>
 
     <layer>
-        <name>alert messages</name>
+        <name>warning messages</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>12</point-size>
+        <point-size>15</point-size>
         <color>
             <red>0.9</red>
             <green>0</green>
@@ -20,7 +20,7 @@
         <chunks>
             <chunk>
                 <type>text-value</type>
-                <property>instrumentation/efis/eicas/msg/alert</property>
+                <property>instrumentation/eicas/msg/warning</property>
             </chunk>
         </chunks>
         <transformations>
@@ -34,12 +34,12 @@
             </transformation>
         </transformations>
     </layer>
-
-    <layer>
+	
+	<layer>
         <name>caution messages</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>12</point-size>
+        <point-size>15</point-size>
         <color>
             <red>0.8</red>
             <green>0.4</green>
@@ -48,7 +48,7 @@
         <chunks>
             <chunk>
                 <type>text-value</type>
-                <property>instrumentation/efis/eicas/msg/caution</property>
+                <property>instrumentation/eicas/msg/caution</property>
             </chunk>
         </chunks>
         <transformations>
@@ -64,10 +64,38 @@
     </layer>
 
     <layer>
-        <name>info messages</name>
+        <name>advisory messages</name>
         <type>text</type>
         <font>arial_black</font>
-        <point-size>12</point-size>
+        <point-size>15</point-size>
+        <color>
+            <red>0.8</red>
+            <green>0.4</green>
+            <blue>0</blue>
+        </color>
+        <chunks>
+            <chunk>
+                <type>text-value</type>
+                <property>instrumentation/eicas/msg/advisory</property>
+            </chunk>
+        </chunks>
+        <transformations>
+            <transformation>
+                <type>x-shift</type>
+                <offset>-115</offset>
+            </transformation>
+            <transformation>
+                <type>y-shift</type>
+                <offset>106</offset>
+            </transformation>
+        </transformations>
+    </layer>
+
+    <layer>
+        <name>memo messages</name>
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>15</point-size>
         <color>
             <red>0.8</red>
             <green>0.8</green>
@@ -76,7 +104,7 @@
         <chunks>
             <chunk>
                 <type>text-value</type>
-                <property>instrumentation/efis/eicas/msg/info</property>
+                <property>instrumentation/eicas/msg/memo</property>
             </chunk>
         </chunks>
         <transformations>

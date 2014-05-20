@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList include="757-200-main.xml">
+
+	<sim>
+		<description>Boeing 757-200 (Rolls Royce)</description>
+		<status>early production</status>
+		<author>Juuso Tapaninen, John Williams; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
+		  <rating>
+		      	<FDM type="int">3</FDM>
+      			<systems type="int">5</systems>
+      			<cockpit type="int">5</cockpit>
+      			<model type="int">4</model>
+		</rating>
+		<flight-model>yasim</flight-model>
+		<aero>757-200-RB211</aero>
+
+		<model>
+			<path>Aircraft/757-200/Models/757-200.xml</path>
+			<livery>
+				<file>FIN</file>
+			</livery>
+		</model>
+	
+		<engines>RR</engines>
+		
+		<weight n="0">
+			<name>Crew</name>
+			<weight-lb>250</weight-lb>
+			<max-lb>600</max-lb>
+			<min-lb>120</min-lb>
+		</weight>
+		<weight n="1">
+			<name>Pax/Baggage/Cargo</name>
+			<weight-lb>42844</weight-lb>
+			<max-lb>57125</max-lb>
+			<min-lb>0</min-lb>
+		</weight>
+	</sim>
+
+	<instrumentation>
+		<!-- CDU stuff: http://wiki.flightgear.org/index.php/Howto:_Implement_a_Control_Display_Unit -->
+		<cdu>
+			<display>IDENT</display>
+			<ident>
+				<model>757-200</model>
+				<engines>RB211-535E4</engines>
+			</ident>
+			<input />
+			<serviceable type="bool">true</serviceable>
+		</cdu>
+	</instrumentation>
+
+	<limits n="0">
+		<mass-and-balance>
+		    <maximum-takeoff-mass-lbs>255000</maximum-takeoff-mass-lbs>
+		    <maximum-landing-mass-lbs>210000</maximum-landing-mass-lbs>
+		</mass-and-balance>
+	</limits>
+
+</PropertyList>

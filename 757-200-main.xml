@@ -1,69 +1,86 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 
 	<sim>
-		<description>Boeing 757-200 (Pratt and Whitney)</description>
-		<status>early production</status>
-		<author>Juuso Tapaninen, original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
-		  <rating>
-      <FDM type="int">3</FDM>
-      <systems type="int">3</systems>
-      <cockpit type="int">5</cockpit>
-      <model type="int">4</model>
-  </rating>
-    
-      <tags>
-          <tag>transport</tag>
-          <tag>boeing</tag>
-          <tag>jet</tag>
-          <tag>twin-engine</tag>
-          <tag>retractable-gear</tag>
-          <tag>etops</tag>
-          <tag>glass-cockpit</tag>
-          <tag>ifr</tag>
-      </tags>
-  
-		<flight-model>yasim</flight-model>
-		<aero>757-200</aero>
-
+		<tags>
+          	    <tag>transport</tag>
+      		    <tag>boeing</tag>
+      		    <tag>jet</tag>
+      		    <tag>twin-engine</tag>
+      		    <tag>retractable-gear</tag>
+      		    <tag>etops</tag>
+      		    <tag>glass-cockpit</tag>
+      		    <tag>ifr</tag>
+      		</tags>
 		<model>
-			<path>Aircraft/757-200/Models/757-200.xml</path>
-			<livery>
-				<file>FIN</file>
-			</livery>
 			<B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>
 				<nav1-track-deg type="double">0</nav1-track-deg>
 				<nav1-bug-deg type="double">0</nav1-bug-deg>
 				<nav2-bug-deg type="double">0</nav2-bug-deg>
-				<adf-bug-deg type="double">0</adf-bug-deg>
+				<adf1-bug-deg type="double">0</adf1-bug-deg>
+				<adf2-bug-deg type="double">0</adf2-bug-deg>
 			</B757>
+			<cabin-visible type="bool">1</cabin-visible>
+			<hide-yoke type="bool">0</hide-yoke>
+			<door>
+				<position-x-m type="float">-20.38</position-x-m>
+				<position-y-m type="float"> -2.89</position-y-m>
+				<position-z-m type="float"> -0.24</position-z-m>
+				<jetway-hood-deg type="float">6</jetway-hood-deg>
+			</door>
+			<door>
+				<position-x-m type="float">-11.32</position-x-m>
+				<position-y-m type="float"> -3.21</position-y-m>
+				<position-z-m type="float"> -0.24</position-z-m>
+				<jetway-hood-deg type="float">0</jetway-hood-deg>
+			</door>
+			<door>
+				<position-x-m type="float"> 0.55</position-x-m>
+				<position-y-m type="float">-3.21</position-y-m>
+				<position-z-m type="float">-0.24</position-z-m>
+				<jetway-hood-deg type="float">0</jetway-hood-deg>
+			</door>
 			<pushback>
 				<kp type="double">-0.05</kp>
+				<kd type="double">0</kd>
 				<ti type="double">10</ti>
 				<td type="double">0.00001</td>
+				<position-norm type="double">0</position-norm>
 			</pushback>
+			<animation>
+			        <type>scale</type>
+			        <x-offset>11</x-offset>
+			        <y-offset>11</y-offset>
+			        <z-offset>11</z-offset>
+			        <center>
+			            <x-m>1.13</x-m>
+			            <y-m>-0.180</y-m>
+			            <z-m>0.9109</z-m>
+			        </center>
+		    	</animation>
 		</model>
 		
-		        <multiplay>
-          <generic>
-	          <int n="0" type="int">  0 </int>  <!-- Dual Control boolean light switches-->
-			      <int n="2" alias="/controls/lighting/beacon-state/state"/>						<!-- Nav light - white becon -->
-			      <int n="3" alias="/controls/lighting/strobe-state/state"/>						<!-- Nav light - red becon -->
-			      <int n="4" alias="/controls/lighting/landing-lights"/>							<!-- Landing light -->
-			      <int n="5" alias="/controls/lighting/nav-lights"/>								<!-- Nav light - top, bottom, left, right, back -->
+		<multiplay>
+          	    <generic>
+	          	<int n="0" type="int">  0 </int>  <!-- Dual Control boolean light switches-->
+			<int n="2" alias="/controls/lighting/beacon-state/state"/>						<!-- Nav light - white becon -->
+			<int n="3" alias="/controls/lighting/strobe-state/state"/>						<!-- Nav light - red becon -->
+			<int n="4" alias="/controls/lighting/landing-lights"/>							<!-- Landing light -->
+			<int n="5" alias="/controls/lighting/nav-lights"/>								<!-- Nav light - top, bottom, left, right, back -->
 
-            <float n="0">0</float>        <!-- for the shadow -->
-            <float n="1">0</float>        <!-- for the shadow -->
-            <float n="2">0</float>        <!-- for the shadow -->
-            <float n="3" alias="/controls/lighting/panel-norm"/>    <!-- rembrandt cockpit (flightdeck) lights -->
+            		<float n="0">0</float>        <!-- for the shadow -->
+            		<float n="1">0</float>        <!-- for the shadow -->
+            		<float n="2">0</float>        <!-- for the shadow -->
+            		<float n="3" alias="/controls/lighting/panel-norm"/>    <!-- rembrandt cockpit (flightdeck) lights -->
 
-            <string n="0" type="string"></string> <!-- Dual Control analog TDM-mpp1 (magnetos, flaps etc.) -->
-            <string n="1" type="string"></string> <!-- Dual Control analog TDM-mpp2 only pilot to copilot (fuel in tank etc.) -->
-          </generic>
-        </multiplay>
-  
+            		<string n="0" type="string"></string> <!-- Dual Control analog TDM-mpp1 (magnetos, flaps etc.) -->
+            		<string n="1" type="string"></string> <!-- Dual Control analog TDM-mpp2 only pilot to copilot (fuel in tank etc.) -->
+          	    </generic>
+        	</multiplay>
+ 
+		<flight-recorder include="Systems/flight-recorder.xml"/> 
 
 		<startup>
 			<splash-texture>Aircraft/757-200/splash.png</splash-texture>
@@ -76,46 +93,6 @@
 			<seatbelt-sign type="bool">false</seatbelt-sign>
 		</sound>
 
-	<model>
-		<path>Aircraft/757-200/Models/757-200.xml</path>
-		<door>
-			<position-x-m type="float">-20.38</position-x-m>
-			<position-y-m type="float"> -2.89</position-y-m>
-			<position-z-m type="float"> -0.24</position-z-m>
-			<jetway-hood-deg type="float">6</jetway-hood-deg>
-		</door>
-		<door>
-			<position-x-m type="float">-11.32</position-x-m>
-			<position-y-m type="float"> -3.21</position-y-m>
-			<position-z-m type="float"> -0.24</position-z-m>
-			<jetway-hood-deg type="float">0</jetway-hood-deg>
-		</door>
-		<door>
-			<position-x-m type="float"> 0.55</position-x-m>
-			<position-y-m type="float">-3.21</position-y-m>
-			<position-z-m type="float">-0.24</position-z-m>
-			<jetway-hood-deg type="float">0</jetway-hood-deg>
-		</door>
-		<hide-yoke type="bool">0</hide-yoke>
-		<pushback>
-			<kp type="double">3000</kp>
-			<kd type="double">0</kd>
-			<position-norm type="double">0</position-norm>
-		</pushback>
-			    <animation>
-        <type>scale</type>
-        <x-offset>11</x-offset>
-        <y-offset>11</y-offset>
-        <z-offset>11</z-offset>
-        <center>
-            <x-m>1.13</x-m>
-            <y-m>-0.180</y-m>
-            <z-m>0.9109</z-m>
-        </center>
-    </animation>
-	</model>
-
-	
 		<systems>
 			<autopilot>
 				<name>Autopilot</name>
@@ -124,6 +101,10 @@
 			<autopilot>
 				<name>Autopilot helpers</name>
 				<path>Aircraft/Generic/generic-autopilot-helper.xml</path>
+			</autopilot>
+			<autopilot>
+				<name>Autothrottle</name>
+				<path>Aircraft/757-200/Systems/757-autothrottle.xml</path>
 			</autopilot>
 			<autopilot>
 				<name>Autobrake</name>
@@ -138,25 +119,9 @@
 				<path>Aircraft/757-200/Systems/pushback.xml</path>
 			</autopilot>
 		</systems>
-
-		<weight n="0">
-			<name>Crew</name>
-			<weight-lb>250</weight-lb>
-			<max-lb>600</max-lb>
-			<min-lb>120</min-lb>
-		</weight>
-		<weight n="1">
-			<name>First class</name>
-			<weight-lb>29211</weight-lb>
-			<max-lb>38948</max-lb>
-			<min-lb>0</min-lb>
-		</weight>
-		<weight n="2">
-			<name>Economy class</name>
-			<weight-lb>9737</weight-lb>
-			<max-lb>12983</max-lb>
-			<min-lb>0</min-lb>
-		</weight>
+		<instrumentation>
+			<path>Aircraft/757-200/Systems/instrumentation.xml</path>
+		</instrumentation>
 
 		<view n="0">
 			<name>Pilot View</name>
@@ -164,7 +129,7 @@
 			<internal archive="y">true</internal>
 			<config>
 				<x-offset-m archive="y">-0.55</x-offset-m>
-				<y-offset-m archive="y">1.56</y-offset-m>
+				<y-offset-m archive="y">1.61</y-offset-m>
 				<z-offset-m archive="y">2.275</z-offset-m>
 				<pitch-offset-deg>0</pitch-offset-deg>
 				<default-field-of-view-deg type="double">70.0</default-field-of-view-deg>
@@ -240,7 +205,7 @@
 				<y-offset-m archive="y">1.56</y-offset-m>
 				<z-offset-m archive="y">2.275</z-offset-m>
 				<pitch-offset-deg>0</pitch-offset-deg>
-        <default-field-of-view-deg type="double">70.0</default-field-of-view-deg>
+				<default-field-of-view-deg type="double">70.0</default-field-of-view-deg>
 			</config>
 		</view>
 		<view n="103">
@@ -269,19 +234,6 @@
 
 		<menubar>
 			<default>
-				<menu n="3">
-					<item>
-						<name>autopilot</name>
-						<label>Autopilot Settings</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							 var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/757-200/Systems/autopilot-dlg.xml");
-							 autopilot.open();
-							</script>
-						</binding>
-					</item>
-				</menu>
 				<menu n="100">			
 					<label>Boeing 757-200</label>
 					<enabled type="bool">true</enabled>
@@ -312,8 +264,15 @@
 									<item>
 					<label>Show/hide cabin</label>
 					<binding>
-						<command>property-toggle</command>
-		    		<property>sim/cabin-visible</property>
+					    <command>property-toggle</command>
+				    	    <property>sim/model/cabin-visible</property>
+					</binding>
+				</item>
+				<item>
+					<label>Show/Hide Yokes</label>
+					<binding>
+					    <command>property-toggle</command>
+					    <property>sim/model/hide-yoke</property>
 					</binding>
 				</item>
 				<item>
@@ -413,6 +372,12 @@
 			<tank n="2">
 				<name>Center</name>
 			</tank>
+			<tank n="3">
+				<name>Ballast Front</name>
+			</tank>
+			<tank n="4">
+				<name>Ballast Rear</name>
+			</tank>
 		</fuel>
 	</consumables>
 
@@ -424,22 +389,6 @@
 			</config>
 			<step type="int">-1</step>
 		</autobrake>
-		<settings>
-			<autothrottle type="bool">false</autothrottle>
-			<engaged type="bool">false</engaged>
-			<flight-director type="bool">false</flight-director>
-			<speed-mode>knots</speed-mode>
-			<heading-bug-deg type="double">360</heading-bug-deg>
-			<target-speed-kt type="double">200</target-speed-kt>
-			<target-speed-mach type="double">0</target-speed-mach>
-			<target-altitude-ft type="double">0</target-altitude-ft>
-			<altitude-setting-ft type="double">10000</altitude-setting-ft>
-			<vertical-speed-fpm type="double">1800</vertical-speed-fpm>
-			<minimum-bank-deg type="double">-25</minimum-bank-deg>
-			<maximum-bank-deg type="double">25</maximum-bank-deg>
-		</settings>
-
-		<disengaged-btn type="int">0</disengaged-btn>
 	</autopilot>
 
 	<engines>
@@ -487,6 +436,7 @@
 		<gear>
 			<autobrakes type="int">1</autobrakes>
 			<brake-parking type="bool">true</brake-parking>
+			<alt-gear type="bool">0</alt-gear>
 		</gear>
 	</controls>
 
@@ -510,16 +460,24 @@
 	</gear>
 
 	<instrumentation>
-		<!-- CDU stuff: http://wiki.flightgear.org/index.php/Howto:_Implement_a_Control_Display_Unit -->
-		<cdu>
-			<display>IDENT</display>
-			<ident>
-				<model>757-200</model>
-				<engines>-PW2040</engines>
-			</ident>
-			<input />
-			<serviceable type="bool">true</serviceable>
-		</cdu>
+		<clock>
+			<et-knob type="int">0</et-knob>
+		</clock>
+		<dme n="0">
+            		<serviceable>true</serviceable>
+            		<frequencies>
+                	    <source>/instrumentation/nav[0]/frequencies/selected-mhz</source>
+            		</frequencies>
+        	</dme>
+        	<dme n="1">
+            		<serviceable>true</serviceable>
+            		<frequencies>
+                	    <source>/instrumentation/nav[1]/frequencies/selected-mhz</source>
+            		</frequencies>
+        	</dme>
+		<efis>
+			<ehsi-ctr type="bool">0</ehsi-ctr>
+		</efis>
 		<fmc>
 			<to-flap type="double">5</to-flap>
 			<vspeeds>
@@ -528,6 +486,50 @@
 				<V2 type="double">0</V2>
 			</vspeeds>
 		</fmc>
+
+
+		<mk-viii>  <!-- mk-viii configuration, see: http://wiki.flightgear.org/index.php/GPWS -->
+	            <serviceable>true</serviceable>     <!-- EGPWS_ENABLE -->
+	            <configuration-module>
+	                <category-1>                    <!-- AIRCRAFT_MODE_TYPE_SELECT -->
+	                   255 <!-- aircraft type T1, fast turbofan -->
+	                </category-1>
+	                <category-4>                    <!-- ALTITUDE_CALLOUTS -->
+	                    13 <!-- enable all altitude callouts -->
+	                </category-4>
+	                <category-8>                    <!-- RADIO_ALTITUDE_INPUT_SELECT -->
+	                     3 <!-- use precise (but YASim-specific) gear altitude -->
+	                </category-8>
+	                <category-13>                   <!-- INPUT_OUTPUT_DISCRETE_TYPE_SELECT -->
+	                     5 <!-- flashing warning lamp -->
+	                </category-13>
+	            </configuration-module>
+	            <voice>
+	                <file-prefix type="string">Sounds/mk-viii/</file-prefix>
+	            </voice>
+	            <inputs>                            <!-- Module I/O -->
+	                <arinc429>
+	                    <!-- provide fixed value for decision height -->
+	                    <decision-height-ncd> false </decision-height-ncd>
+	                    <decision-height> 250 </decision-height>
+	                </arinc429>
+	            </inputs>
+	            <input-feeders>    <!-- disable some internal default feeders -->
+	                <discretes>
+	                    <!-- will provide custom (nasal) sources for the following input feeders -->
+	                    <glideslope-inhibit> false </glideslope-inhibit>
+	                    <landing-gear> false </landing-gear>
+	                    <landing-flaps> false </landing-flaps>
+	                </discretes>
+	            </input-feeders>
+		    <speaker>                           <!-- Speaker Configuration -->
+	                <max-dist type="double"> 5 </max-dist>        <!-- Max. distance where speaker is heard -->
+	                <reference-dist type="double"> 2 </reference-dist> <!-- Distance to pilot -->
+	                <volume type="double"> 0.6 </volume>          <!-- Volume at reference distance -->
+	            </speaker>
+	        </mk-viii>
+
+
 		<nav-compass n="0">
 			<nav-display n="0" type="int">0</nav-display>
 			<nav-display n="1" type="int">0</nav-display>
@@ -536,6 +538,13 @@
 			<nav-display n="0" type="int">0</nav-display>
 			<nav-display n="1" type="int">0</nav-display>
 		</nav-compass>
+		<transponder>
+            		<inputs>
+                		<knob-pos type="int">0</knob-pos>
+            		</inputs>
+            		<id-code type="string">1200</id-code>
+            		<serviceable type="bool">true</serviceable>
+        	</transponder>
 	</instrumentation>
 
 	<input>
@@ -621,24 +630,39 @@
 				<desc>Open autopilot dialog</desc>
 				<binding>
 					<command>nasal</command>
-					<script>
-					 var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/757-200/Systems/autopilot-dlg.xml");
-					 autopilot.open();
-					</script>
+					<script>dialogs.ap_settings.toggle()</script>
 				</binding>
 			</key>
+			<!-- Radio Stack override -->
+			<key n="268">
+        			<name>F12</name>
+        			<desc>Radio Stack</desc>
+          			<binding>
+            			    <command>nasal</command>
+				    <script>dialogs.Radio.toggle()</script>
+          			</binding>
+     	 		</key>
 		</keyboard>
 	</input>
 
 	<nasal>
-		<systems>
+		<Boeing757>
+			<file>Aircraft/757-200/Nasal/wipers.nas</file>
+			<file>Aircraft/757-200/Nasal/gpws.nas</file>
+			<file>Aircraft/757-200/Nasal/eicas.nas</file>
+			<file>Aircraft/757-200/Nasal/AFDS.nas</file>
 			<file>Aircraft/757-200/Nasal/systems.nas</file>
-		</systems>
-				<lights>
+			<file>Aircraft/757-200/Nasal/fuel_system.nas</file>
+			<file>Aircraft/757-200/Nasal/pneumatic.nas</file>
+			<file>Aircraft/757-200/Nasal/hydraulic.nas</file>
+			<file>Aircraft/Generic/limits.nas</file>
+		</Boeing757>
+		<lights>
 			<file>Aircraft/757-200/Nasal/light.nas</file>
 		</lights>
 		<cdu>
-			<file>Aircraft/Instruments-3d/cdu/boeing.nas</file>
+			<!--file>Aircraft/Instruments-3d/cdu/boeing.nas</file-->
+			<file>Aircraft/757-200/Nasal/boeing_cdu.nas</file>
 		</cdu>
 		<electrical>
 			<file>Aircraft/757-200/Nasal/electrical.nas</file>
@@ -652,20 +676,19 @@
 		<tyresmoke>
 			<file>Aircraft/757-200/Nasal/tyresmoke.nas</file>
 		</tyresmoke>
-		  <radar>
-    <file>Aircraft/Instruments-3d/RDR-160/RDR160.nas</file>
-  </radar>
+		<radar>
+			<file>Aircraft/Instruments-3d/RDR-160/RDR160.nas</file>
+		</radar>
   		<erj>
 			<file>Aircraft/757-200/Nasal/doors.nas</file>
 		</erj>
-      <Boeing757>
-			<file>Aircraft/757-200/Nasal/wipers.nas</file>
-
-            <file>Aircraft/757-200/Nasal/gpws.nas</file>
-		</Boeing757>
+		<dialogs>
+			<file>Aircraft/757-200/Nasal/dialogs.nas</file>
+		</dialogs>
+		<auto-coord>
+			<file>Aircraft/757-200/Nasal/auto_coord.nas</file>
+		</auto-coord>
 	</nasal>
-
-	
 
 	<aircraft>
 		<jetway-pos>
@@ -682,14 +705,14 @@
 		</jetway2-pos>
 	</aircraft>
 	
-	    <limits n="0">
+    <limits n="0">
         <max-flap-extension-speed>
             <flaps>0.033</flaps>
-            <speed>255</speed>
+            <speed>245</speed>
         </max-flap-extension-speed>
         <max-flap-extension-speed>
             <flaps>0.166</flaps>
-            <speed>235</speed>
+            <speed>225</speed>
         </max-flap-extension-speed>
         <max-flap-extension-speed>
             <flaps>0.500</flaps>
@@ -697,15 +720,15 @@
         </max-flap-extension-speed>
         <max-flap-extension-speed>
             <flaps>0.666</flaps>
-            <speed>195</speed>
+            <speed>205</speed>
         </max-flap-extension-speed>
         <max-flap-extension-speed>
             <flaps>0.833</flaps>
-            <speed>185</speed>
+            <speed>190</speed>
         </max-flap-extension-speed>
         <max-flap-extension-speed>
             <flaps>1.000</flaps>
-            <speed>170</speed>
+            <speed>168</speed>
         </max-flap-extension-speed>
         <max-gear-extension-speed>270</max-gear-extension-speed>
         <vne>600</vne>

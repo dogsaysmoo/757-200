@@ -976,6 +976,19 @@
 
 <animation>
 	<type>pick</type>
+	<object-name>Btn.side.r.3</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>cdu.key('LSK3R');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
 	<object-name>Btn.side.l.4</object-name>
 	<action>
 		<button>0</button>
@@ -989,6 +1002,19 @@
 
 <animation>
 	<type>pick</type>
+	<object-name>Btn.side.r.4</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>cdu.key('LSK4R');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
 	<object-name>Btn.side.l.5</object-name>
 	<action>
 		<button>0</button>
@@ -996,6 +1022,19 @@
 		<binding>
 			<command>nasal</command>
 			<script>cdu.key('LSK5L');</script>
+		</binding>
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.side.r.5</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>  
+		<binding>
+			<command>nasal</command>
+			<script>cdu.key('LSK5R');</script>
 		</binding>
 	</action>
 </animation>

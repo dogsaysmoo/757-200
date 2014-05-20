@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- Boeing 757-200 for FlightGear -->
 <!-- Overhead Panel -->
@@ -230,7 +230,7 @@
 				<command>property-adjust</command>
 				<property>controls/APU/off-start-run</property>
 				<step type="int">1</step>
-				<max>3</max>
+				<max>2</max>
 			</binding>
 		</action>
 		<action>
@@ -345,7 +345,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>property-toggle</command>
-				<property>consumables/fuel/tank[0]/selected</property>
+				<property>controls/fuel/tank[0]/pump</property>
 			</binding>
 		</action>
 	</animation>
@@ -353,7 +353,7 @@
 		<name>Left fuel pump button textranslate</name>
 		<type>textranslate</type>
 		<object-name>LFuelPumpBtn</object-name>
-		<property>consumables/fuel/tank[0]/selected</property>
+		<property>controls/fuel/tank[0]/pump</property>
 		<factor>0.25</factor>
 		<axis>
 			<x>0</x>
@@ -366,13 +366,13 @@
 		<name>Center fuel pump button pick</name>
 		<type>pick</type>
 		<object-name>CFuelPumpBtn</object-name>
-    <object-name>CFuelPumpBtn.2</object-name>
+		<object-name>CFuelPumpBtn.2</object-name>
 		<action>
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>property-toggle</command>
-				<property>consumables/fuel/tank[2]/selected</property>
+				<property>controls/fuel/tank[2]/pump</property>
 			</binding>
 		</action>
 	</animation>
@@ -380,7 +380,7 @@
 		<name>Center fuel pump button textranslate</name>
 		<type>textranslate</type>
 		<object-name>CFuelPumpBtn</object-name>
-		<property>consumables/fuel/tank[2]/selected</property>
+		<property>controls/fuel/tank[2]/pump</property>
 		<factor>0.25</factor>
 		<axis>
 			<x>1</x>
@@ -392,7 +392,7 @@
 		<name>Center fuel pump button textranslate</name>
 		<type>textranslate</type>
 		<object-name>CFuelPumpBtn.2</object-name>
-		<property>consumables/fuel/tank[2]/selected</property>
+		<property>controls/fuel/tank[2]/pump</property>
 		<factor>0.25</factor>
 		<axis>
 			<x>1</x>
@@ -409,7 +409,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>property-toggle</command>
-				<property>consumables/fuel/tank[1]/selected</property>
+				<property>controls/fuel/tank[1]/pump</property>
 			</binding>
 		</action>
 	</animation>
@@ -417,7 +417,7 @@
 		<name>Right fuel pump button textranslate</name>
 		<type>textranslate</type>
 		<object-name>RFuelPumpBtn</object-name>
-		<property>consumables/fuel/tank[1]/selected</property>
+		<property>controls/fuel/tank[1]/pump</property>
 		<factor>0.25</factor>
 		<axis>
 			<x>0</x>
@@ -425,6 +425,32 @@
 			<z>0</z>
 		</axis>
 	</animation>
+
+	<animation>
+		<name>X-Feed Button pick</name>
+		<type>pick</type>
+		<object-name>CrossfeedFuelBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/fuel/x-feed</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>X-Feed Button textranslate</name>
+		<type>textranslate</type>
+		<object-name>CrossfeedFuelBtn</object-name>
+                <property>controls/fuel/x-feed</property>
+                <factor>0.25</factor>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
 
 	<!-- Fuel tank indicators -->
 	<animation>
@@ -1413,7 +1439,594 @@
 			</binding>
 		</action>
 	</animation>
-	
 
+<!-- Pneumatic System -->
+	<animation>
+		<type>pick</type>
+		<object-name>LBleedAirEngBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/pneumatic/eng-bleed[0]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>LBleedAirEngBtn</object-name>
+                <property>controls/pneumatic/eng-bleed[0]</property>
+                <factor>0.25</factor>
+                <axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>RBleedAirEngBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/pneumatic/eng-bleed[1]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>RBleedAirEngBtn</object-name>
+                <property>controls/pneumatic/eng-bleed[1]</property>
+                <factor>0.25</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>BleedAirAPUBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/pneumatic/apu-bleed</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>BleedAirAPUBtn</object-name>
+                <property>controls/pneumatic/apu-bleed</property>
+                <factor>0.25</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>BleedAirIsoBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/pneumatic/isln</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>BleedAirIsoBtn</object-name>
+                <property>controls/pneumatic/isln</property>
+                <factor>0.25</factor>
+                <axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>BleedPresL</object-name>
+		<property>systems/pneumatic/pres[0]</property>
+		<factor>-3</factor>
+		<offset-deg>120</offset-deg>
+		<center>
+			<x-m>-0.005</x-m>
+			<y-m> 0.305</y-m>
+			<z-m>-0.174</z-m>
+		</center>
+		<axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+	</animation>
+			
+	<animation>
+		<type>rotate</type>
+		<object-name>BleedPresR</object-name>
+		<property>systems/pneumatic/pres[1]</property>
+		<factor>-3</factor>
+		<offset-deg>120</offset-deg>
+		<center>
+			<x-m>-0.005</x-m>
+			<y-m> 0.305</y-m>
+			<z-m>-0.174</z-m>
+		</center>
+		<axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+	</animation>
+
+<!-- Packs -->
+	<animation>
+		<type>pick</type>
+		<object-name>LPackKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>	
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/pneumatic/packs/pack-knob[0]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>LPackKnb</object-name>
+		<property>controls/pneumatic/packs/pack-knob[0]</property>
+		<factor>-45</factor>
+		<offset-deg>45</offset-deg>
+		<center>
+			<x-m>-0.004</x-m>
+			<y-m> 0.259</y-m>
+			<z-m>-0.092</z-m>
+		</center>
+		<axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>RPackKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>	
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/pneumatic/packs/pack-knob[1]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>RPackKnb</object-name>
+		<property>controls/pneumatic/packs/pack-knob[1]</property>
+		<factor>-45</factor>
+		<offset-deg>45</offset-deg>
+		<center>
+			<x-m>-0.004</x-m>
+			<y-m> 0.348</y-m>
+			<z-m>-0.092</z-m>
+		</center>
+		<axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+	</animation>
+
+<!-- Anti-Ice -->
+	<animation>
+		<type>pick</type>
+		<object-name>WingAntiIce</object-name>
+		<object-name>EngAntiIceL</object-name>
+		<object-name>EngAntiIceR</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/anti-ice/wing-heat</property>			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>WingAntiIce</object-name>
+                <property>controls/anti-ice/wing-heat</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>WingAntiIce</object-name>
+                <property>controls/anti-ice/wing-heat</property>
+                <factor>0.0025</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>EngAntiIceL</object-name>
+                <property>controls/anti-ice/wing-heat</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>EngAntiIceL</object-name>
+                <property>controls/anti-ice/wing-heat</property>
+                <factor>0.0025</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>EngAntiIceR</object-name>
+                <property>controls/anti-ice/wing-heat</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>EngAntiIceR</object-name>
+                <property>controls/anti-ice/wing-heat</property>
+                <factor>0.0025</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+<!-- Hydraulic -->
+	<animation>
+		<type>pick</type>
+		<object-name>LHydEngBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/engine-pump[0]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>LHydEngBtn</object-name>
+                <property>controls/hydraulic/engine-pump[0]</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>LHydEngBtn</object-name>
+                <property>controls/hydraulic/engine-pump[0]</property>
+                <factor>0.0005</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>RHydEngBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/hydraulic/engine-pump[1]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>RHydEngBtn</object-name>
+                <property>controls/hydraulic/engine-pump[1]</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>RHydEngBtn</object-name>
+                <property>controls/hydraulic/engine-pump[1]</property>
+                <factor>0.0005</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LHydElecBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+                		<property>controls/hydraulic/electric-pump[0]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>LHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[0]</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>LHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[0]</property>
+                <factor>0.0025</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>RHydElecBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+                		<property>controls/hydraulic/electric-pump[1]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>RHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[1]</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>RHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[1]</property>
+                <factor>0.0025</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LCHydElecBtn</object-name>
+		<object-name>RCHydElecBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+                		<property>controls/hydraulic/electric-pump[2]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>LCHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[2]</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>LCHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[2]</property>
+                <factor>0.0005</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>textranslate</type>
+		<object-name>RCHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[2]</property>
+                <factor>0.5</factor>
+                <axis>
+                        <x>0</x>
+                        <y>-1</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+	<animation>
+                <type>translate</type>
+		<object-name>RCHydElecBtn</object-name>
+                <property>controls/hydraulic/electric-pump[2]</property>
+                <factor>0.0005</factor>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+<!-- IRS Knobs -->
+	<animation>
+		<type>pick</type>
+		<object-name>INSLKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSl.knob(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSl.knob(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>INSLKnb</object-name>
+		<property>controls/inertial-reference/position[0]</property>
+		<factor>-45</factor>
+		<offset-deg>90</offset-deg>
+		<center>
+		    <x-m> 0.003</x-m>
+		    <y-m>-0.358</y-m>
+		    <z-m> 0.000</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>INSCKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSc.knob(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSc.knob(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>INSCKnb</object-name>
+		<property>controls/inertial-reference/position[1]</property>
+		<factor>-45</factor>
+		<offset-deg>90</offset-deg>
+		<center>
+		    <x-m> 0.003</x-m>
+		    <y-m>-0.310</y-m>
+		    <z-m> 0.000</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>INSRKnb</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSr.knob(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.IRSr.knob(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>INSRKnb</object-name>
+		<property>controls/inertial-reference/position[2]</property>
+		<factor>-45</factor>
+		<offset-deg>90</offset-deg>
+		<center>
+		    <x-m> 0.003</x-m>
+		    <y-m>-0.265</y-m>
+		    <z-m> 0.000</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
 
 </PropertyList>

@@ -13,6 +13,11 @@
 			<y-m>0</y-m>
 			<z-m>0.0534</z-m>
 		</offsets>
+		<condition>
+			<not>
+			    <property>sim/model/hide-yoke</property>
+			</not>
+		</condition>
 	</model>
 	
 	    <animation>
@@ -193,6 +198,19 @@
 			<pitch-deg>-8</pitch-deg>
 		</offsets>
 	</model>
+	<animation>
+                <type>pick</type>
+                <object-name>CTR_L</object-name>
+                <object-name>CTR_R</object-name>
+                <action>
+                        <button>0</button>
+                        <repeatable>false</repeatable>
+                        <binding>
+                                <command>property-toggle</command>
+                                <property>instrumentation/efis/ehsi-ctr</property>
+                        </binding>
+                </action>
+        </animation>
 	
 		<!-- EFB -->
 		<model>
@@ -318,8 +336,8 @@
 		</offsets>
 	</model>
 	
-	
-	    <animation>
+<!-- Rudder trim -->
+    <animation>
         <type>translate</type>
         <object-name>ruddertrim.needle</object-name>
         <property>controls/flight/rudder-trim</property>
@@ -364,7 +382,7 @@
             </binding>
         </action>
     </animation>
-        <animation>
+    <animation>
         <type>pick</type>
         <object-name>Rudder.trim</object-name>
         <action>
@@ -380,6 +398,75 @@
             <wrap>0</wrap>
             </binding>
         </action>
+    </animation>
+
+<!-- Aileron Trim -->
+    <animation>
+        <type>pick</type>
+        <object-name>aileron_trim</object-name>
+        <action>
+                <button>0</button>
+                <repeatable>true</repeatable>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/aileron-trim</property>
+                        <step>0.05</step>
+                        <min>-0.5</min>
+                        <max>0.5</max>
+                </binding>
+                <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>1</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>0</value>
+                    </binding>
+                </mod-up>
+        </action>
+        <action>
+                <button>1</button>
+                <repeatable>true</repeatable>
+                <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/flight/aileron-trim</property>
+                        <step>-0.05</step>
+                        <min>-0.5</min>
+                        <max>0.5</max>
+                </binding>
+                <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>-1</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>controls/switches/aileron-trim</property>
+                        <value>0</value>
+                    </binding>
+                </mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>aileron_trim</object-name>
+        <property>controls/switches/aileron-trim</property>
+        <factor>-20</factor>
+        <center>
+            <x-m> 1.919</x-m>
+            <y-m>-0.038</y-m>
+            <z-m> 0.795</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
     </animation>
     
 	<!-- Engine Instrumentation and Crew Alert System -->
@@ -612,29 +699,57 @@
 		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
 		<overlay>
 			<params>
-				<selected-mhz>instrumentation/nav[0]/frequencies/selected-mhz</selected-mhz>
-				<standby-mhz>instrumentation/nav[0]/frequencies/standby-mhz</standby-mhz>
-				<minimum-mhz>108</minimum-mhz>
-				<maximum-mhz>117.95</maximum-mhz>
+				<selected-mhz>instrumentation/comm[0]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/comm[0]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>118.025</minimum-mhz>
+				<maximum-mhz>135.975</maximum-mhz>
 			</params>
 		</overlay>
-    <offsets>
-      <z-m>0.0534</z-m>
+	        <offsets>
+      			<z-m>0.0534</z-m>
 		</offsets>
 	</model>
 	<model>
 		<path>Aircraft/757-200/Models/Instruments/Radiopanel/Radiopanel.xml</path>
 		<overlay>
 			<params>
-				<selected-mhz>instrumentation/nav[1]/frequencies/selected-mhz</selected-mhz>
-				<standby-mhz>instrumentation/nav[1]/frequencies/standby-mhz</standby-mhz>
-				<minimum-mhz>108</minimum-mhz>
-				<maximum-mhz>117.95</maximum-mhz>
+				<selected-mhz>instrumentation/comm[1]/frequencies/selected-mhz</selected-mhz>
+				<standby-mhz>instrumentation/comm[1]/frequencies/standby-mhz</standby-mhz>
+				<minimum-mhz>118.025</minimum-mhz>
+				<maximum-mhz>135.975</maximum-mhz>
 			</params>
 		</overlay>
 		<offsets>
 			<y-m>0.265</y-m>
-      <z-m>0.0534</z-m>
+ 		 	<z-m>0.0534</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/ADF.xml</path>
+		<offsets>
+			<z-m>0.0045</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/NAV.xml</path>
+		<overlay>
+	        	<params>
+        	        	<freq>instrumentation/nav[0]/frequencies/selected-mhz</freq>
+                		<crs>instrumentation/nav[0]/radials/selected-deg</crs>
+				<minimum-mhz>108</minimum-mhz>
+				<maximum-mhz>117.95</maximum-mhz>
+        		</params>
+		</overlay>
+	</model>
+
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/transponder.xml</path>
+		<offsets>
+		    <x-m>1.605</x-m>
+		    <y-m>0.002</y-m>
+		    <z-m>0.0</z-m>
 		</offsets>
 	</model>
 
@@ -680,8 +795,16 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>property-toggle</command>
-				<property>controls/gear/gear-down</property>
+				<command>nasal</command>
+				<script>controls.gearDown(-1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>controls.gearDown(1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -1063,14 +1186,14 @@
 	    				<!-- lights -->
 	        <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
-   <object-name>cockpit_instrumentlights</object-name>
+   <object-name>cockpit_inst_lights</object-name>
     </effect>
 
 	
 		<animation>
 		<name>instrument lighting</name>
 		<type>material</type>
-		<object-name>cockpit_instrumentlights</object-name>
+		<object-name>cockpit_inst_lights</object-name>
 		<emission>
 			<red>1</red>
 			<green>1</green>
@@ -1148,8 +1271,470 @@
    <object-name>text</object-name>
     </effect>
     
+<!-- Engine Condition Display -->
+	<animation>
+		<type>select</type>
+		<object-name>LEPRdig1</object-name>
+		<object-name>LEPRdig.1</object-name>
+		<object-name>LEPRdig.01</object-name>
+		<object-name>REPRdig1</object-name>
+		<object-name>REPRdig.1</object-name>
+		<object-name>REPRdig.01</object-name>
+		<object-name>LN1dig100</object-name>
+		<object-name>LN1dig10</object-name>
+		<object-name>LN1dig1</object-name>
+		<object-name>LN1dig.1</object-name>
+		<object-name>RN1dig100</object-name>
+		<object-name>RN1dig10</object-name>
+		<object-name>RN1dig1</object-name>
+		<object-name>RN1dig.1</object-name>
+		<object-name>LEGTdig1000</object-name>
+		<object-name>LEGTdig100</object-name>
+		<object-name>LEGTdig10</object-name>
+		<object-name>LEGTdig1</object-name>
+		<object-name>REGTdig1000</object-name>
+		<object-name>REGTdig100</object-name>
+		<object-name>REGTdig10</object-name>
+		<object-name>REGTdig1</object-name>
+		<object-name>LN2dig100</object-name>
+		<object-name>LN2dig10</object-name>
+		<object-name>LN2dig1</object-name>
+		<object-name>LN2dig.1</object-name>
+		<object-name>RN2dig100</object-name>
+		<object-name>RN2dig10</object-name>
+		<object-name>RN2dig1</object-name>
+		<object-name>RN2dig.1</object-name>
+		<object-name>EngDispDecimal</object-name>
+		<condition>
+		    <greater-than>
+			<property>systems/electrical/outputs/efis</property>
+			<value>15</value>
+		    </greater-than>
+		</condition>
+	</animation>
 
+	<animation>
+		<type>textranslate</type>
+		<object-name>LEPRdig1</object-name>
+		<property>engines/engine[0]/epr</property>
+		<bias>0.001</bias>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LEPRdig.1</object-name>
+		<property>engines/engine[0]/epr</property>
+		<bias>0.001</bias>
+		<factor>1</factor>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LEPRdig.01</object-name>
+		<property>engines/engine[0]/epr</property>
+		<bias>0.001</bias>
+		<factor>10</factor>
+		<bias>0.001</bias>
+		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>REPRdig1</object-name>
+		<property>engines/engine[1]/epr</property>
+		<bias>0.001</bias>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>REPRdig.1</object-name>
+		<property>engines/engine[1]/epr</property>
+		<bias>0.001</bias>
+		<factor>1</factor>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>REPRdig.01</object-name>
+		<property>engines/engine[1]/epr</property>
+		<bias>0.001</bias>
+		<factor>10</factor>
+		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+		
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN1dig100</object-name>
+		<property>engines/engine[0]/rpm</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN1dig10</object-name>
+		<property>engines/engine[0]/rpm</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN1dig1</object-name>
+		<property>engines/engine[0]/rpm</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN1dig.1</object-name>
+		<property>engines/engine[0]/rpm</property>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN1dig100</object-name>
+		<property>engines/engine[1]/rpm</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN1dig10</object-name>
+		<property>engines/engine[1]/rpm</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN1dig1</object-name>
+		<property>engines/engine[1]/rpm</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN1dig.1</object-name>
+		<property>engines/engine[1]/rpm</property>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+		
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN2dig100</object-name>
+		<property>engines/engine[0]/n2-ind</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN2dig10</object-name>
+		<property>engines/engine[0]/n2-ind</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN2dig1</object-name>
+		<property>engines/engine[0]/n2-ind</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LN2dig.1</object-name>
+		<property>engines/engine[0]/n2-ind</property>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN2dig100</object-name>
+		<property>engines/engine[1]/n2-ind</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN2dig10</object-name>
+		<property>engines/engine[1]/n2-ind</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN2dig1</object-name>
+		<property>engines/engine[1]/n2-ind</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>RN2dig.1</object-name>
+		<property>engines/engine[1]/n2-ind</property>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
 
+	<animation>
+		<type>textranslate</type>
+		<object-name>LEGTdig1000</object-name>
+		<property>engines/engine[0]/egt-degf</property>
+		<factor>0.0001</factor>
+		<step>1000</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LEGTdig100</object-name>
+		<property>engines/engine[0]/egt-degf</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LEGTdig10</object-name>
+		<property>engines/engine[0]/egt-degf</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>LEGTdig1</object-name>
+		<property>engines/engine[0]/egt-degf</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>REGTdig1000</object-name>
+		<property>engines/engine[1]/egt-degf</property>
+		<factor>0.0001</factor>
+		<step>1000</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>REGTdig100</object-name>
+		<property>engines/engine[1]/egt-degf</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>REGTdig10</object-name>
+		<property>engines/engine[1]/egt-degf</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>REGTdig1</object-name>
+		<property>engines/engine[1]/egt-degf</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
 
+<!-- Altn Gear Extend -->
+	<animation>
+		<type>pick</type>
+		<object-name>AltGear.Btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+				    <not>
+					<property>systems/hydraulic/equipment/enable-flap</property>
+				    </not>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/gear/alt-gear</property>
+				<value>true</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>AltGear.Btn</object-name>
+		<condition>
+		    <not>
+			<property>controls/gear/alt-gear</property>
+		    </not>
+		</condition>
+		<emission>
+		    <red>0.1</red>
+		    <green>0.1</green>
+		    <blue>0.1</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>AltGear.Btn</object-name>
+		<condition>
+			<property>controls/gear/alt-gear</property>
+		</condition>
+		<emission>
+		    <red>1.0</red>
+		    <green>0.6</green>
+		    <blue>0.0</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
+
+<!-- Altn Flaps Control -->
+	<animation>
+		<type>pick</type>
+		<object-name>AltFlaps.knob</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.altn_flapsDown(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.altn_flapsDown(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>AltFlaps.knob</object-name>
+		<property>controls/flight/alt-flaps-pos</property>
+		<factor>-45</factor>
+		<center>
+		    <x-m>1.000</x-m>
+		    <y-m>0.1515</y-m>
+		    <z-m>1.065</z-m>
+		</center>
+		<axis>
+		    <x>0.85</x>
+		    <y>0</y>
+		    <z>0.15</z>
+		</axis>
+	</animation>
+		
 
 </PropertyList>

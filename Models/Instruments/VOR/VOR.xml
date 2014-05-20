@@ -26,18 +26,49 @@
 			<red>0.4</red>
 			<green>0.35</green>
 			<blue>0.21</blue>
-			<factor-prop>controls/lighting/instruments-norm</factor-prop>
+			<factor>0.5</factor>
 		</emission>
 	</animation>
+	<!--animation>
+		<name>Standby VOR display illumination</name>
+		<type>material</type>
+		<object-name>Face</object-name>
+		<object-name>InsideFrame</object-name>
+		<object-name>Needle1ADF</object-name>
+		<object-name>Needle1VOR</object-name>
+		<object-name>Needle2ADF</object-name>
+		<object-name>Needle2VOR</object-name>
+		<emission>
+			<red>0.4</red>
+			<green>0.35</green>
+			<blue>0.21</blue>
+			<factor-prop>controls/lighting/cockpit-panel-norm</factor-prop>
+		</emission>
+	</animation-->
 
 	<!-- Face and needles -->
 	<animation>
 		<name>Heading rotate</name>
 		<type>rotate</type>
 		<object-name>Face</object-name>
+		<property alias="../../params/indicated-heading-deg" />
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>Heading rotate</name>
+		<type>rotate</type>
 		<object-name>Needle1VOR</object-name>
 		<object-name>Needle2VOR</object-name>
-		<property alias="../../params/indicated-heading-deg" />
+		<property>orientation/heading-deg</property>
 		<axis>
 			<x>1</x>
 			<y>0</y>

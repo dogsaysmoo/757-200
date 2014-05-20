@@ -16,41 +16,82 @@
 
  
 	<!-- EXTRA MODELS -->
+	<!-- Engines -->
+	<model>
+		<name>RR_engines</name>
+		<path>Aircraft/757-200/Models/757-200-RRengines.xml</path>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>RR_engines</object-name>
+		<condition>
+		    <equals>
+			<property>/sim/engines</property>
+			<value>RR</value>
+		    </equals>
+		</condition>
+	</animation>
+
+	<model>
+		<name>PW_engines</name>
+		<path>Aircraft/757-200/Models/757-200-PWengines.xml</path>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>PW_engines</object-name>
+		<condition>
+		    <equals>
+			<property>/sim/engines</property>
+			<value>PW</value>
+		    </equals>
+		</condition>
+	</animation>
+
 	<!-- 3d cockpit -->
 	<model>
+		<name>Flightdeck</name>
 		<path>Aircraft/757-200/Models/Flightdeck/Flightdeck.xml</path>
 				<offsets>
 			<x-m>0.1786</x-m>
 		</offsets>
 	</model>
+	<animation>
+		<type>range</type>
+		<object-name>Flightdeck</object-name>
+		<min-m>0</min-m>
+		<max-m>100</max-m>
+	</animation>
 	
 
 	<!-- Pushback -->
 	<model>
-		<path>Models/Airport/Pushback/Goldhofert.xml</path>
+		<path>Aircraft/757-200/Models/Pushback/pushback.xml</path>
 		<offsets>
-			<x-m>5.8</x-m>
+			<x-m>5.1</x-m>
 			<y-m>0</y-m>
 			<z-m>-3.37</z-m>
 		</offsets>
 	</model>
 	
-    <model>
-    <name>cabin</name>
-    <path>Aircraft/757-200/Models/cabin.ac</path>
-  </model>
-  
-  
+	<model>
+	    <name>cabin</name>
+	    <path>Aircraft/757-200/Models/cabin.ac</path>
+	</model>
   	<animation>
 		<type>select</type>
 		<object-name>cabin</object-name>
 		<object-name>seats</object-name>
 		<condition>
-      <not>
-       <property>sim/cabin-visible</property>
-      </not>
+		    <property>sim/model/cabin-visible</property>
 		</condition>
 	</animation>	
+	<animation>
+		<type>range</type>
+		<object-name>cabin</object-name>
+		<object-name>seats</object-name>
+		<min-m>0</min-m>
+		<max-m>100</max-m>
+	</animation>
 	
 	
 	<!-- Toilet doors -->
@@ -431,7 +472,7 @@
 	<!-- ANIMATIONS -->
 	<!-- Turbofan rotation -->
 
-	<animation>			
+	<!--animation>			
 		<type>spin</type>
 		<object-name>keskiosa_2</object-name>
 		<object-name>turbofan_2</object-name>
@@ -506,7 +547,7 @@
 			<y>0</y>
 			<z>0</z>
 		</axis>
-	</animation>
+	</animation-->
 
 	<!-- TAIL -->
 	<!-- Rudder -->
@@ -553,7 +594,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Elevator1</object-name>
-		<property>controls/flight/elevator</property>
+		<property>controls/flight/elevator-pos</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>-25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
@@ -571,7 +612,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Elevator2</object-name>
-		<property>controls/flight/elevator</property>
+		<property>controls/flight/elevator-pos</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
@@ -589,7 +630,7 @@
 	<!-- SEATS -->
 	<model>
 	<name>seats</name>
-  <path>Aircraft/757-200/Models/Seats/seats.xml</path>
+  <path>Aircraft/757-200/Models/seats/seats.xml</path>
 	</model>
 	
 	<!-- WINGS -->
@@ -1361,7 +1402,7 @@
 		<object-name>NoseGear.Tires</object-name>
     <object-name>NoseGear.StrutLo</object-name>
 		<property>gear/gear[0]/steering-norm</property>
-		<factor>65</factor>
+		<factor>-65</factor>
 		<axis>
 			<x>0</x>
 			<y>0</y>
@@ -1441,7 +1482,7 @@
 	
 	       <animation>
         <type>rotate</type>
-        <object-name>part_of_the_landing_gear_1</object-name>
+        <object-name>MainGearTruckL</object-name>
         <object-name>MainGr.Tires1</object-name>
         <object-name>MainGr.Tires2</object-name>
         <property>gear/gear[1]/position-norm</property>
@@ -1463,7 +1504,7 @@
 
     <animation>
         <type>rotate</type>
-        <object-name>part_of_the_landing_gear_1</object-name>
+        <object-name>MainGearTruckL</object-name>
         <object-name>MainGr.Tires1</object-name>
         <object-name>MainGr.Tires2</object-name>
         <property>gear/gear[1]/compression-norm</property>
@@ -1488,7 +1529,7 @@
 		<type>rotate</type>
 		<object-name>MainGr.Tires1</object-name>
 		<object-name>MainGr.Tires2</object-name>
-		<object-name>part_of_the_landing_gear_1</object-name>
+        <object-name>MainGearTruckL</object-name>
 		<object-name>MainGear1.Strut</object-name>
     <object-name>MainGear1.scissor1</object-name>
     <object-name>MainGear1.scissor2</object-name>
@@ -1593,8 +1634,7 @@
 		</center>
 	</animation>
 	    <animation>
-        <type>translate</type>
-        <object-name>part_of_the_landing_gear_1</object-name>
+        <object-name>MainGearTruckL</object-name>
         <object-name>compression</object-name>
         <object-name>MainGr.Tires1</object-name>
         <object-name>MainGr.Tires2</object-name>
@@ -1688,7 +1728,7 @@
 	<!-- Right main gear -->
 		       <animation>
         <type>rotate</type>
-        <object-name>part_of_the_landing_gear_2</object-name>
+        <object-name>MainGearTruckR</object-name>
         <object-name>MainGr.Tires3</object-name>
         <object-name>MainGr.Tires4</object-name>
         <property>gear/gear[2]/position-norm</property>
@@ -1710,7 +1750,7 @@
 
     <animation>
         <type>rotate</type>
-        <object-name>part_of_the_landing_gear_2</object-name>
+        <object-name>MainGearTruckR</object-name>
         <object-name>MainGr.Tires3</object-name>
         <object-name>MainGr.Tires4</object-name>
         <property>gear/gear[2]/compression-norm</property>
@@ -1735,7 +1775,7 @@
 		<type>rotate</type>
 		<object-name>MainGr.Tires3</object-name>
 		<object-name>MainGr.Tires4</object-name>
-		<object-name>part_of_the_landing_gear_2</object-name>
+        <object-name>MainGearTruckR</object-name>
 		<object-name>MainGear2.Strut</object-name>
     <object-name>MainGear2.scissor1</object-name>
     <object-name>MainGear2.scissor2</object-name>
@@ -1841,7 +1881,7 @@
 	</animation>
 	    <animation>
         <type>translate</type>
-        <object-name>part_of_the_landing_gear_2</object-name>
+        <object-name>MainGearTruckR</object-name>
         <object-name>compression_2</object-name>
         <object-name>MainGr.Tires3</object-name>
         <object-name>MainGr.Tires4</object-name>
@@ -1936,42 +1976,157 @@
 	<animation>
 		<name>Left landing light</name>
 		<type>select</type>
-		<object-name>LHLND.spot</object-name>
+		<object-name>light_wing4</object-name>
 		<condition>
 			<property>controls/lighting/landing-lights[0]</property>
 		</condition>
 	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>light_wing4</object-name>
+        	<center>
+        	    <x-m> 17.367</x-m>
+        	    <y-m> -2.457</y-m>
+        	    <z-m>0.0</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>-0.1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+
+	<animation>
+		<name>Right landing light</name>
+		<type>select</type>
+		<object-name>light_wing3</object-name>
+		<condition>
+			<property>controls/lighting/landing-lights[2]</property>
+		</condition>
+	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>light_wing3</object-name>
+        	<center>
+        	    <x-m> 17.367</x-m>
+        	    <y-m>  2.457</y-m>
+        	    <z-m>0.0</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>0.1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+
 
 	<animation>
 		<name>Nose gear landing light</name>
 		<type>select</type>
 		<object-name>CTRLND.spot</object-name>
 		<condition>
-			<and>
-				<property>controls/lighting/landing-lights[1]</property>
-				<equals>
-					<property>gear/gear[0]/position-norm</property>
-					<value>1</value>
-				</equals>
-			</and>
+		    <and>
+			<property>controls/lighting/landing-lights[1]</property>
+			<equals>
+			  <property>gear/gear[0]/position-norm</property>
+			  <value>1</value>
+			</equals>
+			<less-than>
+			  <property>position/altitude-agl-ft</property>
+			  <value>220</value>
+			</less-than>
+		    </and>
 		</condition>
 	</animation>
-
 	<animation>
-		<name>Right landing light</name>
+		<type>select</type>
+		<object-name>LHLND.spot</object-name>
+		<condition>
+		    <and>
+			<property>controls/lighting/landing-lights[0]</property>
+			<less-than>
+			  <property>position/altitude-agl-ft</property>
+			  <value>220</value>
+			</less-than>
+		    </and>
+		</condition>
+	</animation>
+	<animation>
 		<type>select</type>
 		<object-name>RHLND.spot</object-name>
 		<condition>
+		    <and>
 			<property>controls/lighting/landing-lights[2]</property>
+			<less-than>
+			  <property>position/altitude-agl-ft</property>
+			  <value>220</value>
+			</less-than>
+		    </and>
 		</condition>
 	</animation>
-	
+			
+	<animation>
+   		<type>translate</type>
+        	<object-name>RHLND.spot</object-name>
+        	<object-name>LHLND.spot</object-name>
+        	<object-name>CTRLND.spot</object-name>
+   		<property>position/altitude-agl-ft</property>
+   		<factor>-0.305</factor>
+		<offset-m>3.346</offset-m>
+   		<center>
+     		    <x-m> 0 </x-m>
+     		    <y-m> 0 </y-m>
+     		    <z-m> 0 </z-m>
+   		</center>
+	   	<axis>
+		    <x> 0 </x>
+		    <y> 0 </y>
+		    <z> 1 </z>
+   		</axis>
+	</animation>
+	<!--animation>
+            	<type>dist-scale</type>
+                <object-name>RHLND.spot</object-name>
+                <object-name>LHLND.spot</object-name>
+                <object-name>CTRLND.spot</object-name>
+            	<interpolation>
+                    <entry>
+                        <ind> 0 </ind>
+                        <dep> 1 </dep>
+                    </entry>
+                    <entry>
+                        <ind> 100 </ind>
+                        <dep> 1 </dep>
+                    </entry>
+                    <entry>
+                        <ind> 120 </ind>
+                        <dep> 1.5 </dep>
+                    </entry>
+                    <entry>
+                        <ind> 1500 </ind>
+                        <dep> 15.00 </dep>
+                    </entry>
+            	</interpolation>
+      </animation-->
+
 		<!-- beacon lighting -->
  
   <animation>
    <type>select</type>
      <object-name>beacon_1</object-name>
-      <object-name>beacon_2</object-name>
+     <object-name>beacon_2</object-name>
    <condition>
      <property>sim/model/lights/lighting/beacon/state</property>
    </condition>
@@ -2004,10 +2159,12 @@
  
  <animation>
    <type>select</type>
-   <object-name>rednav</object-name>
-     <object-name>greennav</object-name> 
+	<object-name>rednav</object-name>
+     	<object-name>greennav</object-name>
+	<object-name>light_wing1</object-name>
+	<object-name>light_wing2</object-name>
    <condition>
-		<property>controls/lighting/nav-lights</property>
+	<property>controls/lighting/nav-lights</property>
    </condition>
  </animation>
  
@@ -2079,46 +2236,73 @@
 	
 
     
-        <effect>
+    <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
-        <object-name>greennav</object-name>
-        <object-name>rednav</object-name>
-   <object-name>light_wing1</object-name>
-   <object-name>light_wing2</object-name>
-   <object-name>light_wing3</object-name>
-   <object-name>light_wing4</object-name>
-   <object-name>strobelight_1</object-name>
-   <object-name>strobelight_2</object-name>
-    <object-name>beacon_1</object-name>
-    <object-name>beacon_2</object-name>
-    <object-name>beacon_light1</object-name>
-    <object-name>beacon_light2</object-name>
-    <object-name>Door1.001</object-name>
-		<object-name>Door2.001</object-name>
-		<object-name>Door3.001</object-name>
-		<object-name>Door4.001</object-name>
-		<object-name>Door5.001</object-name>
-		<object-name>Door6.001</object-name>
-    <object-name>Windows</object-name>
- <object-name>Windshield</object-name>
-<object-name>shadow</object-name>
-            
+        	<object-name>greennav</object-name>
+        	<object-name>rednav</object-name>
+   		<object-name>light_wing1</object-name>
+   		<object-name>light_wing2</object-name>
+   		<object-name>light_wing3</object-name>
+   		<object-name>light_wing4</object-name>
+   		<object-name>strobelight_1</object-name>
+   		<object-name>strobelight_2</object-name>
+    		<object-name>beacon_1</object-name>
+    		<object-name>beacon_2</object-name>
+    		<object-name>beacon_light1</object-name>
+    		<object-name>beacon_light2</object-name>
+    		<object-name>Door1</object-name>
+		<object-name>Door2</object-name>
+		<object-name>Door3</object-name>
+		<object-name>Door4</object-name>
+		<object-name>Door5</object-name>
+		<object-name>Door6</object-name>
+    		<object-name>Windows</object-name>
+ 		<object-name>Windshield</object-name>
+		<object-name>shadow</object-name>
     </effect>
     
-        <effect>
+    <!--effect>
         <inherits-from>Aircraft/757-200/Models/Effects/reflect</inherits-from>
 		<object-name>Fuselage</object-name>
 		<object-name>Rudder</object-name>
 		<object-name>Engine</object-name>
 		<object-name>Wing1</object-name>
 		<object-name>Wing2</object-name>
+		<object-name>PylonL</object-name>
+		<object-name>PylonR</object-name>
 		<object-name>LReverserTurbofan</object-name>
 		<object-name>RReverserTurbofan</object-name>
+		<object-name>NoseGear.RightDr2</object-name>
+		<object-name>NoseGear.RightDr1</object-name>
+		<object-name>NoseGear.LeftDr1</object-name>
 		<object-name>NoseGear.LeftDr2</object-name>
-    <object-name>MainGearDr2</object-name>
-    <object-name>MainGearDr3</object-name>
-    <object-name>Fuseage.001</object-name>
-    </effect>
+    		<object-name>MainGearDr1</object-name>
+    		<object-name>MainGearDr2</object-name>
+    		<object-name>MainGearDr3</object-name>
+    		<object-name>MainGearDr4</object-name>
+    		<object-name>Fuseage.001</object-name>
+    		<object-name>SpoilOutL1</object-name>
+    		<object-name>SpoilOutL2</object-name>
+    		<object-name>SpoilOutL3</object-name>
+    		<object-name>SpoilOutL4</object-name>
+    		<object-name>SpoilOutR1</object-name>
+    		<object-name>SpoilOutR2</object-name>
+    		<object-name>SpoilOutR3</object-name>
+    		<object-name>SpoilOutR4</object-name>
+    		<object-name>SpoilInL1</object-name>
+    		<object-name>SpoilInL2</object-name>
+    		<object-name>SpoilInL3</object-name>
+    		<object-name>SpoilInL4</object-name>
+    		<object-name>SpoilInR1</object-name>
+    		<object-name>SpoilInR2</object-name>
+    		<object-name>SpoilInR3</object-name>
+    		<object-name>SpoilInR4</object-name>
+    		<object-name>SpoilInR1</object-name>
+    		<object-name>Slat1</object-name>
+    		<object-name>Slat2</object-name>
+    		<object-name>Slat3</object-name>
+    		<object-name>Slat4</object-name>
+    </effect-->
     
     <animation>
 	<type>rotate</type>
@@ -2179,12 +2363,12 @@
 	<animation>
 		<type>material</type>
 		<object-name>Fuselage</object-name>
-		<object-name>Door1</object-name>
+		<!--object-name>Door1</object-name>
 		<object-name>Door2</object-name>
 		<object-name>Door3</object-name>
 		<object-name>Door4</object-name>
 		<object-name>Door5</object-name>
-		<object-name>Door6</object-name>
+		<object-name>Door6</object-name-->
 		<object-name>Rudder</object-name>
 		<object-name>Engine</object-name>
 		<object-name>Wing1</object-name>
@@ -2195,9 +2379,9 @@
 		<object-name>NoseGear.RightDr2</object-name>
 		<object-name>NoseGear.RightDr1</object-name>
 		<object-name>NoseGear.LeftDr1</object-name>
-    <object-name>MainGearDr2</object-name>
-    <object-name>MainGearDr3</object-name>
-    <object-name>Fuseage.001</object-name>
+	    	<object-name>MainGearDr2</object-name>
+    		<object-name>MainGearDr3</object-name>
+    		<object-name>Fuseage.001</object-name>
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>FIN.png</texture>

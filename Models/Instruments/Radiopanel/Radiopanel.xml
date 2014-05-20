@@ -15,6 +15,30 @@
 		<maximum-mhz>117.95</maximum-mhz>
 	</params>
 
+	<!-- POWER -->
+	<animation>
+		<type>select</type>
+		<object-name>Active100</object-name>
+		<object-name>Active10</object-name>
+		<object-name>Active1</object-name>
+		<object-name>Active.1</object-name>
+		<object-name>Active.01</object-name>
+		<object-name>Active.001</object-name>
+		<object-name>Standby100</object-name>
+		<object-name>Standby10</object-name>
+		<object-name>Standby1</object-name>
+		<object-name>Standby.1</object-name>
+		<object-name>Standby.01</object-name>
+		<object-name>Standby.001</object-name>
+		<object-name>decimal</object-name>
+		<condition>
+		    <greater-than>
+			<property>systems/electrical/outputs/comm</property>
+			<value>15</value>
+		    </greater-than>
+		</condition>
+	</animation>
+
 	<!-- ANIMATIONS -->
 	<!-- Active frequency -->
 	<animation>
@@ -23,6 +47,7 @@
 		<object-name>Active100</object-name>
 		<property alias="../../params/selected-mhz" />
 		<factor>0.001</factor>
+		<bias>0.0001</bias>
 		<step>100</step>
 		<axis>
 			<x>0</x>
@@ -35,6 +60,7 @@
 		<object-name>Active10</object-name>
 		<property alias="../../params/selected-mhz" />
 		<factor>0.01</factor>
+		<bias>0.0001</bias>
 		<step>10</step>
 		<axis>
 			<x>0</x>
@@ -47,6 +73,7 @@
 		<object-name>Active1</object-name>
 		<property alias="../../params/selected-mhz" />
 		<factor>0.1</factor>
+		<bias>0.0001</bias>
 		<step>1</step>
 		<axis>
 			<x>0</x>
@@ -58,6 +85,7 @@
 		<type>textranslate</type>
 		<object-name>Active.1</object-name>
 		<property alias="../../params/selected-mhz" />
+		<bias>0.0001</bias>
 		<step>0.1</step>
 		<axis>
 			<x>0</x>
@@ -70,7 +98,21 @@
 		<object-name>Active.01</object-name>
 		<property alias="../../params/selected-mhz" />
 		<factor>10</factor>
+		<bias>0.0001</bias>
 		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Active frequency .001's</name>
+		<type>textranslate</type>
+		<object-name>Active.001</object-name>
+		<property alias="../../params/selected-mhz" />
+		<factor>100</factor>
+		<bias>0.0001</bias>
+		<step>0.001</step>
 		<axis>
 			<x>0</x>
 			<y>1</y>
@@ -100,6 +142,7 @@
 		<object-name>Standby100</object-name>
 		<property alias="../../params/standby-mhz" />
 		<factor>0.001</factor>
+		<bias>0.0001</bias>
 		<step>100</step>
 		<axis>
 			<x>0</x>
@@ -112,6 +155,7 @@
 		<object-name>Standby10</object-name>
 		<property alias="../../params/standby-mhz" />
 		<factor>0.01</factor>
+		<bias>0.0001</bias>
 		<step>10</step>
 		<axis>
 			<x>0</x>
@@ -124,6 +168,7 @@
 		<object-name>Standby1</object-name>
 		<property alias="../../params/standby-mhz" />
 		<factor>0.1</factor>
+		<bias>0.0001</bias>
 		<step>1</step>
 		<axis>
 			<x>0</x>
@@ -135,6 +180,7 @@
 		<type>textranslate</type>
 		<object-name>Standby.1</object-name>
 		<property alias="../../params/standby-mhz" />
+		<bias>0.0001</bias>
 		<step>0.1</step>
 		<axis>
 			<x>0</x>
@@ -147,7 +193,21 @@
 		<object-name>Standby.01</object-name>
 		<property alias="../../params/standby-mhz" />
 		<factor>10</factor>
+		<bias>0.0001</bias>
 		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Standby frequency .001's</name>
+		<type>textranslate</type>
+		<object-name>Standby.001</object-name>
+		<property alias="../../params/standby-mhz" />
+		<factor>100</factor>
+		<bias>0.0001</bias>
+		<step>0.001</step>
 		<axis>
 			<x>0</x>
 			<y>1</y>
@@ -165,8 +225,8 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property alias="../../../../params/standby-mhz" />
-				<step>0.05</step>
+				<property alias="../../../../params/selected-mhz" />
+				<step>0.02500</step>
 				<max alias="../../../../params/maximum-mhz" />
 			</binding>
 		</action>
@@ -176,8 +236,8 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property alias="../../../../params/standby-mhz" />
-				<step>-0.05</step>
+				<property alias="../../../../params/selected-mhz" />
+				<step>-0.02500</step>
 				<min alias="../../../../params/minimum-mhz" />
 			</binding>
 		</action>
@@ -192,7 +252,7 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property alias="../../../../params/standby-mhz" />
+				<property alias="../../../../params/selected-mhz" />
 				<step>1</step>
 				<max alias="../../../../params/maximum-mhz" />
 			</binding>
@@ -203,7 +263,7 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property alias="../../../../params/standby-mhz" />
+				<property alias="../../../../params/selected-mhz" />
 				<step>-1</step>
 				<min alias="../../../../params/minimum-mhz" />
 			</binding>
@@ -220,8 +280,8 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property alias="../../../../params/active-mhz" />
-				<step>0.05</step>
+				<property alias="../../../../params/standby-mhz" />
+				<step>0.02500</step>
 				<max alias="../../../../params/maximum-mhz" />
 			</binding>
 		</action>
@@ -232,7 +292,7 @@
 			<binding>
 				<command>property-adjust</command>
 				<property alias="../../../../params/standby-mhz" />
-				<step>-0.05</step>
+				<step>-0.02500</step>
 				<min alias="../../../../params/minimum-mhz" />
 			</binding>
 		</action>
@@ -247,7 +307,7 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property alias="../../../../params/active-mhz" />
+				<property alias="../../../../params/standby-mhz" />
 				<step>1</step>
 				<max alias="../../../../params/maximum-mhz" />
 			</binding>
@@ -258,7 +318,7 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property alias="../../../../params/active-mhz" />
+				<property alias="../../../../params/standby-mhz" />
 				<step>-1</step>
 				<min alias="../../../../params/minimum-mhz" />
 			</binding>

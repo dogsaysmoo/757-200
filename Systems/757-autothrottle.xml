@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+
+<!--
+ auto-thrust modes:
+ mode     /instrumentation/afds/inputs/autothrottle-index
+ OFF      0
+ THR      1
+ THR REF  2
+ HOLD     3
+ IDLE     4
+ SPD      5
+ -->
+
+<!--
+  TODO
+  - Add THR REF mode
+  - Add HOLD mode
+ -->
+<PropertyList>
+
+    <filter>
+        <name>IAS speed limit</name>
+        <type>gain</type>
+        <gain>1.0</gain>
+        <input>
+            <condition>
+                <greater-than>
+                    <property>/controls/flight/flaps</property>
+                    <value>0.0</value>
+                </greater-than>
+            </condition>
+
+            <expression>
+                <table>
+                    <property>/controls/flight/flaps</property> 
+                    <entry><ind>0.033</ind><dep>265</dep></entry>
+                    <entry><ind>0.167</ind><dep>245</dep></entry>
+                    <entry><ind>0.500</ind><dep>235</dep></entry>
+                    <entry><ind>0.667</ind><dep>225</dep></entry>
+                    <entry><ind>0.833</ind><dep>210</dep></entry>
+                    <entry><ind>1.0</ind><dep>185</dep></entry>
+                </table>
+            </expression>
+        </input>
+
+        <input>
+            <condition>
+                <greater-than>
+                    <property>/gear/gear/position-norm</property>
+                    <value>0.0</value>
+                </greater-than>
+            </condition>
+            <value>270</value>
+        </input>
+
+        <input> 
+            <!-- basic IAS limit based upon table 777/1003, Sec1.Page4 in the
+              continental manual -->
+            <expression>
+                <table>
+                    <property>instrumentation/altimeter/indicated-altitude-ft</property> 
+                    <entry><ind>0</ind><dep>350</dep></entry> <!-- clean Vmo -->
+                    <entry><ind>30000</ind><dep>300</dep></entry>
+                    <entry><ind>41300</ind><dep>248</dep></entry>
+                </table>
+            </expression>
+        </input>
+    
+        <output>instrumentation/afds/max-airspeed-kts</output>
+    </filter>
+
+    <filter>
+        <type>gain</type>
+        <gain>1.0</gain>
+
+        <input>
+            <expression>
+                <min>
+                    <property>/autopilot/settings/target-speed-kt</property>
+                    <property>instrumentation/afds/max-airspeed-kts</property>
+                </min>
+            </expression>
+        </input>
+
+        <output>instrumentation/afds/ias-target-kt</output>
+    </filter>
+
+    <!--filter>
+	<type>gain</type>
+	<gain>1.0</gain>
+	<input>
+		<condition>
+			<equal-to>
+	                    <property>/gear/gear/position-norm</property>
+	                    <value>0</value>
+                	</equal-to>
+		</condition>
+		<value>5</value>
+	</input>
+	<output>
+		<property>/instrumentation/afds/inputs/autothrottle-index</property>
+	</output>
+    </filter-->
+    <!-- thrust mode: IDLE >
+    <filter>
+        <type>gain</type>
+        <gain>1.0</gain>
+        <enable>
+            <condition>
+                <property>/instrumentation/afds/inputs/at-armed[0]</property>
+                <equals>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>4</value>
+                </equals>
+            </condition>
+        </enable>
+
+        <input>
+            <value>0</value>
+        </input>
+        <output>
+            <prop>/controls/engines/engine[0]/throttle</prop>
+        </output>
+    </filter>
+
+    <filter>
+        <type>gain</type>
+        <gain>1.0</gain>
+        <enable>
+            <condition>
+                <property>/instrumentation/afds/inputs/at-armed[1]</property>
+                <equals>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>4</value>
+                </equals>
+            </condition>
+        </enable>
+
+        <input>
+            <value>0</value>
+        </input>
+        <output>
+            <prop>/controls/engines/engine[1]/throttle</prop>
+        </output>
+    </filter-->
+
+    <!-- thrust mode: THR >
+    <filter>
+        <type>gain</type>
+        <gain>1.0</gain>
+        <enable>
+            <condition>
+                <property>/instrumentation/afds/inputs/at-armed[0]</property>
+                <equals>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+        </enable>
+
+        <input>
+            <value>0.95</value>
+        </input>
+        <output>
+            <prop>/controls/engines/engine[0]/throttle</prop>
+        </output>
+    </filter>
+
+    <filter>
+        <type>gain</type>
+        <gain>1.0</gain>
+        <enable>
+            <condition>
+                <property>/instrumentation/afds/inputs/at-armed[1]</property>
+                <equals>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+        </enable>
+
+        <input>
+            <value>0.95</value>
+        </input>
+        <output>
+            <prop>/controls/engines/engine[1]/throttle</prop>
+        </output>
+    </filter-->
+
+    <!-- thrust mode: SPD/ias -->
+    <pid-controller>
+        <name>Auto Throttle1 ias</name>
+        <debug>false</debug>
+        <enable>
+            <condition>
+                <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
+                <greater-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+                </greater-than>				
+                <not>
+                    <property>/instrumentation/afds/inputs/ias-mach-selected</property>
+                </not>
+                <honor-passive>true</honor-passive>
+            </condition>
+        </enable>
+
+        <input>
+            <prop>/instrumentation/airspeed-indicator/indicated-speed-kt</prop>
+        </input>
+        <reference>
+            <prop>instrumentation/afds/ias-target-kt</prop>
+        </reference>
+        <output>
+            <prop>/controls/engines/engine[0]/throttle</prop>
+        </output>
+        <config>
+            <Kp>0.05</Kp>
+            <beta>1.0</beta>
+            <alpha>0.1</alpha>
+            <gamma>0.0</gamma>
+            <Ti>10.0</Ti>
+            <Td>0.00001</Td>
+            <u_min>0.0</u_min>
+            <u_max>1.0</u_max>
+        </config>
+    </pid-controller>
+
+    <pid-controller>
+        <name>Auto Throttle2 ias</name>
+        <debug>false</debug>
+        <enable>
+            <condition>
+                <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
+                <greater-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+                </greater-than>				
+                <not>
+                    <property>/instrumentation/afds/inputs/ias-mach-selected</property>
+                </not>				
+                <honor-passive>true</honor-passive>
+            </condition>
+        </enable>
+
+        <input>
+            <prop>/instrumentation/airspeed-indicator/indicated-speed-kt</prop>
+        </input>
+        <reference>
+            <prop>instrumentation/afds/ias-target-kt</prop>
+        </reference>
+        <output>
+            <prop>/controls/engines/engine[1]/throttle</prop>
+        </output>
+        <config>
+            <Kp>0.05</Kp>
+            <beta>1.0</beta>
+            <alpha>0.1</alpha>
+            <gamma>0.0</gamma>
+            <Ti>10.0</Ti>
+            <Td>0.00001</Td>
+            <u_min>0.0</u_min>
+            <u_max>1.0</u_max>
+        </config>
+    </pid-controller>
+
+    <!-- thrust mode: SPD/mach -->
+    <pid-controller>
+        <name>Auto Throttle1 mach</name>
+        <debug>false</debug>
+        <enable>
+            <condition>
+                <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
+                <greater-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+                </greater-than>				
+                <property>/instrumentation/afds/inputs/ias-mach-selected</property>
+                <honor-passive>true</honor-passive>
+            </condition>
+        </enable>
+
+        <input>
+            <prop>/instrumentation/airspeed-indicator/indicated-mach</prop>
+        </input>
+        <reference>
+            <prop>/autopilot/settings/target-speed-mach</prop>
+        </reference>
+        <output>
+            <prop>/controls/engines/engine[0]/throttle</prop>
+        </output>
+        <config>
+            <Kp>20.0</Kp>
+            <beta>1.0</beta>
+            <alpha>0.1</alpha>
+            <gamma>0.0</gamma>
+            <Ti>10.0</Ti>
+            <Td>0.00001</Td>
+            <u_min>0.0</u_min>
+            <u_max>1.0</u_max>
+        </config>
+    </pid-controller>
+
+    <pid-controller>
+        <name>Auto Throttle2 mach</name>
+        <debug>false</debug>
+        <enable>
+            <condition>
+                <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
+                <greater-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+                </greater-than>				
+                <property>/instrumentation/afds/inputs/ias-mach-selected</property>
+                <honor-passive>true</honor-passive>
+            </condition>
+        </enable>
+
+        <input>
+            <prop>/instrumentation/airspeed-indicator/indicated-mach</prop>
+        </input>
+        <reference>
+            <prop>/autopilot/settings/target-speed-mach</prop>
+        </reference>
+        <output>
+            <prop>/controls/engines/engine[1]/throttle</prop>
+        </output>
+        <config>
+            <Kp>20.0</Kp>
+            <beta>1.0</beta>
+            <alpha>0.1</alpha>
+            <gamma>0.0</gamma>
+            <Ti>10.0</Ti>
+            <Td>0.00001</Td>
+            <u_min>0.0</u_min>
+            <u_max>1.0</u_max>
+        </config>
+    </pid-controller>
+
+</PropertyList>

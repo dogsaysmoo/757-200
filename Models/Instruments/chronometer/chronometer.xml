@@ -235,7 +235,7 @@ Boeing style chronometer, by Syd Adams
 		}
     </hotspot-action-script>
 
-    <animation>
+    <!--animation>
         <type>pick</type>
         <object-name>ET.run</object-name>
         <action>
@@ -298,7 +298,7 @@ Boeing style chronometer, by Syd Adams
                 </binding>
             </mod-up>
         </action>
-    </animation>
+    </animation-->
 
     <animation>
         <type>pick</type>
@@ -307,8 +307,10 @@ Boeing style chronometer, by Syd Adams
             <button>0</button>
             <repeatable>false</repeatable>
              <binding>
-                <command>property-toggle</command>
+                <command>property-cycle</command>
                 <property>instrumentation/clock/et-knob</property>
+		<value type="int">0</value>
+		<value type="int">1</value>
             </binding>
             <binding>
                <command>nasal</command>

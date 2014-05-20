@@ -5,8 +5,10 @@ var ammeter_ave = 0.0;
 var Lbus = props.globals.initNode("/systems/electrical/left-bus",0,"DOUBLE");
 var Rbus = props.globals.initNode("/systems/electrical/right-bus",0,"DOUBLE");
 var Amps = props.globals.initNode("/systems/electrical/amps",0,"DOUBLE");
-var EXT  = props.globals.initNode("/controls/electric/external-power",0,"DOUBLE");
-var XTie  = props.globals.initNode("/systems/electrical/xtie",0,"BOOL");
+#var EXT  = props.globals.initNode("/controls/electric/external-power",0,"DOUBLE");
+#var XTie  = props.globals.initNode("/systems/electrical/xtie",0,"BOOL");
+var Lbus_tie=props.globals.initNode("systems/electrical/bus-tie[0]",0,"BOOL");
+var Rbus_tie=props.globals.initNode("systems/electrical/bus-tie[1]",0,"BOOL");
 var APUgen=props.globals.initNode("controls/electric/APU-generator",0,"BOOL");
 var extpwr=props.globals.initNode("controls/electric/external-power",0,"BOOL");
 var lbus_volts = 0.0;
@@ -137,7 +139,7 @@ var Alternator = {
 var battery = Battery.new("/controls/electric/battery-switch",24,30,34,1.0,7.0);
 var alternator1 = Alternator.new(0,"controls/electric/engine[0]/generator","/engines/engine[0]/amp-v","/engines/engine[0]/rpm",20.0,28.0,60.0);
 var alternator2 = Alternator.new(1,"controls/electric/engine[1]/generator","/engines/engine[1]/amp-v","/engines/engine[1]/rpm",20.0,28.0,60.0);
-var alternator3 = Alternator.new(2,"controls/electric/APU-generator","/engines/apu/amp-v","/engines/apu/rpm",80.0,24.0,60.0);
+var alternator3 = Alternator.new(2,"controls/electric/APU-generator","/engines/apu/amp-v","/engines/apu/rpm",80.0,28.0,60.0);
 
 #####################################
 setlistener("/sim/signals/fdm-initialized", func {
@@ -309,7 +311,17 @@ update_virtual_bus = func( dt ) {
     }
     count=1-count;
     if(rbus_volts > 5 and  lbus_volts>5) xtie=1;
-    XTie.setValue(xtie);
+#    XTie.setValue(xtie);
+    if (!getprop("controls/electric/engine[0]/bus-tie")) {
+	Lbus_tie.setBoolValue(xtie);
+    } else { 
+	Lbus_tie.setBoolValue(0);
+    }
+    if (!getprop("controls/electric/engine[1]/bus-tie")) {
+	Rbus_tie.setBoolValue(xtie);
+    } else { 
+	Rbus_tie.setBoolValue(0);
+    }
     if(rbus_volts > 5 or  lbus_volts>5) load += lighting(24);
 
     ammeter = 0.0;

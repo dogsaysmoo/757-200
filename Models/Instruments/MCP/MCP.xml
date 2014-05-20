@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- Boeing 757-200 for FlightGear -->
 <!-- Mode Control Panel -->
@@ -47,7 +47,7 @@
 		<name>Autothrottle</name>
 		<type>rotate</type>
 		<object-name>THARM.switch</object-name>
-		<property>autopilot/settings/autothrottle</property>
+		<property>instrumentation/afds/inputs/at-armed</property>
 		<factor>30</factor>
 		<axis>
 			<x>0</x>
@@ -69,7 +69,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>property-toggle</command>
-				<property>autopilot/settings/autothrottle</property>
+				<property>instrumentation/afds/inputs/at-armed</property>
 			</binding>
 		</action>
 	</animation>
@@ -78,10 +78,11 @@
 		<name>Speed button light</name>
 		<type>select</type>
 		<object-name>ATtoggle</object-name>
+		<object-name>ATtoggle.001</object-name>
 		<condition>
 			<equals>
-				<property>autopilot/settings/speed</property>
-				<value>speed-with-throttle</value>
+				<property>/instrumentation/afds/ap-modes/speed-mode</property>
+				<value>SPD</value>
 			</equals>
 		</condition>
 	</animation>
@@ -89,23 +90,13 @@
 		<name>Speed button pick</name>
 		<type>pick</type>
 		<object-name>AT.btn</object-name>
-		<object-name>ATtoggle</object-name>
+		<object-name>ATtoggle.001</object-name>
 		<action>
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var node = props.globals.getNode("/autopilot/settings/speed", 1);
-				 if (node.getValue() == "speed-with-throttle")
-				  {
-				  node.setValue("");
-				  }
-				 else
-				  {
-				  node.setValue("speed-with-throttle");
-				  }
-				</script>
+				<script>Boeing757.afds.input(2,5);</script>
 			</binding>
 		</action>
 	</animation>
@@ -118,10 +109,8 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>property-cycle</command>
-				<property>autopilot/settings/speed-mode</property>
-				<value>knots</value>
-				<value>mach</value>
+				<command>property-toggle</command>
+	                        <property>instrumentation/afds/inputs/ias-mach-selected</property>
 			</binding>
 		</action>
 	</animation>
@@ -134,10 +123,9 @@
 		<object-name>IAS.led2</object-name>
 		<object-name>IAS.led3</object-name>
 		<condition>
-			<equals>
-				<property>autopilot/settings/speed-mode</property>
-				<value>knots</value>
-			</equals>
+			<not>
+			<property>instrumentation/afds/inputs/ias-mach-selected</property>
+			</not>
 		</condition>
 	</animation>
 	<animation>
@@ -185,28 +173,13 @@
 		<object-name>MACH.led2</object-name>
 		<object-name>MACH.led3</object-name>
 		<condition>
-			<equals>
-				<property>autopilot/settings/speed-mode</property>
-				<value>mach</value>
-			</equals>
+			<property>instrumentation/afds/inputs/ias-mach-selected</property>
 		</condition>
-	</animation>
-	<animation>
-		<name>Mach setting 1's</name>
-		<type>textranslate</type>
-		<object-name>MACH.led1</object-name>
-		<property>autopilot/settings/target-speed-mach</property>
-		<factor>0.1</factor>
-		<step>1</step>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-		</axis>
 	</animation>
 	<animation>
 		<name>Mach setting .1's</name>
 		<type>textranslate</type>
-		<object-name>MACH.led2</object-name>
+		<object-name>MACH.led1</object-name>
 		<property>autopilot/settings/target-speed-mach</property>
 		<step>0.1</step>
 		<axis>
@@ -217,10 +190,22 @@
 	<animation>
 		<name>Mach setting .01's</name>
 		<type>textranslate</type>
-		<object-name>MACH.led3</object-name>
+		<object-name>MACH.led2</object-name>
 		<property>autopilot/settings/target-speed-mach</property>
 		<factor>10</factor>
 		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Mach setting .001's</name>
+		<type>textranslate</type>
+		<object-name>MACH.led3</object-name>
+		<property>autopilot/settings/target-speed-mach</property>
+		<factor>100</factor>
+		<step>0.001</step>
 		<axis>
 			<x>0</x>
 			<y>1</y>
@@ -236,26 +221,26 @@
 			<button>3</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script><![CDATA[
-				 var setting = getprop("autopilot/settings/speed-mode");
-				 if (setting == "mach")
-				  {
-				  var newSpeed = getprop("autopilot/settings/target-speed-mach") + 0.01;
-				  if (newSpeed <= 9.99)
-				   {
-				   setprop("autopilot/settings/target-speed-mach", newSpeed);
-				   }
-				  }
-				 else
-				  {
-				  var newSpeed = getprop("autopilot/settings/target-speed-kt") + 1;
-				  if (newSpeed <= 999)
-				   {
-				   setprop("autopilot/settings/target-speed-kt", newSpeed);
-				   }
-				  }
-				]]></script>
+				<condition>
+                                <not>
+                                        <property>instrumentation/afds/inputs/ias-mach-selected</property>
+                                </not>
+                        	</condition>
+                        	<command>property-adjust</command>
+                        	<property>/autopilot/settings/target-speed-kt</property>
+                        	<step>1</step>
+                        	<min>100</min>
+                        	<max>399</max>
+                	</binding>
+                	<binding>
+                        	<condition>
+                                        <property>instrumentation/afds/inputs/ias-mach-selected</property>
+                        	</condition>
+                        	<command>property-adjust</command>
+                        	<property>/autopilot/settings/target-speed-mach</property>
+                        	<step>0.001</step>
+                        	<min>0.40</min>
+                        	<max>0.95</max>
 			</binding>
 		</action>
 		<action>
@@ -263,26 +248,26 @@
 			<button>4</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
-				<command>nasal</command>
-				<script><![CDATA[
-				 var setting = getprop("autopilot/settings/speed-mode");
-				 if (setting == "mach")
-				  {
-				  var newSpeed = getprop("autopilot/settings/target-speed-mach") - 0.01;
-				  if (newSpeed >= 0)
-				   {
-				   setprop("autopilot/settings/target-speed-mach", newSpeed);
-				   }
-				  }
-				 else
-				  {
-				  var newSpeed = getprop("autopilot/settings/target-speed-kt") - 1;
-				  if (newSpeed >= 0)
-				   {
-				   setprop("autopilot/settings/target-speed-kt", newSpeed);
-				   }
-				  }
-				]]></script>
+				<condition>
+                                <not>
+                                        <property>instrumentation/afds/inputs/ias-mach-selected</property>
+                                </not>
+	                        </condition>
+        	                <command>property-adjust</command>
+                	        <property>/autopilot/settings/target-speed-kt</property>
+                        	<step>-1</step>
+	                        <min>100</min>
+        	                <max>399</max>
+                	</binding>
+	                <binding>
+        	                <condition>
+                                        <property>instrumentation/afds/inputs/ias-mach-selected</property>
+                	        </condition>
+                        	<command>property-adjust</command>
+	                        <property>/autopilot/settings/target-speed-mach</property>
+        	                <step>-0.001</step>
+                	        <min>0.40</min>
+                        	<max>0.95</max>
 			</binding>
 		</action>
 	</animation>
@@ -328,8 +313,8 @@
 		<object-name>LNAV.toggle</object-name>
 		<condition>
 			<equals>
-				<property>autopilot/settings/heading</property>
-				<value>true-heading-hold</value>
+				<property>instrumentation/afds/ap-modes/roll-mode</property>
+				<value>LNAV</value>
 			</equals>
 		</condition>
 	</animation>
@@ -343,17 +328,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var node = props.globals.getNode("/autopilot/settings/heading", 1);
-				 if (node.getValue() == "true-heading-hold")
-				  {
-				  node.setValue("");
-				  }
-				 else
-				  {
-				  node.setValue("true-heading-hold");
-				  }
-				</script>
+				<script>Boeing757.afds.input(0,3);</script>
 			</binding>
 		</action>
 	</animation>
@@ -364,10 +339,20 @@
 		<type>select</type>
 		<object-name>VNAV.toggle</object-name>
 		<condition>
+		    <or>
 			<equals>
-				<property>autopilot/settings/altitude</property>
-				<value>vnav</value>
-			</equals>
+		                <property>instrumentation/afds/ap-modes/pitch-mode</property>
+                		<value>VNAV ALT</value>
+	            	</equals>
+	            	<equals>
+                		<property>instrumentation/afds/ap-modes/pitch-mode</property>
+                		<value>VNAV SPD</value>
+            		</equals>
+            		<equals>
+                		<property>instrumentation/afds/ap-modes/pitch-mode</property>
+                		<value>VNAV PTH</value>
+            		</equals>
+		    </or>
 		</condition>
 	</animation>
 	<animation>
@@ -380,17 +365,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var node = props.globals.getNode("/autopilot/settings/altitude", 1);
-				 if (node.getValue() == "vnav")
-				  {
-				  node.setValue("");
-				  }
-				 else
-				  {
-				  node.setValue("vnav");
-				  }
-				</script>
+				<script>Boeing757.afds.input(1,5);</script>
 			</binding>
 		</action>
 	</animation>
@@ -401,8 +376,31 @@
 		<type>select</type>
 		<object-name>FLCH.toggle</object-name>
 		<condition>
-			<property>sim/model/B757/unimplemented-controls</property>
+		    <!--or-->
+			<equals>
+                        	<property>instrumentation/afds/ap-modes/pitch-mode</property>
+                        	<value>FLCH SPD</value>
+                	</equals>
+                	<!--equals>
+                        	<property>instrumentation/afds/settings/flch-mode</property>
+                        	<value>1</value>
+                	</equals>
+		    </or-->
 		</condition>
+	</animation>
+	<animation>
+		<name>FLCH button pick</name>
+		<type>pick</type>
+		<object-name>FLCH.btn</object-name>
+		<object-name>FLCH.toggle</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.afds.input(1,8);</script>
+			</binding>
+		</action>
 	</animation>
 
 	<!-- Heading hold -->
@@ -454,17 +452,10 @@
 			<binding>
 				<command>property-adjust</command>
 				<property>autopilot/settings/heading-bug-deg</property>
-				<step type="double">1</step>
+				<step>1</step>
+				<min>0</min>
 				<max>360</max>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>
-				 if (getprop("autopilot/settings/heading-bug-deg") == 360)
-				  {
-				  setprop("autopilot/settings/heading-bug-deg", 0);
-				  }
-				</script>
+				<wrap>true</wrap>
 			</binding>
 		</action>
 		<action>
@@ -474,17 +465,46 @@
 			<binding>
 				<command>property-adjust</command>
 				<property>autopilot/settings/heading-bug-deg</property>
-				<step type="double">-1</step>
+				<step>-1</step>
 				<min>0</min>
+				<max>360</max>
+				<wrap>true</wrap>
 			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>HDG.select</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 if (getprop("autopilot/settings/heading-bug-deg") == 0)
-				  {
-				  setprop("autopilot/settings/heading-bug-deg", 360);
-				  }
-				</script>
+				<script>Boeing757.afds.input(0,1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>autopilot/settings/heading-bug-deg</property>
+				<step>1</step>
+				<min>0</min>
+				<max>360</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
+		<action>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>autopilot/settings/heading-bug-deg</property>
+				<step>-1</step>
+				<min>0</min>
+				<max>360</max>
+				<wrap>true</wrap>
 			</binding>
 		</action>
 	</animation>
@@ -492,6 +512,7 @@
 		<name>Heading hold knob rotate</name>
 		<type>rotate</type>
 		<object-name>HDG.knob</object-name>
+		<object-name>HDG.select</object-name>
 		<property>autopilot/settings/heading-bug-deg</property>
 		<factor>3</factor>
 		<axis>
@@ -514,27 +535,54 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>property-cycle</command>
-				<property>autopilot/settings/maximum-bank-deg</property>
-				<value>5</value>
-				<value>25</value>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>
-				 setprop("autopilot/settings/minimum-bank-deg", getprop("autopilot/settings/maximum-bank-deg") * -1);
-				</script>
-			</binding>
+                        	<command>property-adjust</command>
+	                        <property>instrumentation/afds/inputs/bank-limit-switch</property>
+        	                <step>1</step>
+                	        <min>0</min>
+                        	<max>6</max>
+	                </binding>
+        	        <binding>
+                	        <command>nasal</command>
+                        	<script>
+	                        var bank_set = [ "Bank Limit: auto", "Bank Limit: 5", "Bank Limit: 10", "Bank Limit: 15", "Bank Limit: 20", "Bank Limit: 25", "Bank Limit: 30" ];
+        	                printout = bank_set[getprop("instrumentation/afds/inputs/bank-limit-switch")];
+                	        setprop("/sim/messages/copilot", printout);
+                        	</script>
+	                </binding>
 		</action>
+		<action>
+	                <button>1</button>
+        	        <repeatable>false</repeatable>
+                	<binding>
+        	                <command>property-adjust</command>
+	                        <property>instrumentation/afds/inputs/bank-limit-switch</property>
+        	                <step>-1</step>
+                	        <min>0</min>
+                        	<max>6</max>
+	                </binding>
+                	<binding>
+                        	<command>nasal</command>
+	                        <script>
+        	                var bank_set = [ "Bank Limit: auto", "Bank Limit: 5", "Bank Limit: 10", "Bank Limit: 15", "Bank Limit: 20", "Bank Limit: 25", "Bank Limit: 30" ];
+                	        printout = bank_set[getprop("instrumentation/afds/inputs/bank-limit-switch")];
+                	        setprop("/sim/messages/copilot", printout);
+	                        </script>
+        	        </binding>
+	        </action>
 	</animation>
 	<animation>
 		<name>Bank limit knob rotate</name>
 		<type>rotate</type>
 		<object-name>BNK.knob</object-name>
-		<property>autopilot/settings/maximum-bank-deg</property>
+		<property>instrumentation/afds/inputs/bank-limit-switch</property>
 		<interpolation>
-			<entry><ind>5</ind><dep>-22</dep></entry>
-			<entry><ind>25</ind><dep>-105</dep></entry>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>1</ind><dep>-22</dep></entry>
+			<entry><ind>2</ind><dep>-44</dep></entry>
+			<entry><ind>3</ind><dep>-66</dep></entry>
+			<entry><ind>4</ind><dep>-88</dep></entry>
+			<entry><ind>5</ind><dep>-105</dep></entry>
+			<entry><ind>6</ind><dep>-127</dep></entry>
 		</interpolation>
 		<axis>
 			<x>1</x>
@@ -554,8 +602,8 @@
 		<object-name>HDGtoggle</object-name>
 		<condition>
 			<equals>
-				<property>autopilot/settings/heading</property>
-				<value>dg-heading-hold</value>
+				<property>instrumentation/afds/ap-modes/roll-mode</property>
+				<value>HDG HOLD</value>
 			</equals>
 		</condition>
 	</animation>
@@ -569,17 +617,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var node = props.globals.getNode("/autopilot/settings/heading", 1);
-				 if (node.getValue() == "dg-heading-hold")
-				  {
-				  node.setValue("");
-				  }
-				 else
-				  {
-				  node.setValue("dg-heading-hold");
-				  }
-				</script>
+				<script>Boeing757.afds.input(0,2);</script>
 			</binding>
 		</action>
 	</animation>
@@ -592,18 +630,19 @@
 		<object-name>VS.circle2</object-name>
 		<object-name>VS.circle3</object-name>
 		<object-name>VS.circle4</object-name>
+		<object-name>VS.toggle</object-name>
 		<condition>
-			<greater-than-equals>
-				<property>autopilot/settings/vertical-speed-fpm</property>
-				<value>0</value>
-			</greater-than-equals>
+			<equals>
+				<property>instrumentation/afds/ap-modes/pitch-mode</property>
+	                    	<value>V/S</value>
+			</equals>
 		</condition>
 	</animation>
 	<animation>
 		<name>Vertical speed setting 1,000's</name>
 		<type>textranslate</type>
 		<object-name>VS.circle1</object-name>
-		<property>autopilot/settings/vertical-speed-fpm</property>
+		<property>instrumentation/afds/settings/vs-display</property>
 		<factor>0.0001</factor>
 		<step>1000</step>
 		<axis>
@@ -615,7 +654,7 @@
 		<name>Vertical speed setting 100's</name>
 		<type>textranslate</type>
 		<object-name>VS.circle2</object-name>
-		<property>autopilot/settings/vertical-speed-fpm</property>
+		<property>instrumentation/afds/settings/vs-display</property>
 		<factor>0.001</factor>
 		<step>100</step>
 		<axis>
@@ -627,7 +666,7 @@
 		<name>Vertical speed setting 10's</name>
 		<type>textranslate</type>
 		<object-name>VS.circle3</object-name>
-		<property>autopilot/settings/vertical-speed-fpm</property>
+		<property>instrumentation/afds/settings/vs-display</property>
 		<factor>0.01</factor>
 		<step>10</step>
 		<axis>
@@ -639,7 +678,7 @@
 		<name>Vertical speed setting 1's</name>
 		<type>textranslate</type>
 		<object-name>VS.circle4</object-name>
-		<property>autopilot/settings/vertical-speed-fpm</property>
+		<property>instrumentation/afds/settings/vs-display</property>
 		<factor>0.1</factor>
 		<step>1</step>
 		<axis>
@@ -650,19 +689,25 @@
 	<animation>
 		<name>Vertical speed negative setting select</name>
 		<type>select</type>
-		<object-name>VS-.circle1</object-name>
+		<!--object-name>VS-.circle1</object-name>
 		<object-name>VS-.led2</object-name>
 		<object-name>VS-.led3</object-name>
-		<object-name>VS-.led4</object-name>
+		<object-name>VS-.led4</object-name-->
 		<object-name>VS.ledminus</object-name>
 		<condition>
+		    <and>
 			<less-than>
 				<property>autopilot/settings/vertical-speed-fpm</property>
 				<value>0</value>
 			</less-than>
+			<equals>
+				<property>instrumentation/afds/ap-modes/pitch-mode</property>
+	                    	<value>V/S</value>
+			</equals>
+		    </and>
 		</condition>
 	</animation>
-	<animation>
+	<!--animation>
 		<name>Vertical speed negative setting 1,000's</name>
 		<type>textranslate</type>
 		<object-name>VS-.circle1</object-name>
@@ -709,7 +754,7 @@
 			<x>0</x>
 			<y>-1</y>
 		</axis>
-	</animation>
+	</animation-->
 
 	<animation>
 		<name>Vertical speed hold wheel</name>
@@ -723,7 +768,7 @@
 				<command>property-adjust</command>
 				<property>autopilot/settings/vertical-speed-fpm</property>
 				<step type="double">100</step>
-				<max>9999</max>
+				<max>6000</max>
 			</binding>
 		</action>
 		<action>
@@ -734,12 +779,12 @@
 				<command>property-adjust</command>
 				<property>autopilot/settings/vertical-speed-fpm</property>
 				<step type="double">-100</step>
-				<min>-9999</min>
+				<min>-8000</min>
 			</binding>
 		</action>
 	</animation>
 
-	<animation>
+	<!--animation>
 		<name>Vertical speed hold button light</name>
 		<type>select</type>
 		<object-name>VS.toggle</object-name>
@@ -749,7 +794,7 @@
 				<value>vertical-speed-hold</value>
 			</equals>
 		</condition>
-	</animation>
+	</animation-->
 	<animation>
 		<name>Vertical speed hold button pick</name>
 		<type>pick</type>
@@ -760,17 +805,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var node = props.globals.getNode("/autopilot/settings/altitude", 1);
-				 if (node.getValue() == "vertical-speed-hold")
-				  {
-				  node.setValue("");
-				  }
-				 else
-				  {
-				  node.setValue("vertical-speed-hold");
-				  }
-				</script>
+				<script>Boeing757.afds.input(1,2);</script>
 			</binding>
 		</action>
 	</animation>
@@ -780,7 +815,7 @@
 		<name>Altitude setting 10,000's</name>
 		<type>textranslate</type>
 		<object-name>alt.circle1</object-name>
-		<property>autopilot/settings/altitude-setting-ft</property>
+		<property>autopilot/settings/alt-display-ft</property>
 		<factor>0.00001</factor>
 		<step>10000</step>
 		<axis>
@@ -792,7 +827,7 @@
 		<name>Altitude setting 1,000's</name>
 		<type>textranslate</type>
 		<object-name>alt.circle2</object-name>
-		<property>autopilot/settings/altitude-setting-ft</property>
+		<property>autopilot/settings/alt-display-ft</property>
 		<factor>0.0001</factor>
 		<step>1000</step>
 		<axis>
@@ -804,7 +839,7 @@
 		<name>Altitude setting 100's</name>
 		<type>textranslate</type>
 		<object-name>alt.circle3</object-name>
-		<property>autopilot/settings/altitude-setting-ft</property>
+		<property>autopilot/settings/alt-display-ft</property>
 		<factor>0.001</factor>
 		<step>100</step>
 		<axis>
@@ -816,7 +851,7 @@
 		<name>Altitude setting 10's</name>
 		<type>textranslate</type>
 		<object-name>alt.circle4</object-name>
-		<property>autopilot/settings/altitude-setting-ft</property>
+		<property>autopilot/settings/alt-display-ft</property>
 		<factor>0.01</factor>
 		<step>10</step>
 		<axis>
@@ -828,7 +863,7 @@
 		<name>Altitude setting 1's</name>
 		<type>rotate</type>
 		<object-name>alt.circle5</object-name>
-		<property>autopilot/settings/altitude-setting-ft</property>
+		<property>autopilot/settings/alt-display-ft</property>
 		<factor>36</factor>
 		<step>1</step>
 		<axis>
@@ -847,9 +882,9 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property>autopilot/settings/altitude-setting-ft</property>
+				<property>autopilot/settings/alt-display-ft</property>
 				<step type="double">100</step>
-				<max>99999</max>
+				<max>50000</max>
 			</binding>
 		</action>
 		<action>
@@ -858,7 +893,7 @@
 			<repeatable type="bool">true</repeatable>
 			<binding>
 				<command>property-adjust</command>
-				<property>autopilot/settings/altitude-setting-ft</property>
+				<property>autopilot/settings/alt-display-ft</property>
 				<step type="double">-100</step>
 				<min>0</min>
 			</binding>
@@ -888,8 +923,8 @@
 		<object-name>ALTtoggle</object-name>
 		<condition>
 			<equals>
-				<property>autopilot/settings/altitude</property>
-				<value>altitude-hold</value>
+				<property>instrumentation/afds/ap-modes/pitch-mode</property>
+				<value>ALT</value>
 			</equals>
 		</condition>
 	</animation>
@@ -903,17 +938,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var node = props.globals.getNode("/autopilot/settings/altitude", 1);
-				 if (node.getValue() == "altitude-hold")
-				  {
-				  node.setValue("");
-				  }
-				 else
-				  {
-				  node.setValue("altitude-hold");
-				  }
-				</script>
+				<script>Boeing757.afds.input(1,1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -935,8 +960,8 @@
 		<object-name>LOC.toggle</object-name>
 		<condition>
 			<equals>
-				<property>autopilot/settings/heading</property>
-				<value>nav1-hold</value>
+				<property>instrumentation/afds/ap-modes/roll-mode</property>
+				<value>LOC</value>
 			</equals>
 		</condition>
 	</animation>
@@ -950,18 +975,13 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var node = props.globals.getNode("/autopilot/settings/heading", 1);
-				 if (node.getValue() == "nav1-hold")
-				  {
-				  node.setValue("");
-				  }
-				 else
-				  {
-				  node.setValue("nav1-hold");
-				  }
-				</script>
+				<script>Boeing757.afds.input(3,0);</script>
 			</binding>
+			<binding>
+                        <command>property-assign</command>
+                	        <property>instrumentation/nav/slaved-to-gps</property>
+        	                <value type="bool">false</value>
+	                </binding>
 		</action>
 	</animation>
 
@@ -971,16 +991,10 @@
 		<type>select</type>
 		<object-name>APP.toggle</object-name>
 		<condition>
-			<and>
-				<equals>
-					<property>autopilot/settings/altitude</property>
-					<value>gs1-hold</value>
-				</equals>
-				<equals>
-					<property>autopilot/settings/heading</property>
-					<value>nav1-hold</value>
-				</equals>
-			</and>
+			<equals>
+				<property>instrumentation/afds/ap-modes/pitch-mode</property>
+				<value>G/S</value>
+			</equals>
 		</condition>
 	</animation>
 	<animation>
@@ -993,21 +1007,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>
-				 var hdgNode = props.globals.getNode("/autopilot/settings/heading", 1);
-				 var altNode = props.globals.getNode("/autopilot/settings/altitude", 1);
-
-				 if (altNode.getValue() == "gs1-hold")
-				  {
-				  hdgNode.setValue("");
-				  altNode.setValue("");
-				  }
-				 else
-				  {
-				  hdgNode.setValue("nav1-hold");
-				  altNode.setValue("gs1-hold");
-				  }
-				</script>
+				<script>Boeing757.afds.input(3,1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -1018,7 +1018,7 @@
 		<type>select</type>
 		<object-name>APtoggle</object-name>
 		<condition>
-			<property>autopilot/settings/engaged</property>
+			<property>instrumentation/afds/inputs/AP</property>
 		</condition>
 	</animation>
 	<animation>
@@ -1031,18 +1031,34 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>property-toggle</command>
-				<property>autopilot/settings/engaged</property>
+				<property>instrumentation/afds/inputs/AP</property>
 			</binding>
 		</action>
 	</animation>
 	
 				<!-- lights -->
-	        <effect>
-        <inherits-from>Effects/model-transparent</inherits-from>
-   <object-name>mcp_lights</object-name>
-  <object-name>mcp_lights2</object-name>
- <object-name>numbers</object-name>
-    </effect>
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>mcp_lights</object-name>
+		<object-name>mcp_lights2</object-name>
+		<object-name>NavRadDecimals</object-name>
+		<object-name>NAV_LFreq100</object-name>
+		<object-name>NAV_LFreq10</object-name>
+		<object-name>NAV_LFreq1</object-name>
+		<object-name>NAV_LFreq.1</object-name>
+		<object-name>NAV_LFreq.01</object-name>
+		<object-name>NAV_RFreq100</object-name>
+		<object-name>NAV_RFreq10</object-name>
+		<object-name>NAV_RFreq1</object-name>
+		<object-name>NAV_RFreq.1</object-name>
+		<object-name>NAV_RFreq.01</object-name>
+		<object-name>NavCRS_L100</object-name>
+		<object-name>NavCRS_L10</object-name>
+		<object-name>NavCRS_L1</object-name>
+		<object-name>NavCRS_R100</object-name>
+		<object-name>NavCRS_R10</object-name>
+		<object-name>NavCRS_R1</object-name>
+	</effect>
 
 	<animation>
 		<name>Panel lighting</name>
@@ -1073,7 +1089,23 @@
 		<animation>
 		<name>Power on/off</name>
 		<type>select</type>
-		<object-name>numbers</object-name>
+		<object-name>NavRadDecimals</object-name>
+		<object-name>NAV_LFreq100</object-name>
+		<object-name>NAV_LFreq10</object-name>
+		<object-name>NAV_LFreq1</object-name>
+		<object-name>NAV_LFreq.1</object-name>
+		<object-name>NAV_LFreq.01</object-name>
+		<object-name>NAV_RFreq100</object-name>
+		<object-name>NAV_RFreq10</object-name>
+		<object-name>NAV_RFreq1</object-name>
+		<object-name>NAV_RFreq.1</object-name>
+		<object-name>NAV_RFreq.01</object-name>
+		<object-name>NavCRS_L100</object-name>
+		<object-name>NavCRS_L10</object-name>
+		<object-name>NavCRS_L1</object-name>
+		<object-name>NavCRS_R100</object-name>
+		<object-name>NavCRS_R10</object-name>
+		<object-name>NavCRS_R1</object-name>
 		<condition>
 			<greater-than>
 				<property>systems/electrical/outputs/efis</property>
@@ -1092,23 +1124,25 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>property-cycle</command>
-				<property>autopilot/disengaged-btn</property>
-				<value>0</value>
-				<value>1</value>
+				<command>property-toggle</command>
+				<property>instrumentation/afds/inputs/AP-disengage</property>
 			</binding>
 			<binding>
 				<command>property-assign</command>
-				<property>autopilot/settings/engaged</property>
-				<value type="bool">false</value>
+				<property>instrumentation/afds/inputs/AP</property>
+				<value>0</value>
 			</binding>
+			<binding>
+                        	<command>nasal</command>
+                        	<script>Boeing757.afds.input(2,0);Boeing757.afds.ap_update();</script>
+                	</binding>
 		</action>
 	</animation>
 	<animation>
 		<name>Disengage bar</name>
 		<type>translate</type>
 		<object-name>AP.disengage</object-name>
-		<property>autopilot/disengaged-btn</property>
+		<property>instrumentation/afds/inputs/AP-disengage</property>
 		<factor>0.013</factor>
 		<axis>
 			<x>0</x>
@@ -1116,5 +1150,371 @@
 			<z>-1</z>
 		</axis>
 	</animation>
+
+	<!-- NAV Radio Left -->
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_LFreq100</object-name>
+		<property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+		<factor>0.001</factor>
+		<bias>0.0001</bias>
+		<step>100</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_LFreq10</object-name>
+		<property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+		<factor>0.01</factor>
+		<bias>0.0001</bias>
+		<step>10</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_LFreq1</object-name>
+		<property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+		<factor>0.1</factor>
+		<bias>0.0001</bias>
+		<step>1</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_LFreq.1</object-name>
+		<property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+		<factor>1</factor>
+		<bias>0.0001</bias>
+		<step>0.1</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_LFreq.01</object-name>
+		<property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+		<factor>10</factor>
+		<bias>0.0001</bias>
+		<step>0.01</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>NavCRS_L100</object-name>
+		<property>instrumentation/nav[0]/radials/selected-deg</property>
+		<factor>0.001</factor>
+		<bias>0.0001</bias>
+		<step>100</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NavCRS_L10</object-name>
+		<property>instrumentation/nav[0]/radials/selected-deg</property>
+		<factor>0.01</factor>
+		<bias>0.0001</bias>
+		<step>10</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NavCRS_L1</object-name>
+		<property>instrumentation/nav[0]/radials/selected-deg</property>
+		<factor>0.1</factor>
+		<bias>0.0001</bias>
+		<step>1</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+
+	<animation>
+                <type>pick</type>
+                <object-name>NavRad_L.knobSm</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+                                <step>0.05</step>
+                                <max>117.95</max>
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+                                <step>-0.05</step>
+                                <min>108</min>
+                        </binding>
+                </action>
+        </animation>
+	<animation>
+                <type>pick</type>
+                <object-name>NavRad_L.knobLg</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+                                <step>1</step>
+                                <max>117.95</max>
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+                                <step>-1</step>
+                                <min>108</min>
+                        </binding>
+                </action>
+        </animation>
+
+	<animation>
+                <type>pick</type>
+                <object-name>NavRad_L.CRSknob</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[0]/radials/selected-deg</property>
+                                <step>1</step>
+                                <max>360</max>
+				<min>0</min>
+				<wrap>true</wrap>
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[0]/radials/selected-deg</property>
+                                <step>-1</step>
+                                <max>360</max>
+				<min>0</min>
+				<wrap>true</wrap>
+                        </binding>
+                </action>
+        </animation>
+
+	<!-- NAV Radio Right -->
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_RFreq100</object-name>
+		<property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+		<factor>0.001</factor>
+		<bias>0.0001</bias>
+		<step>100</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_RFreq10</object-name>
+		<property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+		<factor>0.01</factor>
+		<bias>0.0001</bias>
+		<step>10</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_RFreq1</object-name>
+		<property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+		<factor>0.1</factor>
+		<bias>0.0001</bias>
+		<step>1</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_RFreq.1</object-name>
+		<property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+		<factor>1</factor>
+		<bias>0.0001</bias>
+		<step>0.1</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NAV_RFreq.01</object-name>
+		<property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+		<factor>10</factor>
+		<bias>0.0001</bias>
+		<step>0.01</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>NavCRS_R100</object-name>
+		<property>instrumentation/nav[1]/radials/selected-deg</property>
+		<factor>0.001</factor>
+		<bias>0.0001</bias>
+		<step>100</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NavCRS_R10</object-name>
+		<property>instrumentation/nav[1]/radials/selected-deg</property>
+		<factor>0.01</factor>
+		<bias>0.0001</bias>
+		<step>10</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>NavCRS_R1</object-name>
+		<property>instrumentation/nav[1]/radials/selected-deg</property>
+		<factor>0.1</factor>
+		<bias>0.0001</bias>
+		<step>1</step>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+		</axis>
+	</animation>
+
+	<animation>
+                <type>pick</type>
+                <object-name>NavRad_R.knobSm</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+                                <step>0.05</step>
+                                <max>117.95</max>
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+                                <step>-0.05</step>
+                                <min>108</min>
+                        </binding>
+                </action>
+        </animation>
+	<animation>
+                <type>pick</type>
+                <object-name>NavRad_R.knobLg</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+                                <step>1</step>
+                                <max>117.95</max>
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+                                <step>-1</step>
+                                <min>108</min>
+                        </binding>
+                </action>
+        </animation>
+
+	<animation>
+                <type>pick</type>
+                <object-name>NavRad_R.CRSknob</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[1]/radials/selected-deg</property>
+                                <step>1</step>
+                                <max>360</max>
+				<min>0</min>
+				<wrap>true</wrap>
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property>instrumentation/nav[1]/radials/selected-deg</property>
+                                <step>-1</step>
+                                <max>360</max>
+				<min>0</min>
+				<wrap>true</wrap>
+                        </binding>
+                </action>
+        </animation>
 
 </PropertyList>
