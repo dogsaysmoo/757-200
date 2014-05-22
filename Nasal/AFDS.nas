@@ -85,7 +85,14 @@ var AFDS = {
 
 	m.remaining_distance = m.AFDS_inputs.initNode("remaining-distance",0,"DOUBLE");
 
-        m.APl = setlistener(m.AP, func m.setAP(),0,0);
+	m.arm_alarm = 0;
+        m.APl = setlistener(m.AP, func {
+	    m.setAP();
+	    if (!m.AP.getBoolValue() and m.arm_alarm) {
+		m.AP_disengage_alarm.setValue(1);
+		settimer (func {m.AP_disengage_alarm.setBoolValue(0);},3);
+	    }
+	},0,0);
         m.APdisl = setlistener(m.AP_disengaged, func m.setAP(),0,0);
         m.Lbank = setlistener(m.bank_switch, func m.setbank(),0,0);
         m.LTMode = setlistener(m.autothrottle_mode, func m.updateATMode(),0,0);
@@ -131,7 +138,10 @@ var AFDS = {
             }
 	    if (btn==2) {
 		# V/S Mode
-		me.flch_mode.setBoolValue(1);
+		settimer(func {
+		    if (me.vertical_mode.getValue() == 2 or me.vertical_mode.getValue() == 9)
+			me.flch_mode.setBoolValue(1);
+		},3);
 		if (vs_now > 6000) {
 		    me.vs_setting.setValue(6000);
 		} elsif (vs_now < -8000) {
@@ -154,11 +164,11 @@ var AFDS = {
 		# FLCH mode
 		if (me.vertical_mode.getValue() == 2) {
 		    btn = 2;
-		    if (me.flch_mode.getBoolValue()) {
-			me.flch_mode.setBoolValue(0);
-		    } else {
-			me.flch_mode.setBoolValue(1);
-		    }
+#		    if (me.flch_mode.getBoolValue()) {
+#			me.flch_mode.setBoolValue(0);
+#		    } else {
+#			me.flch_mode.setBoolValue(1);
+#		    }
 		}else {
 		    me.alt_setting.setValue(me.alt_display.getValue());
 #		    btn = 1;
@@ -202,10 +212,6 @@ var AFDS = {
         setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
         setprop("autopilot/internal/target-roll-deg",0);
         me.AP_passive.setValue(output);
-	if (!me.AP.getBoolValue()) {
-		me.AP_disengage_alarm.setValue(1);
-		settimer (func {me.AP_disengage_alarm.setBoolValue(0);},2);
-	}
     },
 ###################
     setbank : func{
@@ -252,11 +258,12 @@ var AFDS = {
             me.AP.setValue(0);
             me.autothrottle_mode.setValue(0);
         }
+	me.arm_alarm = me.AP.getBoolValue();
 
         if(me.step==0){ ### glideslope armed ?###
-            msg="";
+#            msg="";
             if(me.gs_armed.getBoolValue()){
-                msg="G/S";
+#                msg="G/S";
                 var gsdefl = getprop("instrumentation/nav/gs-needle-deflection");
                 var gsrange = getprop("instrumentation/nav/gs-in-range");
                 if(gsdefl< 0.5 and gsdefl>-0.5){
@@ -266,7 +273,7 @@ var AFDS = {
                     }
                 }
             }
-            me.AP_pitch_arm.setValue(msg);
+#            me.AP_pitch_arm.setValue(msg);
 
         }elsif(me.step==1){ ### localizer armed ? ###
             if(me.loc_armed.getBoolValue()){
@@ -296,6 +303,7 @@ var AFDS = {
             var test_fpa=me.vs_fpa_selected.getValue();
             if(idx==2 and test_fpa)idx=9;
             if(idx==9 and !test_fpa)idx=2;
+	    msg = "";
 
 	    if (((idx==2) or (idx==9)) and me.flch_mode.getBoolValue())
 	    {
@@ -346,6 +354,11 @@ var AFDS = {
             }
             me.AP_pitch_mode.setValue(me.pitch_list[idx]);
             me.AP_pitch_engaged.setBoolValue(idx>0);
+	    if (me.flch_mode.getBoolValue() or idx == 8)
+                msg = "ALT";
+            if (me.gs_armed.getBoolValue())
+                msg = "G/S";
+            me.AP_pitch_arm.setValue(msg);
 
         }elsif(me.step==4){             ### check speed modes  ###
 	    if (me.ias_mach_selected.getBoolValue()) {

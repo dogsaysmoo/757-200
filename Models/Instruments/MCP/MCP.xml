@@ -376,16 +376,16 @@
 		<type>select</type>
 		<object-name>FLCH.toggle</object-name>
 		<condition>
-		    <or>
+		    <!--or-->
 			<equals>
                         	<property>instrumentation/afds/ap-modes/pitch-mode</property>
                         	<value>FLCH SPD</value>
                 	</equals>
-                	<equals>
+                	<!--equals>
                         	<property>instrumentation/afds/settings/flch-mode</property>
                         	<value>1</value>
                 	</equals>
-		    </or>
+		    </or-->
 		</condition>
 	</animation>
 	<animation>

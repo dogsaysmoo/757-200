@@ -26,8 +26,6 @@ var speed_calc = func {
 		v2 = (0.33 * (weight - 100)) + 99;
 	}
 
-	var stall = 0.0;
-
 	var vgrosswt = math.sqrt(getprop("/yasim/gross-weight-lbs")/getprop("/limits/mass-and-balance/maximum-takeoff-mass-lbs"));
 
 	var vref_table = [
