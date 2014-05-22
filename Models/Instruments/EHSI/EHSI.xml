@@ -5,7 +5,7 @@
 
 <PropertyList>
 
-	<path>EHSI.ac</path>
+	<path>EHSI2.ac</path>
 
 	<!-- 3D TEXT -->
 	<text>
@@ -485,6 +485,34 @@
 		</axis>
 	</animation>
 
+<!-- EHSI Mode select -->
+	<animation>
+		<type>pick</type>
+		<object-name>HSI</object-name>
+		<object-name>HSI_full</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</binding>
+		</action>
+	</animation>
+
+<!-- ARC MODE -->
+	<animation>
+		<type>select</type>
+		<object-name>HSI</object-name>
+		<object-name>HdgPtr_1</object-name>
+		<object-name>HdgAP</object-name>
+		<condition>
+		    <not>
+			<property>instrumentation/efis/ehsi-ctr</property>
+		    </not>
+		</condition>
+	</animation>
+
 	<!-- HSI arc -->
 	<animation>
 		<name>HSI arc</name>
@@ -527,7 +555,12 @@
 		<object-name>HdgNAVPtr</object-name>
 		<object-name>HdgNAVTrack</object-name>
 		<condition>
+		    <and>
 			<property>instrumentation/nav[0]/in-range</property>
+		    	<not>
+			    <property>instrumentation/efis/ehsi-ctr</property>
+		    	</not>
+		    </and>
 		</condition>
 	</animation>
 	<animation>
@@ -569,6 +602,9 @@
 			<and>
 				<property>instrumentation/nav[0]/to-flag</property>
 				<property>instrumentation/nav[0]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
 			</and>
 		</condition>
 	</animation>
@@ -580,6 +616,9 @@
 			<and>
 				<property>instrumentation/nav[0]/from-flag</property>
 				<property>instrumentation/nav[0]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
 			</and>
 		</condition>
 	</animation>
@@ -609,6 +648,9 @@
 			<and>
 				<property>instrumentation/nav[1]/to-flag</property>
 				<property>instrumentation/nav[1]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
 			</and>
 		</condition>
 	</animation>
@@ -620,6 +662,9 @@
 			<and>
 				<property>instrumentation/nav[1]/from-flag</property>
 				<property>instrumentation/nav[1]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
 			</and>
 		</condition>
 	</animation>
@@ -646,8 +691,13 @@
 		<name>ADF1 bug select</name>
 		<type>select</type>
 		<object-name>ADFBug</object-name>
-		<condition>
+i		<condition>
+		    <and>
 			<property>instrumentation/adf/in-range</property>
+		    	<not>
+			    <property>instrumentation/efis/ehsi-ctr</property>
+		    	</not>
+		    </and>
 		</condition>
 	</animation>
 	<animation>
@@ -671,7 +721,12 @@
 		<type>select</type>
 		<object-name>ADFBug</object-name>
 		<condition>
+		    <and>
 			<property>instrumentation/adf[1]/in-range</property>
+		    	<not>
+			    <property>instrumentation/efis/ehsi-ctr</property>
+		    	</not>
+		    </and>
 		</condition>
 	</animation>
 	<animation>
@@ -690,6 +745,154 @@
 			<z-m>-0.063</z-m>
 		</center>
 	</animation-->
+
+<!-- CENTERED MODE -->
+	<animation>
+		<type>select</type>
+		<object-name>HSI_full</object-name>
+		<object-name>HdgAP_full</object-name>
+		<object-name>HdgNAVPtr_full</object-name>
+		<object-name>HdgNAVTrack_full</object-name>
+		<object-name>NAV1BugTO_full</object-name>
+		<object-name>NAV1BugFROM_full</object-name>
+		<object-name>NAV2BugTO_full</object-name>
+		<object-name>NAV2BugFROM_full</object-name>
+		<object-name>ADFBug_full</object-name>
+		<condition>
+			<property>instrumentation/efis/ehsi-ctr</property>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>HSI_full</object-name>
+		<object-name>HdgAP_full</object-name>
+		<object-name>HdgNAVPtr_full</object-name>
+		<object-name>HdgNAVTrack_full</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>NAV1BugTO_full</object-name>
+		<object-name>NAV1BugFROM_full</object-name>
+		<object-name>NAV2BugTO_full</object-name>
+		<object-name>NAV2BugFROM_full</object-name>
+		<property>orientation/heading-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>HdgAP_full</object-name>
+		<property>autopilot/settings/heading-bug-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>HdgNAVPtr_full</object-name>
+		<object-name>HdgNAVTrack_full</object-name>
+		<property>instrumentation/nav[0]/radials/selected-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>NAV1 tracker translate</name>
+		<type>translate</type>
+		<object-name>HdgNAVTrack_full</object-name>
+		<property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+		<factor>-0.020</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>NAV1BugTO_full</object-name>
+		<object-name>NAV1BugFROM_full</object-name>
+		<property>instrumentation/nav[0]/heading-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>NAV2BugTO_full</object-name>
+		<object-name>NAV2BugFROM_full</object-name>
+		<property>instrumentation/nav[1]/heading-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>ADFBug_full</object-name>
+		<property>instrumentation/adf[1]/indicated-bearing-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
 
 	<!-- Wind Speed and Direction -->
 	<animation>

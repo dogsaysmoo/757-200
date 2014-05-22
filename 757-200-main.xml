@@ -460,6 +460,9 @@
                 	    <source>/instrumentation/nav[1]/frequencies/selected-mhz</source>
             		</frequencies>
         	</dme>
+		<efis>
+			<ehsi-ctr type="bool">1</ehsi-ctr>
+		</efis>
 		<fmc>
 			<to-flap type="double">5</to-flap>
 			<vspeeds>
