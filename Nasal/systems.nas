@@ -435,6 +435,79 @@ var IRSl = IRS.new(0);
 var IRSc = IRS.new(1);
 var IRSr = IRS.new(2);
 
+## TRANSPONDER
+##############
+var xpndr = {
+    new : func {
+	m = { parents : [xpndr] };
+	m.knob = props.globals.initNode("instrumentation/transponder/inputs/knob-pos",0,"INT");
+	m.mode = props.globals.getNode("instrumentation/transponder/inputs/knob-mode",1);
+#	m.ident = props.globals.getNode("instrumentation/transponder/inputs/ident-btn",1);
+	m.squawk = props.globals.getNode("instrumentation/transponder/id-code",1);
+	m.digits = [ props.globals.initNode("instrumentation/transponder/inputs/display[0]",0,"INT"),
+		     props.globals.initNode("instrumentation/transponder/inputs/display[1]",0,"INT"),
+		     props.globals.initNode("instrumentation/transponder/inputs/display[2]",0,"INT"),
+		     props.globals.initNode("instrumentation/transponder/inputs/display[3]",0,"INT") ];
+
+	m.d1 = setlistener(m.digits[0], func m.code_update(1),0,0);
+	m.d2 = setlistener(m.digits[1], func m.code_update(1),0,0);
+	m.d3 = setlistener(m.digits[2], func m.code_update(1),0,0);
+	m.d4 = setlistener(m.digits[3], func m.code_update(1),0,0);
+	m.d1234 = setlistener(m.squawk, func m.code_update(0),0,0);
+
+	return m;
+    },
+    update : func {
+	if (getprop("/controls/electric/battery-switch")) {
+	    if (me.knob.getValue() == 0) me.mode.setValue(1);
+	    if (me.knob.getValue() == 1) me.mode.setValue(4);
+	    if (me.knob.getValue() == 2) me.mode.setValue(3);
+	    if (me.knob.getValue() == 3 or me.knob.getValue() == 4)
+		me.mode.setValue(5);
+	} else {
+	    me.mode.setValue(0);
+	}
+    },
+    ident : func {
+	var ident_btn = props.globals.getNode("instrumentation/transponder/inputs/ident-btn",1);
+        if (!(ident_btn.getBoolValue())) {
+            ident_btn.setBoolValue(1);
+            settimer(func { ident_btn.setBoolValue(0); },18);
+        }
+    },
+    code_update : func(n) {
+	if (n == 0) {
+	    var a = int(int(me.squawk.getValue()) / 1000);
+	    var b = int((int(me.squawk.getValue()) - (1000*a)) / 100);
+	    var c = int((int(me.squawk.getValue()) - (1000*a) - (100*b)) / 10);
+	    var d = int(int(me.squawk.getValue()) - (1000*a) - (100*b) - (10*c));
+	    if (a > 7 or a < 0) a = 0;
+	    if (b > 7 or b < 0) b = 0;
+	    if (c > 7 or c < 0) c = 0;
+	    if (d > 7 or d < 0) d = 0;
+
+	    me.digits[0].setValue(a);
+	    me.digits[1].setValue(b);
+	    me.digits[2].setValue(c);
+	    me.digits[3].setValue(d);
+	} else {
+	    var code = (1000 * me.digits[0].getValue()) + (100 * me.digits[1].getValue()) + (10 * me.digits[2].getValue()) + me.digits[3].getValue();
+	    me.squawk.setValue(sprintf ("%04i", code));
+	}
+    },
+};
+var transponder = xpndr.new();
+settimer(func {
+	transponder.update();
+	transponder.code_update(0);
+},2);
+setlistener("/controls/electric/battery-switch", func {
+	transponder.update();
+},0,0);
+setlistener("instrumentation/transponder/inputs/knob-pos", func {
+	transponder.update();
+},0,0);
+
 ## INSTRUMENTS
 ##############
 

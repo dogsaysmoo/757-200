@@ -731,6 +731,15 @@
 		</overlay>
 	</model>
 
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/Radiopanel/transponder.xml</path>
+		<offsets>
+		    <x-m>1.605</x-m>
+		    <y-m>0.002</y-m>
+		    <z-m>0.0</z-m>
+		</offsets>
+	</model>
+
 	<!-- Magnetic Compass -->
 	<model>
 		<path>Aircraft/757-200/Models/Instruments/Compass/mag-compass.xml</path>

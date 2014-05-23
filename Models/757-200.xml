@@ -2251,7 +2251,7 @@
 		<object-name>shadow</object-name>
     </effect>
     
-    <effect>
+    <!--effect>
         <inherits-from>Aircraft/757-200/Models/Effects/reflect</inherits-from>
 		<object-name>Fuselage</object-name>
 		<object-name>Rudder</object-name>
@@ -2292,7 +2292,7 @@
     		<object-name>Slat2</object-name>
     		<object-name>Slat3</object-name>
     		<object-name>Slat4</object-name>
-    </effect>
+    </effect-->
     
     <animation>
 	<type>rotate</type>
