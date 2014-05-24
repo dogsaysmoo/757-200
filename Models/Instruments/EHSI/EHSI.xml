@@ -918,7 +918,7 @@ i		<condition>
 	<animation>
 		<type>rotate</type>
 		<object-name>ADFBug_full</object-name>
-		<property>instrumentation/adf[1]/indicated-bearing-deg</property>
+		<property>instrumentation/adf[0]/indicated-bearing-deg</property>
 		<center>
 		    <x-m>0.000</x-m>
 		    <y-m>0.000</y-m>

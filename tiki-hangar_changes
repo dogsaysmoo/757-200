@@ -72,4 +72,6 @@ Changes I have made:
 -Added transponder
 -Added custom flight recorder
 -Added altn gear down controls
+-Added altn flap controls
+-Fixed chronometer ET switch
 

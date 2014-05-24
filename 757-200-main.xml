@@ -449,6 +449,9 @@
 	</gear>
 
 	<instrumentation>
+		<clock>
+			<et-knob type="int">0</et-knob>
+		</clock>
 		<dme n="0">
             		<serviceable>true</serviceable>
             		<frequencies>
