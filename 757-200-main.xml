@@ -68,7 +68,8 @@
             		<string n="1" type="string"></string> <!-- Dual Control analog TDM-mpp2 only pilot to copilot (fuel in tank etc.) -->
           	    </generic>
         	</multiplay>
-  
+ 
+		<flight-recorder include="Systems/flight-recorder.xml"/> 
 
 		<startup>
 			<splash-texture>Aircraft/757-200/splash.png</splash-texture>

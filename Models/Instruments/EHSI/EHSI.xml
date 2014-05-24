@@ -752,12 +752,6 @@ i		<condition>
 		<object-name>HSI_full</object-name>
 		<object-name>HdgAP_full</object-name>
 		<object-name>HdgNAVPtr_full</object-name>
-		<object-name>HdgNAVTrack_full</object-name>
-		<object-name>NAV1BugTO_full</object-name>
-		<object-name>NAV1BugFROM_full</object-name>
-		<object-name>NAV2BugTO_full</object-name>
-		<object-name>NAV2BugFROM_full</object-name>
-		<object-name>ADFBug_full</object-name>
 		<condition>
 			<property>instrumentation/efis/ehsi-ctr</property>
 		</condition>
@@ -816,6 +810,17 @@ i		<condition>
 	</animation>
 
 	<animation>
+		<name>NAV1 Tracker select</name>
+		<type>select</type>
+		<object-name>HdgNAVTrack_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
 		<type>rotate</type>
 		<object-name>HdgNAVPtr_full</object-name>
 		<object-name>HdgNAVTrack_full</object-name>
@@ -845,6 +850,17 @@ i		<condition>
 	</animation>
 
 	<animation>
+		<type>select</type>
+		<object-name>NAV1BugTO_full</object-name>
+		<object-name>NAV1BugFROM_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
 		<type>rotate</type>
 		<object-name>NAV1BugTO_full</object-name>
 		<object-name>NAV1BugFROM_full</object-name>
@@ -862,6 +878,17 @@ i		<condition>
 	</animation>
 
 	<animation>
+		<type>select</type>
+		<object-name>NAV2BugTO_full</object-name>
+		<object-name>NAV2BugFROM_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[1]/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
 		<type>rotate</type>
 		<object-name>NAV2BugTO_full</object-name>
 		<object-name>NAV2BugFROM_full</object-name>
@@ -878,6 +905,16 @@ i		<condition>
 		</axis>
 	</animation>
 
+	<animation>
+		<type>select</type>
+		<object-name>ADFBug_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/adf/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
 	<animation>
 		<type>rotate</type>
 		<object-name>ADFBug_full</object-name>
