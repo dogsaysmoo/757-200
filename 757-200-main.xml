@@ -461,7 +461,7 @@
             		</frequencies>
         	</dme>
 		<efis>
-			<ehsi-ctr type="bool">1</ehsi-ctr>
+			<ehsi-ctr type="bool">0</ehsi-ctr>
 		</efis>
 		<fmc>
 			<to-flap type="double">5</to-flap>

@@ -198,6 +198,19 @@
 			<pitch-deg>-8</pitch-deg>
 		</offsets>
 	</model>
+	<animation>
+                <type>pick</type>
+                <object-name>CTR_L</object-name>
+                <object-name>CTR_R</object-name>
+                <action>
+                        <button>0</button>
+                        <repeatable>false</repeatable>
+                        <binding>
+                                <command>property-toggle</command>
+                                <property>instrumentation/efis/ehsi-ctr</property>
+                        </binding>
+                </action>
+        </animation>
 	
 		<!-- EFB -->
 		<model>
