@@ -795,8 +795,16 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>property-toggle</command>
-				<property>controls/gear/gear-down</property>
+				<command>nasal</command>
+				<script>controls.gearDown(-1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>controls.gearDown(1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -1178,14 +1186,14 @@
 	    				<!-- lights -->
 	        <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
-   <object-name>cockpit_instrumentlights</object-name>
+   <object-name>cockpit_inst_lights</object-name>
     </effect>
 
 	
 		<animation>
 		<name>instrument lighting</name>
 		<type>material</type>
-		<object-name>cockpit_instrumentlights</object-name>
+		<object-name>cockpit_inst_lights</object-name>
 		<emission>
 			<red>1</red>
 			<green>1</green>
@@ -1642,5 +1650,52 @@
 		</axis>
 	</animation>
 
+<!-- Altn Gear Extend -->
+	<animation>
+		<type>pick</type>
+		<object-name>AltGear.Btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<condition>
+				    <not>
+					<property>systems/hydraulic/equipment/enable-flap</property>
+				    </not>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/gear/alt-gear</property>
+				<value>true</value>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>AltGear.Btn</object-name>
+		<condition>
+		    <not>
+			<property>controls/gear/alt-gear</property>
+		    </not>
+		</condition>
+		<emission>
+		    <red>0.1</red>
+		    <green>0.1</green>
+		    <blue>0.1</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>AltGear.Btn</object-name>
+		<condition>
+			<property>controls/gear/alt-gear</property>
+		</condition>
+		<emission>
+		    <red>1.0</red>
+		    <green>0.6</green>
+		    <blue>0.0</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
 
 </PropertyList>
