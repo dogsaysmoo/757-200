@@ -1698,4 +1698,43 @@
 		</emission>
 	</animation>
 
+<!-- Altn Flaps Control -->
+	<animation>
+		<type>pick</type>
+		<object-name>AltFlaps.knob</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.altn_flapsDown(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.altn_flapsDown(-1);</script>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>AltFlaps.knob</object-name>
+		<property>controls/flight/alt-flaps-pos</property>
+		<factor>-45</factor>
+		<center>
+		    <x-m>1.000</x-m>
+		    <y-m>0.1515</y-m>
+		    <z-m>1.065</z-m>
+		</center>
+		<axis>
+		    <x>0.85</x>
+		    <y>0</y>
+		    <z>0.15</z>
+		</axis>
+	</animation>
+		
+
 </PropertyList>

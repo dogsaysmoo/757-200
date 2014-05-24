@@ -322,7 +322,7 @@ setlistener("controls/gear/alt-gear", func (alt) {
 ########
 
 controls.flapsDown = func(step) {
-    if (getprop("systems/hydraulic/equipment/enable-flap") or getprop("controls/flight/alt-flaps") != 0) {
+    if (getprop("systems/hydraulic/equipment/enable-flap") and getprop("controls/flight/alt-flaps-pos") == -1) {
         if(step == 0) return;
         if(props.globals.getNode("/sim/flaps") != nil) {
                 globals.controls.stepProps("/controls/flight/flaps", "/sim/flaps", step);
@@ -336,15 +336,19 @@ controls.flapsDown = func(step) {
 
 var altflapspos = props.globals.initNode("controls/flight/alt-flaps-pos",-1,"INT");
 var altflap = props.globals.initNode("controls/flight/alt-flaps",0,"INT");
-var altn_flapsDown = func (step) {
+var altn_flapsDown = func(step) {
     if (step == 0) return;
-    if (step < 0 and altflapspos.getValue() == -1) return;
-    if (step > 0 and altflapspos.getValue() == 6) return;
-    altflapspos.setValue(altflapspos.getValue() + step);
-    if (altflapspos.getValue() > 0) {
-	altflap.setValue(step);
-	settimer(func {altflap.setValue(0);}, 0.15);
-	controls.flapsDown(step);
+    if (step < 0 and getprop("controls/flight/alt-flaps-pos") == -1) return;
+    if (step > 0 and getprop("controls/flight/alt-flaps-pos") == 6) return;
+    setprop("controls/flight/alt-flaps-pos",getprop("controls/flight/alt-flaps-pos") + step);
+    if (getprop("controls/flight/alt-flaps-pos") > 0) {
+	setprop("controls/flight/alt-flaps",step);
+	settimer(func {setprop("controls/flight/alt-flaps",0);}, 0.15);
+#	globals.controls.flapsDown(step);
+	globals.controls.stepProps("/controls/flight/flaps", "/sim/flaps", step);
+    } elsif (getprop("controls/flight/alt-flaps-pos") == 0) {
+	while (getprop("controls/flight/flaps") != 0)
+	    globals.controls.stepProps("/controls/flight/flaps", "/sim/flaps", -1);
     }
 }
 
