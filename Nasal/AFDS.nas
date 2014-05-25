@@ -414,6 +414,11 @@ var AFDS = {
 		{
 		    var wpt_eta = (enroute[1] / groundspeed * 3600);
 		    var brg_err = getprop("/autopilot/route-manager/wp/true-bearing-deg") - getprop("/orientation/heading-deg");
+		    var wp_lead = 30;
+		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 9000) {
+			wp_lead = 10;
+			brg_err = 0;
+		    }
 		    if (brg_err < 0) {
 			brg_err = brg_err + 360;
 		    }
@@ -425,7 +430,7 @@ var AFDS = {
 		    if((getprop("gear/gear[1]/wow") == 0) and (getprop("gear/gear[2]/wow") == 0)) {
 			var change_wp = abs(getprop("/autopilot/route-manager/wp[1]/bearing-deg") - getprop("orientation/heading-magnetic-deg"));
 		    	if(change_wp > 180) change_wp = (360 - change_wp);
-		    	if (((me.heading_change_rate * change_wp) > wpt_eta) or (wpt_eta < 30)) {
+		    	if (((me.heading_change_rate * change_wp) > wpt_eta) or (wpt_eta < wp_lead)) {
 			    if(atm_wpt < (max_wpt - 1)) {
 			    	atm_wpt += 1;
 			    	props.globals.getNode("/autopilot/route-manager/current-wp").setValue(atm_wpt);
