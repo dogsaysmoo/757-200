@@ -5,7 +5,7 @@
 	<sim>
 		<description>Boeing 757-200 (Pratt and Whitney)</description>
 		<status>early production</status>
-		<author>Juuso Tapaninen, original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
+		<author>Juuso Tapaninen, John Williams; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
 		  <rating>
 		      	<FDM type="int">3</FDM>
       			<systems type="int">3</systems>
