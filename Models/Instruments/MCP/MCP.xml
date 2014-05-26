@@ -446,7 +446,7 @@
 		<type>pick</type>
 		<object-name>HDG.knob</object-name>
 		<action>
-			<!--button>0</button-->
+			<button>0</button>
 			<button>3</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
@@ -459,7 +459,7 @@
 			</binding>
 		</action>
 		<action>
-			<!--button>1</button-->
+			<button>1</button>
 			<button>4</button>
 			<repeatable type="bool">true</repeatable>
 			<binding>
@@ -471,6 +471,10 @@
 				<wrap>true</wrap>
 			</binding>
 		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>HDG.select</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
@@ -479,11 +483,36 @@
 				<script>Boeing757.afds.input(0,1);</script>
 			</binding>
 		</action>
+		<action>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>autopilot/settings/heading-bug-deg</property>
+				<step>1</step>
+				<min>0</min>
+				<max>360</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
+		<action>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>autopilot/settings/heading-bug-deg</property>
+				<step>-1</step>
+				<min>0</min>
+				<max>360</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
 	</animation>
 	<animation>
 		<name>Heading hold knob rotate</name>
 		<type>rotate</type>
 		<object-name>HDG.knob</object-name>
+		<object-name>HDG.select</object-name>
 		<property>autopilot/settings/heading-bug-deg</property>
 		<factor>3</factor>
 		<axis>

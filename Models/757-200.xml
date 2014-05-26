@@ -66,20 +66,16 @@
 		</offsets>
 	</model>
 	
-    <model>
-    <name>cabin</name>
-    <path>Aircraft/757-200/Models/cabin.ac</path>
-  </model>
-  
-  
+	<model>
+	    <name>cabin</name>
+	    <path>Aircraft/757-200/Models/cabin.ac</path>
+	</model>
   	<animation>
 		<type>select</type>
 		<object-name>cabin</object-name>
 		<object-name>seats</object-name>
 		<condition>
-      <not>
-       <property>sim/cabin-visible</property>
-      </not>
+		    <property>sim/model/cabin-visible</property>
 		</condition>
 	</animation>	
 	
