@@ -49,11 +49,18 @@
 
 	<!-- 3d cockpit -->
 	<model>
+		<name>Flightdeck</name>
 		<path>Aircraft/757-200/Models/Flightdeck/Flightdeck.xml</path>
 				<offsets>
 			<x-m>0.1786</x-m>
 		</offsets>
 	</model>
+	<animation>
+		<type>range</type>
+		<object-name>Flightdeck</object-name>
+		<min-m>0</min-m>
+		<max-m>100</max-m>
+	</animation>
 	
 
 	<!-- Pushback -->
@@ -78,6 +85,13 @@
 		    <property>sim/model/cabin-visible</property>
 		</condition>
 	</animation>	
+	<animation>
+		<type>range</type>
+		<object-name>cabin</object-name>
+		<object-name>seats</object-name>
+		<min-m>0</min-m>
+		<max-m>100</max-m>
+	</animation>
 	
 	
 	<!-- Toilet doors -->
