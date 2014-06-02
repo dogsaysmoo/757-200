@@ -75,4 +75,5 @@ Changes I have made:
 -Added altn flap controls
 -Fixed chronometer ET switch
 -New AP dialog
+-Hide cockpit and cabin when viewpoint is more than 100 m away
 
