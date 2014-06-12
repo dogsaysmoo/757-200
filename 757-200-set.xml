@@ -12,6 +12,18 @@
       <cockpit type="int">5</cockpit>
       <model type="int">4</model>
   </rating>
+    
+      <tags>
+          <tag>transport</tag>
+          <tag>boeing</tag>
+          <tag>jet</tag>
+          <tag>twin-engine</tag>
+          <tag>retractable-gear</tag>
+          <tag>etops</tag>
+          <tag>glass-cockpit</tag>
+          <tag>ifr</tag>
+      </tags>
+  
 		<flight-model>yasim</flight-model>
 		<aero>757-200</aero>
 
