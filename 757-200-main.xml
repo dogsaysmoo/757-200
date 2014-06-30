@@ -3,6 +3,16 @@
 <PropertyList>
 
 	<sim>
+		<tags>
+          	    <tag>transport</tag>
+      		    <tag>boeing</tag>
+      		    <tag>jet</tag>
+      		    <tag>twin-engine</tag>
+      		    <tag>retractable-gear</tag>
+      		    <tag>etops</tag>
+      		    <tag>glass-cockpit</tag>
+      		    <tag>ifr</tag>
+      		</tags>
 		<model>
 			<B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>
