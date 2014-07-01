@@ -384,9 +384,10 @@ var AFDS = {
         }elsif(me.step==5){
 	    max_wpt=getprop("/autopilot/route-manager/route/num");
 	    atm_wpt=getprop("/autopilot/route-manager/current-wp");
-	    var goahead = max_wpt >= 2 and atm_wpt >= 0 and atm_wpt < max_wpt and getprop("/autopilot/route-manager/active");
-#	    if (getprop("/autopilot/route-manager/active") and getprop("/autopilot/route-manager/route/num") >= 2) {
-	    if (goahead) {
+	    if ((atm_wpt < 0 or atm_wpt >= max_wpt) and getprop("autopilot/route-manager/active"))
+		setprop("autopilot/route-manager/active",0);
+
+	    if (getprop("/autopilot/route-manager/active") and getprop("/autopilot/route-manager/route/num") >= 2) {
 
 	    	if(atm_wpt < (max_wpt - 1)) {
 		    me.remaining_distance.setValue(getprop("/autopilot/route-manager/wp/remaining-distance-nm") + getprop("autopilot/route-manager/wp/dist"));
