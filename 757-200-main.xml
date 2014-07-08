@@ -660,13 +660,13 @@
 		<lights>
 			<file>Aircraft/757-200/Nasal/light.nas</file>
 		</lights>
+		<electrical>
+			<file>Aircraft/757-200/Nasal/electrical.nas</file>
+		</electrical>
 		<cdu>
 			<!--file>Aircraft/Instruments-3d/cdu/boeing.nas</file-->
 			<file>Aircraft/757-200/Nasal/boeing_cdu.nas</file>
 		</cdu>
-		<electrical>
-			<file>Aircraft/757-200/Nasal/electrical.nas</file>
-		</electrical>
 		<v-speeds>
 			<file>Aircraft/757-200/Nasal/v-speeds.nas</file>
 		</v-speeds>
