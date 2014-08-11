@@ -688,6 +688,9 @@
 		<auto-coord>
 			<file>Aircraft/757-200/Nasal/auto_coord.nas</file>
 		</auto-coord>
+		<hour-meters>
+			<file>Aircraft/757-200/Nasal/hour-meters.nas</file>
+		</hour-meters>
 	</nasal>
 
 	<aircraft>
@@ -704,7 +707,16 @@
 			<hood-rot>2</hood-rot>
 		</jetway2-pos>
 	</aircraft>
-	
+
+    <systems>	
+	<hour-meters>
+		<engine-hours n="0" type="float">0</engine-hours>
+		<engine-hours n="1" type="float">0</engine-hours>
+		<electrical-hours type="float">0</electrical-hours>
+		<flight-hours type="float">0</flight-hours>
+	</hour-meters>
+    </systems>
+
     <limits n="0">
         <max-flap-extension-speed>
             <flaps>0.033</flaps>
