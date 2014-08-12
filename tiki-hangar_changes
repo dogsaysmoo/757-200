@@ -78,4 +78,5 @@ Changes I have made:
 -Hide cockpit and cabin when viewpoint is more than 100 m away
 -Add reset functionality to AFDS
 -Shut off CDUs when power is off
+-Hour meters
 

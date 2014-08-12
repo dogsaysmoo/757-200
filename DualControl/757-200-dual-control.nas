@@ -31,7 +31,7 @@ var l_aileron = "controls/flight/aileron";
 var l_elevator = "controls/flight/elevator";
 var l_flaps = "controls/flight/flaps";
 var l_throttle = ["controls/engines/engine[0]/throttle",
-     "controls/engines/engine[1]/throttle",
+     "controls/engines/engine[1]/throttle"];
 
 var l_battery = "controls/electric/battery";
 
