@@ -1,0 +1,154 @@
+﻿<?xml version="1.0"?>
+
+
+<PropertyList>
+    <name>EICAS</name>
+    <w-base>256</w-base>
+    <h-base>256</h-base>
+
+    <layers>
+
+
+    <layer>
+        <name>EPRtxt</name>
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>7</point-size>
+        <color>
+            <red>0.25</red>
+            <green>0.5</green>
+            <blue>0.7</blue>
+        </color>
+        <chunks>
+            <chunk>
+                <type>literal</type>
+                <text>EPR</text>
+            </chunk>
+        </chunks>
+        <transformations>
+            <transformation>
+                <type>x-shift</type>
+                <offset>50</offset>
+            </transformation>
+            <transformation>
+                <type>y-shift</type>
+                <offset>50</offset>
+            </transformation>
+        </transformations>
+    </layer>
+    
+	<text>
+		<name>Y/D ON</name>
+		<offsets>
+			<x-m>0.00</x-m>
+			<y-m>-0.0</y-m>
+			<z-m>0.0</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">Y/D ON</format>
+				<property>systems/electrical/outputs/efis</property>
+		<font>lcd.txf</font>
+		<character-size>0.03</character-size>
+		<character-aspect-ratio type="double">1.2</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">64</width>
+			<height type="int">64</height>
+		</font-resolution>
+	</text>
+    
+            <layer>
+            <name>SPD annun</name>
+            <type>text</type>
+            <font>arial_black</font>
+            <point-size>10</point-size>
+            <color>
+                <red>0.3</red>
+                <green>0.8</green>
+                <blue>0.3</blue>
+            </color>
+            <chunks>
+                <chunk>
+                    <type>text-value</type>
+                    <property>instrumentation/afds/ap-modes/speed-mode</property>
+                </chunk>
+            </chunks>
+            <transformations>
+                <transformation>
+                    <type>x-shift</type>
+                    <offset>-70</offset>
+                </transformation>
+                <transformation>
+                    <type>y-shift</type>
+                    <offset>112</offset>
+                </transformation>
+            </transformations>
+        </layer>
+
+
+<!-- engines-->
+
+    <layer>
+        <name>epr01</name>
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>8</point-size>
+        <color>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </color>
+        <chunks>
+            <chunk>
+                <type>number-value</type>
+                <property>engines/engine[0]/epr</property>
+                <format>%1.3f</format>
+            </chunk>
+        </chunks>
+        <transformations>
+            <transformation>
+                <type>x-shift</type>
+                <offset>23</offset>
+            </transformation>
+            <transformation>
+                <type>y-shift</type>
+                <offset>92</offset>
+            </transformation>
+        </transformations>
+    </layer>
+
+    <layer>
+        <name>epr02</name>
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>8</point-size>
+        <color>
+            <red>0.7</red>
+            <green>0.7</green>
+            <blue>0.7</blue>
+        </color>
+        <chunks>
+            <chunk>
+                <type>number-value</type>
+                <property>engines/engine[1]/epr</property>
+                <format>%1.3f</format>
+            </chunk>
+        </chunks>
+        <transformations>
+            <transformation>
+                <type>x-shift</type>
+                <offset>98</offset>
+            </transformation>
+            <transformation>
+                <type>y-shift</type>
+                <offset>92</offset>
+            </transformation>
+        </transformations>
+    </layer>
+    
+
+
+    </layers>
+
+</PropertyList>
