@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 for FlightGear -->
+<!-- Horizontal Situation Indicator -->
+
+<PropertyList>
+
+	<path>EHSI.ac</path>
+
+	<!-- 3D TEXT -->
+	<text>
+		<name>HDG</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.015</y-m>
+			<z-m>0.057</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">HDG</format>
+		<property>systems/electrical/outputs/efis</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>MAG</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.015</y-m>
+			<z-m>0.057</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">MAG</format>
+		<property>systems/electrical/outputs/efis</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>VOR L ID</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.06</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[0]/nav-id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR L FREQ</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.06</y-m>
+			<z-m>-0.056</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%03.2f</format>
+		<property>instrumentation/nav[0]/frequencies/selected-mhz-fmt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR L DME</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.06</y-m>
+			<z-m>-0.064</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">DME %03.1f</format>
+		<property>instrumentation/nav[0]/nav-distance</property>
+		<scale>0.000539</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>VOR L DME</object-name>
+		<condition>
+			<property>instrumentation/dme/in-range</property>
+		</condition>
+	</animation>
+
+	<text>
+		<name>VOR R ID</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>0.06</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[1]/nav-id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR R FREQ</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>0.06</y-m>
+			<z-m>-0.056</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%03.2f</format>
+		<property>instrumentation/nav[1]/frequencies/selected-mhz-fmt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR R DME</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>0.06</y-m>
+			<z-m>-0.064</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">DME %03.1f</format>
+		<property>instrumentation/nav[1]/nav-distance</property>
+		<scale>0.000539</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<animation>
+		<type>select</type>
+		<object-name>VOR R DME</object-name>
+		<condition>
+			<property>instrumentation/dme[1]/in-range</property>
+		</condition>
+	</animation>
+
+	<!--text>
+		<name>VOR L ID</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.06</y-m>
+			<z-m>-0.049</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[0]/nav-id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.004</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR L FREQ</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.06</y-m>
+			<z-m>-0.054</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%03.2f</format>
+		<property>instrumentation/nav[0]/frequencies/selected-mhz-fmt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.004</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text-->
+	<text>
+		<name>GS</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.06</y-m>
+			<z-m>0.061</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">GS %3.0f</format>
+		<property>velocities/groundspeed-kt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>TAS</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.06</y-m>
+			<z-m>0.054</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">TAS %3.0f</format>
+		<!--property>velocities/airspeed-kt</property-->
+		<property>instrumentation/airspeed-indicator/true-speed-kt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Wind Direction</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.04</y-m>
+			<z-m>0.076</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.0f*</format>
+		<property>environment/wind-display</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Wind Speed</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.04</y-m>
+			<z-m>0.070</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.0fkts</format>
+		<property>environment/wind-speed-kt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Waypoint ID</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.06</y-m>
+			<z-m>0.077</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>autopilot/route-manager/wp/id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Waypoint Dist</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.06</y-m>
+			<z-m>0.070</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%6.1f nm</format>
+		<property>autopilot/route-manager/wp/dist</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.007</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Waypoint ETA</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.06</y-m>
+			<z-m>0.063</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>autopilot/route-manager/wp/eta</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<!-- Emission animations -->
+	<animation>
+		<name>Green text</name>
+		<type>material</type>
+		<object-name>HDG</object-name>
+		<object-name>MAG</object-name>
+		<object-name>VOR L ID</object-name>
+		<object-name>VOR L FREQ</object-name>
+		<object-name>VOR L DME</object-name>
+		<object-name>VOR R ID</object-name>
+		<object-name>VOR R FREQ</object-name>
+		<object-name>VOR R DME</object-name>
+		<emission>
+			<red>0</red>
+			<green>0.8</green>
+			<blue>0</blue>
+		</emission>
+	</animation>
+	<animation>
+		<name>White text</name>
+		<type>material</type>
+		<object-name>GS</object-name>
+		<object-name>TAS</object-name>
+		<object-name>Wind Speed</object-name>
+		<object-name>Wind Direction</object-name>
+		<object-name>Waypoint Dist</object-name>
+		<object-name>Waypoint ETA</object-name>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+		</emission>
+	</animation>
+	<animation>
+		<name>Blue text</name>
+		<type>material</type>
+		<object-name>Waypoint ID</object-name>
+		<emission>
+			<red>0.0</red>
+			<green>0.5</green>
+			<blue>0.8</blue>
+		</emission>
+	</animation>
+
+	<!-- ANIMATIONS -->
+	<!-- Lighting -->
+<!--	<animation>
+		<name>Cockpit illumination</name>
+		<type>material</type>
+		<object-name>Border</object-name>
+		<object-name>Off</object-name>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>controls/lighting/cockpit</factor-prop>
+		</emission>
+	</animation>-->
+
+	<!-- Power on/off -->
+	<animation>
+		<name>Power on/off</name>
+		<type>select</type>
+		<object-name>Off</object-name>
+		<condition>
+			<less-than>
+				<property>systems/electrical/outputs/efis</property>
+				<value>15</value>
+			</less-than>
+		</condition>
+	</animation>.
+
+	<!-- Heading display -->
+	<animation>
+		<name>Heading readout 100's</name>
+		<type>textranslate</type>
+		<object-name>Hdg100</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Heading readout 10's</name>
+		<type>textranslate</type>
+		<object-name>Hdg10</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Heading readout 1's</name>
+		<type>textranslate</type>
+		<object-name>Hdg1</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<bias>0.01</bias>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+
+<!-- EHSI Mode select -->
+	<animation>
+		<type>pick</type>
+		<object-name>HSI</object-name>
+		<object-name>HSI_full</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</binding>
+		</action>
+	</animation>
+
+<!-- ARC MODE -->
+	<animation>
+		<type>select</type>
+		<object-name>HSI</object-name>
+		<object-name>HdgPtr_1</object-name>
+		<object-name>HdgAP</object-name>
+		<condition>
+		    <not>
+			<property>instrumentation/efis/ehsi-ctr</property>
+		    </not>
+		</condition>
+	</animation>
+
+	<!-- HSI arc -->
+	<animation>
+		<name>HSI arc</name>
+		<type>texrotate</type>
+		<object-name>HSI</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+		<center>
+			<x>0.5</x>
+			<y>0.5</y>
+		</center>
+	</animation>
+
+	<!-- HSI heading bug -->
+	<animation>
+		<name>Heading bug</name>
+		<type>rotate</type>
+		<object-name>HdgAP</object-name>
+		<property>sim/model/B757/heading-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.063</z-m>
+		</center>
+	</animation>
+
+	<!-- HSI NAV1 tracker -->
+	<animation>
+		<name>NAV1 tracker select</name>
+		<type>select</type>
+		<object-name>HdgNAVPtr</object-name>
+		<object-name>HdgNAVTrack</object-name>
+		<condition>
+		    <and>
+			<property>instrumentation/nav[0]/in-range</property>
+		    	<not>
+			    <property>instrumentation/efis/ehsi-ctr</property>
+		    	</not>
+		    </and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV1 tracker rotate</name>
+		<type>rotate</type>
+		<object-name>HdgNAVPtr</object-name>
+		<object-name>HdgNAVTrack</object-name>
+		<property>sim/model/B757/nav1-track-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.063</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>NAV1 tracker translate</name>
+		<type>translate</type>
+		<object-name>HdgNAVTrack</object-name>
+		<property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+		<factor>-0.027</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- HSI NAV bugs -->
+	<animation>
+		<name>NAV1 TO select</name>
+		<type>select</type>
+		<object-name>NAV1BugTO</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/to-flag</property>
+				<property>instrumentation/nav[0]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV1 FROM select</name>
+		<type>select</type>
+		<object-name>NAV1BugFROM</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/from-flag</property>
+				<property>instrumentation/nav[0]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV1 bug</name>
+		<type>rotate</type>
+		<object-name>NAV1BugTO</object-name>
+		<object-name>NAV1BugFROM</object-name>
+		<property>sim/model/B757/nav1-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.063</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>NAV2 TO select</name>
+		<type>select</type>
+		<object-name>NAV2BugTO</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[1]/to-flag</property>
+				<property>instrumentation/nav[1]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV2 FROM select</name>
+		<type>select</type>
+		<object-name>NAV2BugFROM</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[1]/from-flag</property>
+				<property>instrumentation/nav[1]/in-range</property>
+		    		<not>
+				    <property>instrumentation/efis/ehsi-ctr</property>
+		    		</not>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV2 bug</name>
+		<type>rotate</type>
+		<object-name>NAV2BugTO</object-name>
+		<object-name>NAV2BugFROM</object-name>
+		<property>sim/model/B757/nav2-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.063</z-m>
+		</center>
+	</animation>
+
+	<!-- HSI ADF bug -->
+	<animation>
+		<name>ADF1 bug select</name>
+		<type>select</type>
+		<object-name>ADFBug</object-name>
+i		<condition>
+		    <and>
+			<property>instrumentation/adf/in-range</property>
+		    	<not>
+			    <property>instrumentation/efis/ehsi-ctr</property>
+		    	</not>
+		    </and>
+		</condition>
+	</animation>
+	<animation>
+		<name>ADF1 bug</name>
+		<type>rotate</type>
+		<object-name>ADFBug</object-name>
+		<property>sim/model/B757/adf1-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.063</z-m>
+		</center>
+	</animation>
+	<!--animation>
+		<name>ADF2 bug select</name>
+		<type>select</type>
+		<object-name>ADFBug</object-name>
+		<condition>
+		    <and>
+			<property>instrumentation/adf[1]/in-range</property>
+		    	<not>
+			    <property>instrumentation/efis/ehsi-ctr</property>
+		    	</not>
+		    </and>
+		</condition>
+	</animation>
+	<animation>
+		<name>ADF2 bug</name>
+		<type>rotate</type>
+		<object-name>ADFBug</object-name>
+		<property>sim/model/B757/adf2-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.063</z-m>
+		</center>
+	</animation-->
+
+<!-- CENTERED MODE -->
+	<animation>
+		<type>select</type>
+		<object-name>HSI_full</object-name>
+		<object-name>HdgAP_full</object-name>
+		<object-name>HdgNAVPtr_full</object-name>
+		<condition>
+			<property>instrumentation/efis/ehsi-ctr</property>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>HSI_full</object-name>
+		<object-name>HdgAP_full</object-name>
+		<object-name>HdgNAVPtr_full</object-name>
+		<object-name>HdgNAVTrack_full</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>NAV1BugTO_full</object-name>
+		<object-name>NAV1BugFROM_full</object-name>
+		<object-name>NAV2BugTO_full</object-name>
+		<object-name>NAV2BugFROM_full</object-name>
+		<property>orientation/heading-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>HdgAP_full</object-name>
+		<property>autopilot/settings/heading-bug-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<name>NAV1 Tracker select</name>
+		<type>select</type>
+		<object-name>HdgNAVTrack_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>HdgNAVPtr_full</object-name>
+		<object-name>HdgNAVTrack_full</object-name>
+		<property>instrumentation/nav[0]/radials/selected-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>NAV1 tracker translate</name>
+		<type>translate</type>
+		<object-name>HdgNAVTrack_full</object-name>
+		<property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+		<factor>-0.020</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>NAV1BugTO_full</object-name>
+		<object-name>NAV1BugFROM_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>NAV1BugTO_full</object-name>
+		<object-name>NAV1BugFROM_full</object-name>
+		<property>instrumentation/nav[0]/heading-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>NAV2BugTO_full</object-name>
+		<object-name>NAV2BugFROM_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[1]/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>NAV2BugTO_full</object-name>
+		<object-name>NAV2BugFROM_full</object-name>
+		<property>instrumentation/nav[1]/heading-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ADFBug_full</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/adf/in-range</property>
+				<property>instrumentation/efis/ehsi-ctr</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>ADFBug_full</object-name>
+		<property>instrumentation/adf[0]/indicated-bearing-deg</property>
+		<center>
+		    <x-m>0.000</x-m>
+		    <y-m>0.000</y-m>
+		    <z-m>0.001</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y> 0</y>
+		    <z> 0</z>
+		</axis>
+	</animation>
+
+	<!-- Wind Speed and Direction -->
+	<animation>
+		<type>select</type>
+		<object-name>WindVector</object-name>
+		<object-name>Wind Speed</object-name>
+		<object-name>Wind Direction</object-name>
+		<condition>
+		    <greater-than>
+			<property>environment/wind-speed-kt</property>
+			<value>0.99</value>
+		    </greater-than>
+		</condition>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>WindVector</object-name>
+		<property>environment/wind-from-heading-deg</property>
+		<offset-deg>180</offset-deg>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.059</y-m>
+			<z-m> 0.074</z-m>
+		</center>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>WindVector</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.059</y-m>
+			<z-m> 0.074</z-m>
+		</center>
+	</animation>
+
+	<!-- Waypoint Selections -->
+	<animation>
+		<type>select</type>
+		<object-name>Waypoint Dist</object-name>
+		<object-name>Waypoint ETA</object-name>
+		<object-name>Waypoint ID</object-name>
+		<condition>
+			<property>autopilot/route-manager/active</property>
+		</condition>
+	</animation>
+
+</PropertyList>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>asi.ac</path>
+
+	<!-- PARAMETERS -->
+	<params>
+		<indicated-speed-kt>instrumentation/airspeed-indicator[0]/indicated-speed-kt</indicated-speed-kt>
+	</params>
+
+	<!-- ANIMATIONS -->
+	<!-- Lighting -->
+<!--	<animation>
+		<name>Cockpit illumination</name>
+		<type>material</type>
+		<object-name>bezel</object-name>
+		<object-name>rimoutside</object-name>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>controls/lighting/cockpit</factor-prop>
+		</emission>
+	</animation>-->
+	<animation>
+		<name>Instrument illumination</name>
+		<type>material</type>
+		<object-name>Face</object-name>
+		<object-name>Needle1</object-name>
+		<object-name>riminside</object-name>
+		<emission>
+			<red>0.56</red>
+			<green>0.20</green>
+			<blue>0.12</blue>
+			<factor-prop>controls/lighting/cockpit-panel-norm</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<name>ASI needle</name>
+		<type>rotate</type>
+		<object-name>Needle1</object-name>
+		<property alias="../../params/indicated-speed-kt" />
+		<interpolation>
+			<entry><ind>0</ind><dep>9.5</dep></entry>
+			<entry><ind>60</ind><dep>0</dep></entry>
+			<entry><ind>250</ind><dep>-244</dep></entry>
+			<entry><ind>300</ind><dep>-265.5</dep></entry>
+			<entry><ind>450</ind><dep>-331</dep></entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

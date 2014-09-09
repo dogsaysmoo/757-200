@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>stby-ai.ac</path>
+
+	<!-- PARAMETERS -->
+	<params>
+		<indicated-pitch-deg>orientation/pitch-deg</indicated-pitch-deg>
+		<indicated-roll-deg>orientation/roll-deg</indicated-roll-deg>
+	</params>
+
+	<!-- Power on/off -->
+
+		<animation>
+		<name>Power on/off</name>
+		<type>rotate</type>
+		<object-name>ball</object-name>
+    <object-name>rollarrow</object-name>
+				<property>systems/electrical/outputs/efis</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>15</ind><dep>40</dep></entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+	</animation>
+
+	<!-- ANIMATIONS -->
+	<!-- Lighting -->
+<!--	<animation>
+		<name>Cockpit illumination</name>
+		<type>material</type>
+		<object-name>bezel</object-name>
+		<object-name>riminside</object-name>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>controls/lighting/cockpit</factor-prop>
+		</emission>
+	</animation>-->
+	<animation>
+		<name>Instrument illumination</name>
+		<type>material</type>
+		<object-name>ball</object-name>
+		<object-name>riminside</object-name>
+		<object-name>rollarrow</object-name>
+		<emission>
+			<red>0.56</red>
+			<green>0.20</green>
+			<blue>0.12</blue>
+			<factor-prop>controls/lighting/cockpit-panel-norm</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<name>Attitude indicator</name>
+		<type>texmultiple</type>
+		<object-name>ball</object-name>
+		<transform>
+			<subtype>textranslate</subtype>
+			<property alias="../../../params/indicated-pitch-deg" />
+			<factor>0.003125</factor>
+			<axis>
+				<x>0</x>
+				<y>1</y>
+			</axis>
+		</transform>
+		<transform>
+			<subtype>texrotate</subtype>
+			<property alias="../../../params/indicated-roll-deg" />
+			<axis>
+				<x>0</x>
+				<y>0</y>
+				<z>-1</z>
+			</axis>
+			<center>
+				<x>0.5</x>
+				<y>0.5</y>
+			</center>
+		</transform>
+	</animation>
+
+	<animation>
+		<name>Attitude indicator roll pointer</name>
+		<type>rotate</type>
+		<object-name>rollarrow</object-name>
+		<property alias="../../params/indicated-roll-deg" />
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+	</animation>
+
+</PropertyList>

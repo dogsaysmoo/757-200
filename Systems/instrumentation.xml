@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <adf>
+    <name>adf</name>
+    <number>0</number>
+  </adf>
+
+  <adf>
+    <name>adf</name>
+    <number>1</number>
+  </adf>
+
+    <airspeed-indicator>
+        <name>airspeed-indicator</name>
+        <number>0</number>
+        <total-pressure>/systems/pitot/total-pressure-inhg</total-pressure>
+        <static-pressure>/systems/static/pressure-inhg</static-pressure>
+    </airspeed-indicator>
+
+    <airspeed-indicator>
+        <name>airspeed-indicator</name>
+        <number>1</number>
+        <total-pressure>/systems/pitot/total-pressure-inhg</total-pressure>
+        <static-pressure>/systems/static/pressure-inhg</static-pressure>
+    </airspeed-indicator>
+
+  <altimeter>
+    <name>altimeter</name>
+    <number>0</number>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+    <encode-mode-c>1</encode-mode-c>
+    <encode-mode-s>1</encode-mode-s>
+  </altimeter>
+  
+  <altimeter>
+    <name>altimeter</name>
+    <number>1</number>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+    <encode-mode-c>1</encode-mode-c>
+    <encode-mode-s>1</encode-mode-s>
+  </altimeter>
+  
+  <radar-altimeter>
+	<name>radar-altimeter</name>
+	<serviceable>true</serviceable>
+  </radar-altimeter>
+  
+  <attitude-indicator>
+    <name>attitude-indicator</name>
+    <number>0</number>
+    <suction>/systems/vacuum/suction-inhg</suction>
+  </attitude-indicator>
+
+  <attitude-indicator>
+    <name>attitude-indicator</name>
+    <number>1</number>
+    <suction>/systems/vacuum/suction-inhg</suction>
+  </attitude-indicator>
+
+  <clock>
+    <name>clock</name>
+    <number>0</number>
+  </clock>
+
+    <heading-indicator>
+        <name>heading-indicator</name>
+        <number>0</number>
+        <suction>/systems/vacuum/suction-inhg</suction>
+    </heading-indicator>
+
+    <heading-indicator-dg>
+        <name>heading-indicator-dg</name>
+        <number>0</number>
+    </heading-indicator-dg>
+
+  <heading-indicator-fg>
+    <name>heading-indicator-fg</name>
+    <number>0</number>
+  </heading-indicator-fg>
+
+  <dme>
+    <name>dme</name>
+    <number>0</number>
+	<serviceable>true</serviceable>
+  </dme>
+
+  <dme>
+    <name>dme</name>
+    <number>1</number>
+	<serviceable>true</serviceable>
+  </dme>
+
+  <encoder>
+    <name>encoder</name>
+    <number>0</number>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+  </encoder>
+
+  <marker-beacon>
+    <name>marker-beacon</name>
+    <number>0</number>
+  </marker-beacon>
+
+    <KT-70>
+        <name>kt-70</name>
+        <number>0</number>
+    </KT-70>
+
+    <KT-70>
+        <name>kt-70</name>
+        <number>1</number>
+    </KT-70>
+
+  <magnetic-compass>
+    <name>magnetic-compass</name>
+    <number>0</number>
+  </magnetic-compass>
+
+  <nav-radio>
+    <name>nav</name>
+    <number>0</number>
+  <serviceable>true</serviceable>
+  </nav-radio>
+
+  <nav-radio>
+    <name>nav</name>
+    <number>1</number>
+  <serviceable>true</serviceable>
+  </nav-radio>
+
+  <slip-skid-ball>
+    <name>slip-skid-ball</name>
+    <number>0</number>
+  </slip-skid-ball>
+
+  <turn-indicator>
+    <name>turn-indicator</name>
+    <number>0</number>
+  </turn-indicator>
+
+  <vertical-speed-indicator>
+    <name>vertical-speed-indicator</name>
+    <number>0</number>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+  </vertical-speed-indicator>
+
+  <gps>
+    <name>gps</name>
+    <number>0</number>
+  </gps>
+<!--
+  <radar>
+    <name>wxradar</name>
+    <number>0</number>
+  </radar>
+ <navigation-display>
+   <name>nd</name>
+   <number>0</number>
+   <symbols include="nav-display.xml"/>
+ </navigation-display>
+-->
+ <mk-viii>
+   <name>mk-viii</name>
+   <number>0</number>
+ </mk-viii>
+ 
+    <groundradar>
+        <name>groundradar</name>
+        <airport-id-source>instrumentation/groundradar/id</airport-id-source>
+        <range-source>instrumentation/groundradar/range</range-source>
+    </groundradar>
+
+    <transponder>
+	<name>transponder</name>
+	<number>0</number>
+	<!-- 2.12 Compatible: -->
+	<mode type="int">2</mode>
+	<encoder-path>/instrumentation/altimeter</encoder-path>
+
+	<mode-c-altitude>/instrumentation/encoder/mode-c-alt-ft</mode-c-altitude>
+
+    </transponder>
+
+    <encoder>
+        <name>encoder</name>
+        <number>0</number>
+    </encoder>
+
+    <tcas>
+        <name>tcas</name>
+        <number>0</number>
+    </tcas>
+
+</PropertyList>

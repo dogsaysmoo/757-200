@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>autobrakes.ac</path>
+
+	<animation>
+		<name>Knob pick</name>
+		<type>pick</type>
+		<object-name>Knob</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>autopilot/autobrake/step</property>
+				<step type="int">1</step>
+				<max>5</max>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>autopilot/autobrake/step</property>
+				<step type="int">-1</step>
+				<min>-2</min>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Knob rotate</name>
+		<type>rotate</type>
+		<object-name>Knob</object-name>
+		<property>autopilot/autobrake/step</property>
+		<interpolation>
+			<entry><ind>-2</ind><dep>60</dep></entry>
+			<entry><ind>-1</ind><dep>0</dep></entry>
+			<entry><ind>0</ind><dep>-30</dep></entry>
+			<entry><ind>1</ind><dep>-60</dep></entry>
+			<entry><ind>2</ind><dep>-90</dep></entry>
+			<entry><ind>3</ind><dep>-120</dep></entry>
+			<entry><ind>4</ind><dep>-150</dep></entry>
+			<entry><ind>5</ind><dep>-180</dep></entry>
+		</interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>1.0483</x-m>
+			<y-m>0.003227</y-m>
+			<z-m>-0.006792</z-m>
+		</center>
+	</animation>
+	
+	    				<!-- lights -->
+	        <effect>
+        <inherits-from>Effects/model-transparent</inherits-from>
+   <object-name>autobrake_light</object-name>
+    </effect>
+    
+    		<animation>
+		<name>instrument lighting</name>
+		<type>material</type>
+		<object-name>autobrake_light</object-name>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+			<factor-prop>controls/lighting/cockpit2-panel-norm</factor-prop>
+		</emission>
+	</animation>
+
+</PropertyList>

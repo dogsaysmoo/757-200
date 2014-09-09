@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>mag-compass.ac</path>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Ring</object-name>
+		<property>instrumentation/magnetic-compass[0]/indicated-heading-deg</property>
+		<center>
+			<x-m>-0.00638</x-m>
+			<y-m>0.00004</y-m>
+			<z-m>0.0241</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+</PropertyList>
