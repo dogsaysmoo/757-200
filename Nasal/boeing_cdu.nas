@@ -4,10 +4,6 @@ var input = func(v) {
 		setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~v);
 	}
 	
-var input = func(v) {
-		setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~v);
-	}
-	
 var key = func(v) {
 		var cduDisplay = getprop("/instrumentation/cdu/display");
 		var serviceable = getprop("/instrumentation/cdu/serviceable");
@@ -707,7 +703,7 @@ var cdu = func{
 			line6r = "POS INIT>";
 		}
 		
-		if (serviceable != 1){
+		if (serviceable != 1 or getprop("systems/electrical/outputs/efis") < 15) {
 			title = "";		page = "";
 			line1l = "";	line2l = "";	line3l = "";	line4l = "";	line5l = "";	line6l = "";
 			line1lt = "";	line2lt = "";	line3lt = "";	line4lt = "";	line5lt = "";	line6lt = "";

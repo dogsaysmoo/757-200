@@ -190,7 +190,7 @@ var AFDS = {
 		    me.flch_mode.setBoolValue(0);
 		} elsif (me.vertical_mode.getValue() == 5)
 		    me.vertical_mode.setValue(1);
-                var arm = arm or (1-(me.gs_armed.getBoolValue() or (6==me.vertical_mode.getValue())));
+                arm = arm or (1-(me.gs_armed.getBoolValue() or (6==me.vertical_mode.getValue())));
                 me.gs_armed.setBoolValue(arm);
                 if ((arm==0)and(6==me.vertical_mode.getValue())) me.vertical_mode.setValue(0);
             }
@@ -371,7 +371,7 @@ var AFDS = {
                 if (target >= 100 and target <= 399)
                     me.ias_setting.setValue(target);
             } else {
-                var target = getprop("instrumentation/airspeed-indicator/indicated-mach");
+                var target = (int(1000 * getprop("instrumentation/airspeed-indicator/indicated-mach"))) * 0.001;
                 if (target >= 0.4 and target <= 0.95)
                     me.mach_setting.setValue(target);
             }
