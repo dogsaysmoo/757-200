@@ -1166,6 +1166,16 @@
 			<property>/instrumentation/cdu/display</property>
 			<value>RTE1_1</value>
 		</binding>
+		 <binding>
+                        <condition>
+                            <equals>
+                                <property>/instrumentation/cdu/display</property>
+                                <value>RTE1_LEGS</value>
+                            </equals>
+                        </condition>
+                        <command>nasal</command>
+                        <script>cdu.pgupdn(-1);</script>
+                </binding>
 	</action>
 </animation>
 
@@ -1186,6 +1196,16 @@
 			<property>/instrumentation/cdu/display</property>
 			<value>RTE1_2</value>
 		</binding>
+		<binding>
+                        <condition>
+                            <equals>
+                                <property>/instrumentation/cdu/display</property>
+                                <value>RTE1_LEGS</value>
+                            </equals>
+                        </condition>
+                        <command>nasal</command>
+                        <script>cdu.pgupdn(1);</script>
+                </binding>
 	</action>
 </animation>
 
