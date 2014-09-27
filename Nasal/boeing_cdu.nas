@@ -12,6 +12,7 @@ wp3 = wpCurr + 3;
 wp4 = wpCurr + 4;
 
 var wpt_updater = func {
+	if (wpCurr <1) wpCurr = 1;
 	wp1 = wpCurr + 1;
 	wp2 = wpCurr + 2;
 	wp3 = wpCurr + 3;
@@ -750,7 +751,7 @@ var cdu = func{
 			line6r = "POS INIT>";
 		}
 		
-		if (serviceable != 1 or !getprop("controls/electric/battery")){
+		if (serviceable != 1 or getprop("systems/electrical/outputs/efis") < 15) {
 			title = "";		page = "";
 			line1l = "";	line2l = "";	line3l = "";	line4l = "";	line5l = "";	line6l = "";
 			line1lt = "";	line2lt = "";	line3lt = "";	line4lt = "";	line5lt = "";	line6lt = "";
