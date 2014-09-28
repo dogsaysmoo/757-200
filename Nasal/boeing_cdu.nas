@@ -10,13 +10,15 @@ wp1 = wpCurr + 1;
 wp2 = wpCurr + 2;
 wp3 = wpCurr + 3;
 wp4 = wpCurr + 4;
+wp5 = wpCurr + 5;
 
 var wpt_updater = func {
-	if (wpCurr <1) wpCurr = 1;
+	if (wpCurr < 1) wpCurr = 1;
 	wp1 = wpCurr + 1;
 	wp2 = wpCurr + 2;
 	wp3 = wpCurr + 3;
 	wp4 = wpCurr + 4;
+	wp5 = wpCurr + 5;
 }
 wpt_updater();
 setlistener("/autopilot/route-manager/current-wp", func {
@@ -32,7 +34,6 @@ var pgupdn = func (dir) {
 		wpCurr = wpCurr + 3;
 	    } elsif (wpCurr < wpNow) {
 		wpCurr = wpNow;
-#	    } elsif (wpCurr + 5 < Nwpts) {
 	    } else {
 		wpCurr = wpCurr + 5;
 	    }
@@ -42,7 +43,6 @@ var pgupdn = func (dir) {
 		wpCurr = wpCurr - 5;
 	    } elsif (wpCurr > wpNow) {
 		wpCurr = wpNow;
-#	    } elsif (wpCurr - 3 >= 1) {d
 	    } else {
 		wpCurr = wpCurr - 3;
 	    }
@@ -57,12 +57,6 @@ var key = func(v) {
 		var serviceable = getprop("/instrumentation/cdu/serviceable");
 		var eicasDisplay = getprop("/instrumentation/eicas/display");
 		var cduInput = getprop("/instrumentation/cdu/input");
-#		var wpCurr = getprop("/autopilot/route-manager/current-wp");
-#		if (wpCurr < 1) wpCurr = 1;
-#		var wp1 = wpCurr + 1;
-#		var wp2 = wpCurr + 2;
-#		var wp3 = wpCurr + 3;
-#		var wp4 = wpCurr + 4;
 		
 		if (serviceable == 1){
 			if (v == "LSK1L"){
@@ -88,11 +82,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE1");
+						setprop("/autopilot/route-manager/input","@DELETE"~wpCurr);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT2:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp1~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "TO_REF"){
@@ -149,11 +143,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE2");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp1);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT3:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp2~":"~cduInput);
 					}
 				}
 			}
@@ -190,11 +184,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE3");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp2);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT4:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp3~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -221,11 +215,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE4");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp3);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT5:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp4~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -252,11 +246,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE5");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp4);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT6:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp5~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -631,13 +625,6 @@ var cdu = func{
 			line6r = "ROUTE>";
 		}
 		if (display == "RTE1_LEGS") {
-#			var wpCurr = getprop("/autopilot/route-manager/current-wp");
-#			if (wpCurr < 1) wpCurr = 1;
-#			var wp1 = wpCurr + 1;
-#			var wp2 = wpCurr + 2;
-#			var wp3 = wpCurr + 3;
-#			var wp4 = wpCurr + 4;
-#			var wpN = getprop("/autopilot/route-manager/route/num");
 			if (getprop("/autopilot/route-manager/active") == 1){
 				title = "ACT RTE 1 LEGS";
 				}
@@ -751,7 +738,7 @@ var cdu = func{
 			line6r = "POS INIT>";
 		}
 		
-		if (serviceable != 1 or getprop("systems/electrical/outputs/efis") < 15) {
+		if (serviceable != 1 or !getprop("controls/electric/battery")){
 			title = "";		page = "";
 			line1l = "";	line2l = "";	line3l = "";	line4l = "";	line5l = "";	line6l = "";
 			line1lt = "";	line2lt = "";	line3lt = "";	line4lt = "";	line5lt = "";	line6lt = "";
