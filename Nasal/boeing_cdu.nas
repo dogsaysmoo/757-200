@@ -637,7 +637,7 @@ var cdu = func{
 				line2ct = sprintf("%3.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/leg-distance-nm"))~" NM";
 				line1r = sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/altitude-ft"));
 				if (getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/speed-kts") != nil){
-					line4r = getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/altitude-ft"));
+					line1r = getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/altitude-ft"));
 					}
 				}
 			if (getprop("/autopilot/route-manager/route/wp["~wp1~"]/id") != nil){
@@ -650,7 +650,7 @@ var cdu = func{
 				}
 				line2r = sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp1~"]/altitude-ft"));
 				if (getprop("/autopilot/route-manager/route/wp["~wp1~"]/speed-kts") != nil){
-					line4r = getprop("/autopilot/route-manager/route/wp["~wp1~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp1~"]/altitude-ft"));
+					line2r = getprop("/autopilot/route-manager/route/wp["~wp1~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp1~"]/altitude-ft"));
 					}
 				}
 			if (getprop("/autopilot/route-manager/route/wp["~wp2~"]/id") != nil){
@@ -686,7 +686,7 @@ var cdu = func{
 				line5l = getprop("/autopilot/route-manager/route/wp["~wp4~"]/id");
 				line5r = sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp4~"]/altitude-ft"));
 				if (getprop("/autopilot/route-manager/route/wp["~wp4~"]/speed-kts") != nil){
-					line4r = getprop("/autopilot/route-manager/route/wp["~wp4~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp4~"]/altitude-ft"));
+					line5r = getprop("/autopilot/route-manager/route/wp["~wp4~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp4~"]/altitude-ft"));
 					}
 				}
 			line6l = "<RTE 2 LEGS";

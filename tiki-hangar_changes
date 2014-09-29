@@ -79,4 +79,6 @@ Changes I have made:
 -Add reset functionality to AFDS
 -Shut off CDUs when power is off
 -Hour meters
+-Improved contrails from abassign
+-Added paging to CDUs
 
