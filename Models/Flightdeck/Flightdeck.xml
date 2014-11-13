@@ -180,7 +180,7 @@
 
 
 	<!-- HSI -->
-	<model>
+	<!--model>
 		<path>Aircraft/757-200/Models/Instruments/EHSI/EHSI.xml</path>
 		<offsets>
 			<x-m>0.9882</x-m>
@@ -210,7 +210,25 @@
                                 <property>instrumentation/efis/ehsi-ctr</property>
                         </binding>
                 </action>
-        </animation>
+        </animation-->
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/ND/efis_L.xml</path>
+		<offsets>
+			<x-m>0.9882</x-m>
+			<y-m>-0.5439</y-m>
+			<z-m>1.0590</z-m>
+			<pitch-deg>-8</pitch-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/757-200/Models/Instruments/ND/efis_R.xml</path>
+		<offsets>
+			<x-m>0.9882</x-m>
+			<y-m>0.5439</y-m>
+			<z-m>1.0590</z-m>
+			<pitch-deg>-8</pitch-deg>
+		</offsets>
+	</model>
 	
 		<!-- EFB -->
 		<model>

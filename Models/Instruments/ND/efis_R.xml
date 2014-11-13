@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 for FlightGear -->
+<!-- Horizontal Situation Indicator -->
+
+<PropertyList>
+
+	<path>efis_R.ac</path>
+
+	<!-- Power on/off -->
+	<animation>
+		<name>Power on/off</name>
+		<type>select</type>
+		<object-name>ND.screenR</object-name>
+		<condition>
+			<greater-than>
+				<property>systems/electrical/outputs/efis</property>
+				<value>15</value>
+			</greater-than>
+		</condition>
+	</animation>.
+
+</PropertyList>
