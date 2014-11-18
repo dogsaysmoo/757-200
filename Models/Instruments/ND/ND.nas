@@ -72,7 +72,7 @@ var _list = setlistener("sim/signals/fdm-initialized", func() {
     NDCpt.newMFD(group, nd_display.cpt);
     NDCpt.update();
 
-    var NDFo = ND.new("instrumentation/efis", myCockpit_switches);
+    var NDFo = ND.new("instrumentation/efis[1]", myCockpit_switches);
 
     nd_display.fo = canvas.new({
         "name": "ND",
