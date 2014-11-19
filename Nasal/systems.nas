@@ -606,6 +606,8 @@ var efis = {
 #	m.ctr = m.inputs.getNode("nd-centered",1);
 	m.range = m.inputs.getNode("range",1);
 	m.nd_plan_wpt = m.inputs.initNode("plan-wpt-index",0,"INT");
+#	m.lh = m.inputs.initNode("lh-vor-adf",1,"INT");
+#	m.rh = m.inputs.initNode("rh-vor-adf",1,"INT");
 
 	m.mode_index = 2;
 	m.range_index = 0;

@@ -13,6 +13,9 @@
       		    <tag>glass-cockpit</tag>
       		    <tag>ifr</tag>
       		</tags>
+        	<instrument-options>
+        	    <canvas-popup-enable type="bool">true</canvas-popup-enable>
+        	</instrument-options>
 		<model>
 			<!--B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>

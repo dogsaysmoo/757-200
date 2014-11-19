@@ -229,7 +229,6 @@
                         </binding>
                 </action>
         </animation>
-
 	<animation>
 		<type>pick</type>
 		<object-name>ND_mode.L</object-name>
@@ -250,7 +249,6 @@
 			</binding>
 		</action>
         </animation>
-
 	<animation>
 		<type>pick</type>
 		<object-name>ND_range.L</object-name>
@@ -271,6 +269,90 @@
 			</binding>
 		</action>
         </animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Terr.L</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/inputs/terr</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Wxr.L</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/inputs/wxr</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Sta.L</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/inputs/sta</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Arpt.L</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/inputs/arpt</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Data.L</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/inputs/data</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Wpt.L</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/inputs/wpt</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Tfc.L</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis/inputs/tfc</property>
+			</binding>
+		</action>
+	</animation>
 
 	<animation>
                 <type>pick</type>
@@ -284,7 +366,6 @@
                         </binding>
                 </action>
         </animation>
-
 	<animation>
 		<type>pick</type>
 		<object-name>ND_mode.R</object-name>
@@ -305,7 +386,6 @@
 			</binding>
 		</action>
         </animation>
-
 	<animation>
 		<type>pick</type>
 		<object-name>ND_range.R</object-name>
@@ -326,6 +406,90 @@
 			</binding>
 		</action>
         </animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Terr.R</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis[1]/inputs/terr</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Wxr.R</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis[1]/inputs/wxr</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Sta.R</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis[1]/inputs/sta</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Arpt.R</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis[1]/inputs/arpt</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Data.R</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis[1]/inputs/data</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Wpt.R</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis[1]/inputs/wpt</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>Tfc.R</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>instrumentation/efis[1]/inputs/tfc</property>
+			</binding>
+		</action>
+	</animation>
 
 		<!-- EFB -->
 		<model>
