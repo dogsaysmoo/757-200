@@ -593,7 +593,7 @@ var instruments =
 
 ## EFIS CONTROLS
 ################
-var modes = ["APP","VOR","MAP","PLAN"];
+var modes = ["VOR","APP","MAP","PLAN"];
 var ranges = [10,20,40,80,160,320];
 
 var efis = {
