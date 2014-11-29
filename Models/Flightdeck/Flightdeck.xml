@@ -491,6 +491,88 @@
 		</action>
 	</animation>
 
+		<!-- Decision height selector and display -->
+	<animation>
+		<type>select</type>
+		<object-name>DH100.L</object-name>
+		<object-name>DH10.L</object-name>
+		<object-name>DH1.L</object-name>
+		<object-name>DH100.R</object-name>
+		<object-name>DH10.R</object-name>
+		<object-name>DH1.R</object-name>
+		<condition>
+		    <greater-than>
+			<property>systems/electrical/outputs/efis</property>
+			<value>15</value>
+		    </greater-than>
+		</condition>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>DH100.L</object-name>
+		<object-name>DH100.R</object-name>
+		<property>instrumentation/efis/minimums</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>DH10.L</object-name>
+		<object-name>DH10.R</object-name>
+		<property>instrumentation/efis/minimums</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>DH1.L</object-name>
+		<object-name>DH1.R</object-name>
+		<property>instrumentation/efis/minimums</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>knob</type>
+		<object-name>minimums_knob.L</object-name>
+		<object-name>minimums_knob.R</object-name>
+		<action>
+		    <binding>
+			<command>property-adjust</command>
+			<property>instrumentation/efis/minimums</property>
+			<factor>-1</factor>
+			<min>250</min>
+			<max>1000</max>
+			<wrap>false</wrap>
+		    </binding>
+		</action>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>DH_reset.L</object-name>
+		<object-name>DH_reset.R</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>property-assign</command>
+			<property>instrumentation/efis/minimums</property>
+			<value>250</value>
+		    </binding>
+		</action>
+	</animation>
+
 		<!-- EFB -->
 		<model>
 		<path>Aircraft/757-200/Models/Instruments/EFB/EFB.xml</path>
