@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 
@@ -106,6 +106,14 @@
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>FIN.png</texture>
+	</animation>
+
+	<animation>
+		<type>shader</type>
+		<shader>chrome</shader>
+		<texture>chrome1.png</texture>
+		<object-name>IntakeL</object-name>
+		<object-name>IntakeR</object-name>
 	</animation>
 
 </PropertyList>
