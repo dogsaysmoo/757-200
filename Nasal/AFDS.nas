@@ -422,16 +422,16 @@ var AFDS = {
 		{
 		    var wpt_eta = (enroute[1] / groundspeed * 3600);
 		    var brg_err = getprop("/autopilot/route-manager/wp/true-bearing-deg") - getprop("/orientation/heading-deg");
-		    var wp_lead = 30;
-		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 10000) {
-			wp_lead = 10;
-			brg_err = 0;
-		    }
 		    if (brg_err < 0) {
 			brg_err = brg_err + 360;
 		    }
+		    var wp_lead = 30;
+		    if (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 240 and getprop("position/altitude-ft") < 10000) {
+			wp_lead = 8;
+			brg_err = 0;
+		    }
 		    brg_err = math.pi * (brg_err / 180);
-		    if (enroute[1] < 8) {
+		    if (enroute[1] < 16) {
 			wpt_eta = abs(wpt_eta * math.cos(brg_err));
 		    }
 
