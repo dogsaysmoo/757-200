@@ -552,7 +552,7 @@
 			<command>property-adjust</command>
 			<property>instrumentation/efis/minimums</property>
 			<factor>-1</factor>
-			<min>250</min>
+			<min>200</min>
 			<max>1000</max>
 			<wrap>false</wrap>
 		    </binding>
