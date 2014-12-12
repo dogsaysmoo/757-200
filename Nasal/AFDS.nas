@@ -98,6 +98,7 @@ var AFDS = {
         m.Lbank = setlistener(m.bank_switch, func m.setbank(),0,0);
         m.LTMode = setlistener(m.autothrottle_mode, func m.updateATMode(),0,0);
 	m.Lreset = setlistener(m.reset, func m.afds_reset(),0,0);
+	m.Lrefsw = setlistener("instrumentation/efis/mfd/true-north", func m.hdg_ref_sw(),0,0);
 
 	m.e_time = 0;
 	m.status_light = m.AFDS_inputs.initNode("status-light",0,"BOOL");
@@ -237,6 +238,15 @@ var AFDS = {
 	    },5);
 	}
     },
+###################
+    hdg_ref_sw : func {
+#	var hdgtru = getprop("instrumentation/efis/mfd/true-north");
+	if (me.lateral_mode.getValue() == 2) {
+	    me.input(0,2);
+	    me.input(0,2);
+	}
+    },
+
 ###################
 
     ap_update : func{
