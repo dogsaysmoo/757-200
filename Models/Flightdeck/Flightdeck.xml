@@ -2096,6 +2096,39 @@
 		    <z>0.15</z>
 		</axis>
 	</animation>
-		
+
+<!-- Hdg Ref switch -->
+	<animation>
+		<type>rotate</type>
+		<object-name>hdg_ref.sw</object-name>
+		<property>instrumentation/efis/mfd/true-north</property>
+		<factor>40</factor>
+		<center>
+		    <x-m>0.970</x-m>
+		    <y-m>0.122</y-m>
+		    <z-m>1.294</z-m>
+		</center>
+		<axis>
+		    <x>0</x>
+		    <y>1</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>pick</type>
+		<object-name>hdg_ref.sw</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis/mfd/true-north</property>
+		    </binding>
+		    <binding>
+			<command>property-toggle</command>
+			<property>instrumentation/efis[1]/mfd/true-north</property>
+		    </binding>
+		</action>
+	</animation>
 
 </PropertyList>

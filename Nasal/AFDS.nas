@@ -123,7 +123,11 @@ var AFDS = {
             # horizontal AP controls
             if(me.lateral_mode.getValue() ==btn) btn=0;
 	    if (btn == 2) {
-                var hdg_now = int(getprop("orientation/heading-magnetic-deg")+0.5);
+		if (getprop("instrumentation/efis/mfd/true-north")) {
+		    var hdg_now = int(getprop("orientation/heading-deg")+0.5);
+		} else {
+		    var hdg_now = int(getprop("orientation/heading-magnetic-deg")+0.5);
+		}
                 me.hdg_setting.setValue(hdg_now);
             }
             me.lateral_mode.setValue(btn);
