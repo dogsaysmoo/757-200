@@ -240,13 +240,11 @@ var AFDS = {
     },
 ###################
     hdg_ref_sw : func {
-#	var hdgtru = getprop("instrumentation/efis/mfd/true-north");
 	if (me.lateral_mode.getValue() == 2) {
 	    me.input(0,2);
 	    me.input(0,2);
 	}
     },
-
 ###################
 
     ap_update : func{
