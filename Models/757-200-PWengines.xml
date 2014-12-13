@@ -65,5 +65,12 @@
                 </axis>
         </animation>
 
+	<animation>
+		<type>shader</type>
+		<shader>chrome</shader>
+		<texture>chrome1.png</texture>
+		<object-name>Engine.001</object-name>
+	</animation>
+
 </PropertyList>
 

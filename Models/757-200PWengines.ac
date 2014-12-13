@@ -4731,8 +4731,6 @@ OBJECT poly
 name "Engine.001"
 data 8
 Mesh.039
-texture "FIN.png"
-texrep 1 1
 crease 30.000000
 numvert 384
 15.84626 0.00831 -6.350712
