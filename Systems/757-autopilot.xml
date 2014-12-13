@@ -69,6 +69,46 @@
                 </period>
         </filter-->
 
+  <filter>
+    <name>true heading error computer/normalizer</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <enable>
+	<condition>
+		<property>instrumentation/efis/mfd/true-north</property>
+	</condition>
+    </enable>
+    <input>
+      <property>autopilot/settings/heading-bug-deg</property>
+      <offset>
+        <property>orientation/heading-deg</property>
+        <scale>-1.0</scale>
+      </offset>
+    </input>
+    <output>autopilot/internal/hdg-hold-error-deg</output>
+    <period>
+      <min>-180</min>
+      <max>180</max>
+    </period>
+    <gain>1.0</gain>
+  </filter>
+
+  <filter>
+    <name>Mag Hdg</name>
+    <type>gain</type>
+    <debug>false</debug>
+    <gain>1</gain>
+    <enable>
+	<condition>
+	    <not>
+		<property>instrumentation/efis/mfd/true-north</property>
+	    </not>
+	</condition>
+    </enable>
+    <input>autopilot/internal/fdm-heading-bug-error-deg</input>
+    <output>autopilot/internal/hdg-hold-error-deg</output>
+  </filter>
+
   <pi-simple-controller>
     <name>HDG HOLD</name>
     <debug>false</debug>
@@ -87,7 +127,8 @@
       </condition>
     </enable>
     <input>
-      <prop>autopilot/internal/fdm-heading-bug-error-deg</prop>
+      <!--prop>autopilot/internal/fdm-heading-bug-error-deg</prop-->
+      <prop>autopilot/internal/hdg-hold-error-deg</prop>
     </input>
     <reference>
       <value>0</value>

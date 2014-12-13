@@ -3,18 +3,60 @@
 var input = func(v) {
 		setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~v);
 	}
+
+var wpCurr = getprop("/autopilot/route-manager/current-wp");
+if (wpCurr < 1) wpCurr = 1;
+wp1 = wpCurr + 1;
+wp2 = wpCurr + 2;
+wp3 = wpCurr + 3;
+wp4 = wpCurr + 4;
+wp5 = wpCurr + 5;
+
+var wpt_updater = func {
+	if (wpCurr < 1) wpCurr = 1;
+	wp1 = wpCurr + 1;
+	wp2 = wpCurr + 2;
+	wp3 = wpCurr + 3;
+	wp4 = wpCurr + 4;
+	wp5 = wpCurr + 5;
+}
+wpt_updater();
+setlistener("/autopilot/route-manager/current-wp", func {
+	wpCurr = getprop("/autopilot/route-manager/current-wp");
+	wpt_updater();
+},0,0);
+
+var pgupdn = func (dir) {
+	var wpNow = getprop("/autopilot/route-manager/current-wp");
+	var Nwpts = getprop("/autopilot/route-manager/route/num");
+	if (dir == 1) {
+	    if (wpCurr + 3 < wpNow) {
+		wpCurr = wpCurr + 3;
+	    } elsif (wpCurr < wpNow) {
+		wpCurr = wpNow;
+	    } else {
+		wpCurr = wpCurr + 5;
+	    }
+	}
+	if (dir == -1) {
+	    if (wpCurr - 5 >= wpNow) {
+		wpCurr = wpCurr - 5;
+	    } elsif (wpCurr > wpNow) {
+		wpCurr = wpNow;
+	    } else {
+		wpCurr = wpCurr - 3;
+	    }
+	}
+	if (wpCurr < 1) wpCurr = 1;
+	if (wpCurr >= Nwpts) wpCurr = Nwpts - 1;
+	wpt_updater();
+}
 	
 var key = func(v) {
 		var cduDisplay = getprop("/instrumentation/cdu/display");
 		var serviceable = getprop("/instrumentation/cdu/serviceable");
 		var eicasDisplay = getprop("/instrumentation/eicas/display");
 		var cduInput = getprop("/instrumentation/cdu/input");
-		var wpCurr = getprop("/autopilot/route-manager/current-wp");
-		if (wpCurr < 1) wpCurr = 1;
-		var wp1 = wpCurr + 1;
-		var wp2 = wpCurr + 2;
-		var wp3 = wpCurr + 3;
-		var wp4 = wpCurr + 4;
 		
 		if (serviceable == 1){
 			if (v == "LSK1L"){
@@ -40,11 +82,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE1");
+						setprop("/autopilot/route-manager/input","@DELETE"~wpCurr);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT2:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp1~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "TO_REF"){
@@ -101,11 +143,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE2");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp1);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT3:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp2~":"~cduInput);
 					}
 				}
 			}
@@ -142,11 +184,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE3");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp2);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT4:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp3~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -173,11 +215,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE4");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp3);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT5:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp4~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -204,11 +246,11 @@ var key = func(v) {
 				}
 				if (cduDisplay == "RTE1_LEGS"){
 					if (cduInput == "DELETE"){
-						setprop("/autopilot/route-manager/input","@DELETE5");
+						setprop("/autopilot/route-manager/input","@DELETE"~wp4);
 						cduInput = "";
 					}
 					else{
-						setprop("/autopilot/route-manager/input","@INSERT6:"~cduInput);
+						setprop("/autopilot/route-manager/input","@INSERT"~wp5~":"~cduInput);
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -583,13 +625,6 @@ var cdu = func{
 			line6r = "ROUTE>";
 		}
 		if (display == "RTE1_LEGS") {
-			var wpCurr = getprop("/autopilot/route-manager/current-wp");
-			if (wpCurr < 1) wpCurr = 1;
-			var wp1 = wpCurr + 1;
-			var wp2 = wpCurr + 2;
-			var wp3 = wpCurr + 3;
-			var wp4 = wpCurr + 4;
-			var wpN = getprop("/autopilot/route-manager/route/num");
 			if (getprop("/autopilot/route-manager/active") == 1){
 				title = "ACT RTE 1 LEGS";
 				}
@@ -602,7 +637,7 @@ var cdu = func{
 				line2ct = sprintf("%3.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/leg-distance-nm"))~" NM";
 				line1r = sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/altitude-ft"));
 				if (getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/speed-kts") != nil){
-					line4r = getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/altitude-ft"));
+					line1r = getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/altitude-ft"));
 					}
 				}
 			if (getprop("/autopilot/route-manager/route/wp["~wp1~"]/id") != nil){
@@ -615,7 +650,7 @@ var cdu = func{
 				}
 				line2r = sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp1~"]/altitude-ft"));
 				if (getprop("/autopilot/route-manager/route/wp["~wp1~"]/speed-kts") != nil){
-					line4r = getprop("/autopilot/route-manager/route/wp["~wp1~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp1~"]/altitude-ft"));
+					line2r = getprop("/autopilot/route-manager/route/wp["~wp1~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp1~"]/altitude-ft"));
 					}
 				}
 			if (getprop("/autopilot/route-manager/route/wp["~wp2~"]/id") != nil){
@@ -651,7 +686,7 @@ var cdu = func{
 				line5l = getprop("/autopilot/route-manager/route/wp["~wp4~"]/id");
 				line5r = sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp4~"]/altitude-ft"));
 				if (getprop("/autopilot/route-manager/route/wp["~wp4~"]/speed-kts") != nil){
-					line4r = getprop("/autopilot/route-manager/route/wp["~wp4~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp4~"]/altitude-ft"));
+					line5r = getprop("/autopilot/route-manager/route/wp["~wp4~"]/speed-kts")~"/"~sprintf("%5.0f", getprop("/autopilot/route-manager/route/wp["~wp4~"]/altitude-ft"));
 					}
 				}
 			line6l = "<RTE 2 LEGS";
