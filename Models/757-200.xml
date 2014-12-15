@@ -1634,6 +1634,7 @@
 		</center>
 	</animation>
 	    <animation>
+        <type>translate</type>
         <object-name>MainGearTruckL</object-name>
         <object-name>compression</object-name>
         <object-name>MainGr.Tires1</object-name>
