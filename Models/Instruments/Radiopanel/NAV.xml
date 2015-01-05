@@ -7,6 +7,22 @@
 
         <path>NAV.ac</path>
 
+	<animation>
+		<type>material</type>
+		<object-name>NAVplate</object-name>
+		<condition>
+        	    <not>
+            		<property>sim/rendering/rembrandt/enabled</property>
+        	    </not>
+      		</condition>
+      		<emission>
+		    <red>0.4</red>
+		    <green>0.4</green>
+		    <blue>0.4</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
+
         <!-- PARAMETERS -->
         <params>
                 <freq>instrumentation/nav[0]/frequencies/selected-mhz</freq>

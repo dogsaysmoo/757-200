@@ -27,6 +27,12 @@ var fuelsys = {
 	return m;
     },
 
+    startup : func {
+	me.lev[0].setValue(10934);
+	me.lev[1].setValue(10934);
+	me.lev[2].setValue(0);
+    },
+
     update : func {
 	var Lsel = 0;
 	var Rsel = 0;
@@ -188,6 +194,7 @@ var fuelsys = {
 var autostarting = 0;
 var B757fuel = fuelsys.new();
 setlistener("/sim/signals/fdm-initialized", func {
+	B757fuel.startup();
 	B757fuel.update();
 	B757fuel.idle_fuelcon();
 },0,0);
