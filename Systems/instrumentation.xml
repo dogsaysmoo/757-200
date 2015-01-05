@@ -192,11 +192,6 @@
 
     </transponder>
 
-    <encoder>
-        <name>encoder</name>
-        <number>0</number>
-    </encoder>
-
     <tcas>
         <name>tcas</name>
         <number>0</number>

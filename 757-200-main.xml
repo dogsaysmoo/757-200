@@ -380,12 +380,6 @@
 			<tank n="2">
 				<name>Center</name>
 			</tank>
-			<tank n="3">
-				<name>Ballast Front</name>
-			</tank>
-			<tank n="4">
-				<name>Ballast Rear</name>
-			</tank>
 		</fuel>
 	</consumables>
 
