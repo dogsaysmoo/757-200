@@ -7,6 +7,22 @@
 
         <path>transponder.ac</path>
 
+	<animation>
+		<type>material</type>
+		<object-name>Xpndr_plate</object-name>
+		<condition>
+        	    <not>
+            		<property>sim/rendering/rembrandt/enabled</property>
+        	    </not>
+      		</condition>
+      		<emission>
+		    <red>0.4</red>
+		    <green>0.4</green>
+		    <blue>0.4</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
+
 	<!-- POWER -->
 	<animation>
                 <type>select</type>
