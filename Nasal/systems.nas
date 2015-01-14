@@ -261,6 +261,8 @@ var startup = func {
 		    setprop("controls/APU/off-start-run", 0);
 		    setprop("controls/electric/APU-generator", 0);
 		    setprop("controls/pneumatic/apu-bleed", 0);
+		    setprop("controls/pneumatic/packs/pack-knob", 1);
+		    setprop("controls/pneumatic/packs/pack-knob[1]", 1);
 		}, 2);
 		removelistener(listener2);
 	    }
