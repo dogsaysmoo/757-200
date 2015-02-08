@@ -211,6 +211,8 @@ setlistener("sim/signals/fdm-initialized", func {
 
 var startup = func {
 	setprop("controls/electric/battery-switch", 1);
+	setprop("controls/lighting/nav-lights", 1);
+	setprop("controls/lighting/beacon", 1);
 	setprop("controls/APU/off-start-run", 1);
 	setprop("controls/electric/APU-generator", 1);
 	setprop("controls/electric/engine[0]/generator", 1);
