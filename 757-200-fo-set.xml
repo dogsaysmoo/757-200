@@ -29,7 +29,8 @@
       <cockpit type="int">5</cockpit>
       <model type="int">4</model>
   </rating>
-  
+
+  <variant-of>757-200-RB211</variant-of>
   <flight-model>null</flight-model>
 
   <sound>
@@ -45,7 +46,7 @@
 		<path>Aircraft/757-200/Models/757-200-fo.xml</path>
 	</model>
 
-  <hud>   
+  <hud>
    <enable3d n="1">false</enable3d>
   </hud>
 
@@ -136,7 +137,7 @@
 	 </script>
       </binding>
      </item>
-	
+
     </menu>
    </default>
   </menubar>
