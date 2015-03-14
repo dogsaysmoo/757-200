@@ -185,10 +185,10 @@
 			<config>
 				<from-model type="bool">true</from-model>
 				<x-offset-m archive="y">1</x-offset-m>
-				<y-offset-m archive="y">1.5</y-offset-m>
-				<z-offset-m archive="y">25</z-offset-m>
-				<heading-offset-deg>270</heading-offset-deg>
-				<pitch-offset-deg>0</pitch-offset-deg>
+				<y-offset-m archive="y">1.75</y-offset-m>
+				<z-offset-m archive="y">19.55</z-offset-m>
+				<heading-offset-deg>290</heading-offset-deg>
+				<pitch-offset-deg>-10</pitch-offset-deg>
 			</config>
 		</view>
 		<view n="101">
