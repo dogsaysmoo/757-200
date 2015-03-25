@@ -199,6 +199,18 @@ var init_switches = func{
     append(rbus_input,props.globals.initNode("controls/electric/wiper-switch",0,"BOOL"));
     append(rbus_output,props.globals.initNode("systems/electrical/outputs/wiper",0,"DOUBLE"));
     append(rbus_load,1);
+    append(rbus_input,props.globals.initNode("controls/electric/lside-heater-switch",0,"BOOL"));
+    append(rbus_output,props.globals.initNode("systems/electrical/outputs/lside-heater",0,"DOUBLE"));
+    append(rbus_load,1);
+    append(rbus_input,props.globals.initNode("controls/electric/lfwd-heater-switch",0,"BOOL"));
+    append(rbus_output,props.globals.initNode("systems/electrical/outputs/lfwd-heater",0,"DOUBLE"));
+    append(rbus_load,1);
+    append(rbus_input,props.globals.initNode("controls/electric/rfwd-heater-switch",0,"BOOL"));
+    append(rbus_output,props.globals.initNode("systems/electrical/outputs/rfwd-heater",0,"DOUBLE"));
+    append(rbus_load,1);
+    append(rbus_input,props.globals.initNode("controls/electric/rside-heater-switch",0,"BOOL"));
+    append(rbus_output,props.globals.initNode("systems/electrical/outputs/rside-heater",0,"DOUBLE"));
+    append(rbus_load,1);
     append(rbus_input,props.globals.initNode("controls/engines/engine[0]/fuel-pump",0,"BOOL"));
     append(rbus_output,props.globals.initNode("systems/electrical/outputs/fuel-pump[0]",0,"DOUBLE"));
     append(rbus_load,1);
