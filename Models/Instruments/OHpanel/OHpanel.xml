@@ -2029,4 +2029,112 @@
 		</axis>
 	</animation>
 
+	<!-- Window heater (left side) button -->
+	<animation>
+		<name>LSideWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>LSideWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/lside-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>LSideWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>LSideWindowHtBtn</object-name>
+		<property>controls/electric/lside-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Window heater (left fwd) button -->
+	<animation>
+		<name>LFwdWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>LFwdWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/lfwd-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>LFwdWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>LFwdWindowHtBtn</object-name>
+		<property>controls/electric/lfwd-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Window heater (right fwd) button -->
+	<animation>
+		<name>RFwdWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>RFwdWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/rfwd-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>RFwdWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>RFwdWindowHtBtn</object-name>
+		<property>controls/electric/rfwd-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Window heater (right side) button -->
+	<animation>
+		<name>RSideWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>RSideWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/rside-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>RSideWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>RSideWindowHtBtn</object-name>
+		<property>controls/electric/rside-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
 </PropertyList>
