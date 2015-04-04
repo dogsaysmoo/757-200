@@ -85,4 +85,5 @@ Changes I have made:
 -Added canvas nav display
 -Fixed up EFIS controls to work with canvas nav display
 -Added controls for decision height
+-Removed Co-Pilot callout for bank limit, replaced with tool tip
 

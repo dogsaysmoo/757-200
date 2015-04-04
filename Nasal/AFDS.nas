@@ -25,6 +25,8 @@ var AFDS = {
         m.pitch_list=["","ALT","V/S","VNAV PTH","VNAV SPD",
         "VNAV ALT","G/S","FLARE","FLCH SPD","FPA","TO/GA","CLB CON","FLCH SPD"];
 
+	m.bank_limit_list=["AUTO","5","10","15","20","25","30"];
+
         m.step=0;
 	m.heading_change_rate = 0;
 
@@ -54,6 +56,7 @@ var AFDS = {
         m.hdg_trk_selected = m.AFDS_inputs.initNode("hdg-trk-selected",0,"BOOL");
         m.vs_fpa_selected = m.AFDS_inputs.initNode("vs-fpa-selected",0,"BOOL");
         m.bank_switch = m.AFDS_inputs.initNode("bank-limit-switch",0,"INT");
+        m.bank_setting = m.AFDS_inputs.initNode("bank-limit-setting","AUTO");
 
         m.ias_setting = m.AP_settings.initNode("target-speed-kt",250); # 100 - 399 #
         m.mach_setting = m.AP_settings.initNode("target-speed-mach",0.40); # 0.40 - 0.95 #
@@ -221,6 +224,7 @@ var AFDS = {
         me.bank_max.setValue(lmt);
         lmt = -1 * lmt;
         me.bank_min.setValue(lmt);
+	me.bank_setting.setValue(me.bank_limit_list[banklimit]);
     },
 ###################
     updateATMode : func()
