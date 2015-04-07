@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 for FlightGear -->
+<!-- ADF panal for 757 Pedestal -->
+
+<PropertyList>
+
+        <path>ADF.ac</path>
+
+	<animation>
+		<type>material</type>
+		<object-name>ADFpanel</object-name>
+		<condition>
+        	    <not>
+            		<property>sim/rendering/rembrandt/enabled</property>
+        	    </not>
+      		</condition>
+      		<emission>
+		    <red>0.4</red>
+		    <green>0.4</green>
+		    <blue>0.4</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
+
+        <!-- PARAMETERS -->
+        <params>
+                <freq-left>instrumentation/adf[0]/frequencies/selected-khz</freq-left>
+                <freq-right>instrumentation/adf[1]/frequencies/selected-khz</freq-right>
+                <minimum-khz>194</minimum-khz>
+                <maximum-khz>1794</maximum-khz>
+        </params>
+
+	<!-- POWER -->
+	<animation>
+                <type>select</type>
+                <object-name>ADFdigL.1000</object-name>
+                <object-name>ADFdigL.100</object-name>
+                <object-name>ADFdigL.10</object-name>
+                <object-name>ADFdigL.1</object-name>
+                <object-name>ADFdigR.1000</object-name>
+                <object-name>ADFdigR.100</object-name>
+                <object-name>ADFdigR.10</object-name>
+                <object-name>ADFdigR.1</object-name>
+                <condition>
+                    <greater-than>
+                        <property>systems/electrical/outputs/efis</property>
+                        <value>15</value>
+                    </greater-than>
+                </condition>
+        </animation>
+
+	<!-- Frequency Digits -->
+	<animation>
+                <name>ADF L frequency 1000's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigL.1000</object-name>
+                <property alias="../../params/freq-left" />
+                <factor>0.0001</factor>
+                <step>1000</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>ADF L frequency 100's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigL.100</object-name>
+                <property alias="../../params/freq-left" />
+                <factor>0.001</factor>
+                <step>100</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>ADF L frequency 10's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigL.10</object-name>
+                <property alias="../../params/freq-left" />
+                <factor>0.01</factor>
+                <step>10</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>ADF L frequency 1's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigL.1</object-name>
+                <property alias="../../params/freq-left" />
+                <factor>0.1</factor>
+                <step>1</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	
+	<animation>
+                <name>ADF R frequency 1000's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigR.1000</object-name>
+                <property alias="../../params/freq-right" />
+                <factor>0.0001</factor>
+                <step>1000</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>ADF R frequency 100's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigR.100</object-name>
+                <property alias="../../params/freq-right" />
+                <factor>0.001</factor>
+                <step>100</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>ADF R frequency 10's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigR.10</object-name>
+                <property alias="../../params/freq-right" />
+                <factor>0.01</factor>
+                <step>10</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>ADF R frequency 1's</name>
+                <type>textranslate</type>
+                <object-name>ADFdigR.1</object-name>
+                <property alias="../../params/freq-right" />
+                <factor>0.1</factor>
+                <step>1</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+
+	<!-- Knobs -->
+	<animation>
+		<type>pick</type>	
+		<object-name>ADFknob.L</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq-left" />
+                                <step>1</step>
+                                <max alias="../../../../params/maximum-khz" />
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq-left" />
+                                <step>-1</step>
+                                <min alias="../../../../params/minimum-khz" />
+                        </binding>
+                </action>
+        </animation>
+	<animation>
+		<type>pick</type>	
+		<object-name>ADFknob.R</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq-right" />
+                                <step>1</step>
+                                <max alias="../../../../params/maximum-khz" />
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq-right" />
+                                <step>-1</step>
+                                <min alias="../../../../params/minimum-khz" />
+                        </binding>
+                </action>
+        </animation>
+
+</PropertyList>

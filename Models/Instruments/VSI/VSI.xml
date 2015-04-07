@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>VSI.ac</path>
+
+	<!-- ANIMATIONS -->
+	<!-- Lighting -->
+<!--	<animation>
+		<name>Cockpit illumination</name>
+		<type>material</type>
+		<object-name>bezel</object-name>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>controls/lighting/cockpit</factor-prop>
+		</emission>
+	</animation>-->
+	<animation>
+		<name>Instrument illumination</name>
+		<type>material</type>
+		<object-name>Face</object-name>
+		<object-name>Needle</object-name>
+		<emission>
+			<red>0.56</red>
+			<green>0.20</green>
+			<blue>0.12</blue>
+			<factor-prop>controls/lighting/cockpit-panel-norm</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<name>VSI needle</name>
+		<type>rotate</type>
+		<object-name>Needle</object-name>
+		<property>autopilot/internal/vert-speed-fpm</property>
+		<interpolation>
+                    <entry><ind>-4000.0</ind><dep>-173.0</dep></entry>
+                    <entry><ind>-1000.0</ind><dep>-76.0</dep></entry>
+                    <entry><ind>0.0</ind><dep>0.0</dep></entry>
+                    <entry><ind>1000.0</ind><dep>76.0</dep></entry>
+                    <entry><ind>4000.0</ind><dep>173.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

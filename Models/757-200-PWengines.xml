@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+
+  <path>757-200PWengines.ac</path>
+
+	<animation>
+                <type>spin</type>
+                <object-name>keskiosa_2</object-name>
+                <object-name>turbofan_2</object-name>
+                <factor>67</factor>
+                <property>engines/engine[0]/rpm</property>
+                <center>
+                        <x-m>16.5414</x-m>
+                        <y-m>-6.3737 </y-m>
+                        <z-m>-1.0562</z-m>
+                </center>
+                <axis>
+                        <x>-1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+
+        <animation>
+                <type>spin</type>
+                <object-name>keskiosa_1</object-name>
+                <object-name>turbofan_1</object-name>
+                <factor>67</factor>
+                <property>engines/engine[1]/rpm</property>
+                <center>
+                        <x-m>16.5414</x-m>
+                        <y-m>6.3672</y-m>
+                        <z-m>-1.0562</z-m>
+                </center>
+                <axis>
+                         <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+                <type>translate</type>
+                <object-name>LReverserTurbofan</object-name>
+                <property>surface-positions/left-reverser-pos-norm</property>
+                <factor>0.4</factor>
+                <axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+        <animation>
+                <type>translate</type>
+                <object-name>RReverserTurbofan</object-name>
+                <property>surface-positions/right-reverser-pos-norm</property>
+                <factor>0.4</factor>
+                <axis>
+                        <x>1</x>
+                        <y>0</y>
+                        <z>0</z>
+                </axis>
+        </animation>
+
+	<animation>
+		<type>shader</type>
+		<shader>chrome</shader>
+		<texture>chrome1.png</texture>
+		<object-name>Engine.001</object-name>
+	</animation>
+
+</PropertyList>
+

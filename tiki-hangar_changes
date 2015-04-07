@@ -1,0 +1,84 @@
+Changes I have made:
+-Show/Hide yokes
+-Fixed case-sensitve loading for Models/seats/seats.xml and Models/seats/seats.ac
+-Fixed beacon light initialization to off
+-Linked recog light bulbs to nav lights
+-Linked landing light bulbs to landing light switches
+-Fixed nose gear so it turns the right way
+-Replaced Radio dialog
+-Set F11 and F12 keys to open and close AP and Radio windows.
+-Added altimeter setting readout in hPa
+-Made text on EHSI bigger
+-Set TAS to true airspeed instead of indicated airspeed on EHSI
+-Added Systems/instrumentation.xml from 748
+-Set up DMEs
+-Tied DME displays on EHSI to instrumentation/dme[0,1]/in-range
+-Fixed CDI to go to the correct side of the nav course
+-Fixed nighttime lighting on ASIs, Altimeters, VSIs, Stby-AIs
+-Fixed needle directions on EHSI
+-Fixed needle directions on VOR
+-Fixed COMM radio panels on pedestal (added 0.001 digit, knobs step by 0.025)
+-Implemented ADF on pedestal
+-Implemented NAV1 radio on pedestal
+-Switched out CDU with improved version from 748
+-Activated glareshield NAV radios
+-Raised pilot's view angle by 5 cm so you can see the taxi ways
+-Cleaned up -set.xml file a little bit
+-Added max takeoff and landing weights to fuel/payload dialog
+-Fixed APU knob: left-click to start, automatically switches to running, middle-click to shut off
+-Overhauled FDM
+-Switched out AP with AFDS from 748
+-New AP dialog
+-Enabled MK-VIII GPWS
+-Added wind speed indicator to EHSI screen
+-Added waypoint ID, dist, eta to EHSI screen
+-Added digital readouts for IAS and MACH on main air speed indicators
+-Added annunciators for AP and AT modes on AI screen
+-Added Decision-Height and Radar Altimeter readout on AI screen
+-Re-tuned FDM
+-Set separate left and right bus-ties in electrical system
+-Changed APU generator output to 28 volts instead of 24
+-Set up fuel system model with pumps and x-feed
+-Engines consume fuel at idle
+-APU consumes fuel
+-Scaled textures to 1024x1024 max
+-Reworked engine starting sequence
+-Added second needle to Bleed Air pressure gauge
+-Activated and assigned textures to Bleed buttons
+-Built pneumatic system
+-Set up V-speed and stall speed calculator
+-Added V-speed and stall speed markers on ASI
+-Replaced face and needle movement on VSI 
+-Implemented digital engine status display on main panel
+-Built hydraulic system
+-Added function to turn off autocoordination with AP on
+-Made FLCH automatic with V/S mode
+-Split for PW4020 and RB211 variants
+-Changed door handle texture in liveries
+-Added RB211 engines from jormapaappa1235
+-Adjusted TSFC for both engine types to set range
+-Switched to better gear and flap sounds
+-Added APU sounds
+-Added AP disengage sound
+-Translate light cones to ground
+-Added direction brightness effect to landing lights
+-Added proper HDG HOLD and HDG SEL modes to AP
+-Set AT to track IAS when in mach mode and track mach when in IAS mode
+-Set yoke button to cut AP on one push, cut AT on second push
+-Added functionality for IRS knobs
+-Implemented Aileron trim switches
+-Added EICAS messages
+-Added full-circle EHSI
+-Added transponder
+-Added custom flight recorder
+-Added altn gear down controls
+-Added altn flap controls
+-Fixed chronometer ET switch
+-New AP dialog
+-Hide cockpit and cabin when viewpoint is more than 100 m away
+-Add reset functionality to AFDS
+-Shut off CDUs when power is off
+-Hour meters
+-Improved contrails from abassign
+-Added paging to CDUs
+

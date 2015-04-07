@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<path>altimeter.ac</path>
+
+	<!-- PARAMETERS -->
+	<params>
+		<indicated-altitude-ft>instrumentation/altimeter[0]/indicated-altitude-ft</indicated-altitude-ft>
+		<setting-inhg>instrumentation/altimeter[0]/setting-inhg</setting-inhg>
+		<setting-hpa>instrumentation/altimeter[0]/setting-hpa</setting-hpa>
+	</params>
+
+	<!-- ANIMATIONS -->
+	<!-- Lighting -->
+<!--	<animation>
+		<name>Cockpit illumination</name>
+		<type>material</type>
+		<object-name>bezel</object-name>
+		<object-name>riminside</object-name>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>controls/lighting/cockpit</factor-prop>
+		</emission>
+	</animation>-->
+	<animation>
+		<name>Instrument glow</name>
+		<type>material</type>
+		<object-name>Face</object-name>
+		<object-name>Needle1</object-name>
+		<object-name>alt1</object-name>
+		<object-name>alt2</object-name>
+		<object-name>alt3</object-name>
+		<object-name>alt4</object-name>
+		<object-name>press_mb1</object-name>
+		<object-name>press_mb2</object-name>
+		<object-name>press_mb3</object-name>
+		<object-name>press_mb4</object-name>
+		<object-name>press1</object-name>
+		<object-name>press2</object-name>
+		<object-name>press3</object-name>
+		<object-name>press4</object-name>
+		<condition>
+		    <less-than>
+			<property>controls/lighting/cockpit-panel-norm</property>
+			<value>0.35</value>
+		    </less-than>
+		</condition>
+		<emission>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+		</emission>
+	</animation>
+	<animation>
+		<name>Instrument illumination</name>
+		<type>material</type>
+		<object-name>Face</object-name>
+		<object-name>Needle1</object-name>
+		<object-name>alt1</object-name>
+		<object-name>alt2</object-name>
+		<object-name>alt3</object-name>
+		<object-name>alt4</object-name>
+		<object-name>press_mb1</object-name>
+		<object-name>press_mb2</object-name>
+		<object-name>press_mb3</object-name>
+		<object-name>press_mb4</object-name>
+		<object-name>press1</object-name>
+		<object-name>press2</object-name>
+		<object-name>press3</object-name>
+		<object-name>press4</object-name>
+		<emission>
+			<red>0.56</red>
+			<green>0.20</green>
+			<blue>0.12</blue>
+			<factor-prop>controls/lighting/cockpit-panel-norm</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Needle1</object-name>
+		<property alias="../../params/indicated-altitude-ft" />
+		<factor>0.36</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>alt1</object-name>
+		<property alias="../../params/indicated-altitude-ft" />
+		<factor>0.01</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>alt2</object-name>
+		<property alias="../../params/indicated-altitude-ft" />
+		<factor>0.001</factor>
+		<step>100</step>
+		<scroll>20</scroll>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>alt3</object-name>
+		<property alias="../../params/indicated-altitude-ft" />
+		<factor>0.0001</factor>
+		<step>1000</step>
+		<scroll>20</scroll>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>alt4</object-name>
+		<property alias="../../params/indicated-altitude-ft" />
+		<factor>0.00001</factor>
+		<step>10000</step>
+		<scroll>20</scroll>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press1</object-name>
+		<property alias="../../params/setting-inhg" />
+		<factor>10</factor>
+		<step>0.01</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press2</object-name>
+		<property alias="../../params/setting-inhg" />
+		<factor>1</factor>
+		<step>0.1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press3</object-name>
+		<property alias="../../params/setting-inhg" />
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press4</object-name>
+		<property alias="../../params/setting-inhg" />
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press_mb1</object-name>
+		<property alias="../../params/setting-hpa" />
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press_mb2</object-name>
+		<property alias="../../params/setting-hpa" />
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press_mb3</object-name>
+		<property alias="../../params/setting-hpa" />
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>press_mb4</object-name>
+		<property alias="../../params/setting-hpa" />
+		<factor>0.0001</factor>
+		<step>1000</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>Knob</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/setting-inhg" />
+				<step>0.01</step>
+				<max>33</max>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property alias="../../../../params/setting-inhg" />
+				<step>-0.01</step>
+				<min>26</min>
+			</binding>
+		</action>
+	</animation>
+
+</PropertyList>

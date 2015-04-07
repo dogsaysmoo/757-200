@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 flap indicator -->
+
+<PropertyList>
+
+	<path>flaps.ac</path>
+
+	<animation>
+		<type>material</type>
+		<object-name>Face</object-name>
+		<object-name>Needle</object-name>
+		<emission>
+			<red>0.8</red>
+			<green>0.4</green>
+			<blue>0.2</blue>
+			<factor-prop>controls/lighting/instruments-norm</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Needle</object-name>
+		<property>surface-positions/flap-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.000</ind><dep>0</dep></entry>
+			<entry><ind>0.033</ind><dep>45</dep></entry>
+			<entry><ind>0.167</ind><dep>90</dep></entry>
+			<entry><ind>0.500</ind><dep>135</dep></entry>
+			<entry><ind>0.667</ind><dep>180</dep></entry>
+			<entry><ind>0.833</ind><dep>225</dep></entry>
+			<entry><ind>1.000</ind><dep>270</dep></entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+</PropertyList>
+

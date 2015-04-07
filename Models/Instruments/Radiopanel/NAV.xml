@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 757-200 for FlightGear -->
+<!-- ADF panal for 757 Pedestal -->
+
+<PropertyList>
+
+        <path>NAV.ac</path>
+
+	<animation>
+		<type>material</type>
+		<object-name>NAVplate</object-name>
+		<condition>
+        	    <not>
+            		<property>sim/rendering/rembrandt/enabled</property>
+        	    </not>
+      		</condition>
+      		<emission>
+		    <red>0.4</red>
+		    <green>0.4</green>
+		    <blue>0.4</blue>
+		    <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+		</emission>
+	</animation>
+
+        <!-- PARAMETERS -->
+        <params>
+                <freq>instrumentation/nav[0]/frequencies/selected-mhz</freq>
+                <crs>instrumentation/nav[0]/radials/selected-deg</crs>
+		<minimum-mhz>108</minimum-mhz>
+		<maximum-mhz>117.95</maximum-mhz>
+        </params>
+
+	<!-- POWER -->
+	<animation>
+                <type>select</type>
+                <object-name>decimal</object-name>
+                <object-name>CRSdig.100</object-name>
+                <object-name>CRSdig.10</object-name>
+                <object-name>CRSdig.1</object-name>
+                <object-name>NAVdig100</object-name>
+                <object-name>NAVdig10</object-name>
+                <object-name>NAVdig1</object-name>
+                <object-name>NAVdig.01</object-name>
+                <object-name>NAVdig.1</object-name>
+                <condition>
+                    <greater-than>
+                        <property>systems/electrical/outputs/efis</property>
+                        <value>15</value>
+                    </greater-than>
+                </condition>
+        </animation>
+
+	<!-- Frequency Digits -->
+	<animation>
+                <name>NAV frequency 100's</name>
+                <type>textranslate</type>
+                <object-name>NAVdig100</object-name>
+                <property alias="../../params/freq" />
+                <factor>0.001</factor>
+		<bias>0.0001</bias>
+                <step>100</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>NAV frequency 10's</name>
+                <type>textranslate</type>
+                <object-name>NAVdig10</object-name>
+                <property alias="../../params/freq" />
+                <factor>0.01</factor>
+		<bias>0.0001</bias>
+                <step>10</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>NAV frequency 1's</name>
+                <type>textranslate</type>
+                <object-name>NAVdig1</object-name>
+                <property alias="../../params/freq" />
+                <factor>0.1</factor>
+		<bias>0.0001</bias>
+                <step>1</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>NAV frequency 0.1's</name>
+                <type>textranslate</type>
+                <object-name>NAVdig.1</object-name>
+                <property alias="../../params/freq" />
+                <factor>1</factor>
+		<bias>0.0001</bias>
+                <step>0.1</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>NAV frequency 0.01's</name>
+                <type>textranslate</type>
+                <object-name>NAVdig.01</object-name>
+                <property alias="../../params/freq" />
+                <factor>10</factor>
+		<bias>0.0001</bias>
+                <step>0.01</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	
+	<animation>
+                <name>NAV CRS 100's</name>
+                <type>textranslate</type>
+                <object-name>CRSdig.100</object-name>
+                <property alias="../../params/crs" />
+                <factor>0.001</factor>
+                <step>100</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>NAV CRS 10's</name>
+                <type>textranslate</type>
+                <object-name>CRSdig.10</object-name>
+                <property alias="../../params/crs" />
+                <factor>0.01</factor>
+                <step>10</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+	<animation>
+                <name>NAV CRS 1's</name>
+                <type>textranslate</type>
+                <object-name>CRSdig.1</object-name>
+                <property alias="../../params/crs" />
+                <factor>0.1</factor>
+                <step>1</step>
+                <axis>
+                        <x>0</x>
+                        <y>1</y>
+                </axis>
+        </animation>
+
+	<!-- Knobs -->
+	<animation>
+		<type>pick</type>	
+		<object-name>FreqSm</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq" />
+                                <step>0.05</step>
+                                <max alias="../../../../params/maximum-mhz" />
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq" />
+                                <step>-0.05</step>
+                                <min alias="../../../../params/minimum-mhz" />
+                        </binding>
+                </action>
+        </animation>
+	<animation>
+		<type>pick</type>	
+		<object-name>FreqBig</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq" />
+                                <step>1</step>
+                                <max alias="../../../../params/maximum-mhz" />
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/freq" />
+                                <step>-1</step>
+                                <min alias="../../../../params/minimum-mhz" />
+                        </binding>
+                </action>
+        </animation>
+
+	<animation>
+		<type>pick</type>	
+		<object-name>CRSknob</object-name>
+                <action>
+                        <button>0</button>
+                        <button>3</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/crs" />
+                                <step>1</step>
+                                <max>360</max>
+				<min>0</min>
+				<wrap>true</wrap>
+                        </binding>
+                </action>
+                <action>
+                        <button>1</button>
+                        <button>4</button>
+                        <repeatable type="bool">true</repeatable>
+                        <binding>
+                                <command>property-adjust</command>
+                                <property alias="../../../../params/crs" />
+                                <step>-1</step>
+                                <max>360</max>
+				<min>0</min>
+				<wrap>true</wrap>
+                        </binding>
+                </action>
+        </animation>
+
+</PropertyList>
