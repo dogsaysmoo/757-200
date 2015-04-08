@@ -2272,14 +2272,6 @@
 			<step>-100</step>
 		    </binding>
 		</action>
-		<hovered>
-		    <binding>
-			<command>set-tooltip</command>
-			<tooltip-id>landing-alt-man</tooltip-id>
-			<label>Landing Altitude: %.0f</label>
-			<property>controls/pressurization/landing-alt-ft</property>
-		    </binding>
-		</hovered>
 	</animation>
 
 	<animation>
