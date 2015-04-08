@@ -118,6 +118,10 @@
 				<name>Pushback</name>
 				<path>Aircraft/757-200/Systems/pushback.xml</path>
 			</autopilot>
+			<autopilot>
+				<name>Cabin Pressurization</name>
+				<path>Aircraft/757-200/Systems/pressurization.xml</path>
+			</autopilot>
 		</systems>
 		<instrumentation>
 			<path>Aircraft/757-200/Systems/instrumentation.xml</path>
@@ -690,6 +694,9 @@
 		<hour-meters>
 			<file>Aircraft/757-200/Nasal/hour-meters.nas</file>
 		</hour-meters>
+		<pressurization>
+			<file>Aircraft/757-200/Nasal/cabin-pressure.nas</file>
+		</pressurization>
 	</nasal>
 
 	<aircraft>
