@@ -541,14 +541,14 @@
                 	        <min>0</min>
                         	<max>6</max>
 	                </binding>
-        	        <!--binding>
+        	        <binding>
                 	        <command>nasal</command>
                         	<script>
 	                        var bank_set = [ "Bank Limit: auto", "Bank Limit: 5", "Bank Limit: 10", "Bank Limit: 15", "Bank Limit: 20", "Bank Limit: 25", "Bank Limit: 30" ];
         	                printout = bank_set[getprop("instrumentation/afds/inputs/bank-limit-switch")];
                 	        setprop("/sim/messages/copilot", printout);
                         	</script>
-	                </binding-->
+	                </binding>
 		</action>
 		<action>
 	                <button>1</button>
@@ -560,23 +560,15 @@
                 	        <min>0</min>
                         	<max>6</max>
 	                </binding>
-                	<!--binding>
+                	<binding>
                         	<command>nasal</command>
 	                        <script>
         	                var bank_set = [ "Bank Limit: auto", "Bank Limit: 5", "Bank Limit: 10", "Bank Limit: 15", "Bank Limit: 20", "Bank Limit: 25", "Bank Limit: 30" ];
                 	        printout = bank_set[getprop("instrumentation/afds/inputs/bank-limit-switch")];
                 	        setprop("/sim/messages/copilot", printout);
 	                        </script>
-        	        </binding-->
+        	        </binding>
 	        </action>
-		<hovered>
-	    		<binding>
-				<command>set-tooltip</command>
-				<tooltip-id>bank-limit-set</tooltip-id>
-				<label>Bank Limit: %s</label>
-				<property>instrumentation/afds/inputs/bank-limit-setting</property>
-	    		</binding>
-		</hovered>
 	</animation>
 	<animation>
 		<name>Bank limit knob rotate</name>

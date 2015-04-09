@@ -186,13 +186,6 @@ var gpws_input_feeder = func
 }
 
 ##############################################
-# Minimums listener
-##############################################
-setlistener("instrumentation/efis/minimums", func {
-	setprop("instrumentation/mk-viii/inputs/arinc429/decision-height",getprop("instrumentation/efis/minimums"));
-},0,0);
-
-##############################################
 # main
 ##############################################
 var Gpws = GPWS.new("instrumentation/mk-viii");
