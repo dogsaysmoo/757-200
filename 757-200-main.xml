@@ -13,15 +13,18 @@
       		    <tag>glass-cockpit</tag>
       		    <tag>ifr</tag>
       		</tags>
+        	<instrument-options>
+        	    <canvas-popup-enable type="bool">true</canvas-popup-enable>
+        	</instrument-options>
 		<model>
-			<B757>
+			<!--B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>
 				<nav1-track-deg type="double">0</nav1-track-deg>
 				<nav1-bug-deg type="double">0</nav1-bug-deg>
 				<nav2-bug-deg type="double">0</nav2-bug-deg>
 				<adf1-bug-deg type="double">0</adf1-bug-deg>
 				<adf2-bug-deg type="double">0</adf2-bug-deg>
-			</B757>
+			</B757-->
 			<cabin-visible type="bool">1</cabin-visible>
 			<hide-yoke type="bool">0</hide-yoke>
 			<door>
@@ -117,6 +120,10 @@
 			<autopilot>
 				<name>Pushback</name>
 				<path>Aircraft/757-200/Systems/pushback.xml</path>
+			</autopilot>
+			<autopilot>
+				<name>Cabin Pressurization</name>
+				<path>Aircraft/757-200/Systems/pressurization.xml</path>
 			</autopilot>
 		</systems>
 		<instrumentation>
@@ -474,9 +481,9 @@
                 	    <source>/instrumentation/nav[1]/frequencies/selected-mhz</source>
             		</frequencies>
         	</dme>
-		<efis>
+		<!--efis>
 			<ehsi-ctr type="bool">0</ehsi-ctr>
-		</efis>
+		</efis-->
 		<fmc>
 			<to-flap type="double">5</to-flap>
 			<vspeeds>
@@ -650,6 +657,7 @@
 			<file>Aircraft/757-200/Nasal/gpws.nas</file>
 			<file>Aircraft/757-200/Nasal/eicas.nas</file>
 			<file>Aircraft/757-200/Nasal/AFDS.nas</file>
+			<file>Aircraft/757-200/Models/Instruments/ND/ND.nas</file>
 			<file>Aircraft/757-200/Nasal/systems.nas</file>
 			<file>Aircraft/757-200/Nasal/fuel_system.nas</file>
 			<file>Aircraft/757-200/Nasal/pneumatic.nas</file>
@@ -690,6 +698,9 @@
 		<hour-meters>
 			<file>Aircraft/757-200/Nasal/hour-meters.nas</file>
 		</hour-meters>
+		<pressurization>
+			<file>Aircraft/757-200/Nasal/cabin-pressure.nas</file>
+		</pressurization>
 	</nasal>
 
 	<aircraft>
