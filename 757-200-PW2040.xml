@@ -9,7 +9,7 @@
  http://www.boeing.com/commercial/airports/757.htm
 -->
 
-<airplane mass="127520">
+<airplane version="YASIM_VERSION_32" mass="127520">
 	<approach speed="140" aoa="4.0" fuel="0.2">
 		<control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.4" />
 		<control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.4" />
