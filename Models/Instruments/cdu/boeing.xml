@@ -1057,11 +1057,24 @@
 	<action>
 		<button>0</button>
 		<repeatable>false</repeatable>  
-				<binding>
+		<binding>
 			<command>nasal</command>
 			<script>cdu.key('LSK6R');</script>
 		</binding>
 
+	</action>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>Btn.exec</object-name>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>cdu.key('exec');</script>
+		</binding>
 	</action>
 </animation>
 

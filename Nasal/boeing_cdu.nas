@@ -4,6 +4,7 @@ var input = func(v) {
 		setprop("/instrumentation/cdu/input",getprop("/instrumentation/cdu/input")~v);
 	}
 
+var selected_wp = -1;
 var wpCurr = getprop("/autopilot/route-manager/current-wp");
 if (wpCurr < 1) wpCurr = 1;
 wp1 = wpCurr + 1;
@@ -84,9 +85,14 @@ var key = func(v) {
 					if (cduInput == "DELETE"){
 						setprop("/autopilot/route-manager/input","@DELETE"~wpCurr);
 						cduInput = "";
+					} elsif (cduInput == "") {
+						selected_wp = wpCurr;
+						cduInput = getprop("/autopilot/route-manager/route/wp["~wpCurr~"]/id");
 					}
 					else{
 						setprop("/autopilot/route-manager/input","@INSERT"~wp1~":"~cduInput);
+						cduInput = "";
+						selected_wp = -1;
 					}
 				}
 				if (cduDisplay == "TO_REF"){
@@ -145,9 +151,14 @@ var key = func(v) {
 					if (cduInput == "DELETE"){
 						setprop("/autopilot/route-manager/input","@DELETE"~wp1);
 						cduInput = "";
+					} elsif (cduInput == "") {
+						selected_wp = wp1;
+						cduInput = getprop("/autopilot/route-manager/route/wp["~wp1~"]/id");
 					}
 					else{
 						setprop("/autopilot/route-manager/input","@INSERT"~wp2~":"~cduInput);
+						cduInput = "";
+						selected_wp = -1;
 					}
 				}
 			}
@@ -186,9 +197,14 @@ var key = func(v) {
 					if (cduInput == "DELETE"){
 						setprop("/autopilot/route-manager/input","@DELETE"~wp2);
 						cduInput = "";
+					} elsif (cduInput == "") {
+						selected_wp = wp2;
+						cduInput = getprop("/autopilot/route-manager/route/wp["~wp2~"]/id");
 					}
 					else{
 						setprop("/autopilot/route-manager/input","@INSERT"~wp3~":"~cduInput);
+						cduInput = "";
+						selected_wp = -1;
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -217,9 +233,14 @@ var key = func(v) {
 					if (cduInput == "DELETE"){
 						setprop("/autopilot/route-manager/input","@DELETE"~wp3);
 						cduInput = "";
+					} elsif (cduInput == "") {
+						selected_wp = wp3;
+						cduInput = getprop("/autopilot/route-manager/route/wp["~wp3~"]/id");
 					}
 					else{
 						setprop("/autopilot/route-manager/input","@INSERT"~wp4~":"~cduInput);
+						cduInput = "";
+						selected_wp = -1;
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -248,9 +269,14 @@ var key = func(v) {
 					if (cduInput == "DELETE"){
 						setprop("/autopilot/route-manager/input","@DELETE"~wp4);
 						cduInput = "";
+					} elsif (cduInput == "") {
+						selected_wp = wp4;
+						cduInput = getprop("/autopilot/route-manager/route/wp["~wp4~"]/id");
 					}
 					else{
 						setprop("/autopilot/route-manager/input","@INSERT"~wp5~":"~cduInput);
+						cduInput = "";
+						selected_wp = -1;
 					}
 				}
 				if (cduDisplay == "NAV_RAD"){
@@ -310,6 +336,16 @@ var key = func(v) {
 				}
 				else if (cduDisplay == "INIT_REF"){
 					cduDisplay = "MAINT";
+				}
+			}
+	
+			if (v == "exec") {
+				if (cduDisplay == "RTE1_LEGS" and selected_wp > 0) {
+					setprop("autopilot/route-manager/current-wp",selected_wp);
+					cduInput = sprintf("%f,%f", getprop("instrumentation/gps/indicated-longitude-deg"), getprop("instrumentation/gps/indicated-latitude-deg"));
+					setprop("/autopilot/route-manager/input","@INSERT"~selected_wp~":"~cduInput);
+					cduInput = "";
+					selected_wp = -1;
 				}
 			}
 			
