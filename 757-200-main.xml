@@ -122,6 +122,9 @@
 				<name>Cabin Pressurization</name>
 				<path>Aircraft/757-200/Systems/pressurization.xml</path>
 			</autopilot>
+			<autopilot>
+				<path>Aircraft/757-200/Systems/757-flt-ctrls.xml</path>
+			</autopilot>
 		</systems>
 		<instrumentation>
 			<path>Aircraft/757-200/Systems/instrumentation.xml</path>
