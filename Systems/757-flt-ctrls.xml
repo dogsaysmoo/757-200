@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+<!-- Hydraulic restrictions on Flight control operation -->
+
+    <filter>
+	<name>Aileron Enable</name>
+	<debug>false</debug>
+	<type>gain</type>
+	<gain>1.0</gain>
+	<enable>
+	    <prop>systems/hydraulic/equipment/enable-sfc</prop>
+	</enable>
+	<input>controls/flight/aileron</input>
+	<output>controls/flight/aileron-pos</output>
+    </filter>
+    <filter>
+	<name>Elevator Enable</name>
+	<debug>false</debug>
+	<type>gain</type>
+	<gain>1.0</gain>
+	<enable>
+	    <prop>systems/hydraulic/equipment/enable-sfc</prop>
+	</enable>
+	<input>controls/flight/elevator</input>
+	<output>controls/flight/elevator-pos</output>
+    </filter>
+    <filter>
+	<name>Rudder Enable</name>
+	<debug>false</debug>
+	<type>gain</type>
+	<gain>1.0</gain>
+	<enable>
+	    <prop>systems/hydraulic/equipment/enable-sfc</prop>
+	</enable>
+	<input>controls/flight/rudder</input>
+	<output>controls/flight/rudder-pos</output>
+    </filter>
+
+</PropertyList>
+
