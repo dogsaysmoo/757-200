@@ -163,29 +163,29 @@ var engineLoop = func(engine_no) {
 
 ## FLIGHT CONTROLS
 ##################
-var fltctrls = props.globals.getNode("controls/flight",1);
-var ailnctrl = fltctrls.getNode("aileron",1);
-var elevctrl = fltctrls.getNode("elevator",1);
-var rudrctrl = fltctrls.getNode("rudder",1);
-var ailnpos = fltctrls.initNode("aileron-pos",0,"DOUBLE");
-var elevpos = fltctrls.initNode("elevator-pos",0,"DOUBLE");
-var rudrpos = fltctrls.initNode("rudder-pos",0,"DOUBLE");
-
-var set_fltctrls = func {
-    if (getprop("systems/hydraulic/equipment/enable-sfc")) {
-	ailnpos.setValue(ailnctrl.getValue());
-	elevpos.setValue(elevctrl.getValue());
-	rudrpos.setValue(rudrctrl.getValue());
-    }
+#var fltctrls = props.globals.getNode("controls/flight",1);
+#var ailnctrl = fltctrls.getNode("aileron",1);
+#var elevctrl = fltctrls.getNode("elevator",1);
+#var rudrctrl = fltctrls.getNode("rudder",1);
+#var ailnpos = fltctrls.initNode("aileron-pos",0,"DOUBLE");
+#var elevpos = fltctrls.initNode("elevator-pos",0,"DOUBLE");
+#var rudrpos = fltctrls.initNode("rudder-pos",0,"DOUBLE");
+#
+#var set_fltctrls = func {
+#    if (getprop("systems/hydraulic/equipment/enable-sfc")) {
+#	ailnpos.setValue(ailnctrl.getValue());
+#	elevpos.setValue(elevctrl.getValue());
+#	rudrpos.setValue(rudrctrl.getValue());
+#    }
 #    settimer(set_fltctrls,0);
-}
+#}
 
 ## System updater function, updates each frame
 var update_systems = func {
 	engineLoop(0);
 	engineLoop(1);
 	apuLoop();
-	set_fltctrls();
+#	set_fltctrls();
 	settimer(update_systems,0);
 }
 
