@@ -4,8 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>BOEING</name>
-				<texture>BOE.png</texture>
+				<name>North American Airlines</name>
+				<texture>Liveries/NAO.png</texture>
 			</livery>  	  
 		</model>
 	</sim>
