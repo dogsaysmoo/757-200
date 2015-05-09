@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Continental</name>
-				<texture>COA.png</texture>
+				<texture>Liveries/COA.png</texture>
 			</livery>  	  
 		</model>
 	</sim>
