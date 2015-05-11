@@ -80,6 +80,7 @@
 
             		<string n="0" type="string"></string> <!-- Dual Control analog TDM-mpp1 (magnetos, flaps etc.) -->
             		<string n="1" type="string"></string> <!-- Dual Control analog TDM-mpp2 only pilot to copilot (fuel in tank etc.) -->
+			<string n="2" alias="/sim/engines"/>
           	    </generic>
         	</multiplay>
  
