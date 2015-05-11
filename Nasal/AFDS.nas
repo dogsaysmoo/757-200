@@ -102,6 +102,9 @@ var AFDS = {
 	m.e_time = 0;
 	m.status_light = m.AFDS_inputs.initNode("status-light",0,"BOOL");
 
+	m.errmsg = ["Invalid Route: Enter 2 or more valid waypoints in your flightplan.","Invalid Route: Enter the departure runway in your flightplan"];
+	m.errtrip = [0,0];
+
         return m;
     },
 
@@ -388,7 +391,29 @@ var AFDS = {
 	    if ((atm_wpt < 0 or atm_wpt >= max_wpt) and getprop("autopilot/route-manager/active"))
 		setprop("autopilot/route-manager/active",0);
 
-	    if (getprop("/autopilot/route-manager/active") and getprop("/autopilot/route-manager/route/num") >= 2) {
+	    # LNAV error handler
+	    var error_condition = 0;
+	    if (getprop("autopilot/route-manager/active") and getprop("autopilot/route-manager/route/num") < 2) {
+		error_condition = 1;
+		if (me.errtrip[0] == 0) {
+		    me.errtrip[0] = 1;
+		    setprop("/sim/messages/copilot", me.errmsg[0]);
+		}
+	    } else {
+		me.errtrip[0] = 0;
+	    }
+	    if (getprop("autopilot/route-manager/active") and getprop("autopilot/route-manager/departure/runway") == "") {
+		error_condition = 1;
+		if (me.errtrip[1] == 0) {
+		    me.errtrip[1] = 1;
+		    setprop("/sim/messages/copilot", me.errmsg[1]);
+		}
+	    } else {
+		me.errtrip[1] = 0;
+	    }
+
+	    # LNAV course calculator
+	    if (getprop("/autopilot/route-manager/active") and error_condition == 0) {
 
 	    	if(atm_wpt < (max_wpt - 1)) {
 		    me.remaining_distance.setValue(getprop("/autopilot/route-manager/wp/remaining-distance-nm") + getprop("autopilot/route-manager/wp/dist"));
