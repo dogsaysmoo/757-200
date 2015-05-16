@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PropertyList include="instrumentation.xml">
+
+    <tacan>
+	<name>tacan</name>
+	<number>0</number>
+    </tacan>
+
+</PropertyList>
