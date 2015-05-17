@@ -3,10 +3,10 @@
 <PropertyList include="757-200-main.xml">
 
 	<sim>
-		<description>Boeing C-32 (757-200 PW2040)</description>
+		<description>Boeing C-32 (USAF variant of 757-200)</description>
 		<status>early production</status>
 		<author>John Williams, Juuso Tapaninen; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
-		  <rating>
+		<rating>
 		      	<FDM type="int">3</FDM>
       			<systems type="int">5</systems>
       			<cockpit type="int">5</cockpit>
