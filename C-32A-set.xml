@@ -13,7 +13,7 @@
       			<model type="int">4</model>
 		</rating>
 		<flight-model>yasim</flight-model>
-		<aero>C-32</aero>
+		<aero>C-32A</aero>
 
 		<variant-of>757-200-RB211</variant-of>
 
@@ -26,7 +26,7 @@
 		</instrumentation>
 
 		<model>
-			<path>Aircraft/757-200/Models/C-32.xml</path>
+			<path>Aircraft/757-200/Models/C-32A.xml</path>
 			<livery>
 				<file>USA</file>
 			</livery>
@@ -64,7 +64,7 @@
 		<cdu>
 			<display>IDENT</display>
 			<ident>
-				<model>C-32</model>
+				<model>C-32A</model>
 				<engines>PW2040</engines>
 			</ident>
 			<input />
