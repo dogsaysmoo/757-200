@@ -49,7 +49,7 @@
 		<menubar>
 			<default>
 				<menu n="100">			
-					<label>Boeing C-32</label>
+					<label>Boeing C-32A</label>
 					<item n="1">
 					    <label>-----</label>
 					    <enabled>false</enabled>
