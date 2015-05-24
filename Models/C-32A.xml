@@ -2,18 +2,14 @@
 
 <PropertyList>
 
+	<path>757-200.ac</path>
 
-  <path>757-200.ac</path>
-
-
-   <animation>
-  <type>scale</type>
-  <x-offset>1.01936</x-offset>
-  <y-offset>1.01936</y-offset>
-  <z-offset>1.01936</z-offset>
- </animation>
-
-
+	<animation>
+		<type>scale</type>
+		<x-offset>1.01936</x-offset>
+		<y-offset>1.01936</y-offset>
+		<z-offset>1.01936</z-offset>
+	</animation>
  
 	<!-- EXTRA MODELS -->
 	<!-- Engines -->
@@ -21,16 +17,6 @@
 		<name>PW_engines</name>
 		<path>Aircraft/757-200/Models/757-200-PWengines.xml</path>
 	</model>
-	<!--animation>
-		<type>select</type>
-		<object-name>PW_engines</object-name>
-		<condition>
-		    <equals>
-			<property>sim/multiplay/generic/string[2]</property>
-			<value>PW</value>
-		    </equals>
-		</condition>
-	</animation-->
 
 	<!-- 3d cockpit -->
 	<model>

@@ -15,16 +15,15 @@
 		<flight-model>yasim</flight-model>
 		<aero>757-200-PW2040</aero>
 
-        <variant-of>757-200-RB211</variant-of>
+		<variant-of>757-200-RB211</variant-of>
 
 		<model>
 			<path>Aircraft/757-200/Models/757-200.xml</path>
 			<livery>
 				<file>FIN</file>
 			</livery>
+			<variant type="int">0</variant>
 		</model>
-
-		<engines>PW</engines>
 
 		<weight n="0">
 			<name>Crew</name>

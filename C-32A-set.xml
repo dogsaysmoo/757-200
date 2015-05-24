@@ -30,9 +30,8 @@
 			<livery>
 				<file>USA</file>
 			</livery>
+			<variant type="int">0</variant>
 		</model>
-
-		<engines>PW</engines>
 
 		<weight n="0">
 			<name>Crew</name>
