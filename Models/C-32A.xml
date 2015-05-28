@@ -41,6 +41,10 @@
 		<max-m>100</max-m>
 	</animation>
 	
+	<!-- Antennas -->
+	<model>
+		<path>Aircraft/757-200/Models/C-32_antennas.ac</path>
+	</model>
 
 	<!-- Pushback -->
 	<model>
@@ -2362,6 +2366,8 @@
 	    	<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
     		<object-name>Fuseage.001</object-name>
+    		<object-name>VHFantenna.top</object-name>
+    		<object-name>VHFantenna.bot</object-name>
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>USA.png</texture>

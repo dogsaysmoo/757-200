@@ -2383,6 +2383,8 @@
 	    	<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
     		<object-name>Fuseage.001</object-name>
+    		<object-name>VHFantenna.top</object-name>
+    		<object-name>VHFantenna.bot</object-name>
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>FIN.png</texture>
