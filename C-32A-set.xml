@@ -41,7 +41,7 @@
 		</weight>
 		<weight n="1">
 			<name>Pax/Baggage/Cargo</name>
-			<weight-lb>42844</weight-lb>
+			<weight-lb>14844</weight-lb>
 			<max-lb>57125</max-lb>
 			<min-lb>0</min-lb>
 		</weight>
@@ -57,6 +57,17 @@
 			</default>
 		</menubar>
 	</sim>
+
+	<consumables>
+		<fuel>
+			<tank n="3">
+				<name>Fwd Aux</name>
+			</tank>
+			<tank n="4">
+				<name>Aft Aux</name>
+			</tank>
+		</fuel>
+	</consumables>
 
 	<instrumentation>
 		<!-- CDU stuff: http://wiki.flightgear.org/index.php/Howto:_Implement_a_Control_Display_Unit -->
@@ -92,7 +103,7 @@
 		</mass-and-balance>
 	</limits>
 
-	<nasal>
+	<!--nasal>
 		<aar>
 	        	<file>Aircraft/Generic/aar.nas</file>
 		</aar>
@@ -105,8 +116,8 @@
 			<offset-x-m>0.0</offset-x-m>
 			<offset-y-m>0.0</offset-y-m>
 			<offset-z-m>0.0</offset-z-m>
-			<range type="int">200</range> <!-- 200m range to compensate for rubber banding -->
+			<range type="int">200</range>
 		</refuel>
-	</systems>
+	</systems-->
 
 </PropertyList>

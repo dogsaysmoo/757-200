@@ -14,15 +14,23 @@ var fuelsys = {
 
 	m.sel = [ m.tanks.getNode("tank/selected",1),
 		m.tanks.getNode("tank[1]/selected",1),
-		m.tanks.getNode("tank[2]/selected",1) ];
+		m.tanks.getNode("tank[2]/selected",1),
+		m.tanks.getNode("tank[3]/selected",1),
+		m.tanks.getNode("tank[4]/selected",1) ];
 
 	m.lev = [ m.tanks.getNode("tank/level-lbs",1),
 		m.tanks.getNode("tank[1]/level-lbs",1),
-		m.tanks.getNode("tank[2]/level-lbs",1) ];
+		m.tanks.getNode("tank[2]/level-lbs",1),
+		m.tanks.getNode("tank[3]/level-lbs",1),
+		m.tanks.getNode("tank[4]/level-lbs",1) ];
 
 	m.emp = [ m.tanks.getNode("tank/empty",1),
 		m.tanks.getNode("tank[1]/empty",1),
-		m.tanks.getNode("tank[2]/empty",1) ];
+		m.tanks.getNode("tank[2]/empty",1),
+		m.tanks.getNode("tank[3]/empty",1),
+		m.tanks.getNode("tank[4]/empty",1) ];
+
+	m.aircraft = props.globals.getNode("sim/aircraft",1);
 
 	return m;
     },
@@ -31,12 +39,16 @@ var fuelsys = {
 	me.lev[0].setValue(10934);
 	me.lev[1].setValue(10934);
 	me.lev[2].setValue(0);
+	me.lev[3].setValue(0);
+	me.lev[4].setValue(0);
     },
 
     update : func {
 	var Lsel = 0;
 	var Rsel = 0;
 	var Csel = 0;
+
+	var aux_fuel = (me.aircraft.getValue() == 'C-32A' and !(me.emp[3].getBoolValue() and me.emp[4].getBoolValue()));
 
 	var n1L = getprop("engines/engine[0]/rpm");
 	var n1R = getprop("engines/engine[1]/rpm");
@@ -46,7 +58,7 @@ var fuelsys = {
 		 setprop("controls/fuel/tank[0]/pump",0);
 	if (me.pumpR.getBoolValue() and me.emp[1].getBoolValue())
 		 setprop("controls/fuel/tank[1]/pump",0);
-	if (me.pumpC.getBoolValue() and me.emp[2].getBoolValue())
+	if (me.pumpC.getBoolValue() and me.emp[2].getBoolValue() and !aux_fuel)
 		 setprop("controls/fuel/tank[2]/pump",0);
 
 	# Pump status
@@ -90,11 +102,31 @@ var fuelsys = {
 	# Deselect empty tanks and set the tank selection statuses
 	if (me.emp[0].getBoolValue()) Lsel = 0;
 	if (me.emp[1].getBoolValue()) Rsel = 0;
-	if (me.emp[2].getBoolValue()) Csel = 0;
+#	if (me.emp[2].getBoolValue()) Csel = 0;
 
 	me.sel[0].setBoolValue(Lsel);
 	me.sel[1].setBoolValue(Rsel);
-	me.sel[2].setBoolValue(Csel);
+	if (me.aircraft.getValue() == 'C-32A') {
+		if (me.emp[3].getBoolValue() and me.emp[4].getBoolValue()) {
+		    me.sel[2].setBoolValue(Csel);
+		    me.sel[3].setBoolValue(0);
+		    me.sel[4].setBoolValue(0);
+		} else {
+		    me.sel[2].setBoolValue(0);
+		    if (me.emp[3].getBoolValue()) {
+			me.sel[3].setBoolValue(0);
+		    } else {
+			me.sel[3].setBoolValue(Csel);
+		    }
+		    if (me.emp[4].getBoolValue()) {
+			me.sel[4].setBoolValue(0);
+		    } else {
+			me.sel[4].setBoolValue(Csel);
+		    }
+		}
+	} else {
+		me.sel[2].setBoolValue(Csel);
+	}
 
 	me.elec_update();
 	settimer(func { me.update();},0.5);
