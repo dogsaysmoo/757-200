@@ -100,33 +100,40 @@ var fuelsys = {
 	}
 
 	# Deselect empty tanks and set the tank selection statuses
+	if (me.aircraft.getValue() == 'C-32A') {
+		if (me.emp[3].getBoolValue()) me.sel[3].setBoolValue(0);
+		else me.sel[3].setBoolValue(Csel);
+		if (me.emp[4].getBoolValue()) me.sel[4].setBoolValue(0);
+		else me.sel[4].setBoolValue(Csel);
+	}
 	if (me.emp[0].getBoolValue()) Lsel = 0;
 	if (me.emp[1].getBoolValue()) Rsel = 0;
-#	if (me.emp[2].getBoolValue()) Csel = 0;
+	if (me.emp[2].getBoolValue()) Csel = 0;
 
 	me.sel[0].setBoolValue(Lsel);
 	me.sel[1].setBoolValue(Rsel);
-	if (me.aircraft.getValue() == 'C-32A') {
-		if (me.emp[3].getBoolValue() and me.emp[4].getBoolValue()) {
-		    me.sel[2].setBoolValue(Csel);
-		    me.sel[3].setBoolValue(0);
-		    me.sel[4].setBoolValue(0);
-		} else {
-		    me.sel[2].setBoolValue(0);
-		    if (me.emp[3].getBoolValue()) {
-			me.sel[3].setBoolValue(0);
-		    } else {
-			me.sel[3].setBoolValue(Csel);
-		    }
-		    if (me.emp[4].getBoolValue()) {
-			me.sel[4].setBoolValue(0);
-		    } else {
-			me.sel[4].setBoolValue(Csel);
-		    }
-		}
-	} else {
-		me.sel[2].setBoolValue(Csel);
-	}
+	me.sel[2].setBoolValue(Csel);
+
+#		if (me.emp[3].getBoolValue() and me.emp[4].getBoolValue()) {
+#		    me.sel[2].setBoolValue(Csel);
+#		    me.sel[3].setBoolValue(0);
+#		    me.sel[4].setBoolValue(0);
+#		} else {
+#		    me.sel[2].setBoolValue(0);
+#		    if (me.emp[3].getBoolValue()) {
+#			me.sel[3].setBoolValue(0);
+#		    } else {
+#			me.sel[3].setBoolValue(Csel);
+#		    }
+#		    if (me.emp[4].getBoolValue()) {
+#			me.sel[4].setBoolValue(0);
+#		    } else {
+#			me.sel[4].setBoolValue(Csel);
+#		    }
+#		}
+#	} else {
+#		me.sel[2].setBoolValue(Csel);
+#	}
 
 	me.elec_update();
 	settimer(func { me.update();},0.5);
