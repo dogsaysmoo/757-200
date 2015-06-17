@@ -454,6 +454,33 @@
 
 	<!-- Fuel tank indicators -->
 	<animation>
+		<type>select</type>
+		<object-name>LFuel100</object-name>
+		<object-name>LFuel1000</object-name>
+		<object-name>LFuel10000</object-name>
+		<object-name>FuelTemp-</object-name>
+		<object-name>FuelTemp1</object-name>
+		<object-name>FuelTemp10</object-name>
+		<object-name>FuelTemp100</object-name>
+		<object-name>CFuel100</object-name>
+		<object-name>CFuel1000</object-name>
+		<object-name>CFuel10000</object-name>
+		<object-name>RFuel100</object-name>
+		<object-name>RFuel1000</object-name>
+		<object-name>RFuel10000</object-name>
+		<object-name>TFuel100</object-name>
+		<object-name>TFuel1000</object-name>
+		<object-name>TFuel10000</object-name>
+		<object-name>TFuel100000</object-name>
+		<condition>
+		    <greater-than>
+			<property>systems/electrical/outputs/efis</property>
+			<value>15</value>
+		    </greater-than>
+		</condition>
+	</animation>
+
+	<animation>
 		<name>Left fuel tank 10,000's</name>
 		<type>textranslate</type>
 		<object-name>LFuel10000</object-name>
@@ -2028,5 +2055,406 @@
 		    <z>0</z>
 		</axis>
 	</animation>
+
+	<!-- Window heater (left side) button -->
+	<animation>
+		<name>LSideWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>LSideWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/lside-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>LSideWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>LSideWindowHtBtn</object-name>
+		<property>controls/electric/lside-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Window heater (left fwd) button -->
+	<animation>
+		<name>LFwdWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>LFwdWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/lfwd-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>LFwdWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>LFwdWindowHtBtn</object-name>
+		<property>controls/electric/lfwd-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Window heater (right fwd) button -->
+	<animation>
+		<name>RFwdWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>RFwdWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/rfwd-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>RFwdWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>RFwdWindowHtBtn</object-name>
+		<property>controls/electric/rfwd-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Window heater (right side) button -->
+	<animation>
+		<name>RSideWindowHt button pick</name>
+		<type>pick</type>
+		<object-name>RSideWindowHtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electric/rside-heater-switch</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>RSideWindowHt button textranslate</name>
+		<type>textranslate</type>
+		<object-name>RSideWindowHtBtn</object-name>
+		<property>controls/electric/rside-heater-switch</property>
+		<factor>0.5</factor>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+<!-- CABIN PRESSURIZATION PANEL -->
+ <!-- Outflow Valve -->
+	<animation>
+		<type>rotate</type>
+		<object-name>outflow_valve.needle</object-name>
+		<property>controls/pressurization/outflow-valve-pos</property>
+		<factor>-135</factor>
+		<center>
+		    <x-m> 0.000</x-m>
+		    <y-m> 0.106</y-m>
+		    <z-m>-0.094</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>outflow_valve_man.knob</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>true</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>pressurization.valve_adjust(1);</script>
+		    </binding>
+		    <binding>
+                	<command>property-assign</command>
+                	<property>controls/pressurization/valve-switch</property>
+                	<value>1</value>
+            	    </binding>
+            	    <mod-up>
+                	<binding>
+                    	    <command>property-assign</command>
+                    	    <property>controls/pressurization/valve-switch</property>
+                    	    <value>0</value>
+                	</binding>
+            	    </mod-up>
+		</action>
+		<action>
+		    <button>1</button>
+		    <repeatable>true</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>pressurization.valve_adjust(-1);</script>
+		    </binding>
+		    <binding>
+                	<command>property-assign</command>
+                	<property>controls/pressurization/valve-switch</property>
+                	<value>-1</value>
+            	    </binding>
+            	    <mod-up>
+                	<binding>
+                    	    <command>property-assign</command>
+                    	    <property>controls/pressurization/valve-switch</property>
+                    	    <value>0</value>
+                	</binding>
+            	    </mod-up>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>outflow_valve_man.knob</object-name>
+		<property>controls/pressurization/valve-switch</property>
+		<factor>-55</factor>
+		<center>
+		    <x-m> 0.000</x-m>
+		    <y-m> 0.146</y-m>
+		    <z-m>-0.093</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+ <!-- Landing Alt -->
+	<animation>
+		<type>pick</type>
+		<object-name>landing_alt.knob</object-name>
+		<action>
+		    <button>0</button>
+		    <button>3</button>
+		    <repeatable>true</repeatable>
+		    <binding>
+			<command>property-adjust</command>
+			<property>controls/pressurization/landing-alt-ft</property>
+			<min>-1000</min>
+			<max>14000</max>
+			<step>100</step>
+		    </binding>
+		</action>
+		<action>
+		    <button>1</button>
+		    <button>4</button>
+		    <repeatable>true</repeatable>
+		    <binding>
+			<command>property-adjust</command>
+			<property>controls/pressurization/landing-alt-ft</property>
+			<min>-1000</min>
+			<max>14000</max>
+			<step>-100</step>
+		    </binding>
+		</action>
+		<hovered>
+		    <binding>
+			<command>set-tooltip</command>
+			<tooltip-id>landing-alt-man</tooltip-id>
+			<label>Landing Altitude: %.0f</label>
+			<property>controls/pressurization/landing-alt-ft</property>
+		    </binding>
+		</hovered>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ldg_alt.neg</object-name>
+		<condition>
+		    <less-than>
+			<property>controls/pressurization/landing-alt-ft</property>
+			<value>0</value>
+		    </less-than>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>ldg_alt.10000</object-name>
+		<condition>
+		    <greater-than-equals>
+			<property>controls/pressurization/landing-alt-ft</property>
+			<value>10000</value>
+		    </greater-than-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ldg_alt.1000</object-name>
+		<property>controls/pressurization/landing-alt-disp</property>
+		<factor>0.0001</factor>
+		<step>1000</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ldg_alt.100</object-name>
+		<property>controls/pressurization/landing-alt-disp</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ldg_alt.10</object-name>
+		<property>controls/pressurization/landing-alt-disp</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<type>textranslate</type>
+		<object-name>ldg_alt.1</object-name>
+		<property>controls/pressurization/landing-alt-disp</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+
+ <!-- Mode Selector -->
+	<animation>
+		<type>pick</type>
+		<object-name>cabin_pres_mode.knob</object-name>
+		<action>
+		    <button>0</button>
+		    <button>1</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>property-toggle</command>
+			<property>controls/pressurization/valve-manual</property>
+		    </binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>cabin_pres_mode.knob</object-name>
+		<property>controls/pressurization/valve-manual</property>
+		<factor>-70</factor>
+		<center>
+		    <x-m> 0.000</x-m>
+		    <y-m> 0.1845</y-m>
+		    <z-m>-0.155</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+ <!-- Gauge Needles -->
+	<animation>
+		<type>rotate</type>
+		<object-name>cabin_diff.needle</object-name>
+		<property>systems/pressurization/deltaP-psi</property>
+		<factor>-30</factor>
+		<center>
+		    <x-m> 0.000</x-m>
+		    <y-m> 0.117</y-m>
+		    <z-m>-0.215</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>cabin_alt.needle</object-name>
+		<property>systems/pressurization/cabin-altitude-ft</property>
+		<interpolation>
+                    <entry>
+                        <ind>0.0</ind>
+                        <dep>0</dep>
+                    </entry>
+                    <entry>
+                        <ind>4500</ind>
+                        <dep>90</dep>
+                    </entry>
+                    <entry>
+                        <ind>8500</ind>
+                        <dep>180</dep>
+                    </entry>
+                    <entry>
+                        <ind>10000</ind>
+                        <dep>210</dep>
+                    </entry>
+                    <entry>
+                        <ind>20000</ind>
+                        <dep>270</dep>
+                    </entry>
+                    <entry>
+                        <ind>45000</ind>
+                        <dep>340</dep>
+                    </entry>
+		</interpolation>
+		<center>
+		    <x-m> 0.000</x-m>
+		    <y-m> 0.155</y-m>
+		    <z-m>-0.215</z-m>
+		</center>
+		<axis>
+		    <x>-1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>cabin_rate.needle</object-name>
+		<property>systems/pressurization/cabin-rate-fpm</property>
+		<factor>-0.045</factor>
+		<center>
+		    <x-m> 0.000</x-m>
+		    <y-m> 0.194</y-m>
+		    <z-m>-0.215</z-m>
+		</center>
+		<axis>
+		    <x>1</x>
+		    <y>0</y>
+		    <z>0</z>
+		</axis>
+	</animation>
+
+
 
 </PropertyList>

@@ -109,15 +109,19 @@ var warning_messages = func {
 	    if (eng2fire)
 		append(msgs_warning,"FIRE ENGINE 2");
 	}
+	if (getprop("systems/pressurization/cabin-altitude-ft") > 10000)
+		append(msgs_warning,"CABIN ALTITUDE");
+	if (getprop("controls/failures/gear[0]/stuck") or getprop("controls/failures/gear[1]/stuck") or getprop("controls/failures/gear[2]/stuck"))
+		append(msgs_warning,"GEAR DISAGREE");
 #	if (getprop("gear/brake-thermal-energy") > 1.2)
 #            	append(msgs_caution," L R BRAKE OVERHEAT");
 }
 
 var caution_messages = func {
-	if ((getprop("/consumables/fuel/tank[1]/level-lbs") < 2185) or (getprop("/consumables/fuel/tank[2]/level-lbs") < 2185))
+	if ((getprop("/consumables/fuel/tank[0]/level-lbs") < 2185) or (getprop("/consumables/fuel/tank[1]/level-lbs") < 2185))
 		append(msgs_caution," *FUEL QTY LOW");
-	if (getprop("controls/failures/gear[0]/stuck") or getprop("controls/failures/gear[1]/stuck") or getprop("controls/failures/gear[2]/stuck"))
-		append(msgs_warning,"GEAR DISAGREE");
+	if (getprop("controls/pressurization/valve-manual"))
+		append(msgs_caution,"CABIN AUTO INOP");
 }
 
 var advisory_messages = func {
@@ -153,7 +157,7 @@ var advisory_messages = func {
 		append(msgs_advisory," *ENG SHUTDOWN 1");
 	if (getprop("engines/engine[1]/rpm") < 19)
 		append(msgs_advisory," *ENG SHUTDOWN 2");
-	if (getprop("autopilot/route-manager/active") and getprop("autopilot/route-manager/route/num") < 2)
+	if (getprop("autopilot/route-manager/active") and (getprop("autopilot/route-manager/route/num") < 2 or getprop("autopilot/route-manager/departure/runway") == ""))
 		append(msgs_advisory,"INVALID ROUTE");
 	if (getprop("instrumentation/afds/ap-modes/roll-mode") == "LNAV" and !getprop("autopilot/route-manager/active"))
 		append(msgs_advisory,"NO ACTIVE ROUTE");
@@ -231,6 +235,7 @@ var update_system = func() {
 	
 	takeoff_config_warnings();
 	warning_messages();
+	caution_messages();
 	advisory_messages();
 	memo_messages();
 	

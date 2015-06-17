@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<model>
+		<name>TACAN</name>
+		<path>Aircraft/757-200/Models/Instruments/TACAN/ARN-118-tacan.xml</path>
+		<!--offsets>
+			<x-m>2.177</x-m>
+			<y-m>-0.154</y-m>
+			<z-m>0.9235</z-m>
+		</offsets-->
+	</model>
+	<!--animation>
+	    <type>scale</type>
+	    <object-name>TACAN</object-name>
+	    <x-offset>0.86</x-offset>
+	    <y-offset>0.86</y-offset>
+	    <z-offset>0.86</z-offset>
+	</animation-->
+
+</PropertyList>

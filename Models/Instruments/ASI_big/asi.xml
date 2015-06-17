@@ -209,7 +209,6 @@
 		<property alias="../../params/indicated-speed-kt" />
 		<factor>0.01</factor>
 		<step>10</step>
-		<scroll>2</scroll>
 		<axis>
 			<x>0</x>
                         <y>1</y>

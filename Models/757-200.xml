@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 
@@ -27,7 +27,7 @@
 		<condition>
 		    <equals>
 			<property>sim/model/variant</property>
-			<value>2</value>
+			<value>1</value>
 		    </equals>
 		</condition>
 	</animation>
@@ -42,7 +42,7 @@
 		<condition>
 		    <equals>
 			<property>sim/model/variant</property>
-			<value>1</value>
+			<value>0</value>
 		    </equals>
 		</condition>
 	</animation>
@@ -2383,6 +2383,9 @@
 	    	<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
     		<object-name>Fuseage.001</object-name>
+    		<object-name>VHFantenna.top</object-name>
+    		<object-name>VHFantenna.bot</object-name>
+    		<object-name>VHFantenna.fwd</object-name>
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>FIN.png</texture>

@@ -3,15 +3,6 @@
 <PropertyList>
 
 	<sim>
-		<status>early production</status>
-		<author>Juuso Tapaninen, John Williams; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
-		  <rating>
-		      	<FDM type="int">3</FDM>
-      			<systems type="int">5</systems>
-      			<cockpit type="int">5</cockpit>
-      			<model type="int">4</model>
-		</rating>
-		<flight-model>yasim</flight-model>
 		<tags>
           	    <tag>transport</tag>
       		    <tag>boeing</tag>
@@ -25,6 +16,7 @@
         	<instrument-options>
         	    <canvas-popup-enable type="bool">true</canvas-popup-enable>
         	</instrument-options>
+		<allow-toggle-cockpit>true</allow-toggle-cockpit>
 		<model>
 			<!--B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>
@@ -129,6 +121,13 @@
 			<autopilot>
 				<name>Pushback</name>
 				<path>Aircraft/757-200/Systems/pushback.xml</path>
+			</autopilot>
+			<autopilot>
+				<name>Cabin Pressurization</name>
+				<path>Aircraft/757-200/Systems/pressurization.xml</path>
+			</autopilot>
+			<autopilot>
+				<path>Aircraft/757-200/Systems/757-flt-ctrls.xml</path>
 			</autopilot>
 		</systems>
 		<instrumentation>
@@ -703,6 +702,9 @@
 		<hour-meters>
 			<file>Aircraft/757-200/Nasal/hour-meters.nas</file>
 		</hour-meters>
+		<pressurization>
+			<file>Aircraft/757-200/Nasal/cabin-pressure.nas</file>
+		</pressurization>
 	</nasal>
 
 	<aircraft>
