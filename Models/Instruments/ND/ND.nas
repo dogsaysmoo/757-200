@@ -39,6 +39,7 @@ var nd_display = {};
     'toggle_rangearc':      {path: '/mfd/rangearc', value:0, type:'BOOL'},
     'toggle_track_heading': {path: '/hdg-trk-selected', value:0, type:'BOOL'},
     # add new switches here
+    'toggle_tacan':         {path: '/tacan', value:0, type:'BOOL'},
       };
 
 ###

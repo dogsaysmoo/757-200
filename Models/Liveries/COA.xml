@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 	<sim>
 		<model>
 			<livery>
 				<name>Continental</name>
-				<texture>Liveries/COA.png</texture>
+				<texture>COA.png</texture>
 			</livery>  	  
 		</model>
 	</sim>

@@ -8,8 +8,8 @@
 		<author>Juuso Tapaninen, John Williams; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
 		  <rating>
 		      	<FDM type="int">3</FDM>
-      			<systems type="int">5</systems>
-      			<cockpit type="int">5</cockpit>
+      			<systems type="int">4</systems>
+      			<cockpit type="int">4</cockpit>
       			<model type="int">4</model>
 		</rating>
 		<flight-model>yasim</flight-model>
@@ -20,9 +20,8 @@
 			<livery>
 				<file>FIN</file>
 			</livery>
+			<variant type="int">1</variant>
 		</model>
-	
-		<engines>RR</engines>
 		
 		<weight n="0">
 			<name>Crew</name>
@@ -53,8 +52,8 @@
 
 	<limits n="0">
 		<mass-and-balance>
-		    <maximum-takeoff-mass-lbs>255000</maximum-takeoff-mass-lbs>
-		    <maximum-landing-mass-lbs>210000</maximum-landing-mass-lbs>
+		    <maximum-takeoff-mass-lbs>250000</maximum-takeoff-mass-lbs>
+		    <maximum-landing-mass-lbs>198000</maximum-landing-mass-lbs>
 		</mass-and-balance>
 	</limits>
 

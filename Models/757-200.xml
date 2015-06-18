@@ -26,9 +26,8 @@
 		<object-name>RR_engines</object-name>
 		<condition>
 		    <equals>
-			<!--property>/sim/engines</property-->
-			<property>sim/multiplay/generic/string[2]</property>
-			<value>RR</value>
+			<property>sim/model/variant</property>
+			<value>1</value>
 		    </equals>
 		</condition>
 	</animation>
@@ -42,9 +41,8 @@
 		<object-name>PW_engines</object-name>
 		<condition>
 		    <equals>
-			<!--property>/sim/engines</property-->
-			<property>sim/multiplay/generic/string[2]</property>
-			<value>PW</value>
+			<property>sim/model/variant</property>
+			<value>0</value>
 		    </equals>
 		</condition>
 	</animation>
@@ -2385,6 +2383,9 @@
 	    	<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
     		<object-name>Fuseage.001</object-name>
+    		<object-name>VHFantenna.top</object-name>
+    		<object-name>VHFantenna.bot</object-name>
+    		<object-name>VHFantenna.fwd</object-name>
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>FIN.png</texture>

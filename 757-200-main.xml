@@ -16,6 +16,7 @@
         	<instrument-options>
         	    <canvas-popup-enable type="bool">true</canvas-popup-enable>
         	</instrument-options>
+		<allow-toggle-cockpit>true</allow-toggle-cockpit>
 		<model>
 			<!--B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>
@@ -80,7 +81,6 @@
 
             		<string n="0" type="string"></string> <!-- Dual Control analog TDM-mpp1 (magnetos, flaps etc.) -->
             		<string n="1" type="string"></string> <!-- Dual Control analog TDM-mpp2 only pilot to copilot (fuel in tank etc.) -->
-			<string n="2" alias="/sim/engines"/>
           	    </generic>
         	</multiplay>
  

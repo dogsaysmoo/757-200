@@ -117,16 +117,6 @@
     <number>0</number>
   </magnetic-compass>
 
-  <comm-radio>
-    <name>comm</name>
-    <number>0</number>
-  </comm-radio>
-
-  <comm-radio>
-    <name>comm</name>
-    <number>1</number>
-  </comm-radio>
-
   <nav-radio>
     <name>nav</name>
     <number>0</number>
@@ -196,5 +186,15 @@
         <name>tcas</name>
         <number>0</number>
     </tcas>
+
+  <comm-radio>
+    <name>comm</name>
+    <number>0</number>
+  </comm-radio>
+
+  <comm-radio>
+    <name>comm</name>
+    <number>1</number>
+  </comm-radio>
 
 </PropertyList>

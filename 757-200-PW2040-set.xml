@@ -8,23 +8,22 @@
 		<author>Juuso Tapaninen, John Williams; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
 		  <rating>
 		      	<FDM type="int">3</FDM>
-      			<systems type="int">5</systems>
-      			<cockpit type="int">5</cockpit>
+      			<systems type="int">4</systems>
+      			<cockpit type="int">4</cockpit>
       			<model type="int">4</model>
 		</rating>
 		<flight-model>yasim</flight-model>
 		<aero>757-200-PW2040</aero>
 
-        <variant-of>757-200-RB211</variant-of>
+		<variant-of>757-200-RB211</variant-of>
 
 		<model>
 			<path>Aircraft/757-200/Models/757-200.xml</path>
 			<livery>
 				<file>FIN</file>
 			</livery>
+			<variant type="int">0</variant>
 		</model>
-
-		<engines>PW</engines>
 
 		<weight n="0">
 			<name>Crew</name>
