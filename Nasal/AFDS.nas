@@ -64,7 +64,7 @@ var AFDS = {
         m.hdg_setting = m.AP_settings.initNode("heading-bug-deg",360,"INT");
         m.fpa_setting = m.AP_settings.initNode("flight-path-angle",0); # -9.9 to 9.9 #
         m.alt_setting = m.AP_settings.initNode("altitude-setting-ft",10000,"DOUBLE");
-        m.FMS_alt = m.AP_settings.getNode("target-altitude-ft",1);
+        m.FMS_alt = m.AP_settings.initNode("target-altitude-ft",1,"DOUBLE");
         m.auto_brake_setting = m.AP_settings.initNode("autobrake",0.000,"DOUBLE");
 
         m.trk_setting = m.AFDS_settings.initNode("trk",0,"INT");
