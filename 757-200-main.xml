@@ -437,7 +437,7 @@
 			<beacon type="bool">false</beacon>
 			<landing-lights n="0" type="bool">false</landing-lights>
 			<landing-lights n="1" type="bool">false</landing-lights>
-			<landing-lights n="2" type="bool">false</landing-lights>
+			<!--landing-lights n="2" type="bool">false</landing-lights-->
 			<nav-lights type="bool">false</nav-lights>
 			<strobe type="bool">false</strobe>
 			<logo-lights type="bool">false</logo-lights>
@@ -559,6 +559,14 @@
 
 	<input>
 		<keyboard>
+            		<key n="108">
+                		<name>l</name>
+                		<desc>toggle landing lights</desc>
+                		<binding>
+					<command>property-toggle</command>
+					<property>controls/lighting/landing-lights[0]</property>
+				</binding>
+	    		</key>
 			<key n="127">
 				<name>Delete</name>
 				<desc>Toggle reverse thrust</desc>
