@@ -1979,7 +1979,8 @@
 		<type>select</type>
 		<object-name>light_wing4</object-name>
 		<condition>
-			<property>controls/lighting/landing-lights[0]</property>
+			<!--property>controls/lighting/landing-lights[0]</property-->
+			<property>sim/multiplay/generic/int[4]</property>
 		</condition>
 	</animation>
 	<animation>
@@ -2008,7 +2009,8 @@
 		<type>select</type>
 		<object-name>light_wing3</object-name>
 		<condition>
-			<property>controls/lighting/landing-lights[0]</property>
+			<!--property>controls/lighting/landing-lights[0]</property-->
+			<property>sim/multiplay/generic/int[4]</property>
 		</condition>
 	</animation>
 	<animation>
@@ -2129,7 +2131,8 @@
      <object-name>beacon_1</object-name>
      <object-name>beacon_2</object-name>
    <condition>
-     <property>sim/model/lights/lighting/beacon/state</property>
+     <!--property>controls/lighting/beacon-state/state</property-->
+     <property>sim/multiplay/generic/int[2]</property>
    </condition>
  </animation>
  
@@ -2165,7 +2168,8 @@
 	<object-name>light_wing1</object-name>
 	<object-name>light_wing2</object-name>
    <condition>
-	<property>controls/lighting/nav-lights</property>
+	<!--property>controls/lighting/nav-lights</property-->
+        <property>sim/multiplay/generic/int[7]</property>
    </condition>
  </animation>
  
@@ -2198,7 +2202,8 @@
    <object-name>strobelight_1</object-name>
      <object-name>strobelight_2</object-name> 
    <condition>
-     <property>/sim/model/lights/lighting/strobes/state</property>
+     <!--property>controls/lighting/strobe-state/state</property-->
+     <property>sim/multiplay/generic/int[3]</property>
    </condition>
  </animation>
  

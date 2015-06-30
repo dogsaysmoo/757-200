@@ -69,10 +69,12 @@
 		<multiplay>
           	    <generic>
 	          	<int n="0" type="int">  0 </int>  <!-- Dual Control boolean light switches-->
-			<int n="2" alias="/controls/lighting/beacon-state/state"/>						<!-- Nav light - white becon -->
-			<int n="3" alias="/controls/lighting/strobe-state/state"/>						<!-- Nav light - red becon -->
-			<int n="4" alias="/controls/lighting/landing-lights"/>							<!-- Landing light -->
-			<int n="5" alias="/controls/lighting/nav-lights"/>								<!-- Nav light - top, bottom, left, right, back -->
+			<int n="2" alias="/controls/lighting/beacon-state/state"/>
+			<int n="3" alias="/controls/lighting/strobe-state/state"/>
+			<int n="4" alias="/controls/lighting/landing-lights"/>
+			<int n="5" alias="/controls/lighting/landing-lights[1]"/>
+			<int n="6" alias="/controls/lighting/landing-lights[2]"/>
+			<int n="7" alias="/controls/lighting/nav-lights"/>
 
             		<float n="0">0</float>        <!-- for the shadow -->
             		<float n="1">0</float>        <!-- for the shadow -->
@@ -555,6 +557,20 @@
             		<id-code type="string">1200</id-code>
             		<serviceable type="bool">true</serviceable>
         	</transponder>
+            	<tcas>
+            		<serviceable type="bool">true</serviceable>
+            		<inputs>
+                		<mode type="int">0</mode>       <!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+            		</inputs>
+            		<!--voice>
+                		<file-prefix type="string">Sounds/tcas/</file-prefix>
+            		</voice-->
+            		<speaker>                           <!-- Speaker Configuration -->
+                		<max-dist type="double"> 2 </max-dist>        <!-- Max. distance where speaker is heard -->
+                		<reference-dist type="double"> 1 </reference-dist> <!-- Distance to pilot -->
+                		<volume type="double"> 1 </volume>          <!-- Volume at reference distance -->
+            		</speaker>
+            	</tcas>
 	</instrumentation>
 
 	<input>
@@ -676,9 +692,6 @@
 			<file>Aircraft/757-200/Nasal/hydraulic.nas</file>
 			<file>Aircraft/Generic/limits.nas</file>
 		</Boeing757>
-		<lights>
-			<file>Aircraft/757-200/Nasal/light.nas</file>
-		</lights>
 		<electrical>
 			<file>Aircraft/757-200/Nasal/electrical.nas</file>
 		</electrical>
