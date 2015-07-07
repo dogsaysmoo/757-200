@@ -1991,7 +1991,7 @@
 		<type>select</type>
 		<object-name>light_wing3</object-name>
 		<condition>
-			<property>controls/lighting/landing-lights[2]</property>
+			<property>controls/lighting/landing-lights[0]</property>
 		</condition>
 	</animation>
 	<animation>
@@ -2052,7 +2052,7 @@
 		<object-name>RHLND.spot</object-name>
 		<condition>
 		    <and>
-			<property>controls/lighting/landing-lights[2]</property>
+			<property>controls/lighting/landing-lights[0]</property>
 			<less-than>
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
@@ -2248,7 +2248,9 @@
     <!--effect>
         <inherits-from>Aircraft/757-200/Models/Effects/reflect</inherits-from>
 		<object-name>Fuselage</object-name>
+		<object-name>Tailcone</object-name>
 		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
 		<object-name>Engine</object-name>
 		<object-name>Wing1</object-name>
 		<object-name>Wing2</object-name>
@@ -2347,6 +2349,7 @@
 	<animation>
 		<type>material</type>
 		<object-name>Fuselage</object-name>
+		<object-name>Tailcone</object-name>
 		<!--object-name>Door1</object-name>
 		<object-name>Door2</object-name>
 		<object-name>Door3</object-name>
@@ -2354,6 +2357,7 @@
 		<object-name>Door5</object-name>
 		<object-name>Door6</object-name-->
 		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
 		<object-name>Engine</object-name>
 		<object-name>Wing1</object-name>
 		<object-name>Wing2</object-name>
@@ -2774,6 +2778,37 @@
 <object-name>Windows</object-name>
 </animation>
   
+
+
+	<effect>
+		<name>Tail lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
+			</texture>
+			<condition>
+				<use>controls/lighting/logo-lights</use>
+			</condition>
+		</parameters>
+		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
+		<object-name>Tailcone</object-name>
+	</effect>
+
+	<effect>
+		<name>Landing lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
+			</texture>
+			<condition>
+				<use>controls/lighting/landing-lights[0]</use>
+			</condition>
+		</parameters>
+		<object-name>Fuselage</object-name>
+	</effect>
 
 
 
