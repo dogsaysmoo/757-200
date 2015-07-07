@@ -41,7 +41,7 @@
 
 			<checkbox>
 				<label>Right</label>
-				<property>controls/lighting/landing-lights[2]</property>
+				<property>controls/lighting/landing-lights[0]</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>

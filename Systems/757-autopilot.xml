@@ -603,7 +603,7 @@
       <prop>/autopilot/internal/target-climb-rate-fps</prop>
     </output>
     <config>
-      <Kp>0.3</Kp>
+      <Kp>0.15</Kp>
       <Ki>0.0</Ki>
       <u_min>
         <value>-16.67</value>
@@ -631,12 +631,12 @@
       <prop>/autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
-      <Kp>1</Kp>
+      <Kp>0.5</Kp>
       <beta>1.0</beta>
       <alpha>0.1</alpha>
       <gamma>0.0</gamma>
       <Ti>10.0</Ti>
-      <Td>0.00001</Td>
+      <Td>0.0</Td>
         <u_min>
             <prop>instrumentation/afds/settings/pitch-min</prop>
         </u_min>
