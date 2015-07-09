@@ -1962,7 +1962,8 @@
 		<type>select</type>
 		<object-name>light_wing4</object-name>
 		<condition>
-			<property>controls/lighting/landing-lights[0]</property>
+			<!--property>controls/lighting/landing-lights[0]</property-->
+			<property>sim/multiplay/generic/int[4]</property>
 		</condition>
 	</animation>
 	<animation>
@@ -1991,7 +1992,8 @@
 		<type>select</type>
 		<object-name>light_wing3</object-name>
 		<condition>
-			<property>controls/lighting/landing-lights[2]</property>
+			<!--property>controls/lighting/landing-lights[0]</property-->
+			<property>sim/multiplay/generic/int[4]</property>
 		</condition>
 	</animation>
 	<animation>
@@ -2052,7 +2054,7 @@
 		<object-name>RHLND.spot</object-name>
 		<condition>
 		    <and>
-			<property>controls/lighting/landing-lights[2]</property>
+			<property>controls/lighting/landing-lights[0]</property>
 			<less-than>
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
@@ -2112,7 +2114,8 @@
      <object-name>beacon_1</object-name>
      <object-name>beacon_2</object-name>
    <condition>
-     <property>sim/model/lights/lighting/beacon/state</property>
+     <!--property>controls/lighting/beacon-state/state</property-->
+     <property>sim/multiplay/generic/int[2]</property>
    </condition>
  </animation>
  
@@ -2148,7 +2151,8 @@
 	<object-name>light_wing1</object-name>
 	<object-name>light_wing2</object-name>
    <condition>
-	<property>controls/lighting/nav-lights</property>
+	<!--property>controls/lighting/nav-lights</property-->
+        <property>sim/multiplay/generic/int[7]</property>
    </condition>
  </animation>
  
@@ -2181,7 +2185,8 @@
    <object-name>strobelight_1</object-name>
      <object-name>strobelight_2</object-name> 
    <condition>
-     <property>/sim/model/lights/lighting/strobes/state</property>
+     <!--property>controls/lighting/strobe-state/state</property-->
+     <property>sim/multiplay/generic/int[3]</property>
    </condition>
  </animation>
  
@@ -2248,7 +2253,9 @@
     <!--effect>
         <inherits-from>Aircraft/757-200/Models/Effects/reflect</inherits-from>
 		<object-name>Fuselage</object-name>
+		<object-name>Tailcone</object-name>
 		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
 		<object-name>Engine</object-name>
 		<object-name>Wing1</object-name>
 		<object-name>Wing2</object-name>
@@ -2347,6 +2354,7 @@
 	<animation>
 		<type>material</type>
 		<object-name>Fuselage</object-name>
+		<object-name>Tailcone</object-name>
 		<!--object-name>Door1</object-name>
 		<object-name>Door2</object-name>
 		<object-name>Door3</object-name>
@@ -2354,9 +2362,12 @@
 		<object-name>Door5</object-name>
 		<object-name>Door6</object-name-->
 		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
 		<object-name>Engine</object-name>
 		<object-name>Wing1</object-name>
 		<object-name>Wing2</object-name>
+		<object-name>Wingroot1</object-name>
+		<object-name>Wingroot2</object-name>
 		<object-name>LReverserTurbofan</object-name>
 		<object-name>RReverserTurbofan</object-name>
 		<object-name>NoseGear.LeftDr2</object-name>
@@ -2774,6 +2785,45 @@
 <object-name>Windows</object-name>
 </animation>
   
+
+
+	<effect>
+		<name>Tail lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
+			</texture>
+			<condition>
+				<use>controls/lighting/logo-lights</use>
+			</condition>
+		</parameters>
+		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
+		<object-name>Tailcone</object-name>
+	</effect>
+
+	<effect>
+		<name>Landing lightmap</name>
+		<inherits-from>Effects/lightmap</inherits-from>
+		<parameters>
+			<texture n="1">
+				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
+			</texture>
+			<condition>
+				<use>controls/lighting/landing-lights[0]</use>
+			</condition>
+		</parameters>
+		<object-name>Fuselage</object-name>
+		<object-name>Wingroot1</object-name>
+		<object-name>Wingroot2</object-name>
+		<object-name>NoseGear.LeftDr2</object-name>
+		<object-name>NoseGear.RightDr2</object-name>
+		<object-name>NoseGear.RightDr1</object-name>
+		<object-name>NoseGear.LeftDr1</object-name>
+	    	<object-name>MainGearDr2</object-name>
+    		<object-name>MainGearDr3</object-name>
+	</effect>
 
 
 

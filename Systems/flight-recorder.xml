@@ -110,9 +110,9 @@
             <signal>
                 <type>bool</type><property type="string">controls/lighting/landing-lights[1]</property>
             </signal>
-            <signal>
+            <!--signal>
                 <type>bool</type><property type="string">controls/lighting/landing-lights[2]</property>
-            </signal>
+            </signal-->
 
             <signal>
                 <type>bool</type><property type="string">instrumentation/afds/inputs/AP</property>
