@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>United States of America</name>
-				<texture>Liveries/99-0004.png</texture>
+				<texture>99-0004.png</texture>
 			</livery>  	  
 		</model>
 	</sim>

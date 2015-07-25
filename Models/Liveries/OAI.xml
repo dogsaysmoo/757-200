@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Omni Air International</name>
-				<texture>Liveries/OAI.png</texture>
+				<texture>OAI.png</texture>
 			</livery>  	  
 		</model>
 	</sim>
