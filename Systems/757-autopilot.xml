@@ -539,7 +539,7 @@
         <value>-16.67</value>
       </u_min>
       <u_max>
-        <value>33.33</value>
+        <value>16.67</value>
       </u_max>
     </config>
   </pi-simple-controller>
@@ -609,7 +609,7 @@
         <value>-16.67</value>
       </u_min>
       <u_max>
-        <value>33.33</value>
+        <value>16.67</value>
       </u_max>
     </config>
   </pi-simple-controller>

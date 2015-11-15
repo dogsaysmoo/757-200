@@ -1,0 +1,5 @@
+Changes I have made:
+-Added sound effect when the viewport is inside cabin.
+-Fixed the sound effect for Cabin View.
+-Cabin Visibility is set to No to reduce GPU usage.
+-Vertical speed for Flight Level Change mode changed to 1000ft/min and -1000ft/min

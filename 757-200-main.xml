@@ -26,7 +26,7 @@
 				<adf1-bug-deg type="double">0</adf1-bug-deg>
 				<adf2-bug-deg type="double">0</adf2-bug-deg>
 			</B757-->
-			<cabin-visible type="bool">1</cabin-visible>
+			<cabin-visible type="bool">0</cabin-visible>
 			<hide-yoke type="bool">0</hide-yoke>
 			<door>
 				<position-x-m type="float">-20.38</position-x-m>
@@ -191,7 +191,7 @@
 		<view n="100">
 			<name>Cabin View</name>
 			<type>lookfrom</type>
-			<internal archive="y">false</internal>
+			<internal archive="y">true</internal>
 			<config>
 				<from-model type="bool">true</from-model>
 				<x-offset-m archive="y">1</x-offset-m>
@@ -691,6 +691,7 @@
 			<file>Aircraft/757-200/Nasal/pneumatic.nas</file>
 			<file>Aircraft/757-200/Nasal/hydraulic.nas</file>
 			<file>Aircraft/Generic/limits.nas</file>
+			<file>Aircraft/757-200/Nasal/auto_refuel.nas</file>
 		</Boeing757>
 		<electrical>
 			<file>Aircraft/757-200/Nasal/electrical.nas</file>
@@ -781,6 +782,7 @@
         <vne>600</vne>
         <max-positive-g>2.5</max-positive-g>
         <max-negative-g>-1.76</max-negative-g>
+		<estimated-range-nm>3200</estimated-range-nm>
     </limits>
 
 </PropertyList>
