@@ -1,6 +1,5 @@
 Changes I have made:
 -Added sound effect when the viewport is inside cabin.
 -Fixed the sound effect for Cabin View.
--Cabin Visibility is set to No to reduce GPU usage.
 -Vertical speed for Flight Level Change mode changed to 1000ft/min and -1000ft/min
--Automatically refuel the aircraft based on the flight plan specified on startup.
+-Automatically redistribute fuel, instead of setting a fixed fuel amount on startup. And the fuel amount is specified by prop /sim/fuel-fraction.

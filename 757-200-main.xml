@@ -3,6 +3,7 @@
 <PropertyList>
 
 	<sim>
+        	<fuel-fraction>0.28</fuel-fraction>
 		<tags>
           	    <tag>transport</tag>
       		    <tag>boeing</tag>
@@ -691,7 +692,6 @@
 			<file>Aircraft/757-200/Nasal/pneumatic.nas</file>
 			<file>Aircraft/757-200/Nasal/hydraulic.nas</file>
 			<file>Aircraft/Generic/limits.nas</file>
-			<file>Aircraft/757-200/Nasal/auto_refuel.nas</file>
 		</Boeing757>
 		<electrical>
 			<file>Aircraft/757-200/Nasal/electrical.nas</file>
@@ -782,7 +782,6 @@
         <vne>600</vne>
         <max-positive-g>2.5</max-positive-g>
         <max-negative-g>-1.76</max-negative-g>
-		<estimated-range-nm>3200</estimated-range-nm>
     </limits>
 
 </PropertyList>
