@@ -27,7 +27,7 @@
 				<adf1-bug-deg type="double">0</adf1-bug-deg>
 				<adf2-bug-deg type="double">0</adf2-bug-deg>
 			</B757-->
-			<cabin-visible type="bool">0</cabin-visible>
+			<cabin-visible type="bool">1</cabin-visible>
 			<hide-yoke type="bool">0</hide-yoke>
 			<door>
 				<position-x-m type="float">-20.38</position-x-m>
