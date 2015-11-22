@@ -39,11 +39,9 @@ var fuelsys = {
 	var density = getprop('/consumables/fuel/tank/density-ppg');
 	var capacity_wing = (getprop('/consumables/fuel/tank/capacity-gal_us') + getprop('/consumables/fuel/tank[1]/capacity-gal_us')) * density;
 	var capacity_center = getprop('/consumables/fuel/tank[2]/capacity-gal_us') * density;
-
-	var fuel_lbs = (capacity_wing + capacity_center) * getprop('/sim/fuel-fraction');
+	var fuel_lbs = me.lev[0].getValue() + me.lev[1].getValue() + me.lev[2].getValue();
 	if (me.aircraft.getValue() == 'C-32A'){
-		var capacity_aux = (getprop('/consumables/fuel/tank[3]/capacity-gal_us') + getprop('/consumables/fuel/tank[4]/capacity-gal_us')) * density;
-		fuel_lbs = fuel_lbs + capacity_aux * getprop('/sim/fuel-fraction');
+		fuel_lbs += me.lev[3].getValue() + me.lev[4].getValue();
 	}
 	if (fuel_lbs < capacity_wing) {
 		me.lev[0].setValue(fuel_lbs / 2);
