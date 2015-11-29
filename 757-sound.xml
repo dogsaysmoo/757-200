@@ -470,7 +470,10 @@
         <name>wind</name>
         <mode>looped</mode>
         <path>Sounds/wind.wav</path>
-        <property>/velocities/airspeed-kt</property>
+		<condition>
+			<property>/velocities/airspeed-kt</property>
+            <not><property>sim/current-view/internal</property></not>
+		</condition>
         <volume>
             <property>/position/altitude-ft</property>
             <factor>-0.000015</factor>
