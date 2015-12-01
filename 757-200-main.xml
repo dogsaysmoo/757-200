@@ -17,6 +17,9 @@
         	    <canvas-popup-enable type="bool">true</canvas-popup-enable>
         	</instrument-options>
 		<allow-toggle-cockpit>true</allow-toggle-cockpit>
+	        <hud>
+	            <enable3d n="1">false</enable3d>
+	        </hud>
 		<model>
 			<!--B757>
 				<heading-bug-deg type="double">0</heading-bug-deg>
