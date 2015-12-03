@@ -594,7 +594,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Elevator1</object-name>
-		<property>controls/flight/elevator-pos</property>
+		<!--property>controls/flight/elevator-pos</property-->
+		<property>surface-positions/elevator-pos-norm</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>-25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
@@ -612,7 +613,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Elevator2</object-name>
-		<property>controls/flight/elevator-pos</property>
+		<!--property>controls/flight/elevator-pos</property-->
+		<property>surface-positions/elevator-pos-norm</property>
 		<interpolation>
 			<entry><ind>1.0</ind><dep>25.0</dep></entry>
 			<entry><ind>0.0</ind><dep>0.0</dep></entry>
@@ -627,10 +629,11 @@
 			<z2-m>2.2953</z2-m>
 		</axis>
 	</animation>
+
 	<!-- SEATS -->
 	<model>
-	<name>seats</name>
-  <path>Aircraft/757-200/Models/seats/seats.xml</path>
+		<name>seats</name>
+  		<path>Aircraft/757-200/Models/seats/seats.xml</path>
 	</model>
 	
 	<!-- WINGS -->
@@ -1148,7 +1151,8 @@
 		<object-name>SpoilOutL4</object-name>
 		<object-name>SpoilOutL3</object-name>
 		<object-name>SpoilOutL2</object-name>
-		<property>surface-positions/left-speedbrake-pos-norm</property>
+		<!--property>surface-positions/left-speedbrake-pos-norm</property-->
+		<property>sim/multiplay/generic/float[4]</property>
 		<factor>45</factor>
 		<axis>
 			<x1-m>23.9891</x1-m>
@@ -1162,7 +1166,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>SpoilOutL1</object-name>
-		<property>surface-positions/ground-spoilers-pos-norm</property>
+		<!--property>surface-positions/ground-spoilers-pos-norm</property-->
+		<property>surface-positions/speedbrake-pos-norm</property>
 		<factor>60</factor>
 		<axis>
 			<x1-m>23.9891</x1-m>
@@ -1177,7 +1182,8 @@
 		<type>rotate</type>
 		<object-name>SpoilInL1</object-name>
 		<object-name>SpoilInL2</object-name>
-		<property>surface-positions/left-speedbrake-pos-norm</property>
+		<!--property>surface-positions/left-speedbrake-pos-norm</property-->
+		<property>sim/multiplay/generic/float[4]</property>
 		<factor>45</factor>
 		<axis>
 			<x1-m>23.9669</x1-m>
@@ -1194,7 +1200,8 @@
 		<object-name>SpoilOutR4</object-name>
 		<object-name>SpoilOutR3</object-name>
 		<object-name>SpoilOutR2</object-name>
-		<property>surface-positions/right-speedbrake-pos-norm</property>
+		<!--property>surface-positions/right-speedbrake-pos-norm</property-->
+		<property>sim/multiplay/generic/float[5]</property>
 		<factor>-45</factor>
 		<axis>
 			<x1-m>23.9891</x1-m>
@@ -1208,7 +1215,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>SpoilOutR1</object-name>
-		<property>surface-positions/ground-spoilers-pos-norm</property>
+		<!--property>surface-positions/ground-spoilers-pos-norm</property-->
+		<property>surface-positions/speedbrake-pos-norm</property>
 		<factor>-60</factor>
 		<axis>
 			<x1-m>23.9891</x1-m>
@@ -1223,7 +1231,8 @@
 		<type>rotate</type>
 		<object-name>SpoilInR1</object-name>
 		<object-name>SpoilInR2</object-name>
-		<property>surface-positions/right-speedbrake-pos-norm</property>
+		<!--property>surface-positions/right-speedbrake-pos-norm</property-->
+		<property>sim/multiplay/generic/float[5]</property>
 		<factor>-45</factor>
 		<axis>
 			<x1-m>23.9669</x1-m>
@@ -2041,7 +2050,7 @@
 		<object-name>CTRLND.spot</object-name>
 		<condition>
 		    <and>
-			<property>controls/lighting/landing-lights[1]</property>
+			<property>systems/electrical/lighting/landing-lights[1]</property>
 			<equals>
 			  <property>gear/gear[0]/position-norm</property>
 			  <value>1</value>
@@ -2058,7 +2067,7 @@
 		<object-name>LHLND.spot</object-name>
 		<condition>
 		    <and>
-			<property>controls/lighting/landing-lights[0]</property>
+			<property>systems/electrical/lighting/landing-lights[0]</property>
 			<less-than>
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
@@ -2071,7 +2080,7 @@
 		<object-name>RHLND.spot</object-name>
 		<condition>
 		    <and>
-			<property>controls/lighting/landing-lights[0]</property>
+			<property>systems/electrical/lighting/landing-lights[0]</property>
 			<less-than>
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
@@ -2811,7 +2820,7 @@
 				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
 			</texture>
 			<condition>
-				<use>controls/lighting/logo-lights</use>
+				<use>systems/electrical/lighting/logo-lights</use>
 			</condition>
 		</parameters>
 		<object-name>Rudder</object-name>
@@ -2827,7 +2836,7 @@
 				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
 			</texture>
 			<condition>
-				<use>controls/lighting/landing-lights[0]</use>
+				<use>systems/electrical/lighting/landing-lights[0]</use>
 			</condition>
 		</parameters>
 		<object-name>Fuselage</object-name>
