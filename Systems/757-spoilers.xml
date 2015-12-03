@@ -96,7 +96,8 @@
 		<max-rate-of-change>0.667</max-rate-of-change>
 		<feedback-if-disabled type="bool">true</feedback-if-disabled>
 		<input>/controls/flight/ground-spoilers-cmd-norm</input>
-		<output>/surface-positions/ground-spoilers-pos-norm</output>
+		<!--output>/surface-positions/ground-spoilers-pos-norm</output-->
+		<output>/surface-positions/speedbrake-pos-norm</output>
 	</filter>
 
 	<filter>

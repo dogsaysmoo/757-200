@@ -71,7 +71,8 @@
 	<animation>
                 <type>translate</type>
                 <object-name>left.reverser</object-name>
-                <property>surface-positions/left-reverser-pos-norm</property>
+                <!--property>surface-positions/left-reverser-pos-norm</property-->
+                <property>sim/multiplay/generic/float[6]</property>
                 <factor>0.7</factor>
  		<axis>
   			<x1-m>18.9763</x1-m>
@@ -85,7 +86,8 @@
         <animation>
                 <type>translate</type>
                 <object-name>right.reverser</object-name>
-                <property>surface-positions/right-reverser-pos-norm</property>
+                <!--property>surface-positions/right-reverser-pos-norm</property-->
+                <property>sim/multiplay/generic/float[7]</property>
                 <factor>0.7</factor>
  		<axis>
   			<x1-m>18.9763</x1-m>
