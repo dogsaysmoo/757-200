@@ -1,0 +1,6 @@
+Changes I have made:
+-Added sound effect when the viewport is inside cabin.
+-Fixed the sound effect for Cabin View.
+-Cabin Visibility is saved between sessions.
+-Vertical speed for Flight Level Change mode changed to 1000ft/min and -1000ft/min
+-Automatically redistribute fuel between tanks on startup, the initial fuel amount is specified by /sim/fuel-fraction.
