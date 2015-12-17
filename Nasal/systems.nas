@@ -9,12 +9,105 @@ aircraft.livery.init("Aircraft/757-200/Models/Liveries");
 #########
 
 # create all lights
-var beacon_switch = props.globals.getNode("controls/switches/beacon", 2);
+#var beacon_switch = props.globals.getNode("controls/switches/beacon", 2);
 var beacon = aircraft.light.new("sim/model/lights/beacon", [0.05, 2], "controls/lighting/beacon");
 
-var strobe_switch = props.globals.getNode("controls/switches/strobe", 2);
+#var strobe_switch = props.globals.getNode("controls/switches/strobe", 2);
 var strobe = aircraft.light.new("sim/model/lights/strobe", [0.05, 1.3], "controls/lighting/strobe");
 
+var light_stat = {
+    new : func {
+	m = { parents : [light_stat] };
+	
+	m.light_controls = props.globals.getNode("controls/lighting",0);
+
+	m.beacon_sw = m.light_controls.getNode("beacon",0);
+	m.nav_sw = m.light_controls.getNode("nav-lights",0);
+	m.strobe_sw = m.light_controls.getNode("strobe",0);
+	m.logo_sw = m.light_controls.getNode("logo-lights",0);
+#	m.wing_sw = m.light_controls.getNode("wing-lights",0);
+	m.taxi_sw = m.light_controls.getNode("landing-lights[1]",0);
+	m.Lland_sw = m.light_controls.getNode("landing-lights[0]",0);
+#	m.Rland_sw = m.light_controls.getNode("landing-lights[2]",0);
+	
+	m.beacon = props.globals.initNode("systems/electrical/lighting/beacon",0,"BOOL");
+	m.nav = props.globals.initNode("systems/electrical/lighting/nav-lights",0,"BOOL");
+	m.strobe = props.globals.initNode("systems/electrical/lighting/strobe",0,"BOOL");
+	m.logo = props.globals.initNode("systems/electrical/lighting/logo-lights",0,"BOOL");
+#	m.wing = props.globals.initNode("systems/electrical/lighting/wing-lights",0,"BOOL");
+	m.Lland = props.globals.initNode("systems/electrical/lighting/landing-lights[0]",0,"BOOL");
+	m.taxi = props.globals.initNode("systems/electrical/lighting/landing-lights[1]",0,"BOOL");
+#	m.Rland = props.globals.initNode("systems/electrical/lighting/landing-lights[2]",0,"BOOL");
+
+	return m;
+    },
+    update : func {
+	if ((getprop("systems/electrical/left-bus") > 27.5 or getprop("systems/electrical/right-bus") > 27.5) and !getprop("sim/crashed")) {
+	    # Beacon:
+	    if (me.beacon_sw.getBoolValue() and getprop("sim/model/lights/beacon/state")) {
+		me.beacon.setBoolValue(1);
+	    } else {
+		me.beacon.setBoolValue(0);
+	    }
+	    # Strobe:
+	    if (me.strobe_sw.getBoolValue() and getprop("sim/model/lights/strobe/state")) {
+		me.strobe.setBoolValue(1);
+	    } else {
+		me.strobe.setBoolValue(0);
+	    }
+	    # Logo lights:
+	    if (me.logo_sw.getBoolValue()) {
+		me.logo.setBoolValue(1);
+	    } else {
+		me.logo.setBoolValue(0);
+	    }
+	    # Wing lights:
+#	    if (me.wing_sw.getBoolValue()) {
+#		me.wing.setBoolValue(1);
+#	    } else {
+#		me.wing.setBoolValue(0);
+#	    }
+	    # Taxi light:
+	    if (me.taxi_sw.getBoolValue() and getprop("gear/gear[0]/position-norm") > 0.75) {
+		me.taxi.setBoolValue(1);
+	    } else {
+		me.taxi.setBoolValue(0);
+	    }
+	    # Left landing light:
+	    if (me.Lland_sw.getBoolValue()) {
+		me.Lland.setBoolValue(1);
+	    } else {
+		me.Lland.setBoolValue(0);
+	    }
+	    # Right landing light:
+#	    if (me.Rland_sw.getBoolValue()) {
+#		me.Rland.setBoolValue(1);
+#	    } else {
+#		me.Rland.setBoolValue(0);
+#	    }
+	} else {
+	    me.beacon.setBoolValue(0);
+	    me.strobe.setBoolValue(0);
+	    me.logo.setBoolValue(0);
+#	    me.wing.setBoolValue(0);
+	    me.taxi.setBoolValue(0);
+	    me.Lland.setBoolValue(0);
+#	    me.Rland.setBoolValue(0);
+	}
+	if ((getprop("systems/electrical/left-bus") > 22.5 or getprop("systems/electrical/right-bus") > 22.5) and !getprop("sim/crashed")) {
+	    # Nav lights:
+	    if (me.nav_sw.getBoolValue() and !getprop("sim/crashed")) {
+		me.nav.setBoolValue(1);
+	    } else {
+		me.nav.setBoolValue(0);
+	    }
+	} else {
+	    me.nav.setBoolValue(0);
+	}
+    },
+};
+var lighting_status = light_stat.new();
+	    
 ## SOUNDS
 #########
 
@@ -185,6 +278,7 @@ var update_systems = func {
 	engineLoop(0);
 	engineLoop(1);
 	apuLoop();
+	lighting_status.update();
 #	set_fltctrls();
 	settimer(update_systems,0);
 }

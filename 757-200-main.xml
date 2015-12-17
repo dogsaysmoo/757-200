@@ -3,6 +3,10 @@
 <PropertyList>
 
 	<sim>
+        	<fuel-fraction>0.28</fuel-fraction>
+		<aircraft-data>
+			<path>/sim/model/cabin-visible</path>
+		</aircraft-data>
 		<tags>
           	    <tag>transport</tag>
       		    <tag>boeing</tag>
@@ -72,17 +76,21 @@
 		<multiplay>
           	    <generic>
 	          	<int n="0" type="int">  0 </int>  <!-- Dual Control boolean light switches-->
-			<int n="2" alias="/controls/lighting/beacon-state/state"/>
-			<int n="3" alias="/controls/lighting/strobe-state/state"/>
-			<int n="4" alias="/controls/lighting/landing-lights"/>
-			<int n="5" alias="/controls/lighting/landing-lights[1]"/>
+			<int n="2" alias="/systems/electrical/lighting/beacon"/>
+			<int n="3" alias="/systems/electrical/lighting/strobe"/>
+			<int n="4" alias="/systems/electrical/lighting/landing-lights"/>
+			<int n="5" alias="/systems/electrical/lighting/landing-lights[1]"/>
 			<int n="6" alias="/controls/lighting/landing-lights[2]"/>
-			<int n="7" alias="/controls/lighting/nav-lights"/>
+			<int n="7" alias="/systems/electrical/lighting/nav-lights"/>
 
             		<float n="0">0</float>        <!-- for the shadow -->
             		<float n="1">0</float>        <!-- for the shadow -->
             		<float n="2">0</float>        <!-- for the shadow -->
             		<float n="3" alias="/controls/lighting/panel-norm"/>    <!-- rembrandt cockpit (flightdeck) lights -->
+            		<float n="4" alias="/surface-positions/left-speedbrake-pos-norm"/>
+            		<float n="5" alias="/surface-positions/right-speedbrake-pos-norm"/>
+            		<float n="6" alias="/surface-positions/left-reverser-pos-norm"/>
+            		<float n="7" alias="/surface-positions/right-reverser-pos-norm"/>
 
             		<string n="0" type="string"></string> <!-- Dual Control analog TDM-mpp1 (magnetos, flaps etc.) -->
             		<string n="1" type="string"></string> <!-- Dual Control analog TDM-mpp2 only pilot to copilot (fuel in tank etc.) -->
@@ -194,7 +202,7 @@
 		<view n="100">
 			<name>Cabin View</name>
 			<type>lookfrom</type>
-			<internal archive="y">false</internal>
+			<internal archive="y">true</internal>
 			<config>
 				<from-model type="bool">true</from-model>
 				<x-offset-m archive="y">1</x-offset-m>
