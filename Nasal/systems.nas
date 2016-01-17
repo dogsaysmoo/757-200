@@ -3,7 +3,11 @@
 
 ## LIVERY SELECT
 ################
-aircraft.livery.init("Aircraft/757-200/Models/Liveries");
+if (getprop("sim/model/variant") == 3) {
+	aircraft.livery.init("Aircraft/757-200/Models/Liveries-300");
+} else {
+	aircraft.livery.init("Aircraft/757-200/Models/Liveries");
+}
 
 ## LIGHTS
 #########
