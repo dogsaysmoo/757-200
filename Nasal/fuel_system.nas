@@ -36,11 +36,32 @@ var fuelsys = {
     },
 
     startup : func {
-	me.lev[0].setValue(10934);
-	me.lev[1].setValue(10934);
-	me.lev[2].setValue(0);
-	me.lev[3].setValue(0);
-	me.lev[4].setValue(0);
+	var density = getprop('/consumables/fuel/tank/density-ppg');
+	var capacity_wing = (getprop('/consumables/fuel/tank/capacity-gal_us') + getprop('/consumables/fuel/tank[1]/capacity-gal_us')) * density;
+	var capacity_center = getprop('/consumables/fuel/tank[2]/capacity-gal_us') * density;
+	var fuel_lbs = me.lev[0].getValue() + me.lev[1].getValue() + me.lev[2].getValue();
+	if (me.aircraft.getValue() == 'C-32A'){
+		fuel_lbs += me.lev[3].getValue() + me.lev[4].getValue();
+	}
+	if (fuel_lbs < capacity_wing) {
+		me.lev[0].setValue(fuel_lbs / 2);
+		me.lev[1].setValue(fuel_lbs / 2);
+		me.lev[2].setValue(0);
+		me.lev[3].setValue(0);
+		me.lev[4].setValue(0);
+	} else if (me.aircraft.getValue() == 'C-32A' and fuel_lbs > (capacity_wing + capacity_center)) {
+		setprop('/consumables/fuel/tank/level-norm', 1);
+		setprop('/consumables/fuel/tank[1]/level-norm', 1);
+		setprop('/consumables/fuel/tank[2]/level-norm', 1);
+		me.lev[3].setValue((fuel_lbs - capacity_wing - capacity_center) / 2);
+		me.lev[4].setValue((fuel_lbs - capacity_wing - capacity_center) / 2);
+	} else {
+		setprop('/consumables/fuel/tank/level-norm', 1);
+		setprop('/consumables/fuel/tank[1]/level-norm', 1);
+		me.lev[2].setValue(fuel_lbs - capacity_wing);
+		me.lev[3].setValue(0);
+		me.lev[4].setValue(0);
+	}
     },
 
     update : func {
@@ -243,5 +264,4 @@ setlistener("/sim/model/start-idling", func (auto) {
 		settimer(func {autostarting = 0;},30);
 	}
 },0,0);
-
 

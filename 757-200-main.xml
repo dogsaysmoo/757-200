@@ -3,6 +3,10 @@
 <PropertyList>
 
 	<sim>
+        	<fuel-fraction>0.28</fuel-fraction>
+		<aircraft-data>
+			<path>/sim/model/cabin-visible</path>
+		</aircraft-data>
 		<tags>
           	    <tag>transport</tag>
       		    <tag>boeing</tag>
@@ -198,7 +202,7 @@
 		<view n="100">
 			<name>Cabin View</name>
 			<type>lookfrom</type>
-			<internal archive="y">false</internal>
+			<internal archive="y">true</internal>
 			<config>
 				<from-model type="bool">true</from-model>
 				<x-offset-m archive="y">1</x-offset-m>
