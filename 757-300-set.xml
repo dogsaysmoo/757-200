@@ -13,8 +13,7 @@
       			<model type="int">4</model>
 		</rating>
 		<flight-model>yasim</flight-model>
-		<!--aero>757-200-RB211</aero-->
-		<aero>newRB211</aero>
+		<aero>757-200-RB211</aero>
 
 		<model>
 			<path>Aircraft/757-200/Models/757-300.xml</path>
