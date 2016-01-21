@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
- Boeing 757-200 with Pratt & Whitney PW2040 engines for FlightGear YASim FDM
+ Boeing 757-200 with Rolls Royce RB211-535E4 engines for FlightGear YASim FDM
  By Skyop, edited jormapaappa1235, reworked by tikibar
 
  Specifications can be viewed on Boeing's website:
@@ -70,9 +70,9 @@
 	</hstab>
 
 	<!-- TAIL -->
-	<vstab x="-40.75" y="0.00" z="2.851" chord="7.3" length="9.0" taper="0.375" sweep="35.0" effectiveness="1.5">
+	<vstab x="-41.19" y="0.00" z="2.996" chord="6.56" length="8.84" taper="0.475" sweep="35.0" effectiveness="1.5">
 		<stall aoa="15" width="2" peak="1.3" />
-		<flap0 start="0.0" end="1.0" lift="1.1" drag="1.3" />
+		<flap0 start="0.0" end="1.0" lift="1.4" drag="1.3" />
 		<control-input axis="/controls/flight/rudder-pos" control="FLAP0" invert="true" />
 		<control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true" />
 		<control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="1" max="-1" />
