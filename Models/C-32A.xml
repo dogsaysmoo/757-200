@@ -43,7 +43,7 @@
 	
 	<!-- Antennas -->
 	<model>
-		<path>Aircraft/757-200/Models/C-32_antennas.ac</path>
+		<path>Aircraft/757-200/Models/C-32_antennas.xml</path>
 	</model>
 
 	<!-- Pushback -->
@@ -2782,45 +2782,39 @@
   </condition>
   </animation>
   
-  <animation>
-<type>shader</type>
-<shader>chrome</shader>
-<texture>chrome1.png</texture>
-<object-name>Windshield1</object-name>
-<object-name>NoseGear.lamp.glass</object-name>
-<object-name>windshield_moving</object-name>
-<object-name>windshield_moving2</object-name>
-<object-name>Windows</object-name>
-</animation>
+	<animation>
+		<type>shader</type>
+		<shader>chrome</shader>
+		<texture>chrome1.png</texture>
+		<object-name>Windshield1</object-name>
+		<object-name>NoseGear.lamp.glass</object-name>
+		<object-name>windshield_moving</object-name>
+		<object-name>windshield_moving2</object-name>
+		<object-name>Windows</object-name>
+	</animation>
   
-
-
 	<effect>
-		<name>Tail lightmap</name>
-		<inherits-from>Effects/lightmap</inherits-from>
+		<name>Landing/Logo Lightmap</name>
+		<inherits-from>Effects/model-combined</inherits-from>
 		<parameters>
-			<texture n="1">
-				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
+			<lightmap-enabled>1</lightmap-enabled>
+			<lightmap-multi>1</lightmap-multi>
+			<lightmap-factor n="0">
+			    <use>systems/electrical/lighting/logo-lights</use>
+			</lightmap-factor>
+			<lightmap-color n="0">0.5 0.5 0.5</lightmap-color>
+			<lightmap-factor n="1">
+			    <use>systems/electrical/lighting/landing-lights[0]</use>
+			</lightmap-factor>
+			<lightmap-color n="1">0.5 0.5 0.5</lightmap-color>
+			<lightmap-factor n="2">0.0</lightmap-factor>
+			<lightmap-factor n="3">
+			    <use>/environment/moonlight</use>
+			</lightmap-factor>
+			<lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
+			<texture n="3">
+			    <image>Aircraft/757-200/Models/Effects/lightmap.png</image>
 			</texture>
-			<condition>
-				<use>systems/electrical/lighting/logo-lights</use>
-			</condition>
-		</parameters>
-		<object-name>Rudder</object-name>
-		<object-name>VStab</object-name>
-		<object-name>Tailcone</object-name>
-	</effect>
-
-	<effect>
-		<name>Landing lightmap</name>
-		<inherits-from>Effects/lightmap</inherits-from>
-		<parameters>
-			<texture n="1">
-				<image>Aircraft/757-200/Models/Effects/lightmap.png</image>
-			</texture>
-			<condition>
-				<use>systems/electrical/lighting/landing-lights[0]</use>
-			</condition>
 		</parameters>
 		<object-name>Fuselage</object-name>
 		<object-name>Wingroot1</object-name>
@@ -2831,8 +2825,10 @@
 		<object-name>NoseGear.LeftDr1</object-name>
 	    	<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
+		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
+    		<object-name>VHFantenna.top</object-name>
+    		<object-name>VHFantenna.bot</object-name>
 	</effect>
-
-
 
 </PropertyList>
