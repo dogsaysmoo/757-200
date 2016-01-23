@@ -3,7 +3,7 @@
 <PropertyList include="757-200-main.xml">
 
 	<sim>
-		<description>Boeing C-32 (USAF variant of 757-200)</description>
+		<description>Boeing C-32B (USAF Special Ops variant of 757-200)</description>
 		<status>early production</status>
 		<author>John Williams, Juuso Tapaninen; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
 		<rating>
@@ -13,7 +13,7 @@
       			<model type="int">4</model>
 		</rating>
 		<flight-model>yasim</flight-model>
-		<aero>C-32A</aero>
+		<aero>C-32B</aero>
 
 		<variant-of>757-200-RB211</variant-of>
 
@@ -26,9 +26,9 @@
 		</instrumentation>
 
 		<model>
-			<path>Aircraft/757-200/Models/C-32A.xml</path>
+			<path>Aircraft/757-200/Models/C-32B.xml</path>
 			<livery>
-				<file>USA</file>
+				<file>BLN</file>
 			</livery>
 			<variant type="int">2</variant>
 		</model>
@@ -48,7 +48,7 @@
 		<menubar>
 			<default>
 				<menu n="100">			
-					<label>Boeing C-32A</label>
+					<label>Boeing C-32B</label>
 					<item n="1">
 					    <label>-----</label>
 					    <enabled>false</enabled>
@@ -74,8 +74,8 @@
 		<cdu>
 			<display>IDENT</display>
 			<ident>
-				<model>C-32A</model>
-				<engines>PW2040</engines>
+				<model>C-32B</model>
+				<engines>RB211-535E4</engines>
 			</ident>
 			<input />
 			<serviceable type="bool">true</serviceable>
@@ -103,7 +103,7 @@
 		</mass-and-balance>
 	</limits>
 
-	<!--nasal>
+	<nasal>
 		<aar>
 	        	<file>Aircraft/Generic/aar.nas</file>
 		</aar>
@@ -113,11 +113,11 @@
 			<type>boom</type>
 			<serviceable type="bool">true</serviceable>
 			<max-fuel-transfer-lbs-min>6000</max-fuel-transfer-lbs-min>
-			<offset-x-m>0.0</offset-x-m>
+			<offset-x-m>5.0</offset-x-m>
 			<offset-y-m>0.0</offset-y-m>
-			<offset-z-m>0.0</offset-z-m>
+			<offset-z-m>6.0</offset-z-m>
 			<range type="int">200</range>
 		</refuel>
-	</systems-->
+	</systems>
 
 </PropertyList>
