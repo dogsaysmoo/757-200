@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
- Boeing 757-200 with Rolls Royce RB211-535E4 engines for FlightGear YASim FDM
- By Skyop, edited jormapaappa1235, reworked by tikibar
+ Boeing C-32B with Rolls Royce RB211-535E4 engines for FlightGear YASim FDM
+ By tikibar
 
  Specifications can be viewed on Boeing's website:
  http://www.boeing.com/commercial/757family/pf/pf_200tech.html
@@ -10,7 +10,7 @@
 -->
 
 <airplane version="YASIM_VERSION_32" mass="136940">
-	<approach speed="145" aoa="3.3" fuel="0.2">
+	<approach speed="145" aoa="3.3" fuel="0.16">
 		<control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.5" />
 		<control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.5" />
 		<control-setting axis="/controls/flight/flaps" value="1.0" />
@@ -19,7 +19,7 @@
 		<solve-weight idx="1" weight="47931" />
 	</approach>
 
-	<cruise speed="503" alt="35000" fuel="0.8">
+	<cruise speed="503" alt="35000" fuel="0.65">
 		<control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.95" />
 		<control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.95" />
 		<control-setting axis="/controls/flight/flaps" value="0.0" />
@@ -149,18 +149,21 @@
 	</gear>
 
 	<!-- FUEL AND PAYLOAD -->
-	<!-- Total fuel capacity: 75,549 pounds -->
+	<!-- Total fuel capacity: 93,631 pounds -->
 	<!-- Left wing fuel tank -->
 	<tank x="-24.3" y="8.25" z="0.8" jet="true" capacity="14579" />
 	<!-- Right wing fuel tank -->
 	<tank x="-24.3" y="-8.25" z="0.8" jet="true" capacity="14579" />
 	<!-- Main fuel tank -->
 	<tank x="-22.0" y="0.0" z="-0.75" jet="true" capacity="46391" />
+	<!-- Aux fuel tanks -->
+	<tank x="-20.0" y="0.0" z="-0.75" jet="true" capacity="9041" />
+	<tank x="-24.0" y="0.0" z="-0.75" jet="true" capacity="9041" />
 
 	<!-- Crew -->
 	<weight x="-2.5" y="0.0" z="1.0" mass-prop="/sim/weight[0]/weight-lb" size="0.0" solve-weight="0.0" idx="0" weight="600.0" />
 	<!-- PAX/Cargo -->
-	<weight x="-21.741" y="0.0" z="1.0" mass-prop="/sim/weight[1]/weight-lb" />
+	<weight x="-21.633" y="0.0" z="1.0" mass-prop="/sim/weight[1]/weight-lb" />
 
 	<!-- Ballast to adjust center of gravity -->
 	<ballast x="-10.1" y="0.0" z="1.0" mass="40000" />
