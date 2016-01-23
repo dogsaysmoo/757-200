@@ -99,7 +99,7 @@
  		</axis>
         </animation>
         
-        	<animation>
+       	<!--animation>
 		<type>material</type>
     		<object-name>engine.1</object-name>
     		<object-name>engine.2</object-name>
@@ -108,7 +108,7 @@
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>FIN.png</texture>
-	</animation>
+	</animation-->
 
 	<animation>
 		<type>shader</type>
