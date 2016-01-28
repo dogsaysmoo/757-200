@@ -378,7 +378,7 @@
                                         <value>0.88</value>
                                 </greater-than>
                         </condition>
-                        <value>0.6</value>
+                        <value>0.4</value>
                 </max-rate-of-change>
                 <max-rate-of-change>
                         <condition>
@@ -387,7 +387,7 @@
                                         <value>0.666</value>
                                 </greater-than>
                         </condition>
-                        <value>0.7</value>
+                        <value>0.5</value>
                 </max-rate-of-change>
                 <max-rate-of-change>
                         <condition>
@@ -396,7 +396,7 @@
                                         <value>0.5</value>
                                 </greater-than>
                         </condition>
-                        <value>0.8</value>
+                        <value>0.6</value>
                 </max-rate-of-change>
                 <max-rate-of-change>
                         <condition>
@@ -405,9 +405,9 @@
                                         <value>0.333</value>
                                 </greater-than>
                         </condition>
-                        <value>0.9</value>
+                        <value>0.7</value>
                 </max-rate-of-change>
-                <max-rate-of-change>1</max-rate-of-change>
+                <max-rate-of-change>0.8</max-rate-of-change>
                 <feedback-if-disabled>true</feedback-if-disabled>
                 <initialize-to>output</initialize-to>
                 <enable>
