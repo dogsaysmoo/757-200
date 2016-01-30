@@ -18,7 +18,7 @@
 		<variant-of>757-200-RB211</variant-of>
 
 		<startup>
-			<splash-texture>Aircraft/757-200/splash-C-32.png</splash-texture>
+			<splash-texture>Aircraft/757-200/splash-C-32B.png</splash-texture>
 		</startup>
 
 		<instrumentation>
