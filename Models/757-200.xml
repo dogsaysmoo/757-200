@@ -2389,13 +2389,17 @@
 		<object-name>Door6</object-name-->
 		<object-name>Rudder</object-name>
 		<object-name>VStab</object-name>
-		<object-name>Engine</object-name>
 		<object-name>Wing1</object-name>
 		<object-name>Wing2</object-name>
 		<object-name>Wingroot1</object-name>
 		<object-name>Wingroot2</object-name>
+		<object-name>Engine</object-name>
 		<object-name>LReverserTurbofan</object-name>
 		<object-name>RReverserTurbofan</object-name>
+		<object-name>engine.1</object-name>
+		<object-name>engine.2</object-name>
+		<object-name>left.reverser</object-name>
+		<object-name>right.reverser</object-name>
 		<object-name>NoseGear.LeftDr2</object-name>
 		<object-name>NoseGear.RightDr2</object-name>
 		<object-name>NoseGear.RightDr1</object-name>
