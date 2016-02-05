@@ -47,14 +47,19 @@
 			<z-m>-3.37</z-m>
 		</offsets>
 	</model>
-	
+
+	<!-- Cabin and seats -->	
 	<!--model>
 	    <name>cabin</name>
 	    <path>Aircraft/757-200/Models/cabin.ac</path>
-	</model-->
+	</model>
+	<model>
+		<name>seats</name>
+  		<path>Aircraft/757-200/Models/seats/seats.xml</path>
+	</model>
   	<animation>
 		<type>select</type>
-		<!--object-name>cabin</object-name-->
+		<-object-name>cabin</object-name>
 		<object-name>seats</object-name>
 		<condition>
 		    <property>sim/model/cabin-visible</property>
@@ -62,15 +67,14 @@
 	</animation>	
 	<animation>
 		<type>range</type>
-		<!--object-name>cabin</object-name-->
+		<object-name>cabin</object-name>
 		<object-name>seats</object-name>
 		<min-m>0</min-m>
 		<max-m>100</max-m>
-	</animation>
+	</animation-->
 	
 	
 	<!-- Toilet doors -->
-	
 	<!--animation>
 		<type>pick</type>
 		<object-name>toilet-1</object-name>
@@ -605,12 +609,6 @@
 		</axis>
 	</animation>
 
-	<!-- SEATS -->
-	<model>
-		<name>seats</name>
-  		<path>Aircraft/757-200/Models/seats/seats.xml</path>
-	</model>
-	
 	<!-- WINGS -->
 	<!-- Ailerons -->
  	<animation>

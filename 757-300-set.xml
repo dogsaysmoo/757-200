@@ -30,7 +30,7 @@
 			<config>
 				<x-offset-m archive="y">-0.55</x-offset-m>
 				<y-offset-m archive="y">1.70</y-offset-m>
-				<z-offset-m archive="y">-1.97</z-offset-m>
+				<z-offset-m archive="y">-2.05</z-offset-m>
 				<pitch-offset-deg>-13.5</pitch-offset-deg>
 				<default-field-of-view-deg type="double">85.0</default-field-of-view-deg>
 			</config>
@@ -65,6 +65,9 @@
 			<default>
 				<menu n="100">			
 					<label>Boeing 757-300</label>
+					<item n="3">
+					    <enabled>false</enabled>
+					</item>
 				</menu>
 			</default>
 		</menubar>
