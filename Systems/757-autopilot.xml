@@ -373,41 +373,40 @@
                 <type>noise-spike</type>
                 <max-rate-of-change>
                         <condition>
-                                <greater-than>
+                                <greater-than-equals>
                                         <property>/instrumentation/airspeed-indicator/indicated-mach</property>
-                                        <value>0.88</value>
-                                </greater-than>
+                                        <value>0.666</value>
+                                </greater-than-equals>
+                        </condition>
+                        <value>0.2</value>
+                </max-rate-of-change>
+                <max-rate-of-change>
+                        <condition>
+                                <less-than>
+                                        <property>/instrumentation/airspeed-indicator/indicated-mach</property>
+                                        <value>0.666</value>
+                                </less-than>
+                        </condition>
+                        <value>0.3</value>
+                </max-rate-of-change>
+                <max-rate-of-change>
+                        <condition>
+                                <less-than>
+                                        <property>/instrumentation/airspeed-indicator/indicated-mach</property>
+                                        <value>0.5</value>
+                                </less-than>
                         </condition>
                         <value>0.4</value>
                 </max-rate-of-change>
                 <max-rate-of-change>
                         <condition>
-                                <greater-than>
+                                <less-than>
                                         <property>/instrumentation/airspeed-indicator/indicated-mach</property>
-                                        <value>0.666</value>
-                                </greater-than>
+                                        <value>0.333</value>
+                                </less-than>
                         </condition>
                         <value>0.5</value>
                 </max-rate-of-change>
-                <max-rate-of-change>
-                        <condition>
-                                <greater-than>
-                                        <property>/instrumentation/airspeed-indicator/indicated-mach</property>
-                                        <value>0.5</value>
-                                </greater-than>
-                        </condition>
-                        <value>0.6</value>
-                </max-rate-of-change>
-                <max-rate-of-change>
-                        <condition>
-                                <greater-than>
-                                        <property>/instrumentation/airspeed-indicator/indicated-mach</property>
-                                        <value>0.333</value>
-                                </greater-than>
-                        </condition>
-                        <value>0.7</value>
-                </max-rate-of-change>
-                <max-rate-of-change>0.8</max-rate-of-change>
                 <feedback-if-disabled>true</feedback-if-disabled>
                 <initialize-to>output</initialize-to>
                 <enable>
@@ -571,7 +570,7 @@
       <prop>/autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
-      <Kp>0.5</Kp>
+      <Kp>0.3</Kp>
       <beta>1.0</beta>
       <alpha>0.1</alpha>
       <gamma>0.0</gamma>
