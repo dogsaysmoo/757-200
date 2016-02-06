@@ -118,5 +118,32 @@
 		<object-name>IntakeR</object-name>
 	</animation>
 
+	<effect>
+		<name>EngineRR Lightmap</name>
+		<inherits-from>Effects/model-combined</inherits-from>
+		<parameters>
+			<lightmap-enabled>1</lightmap-enabled>
+			<lightmap-multi>1</lightmap-multi>
+			<lightmap-factor n="0">0.0</lightmap-factor>
+			<lightmap-color n="0">0.5 0.5 0.5</lightmap-color>
+			<lightmap-factor n="1">0.0</lightmap-factor>
+			<lightmap-color n="1">0.5 0.5 0.5</lightmap-color>
+			<lightmap-factor n="2">0.0</lightmap-factor>
+			<lightmap-factor n="3">
+			    <use>/environment/moonlight</use>
+			</lightmap-factor>
+			<lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
+			<texture n="3">
+			    <image>Aircraft/757-200/Models/Effects/lightmap.png</image>
+			</texture>
+		</parameters>
+    		<object-name>engine.1</object-name>
+    		<object-name>engine.2</object-name>
+    		<object-name>left.reverser</object-name>
+    		<object-name>right.reverser</object-name>
+    		<object-name>LPylon</object-name>
+    		<object-name>RPylon</object-name>
+	</effect>
+
 </PropertyList>
 

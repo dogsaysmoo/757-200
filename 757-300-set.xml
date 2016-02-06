@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList include="757-200-main.xml">
+
+	<sim>
+		<description>Boeing 757-300 (Rolls Royce)</description>
+		<status>early production</status>
+		<author>John Williams, Juuso Tapaninen; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
+		  <rating>
+		      	<FDM type="int">3</FDM>
+      			<systems type="int">4</systems>
+      			<cockpit type="int">4</cockpit>
+      			<model type="int">4</model>
+		</rating>
+		<flight-model>yasim</flight-model>
+		<aero>757-300-RB211</aero>
+
+		<model>
+			<path>Aircraft/757-200/Models/757-300.xml</path>
+			<livery>
+				<file>BLN</file>
+			</livery>
+			<variant type="int">3</variant>
+		</model>
+		
+		<view n="0">
+			<name>Pilot View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<x-offset-m archive="y">-0.55</x-offset-m>
+				<y-offset-m archive="y">1.70</y-offset-m>
+				<z-offset-m archive="y">-2.05</z-offset-m>
+				<pitch-offset-deg>-13.5</pitch-offset-deg>
+				<default-field-of-view-deg type="double">85.0</default-field-of-view-deg>
+			</config>
+		</view>
+		<view n="102">
+			<name>Copilot View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0.55</x-offset-m>
+				<y-offset-m archive="y">1.56</y-offset-m>
+				<z-offset-m archive="y">-1.785</z-offset-m>
+				<pitch-offset-deg>0</pitch-offset-deg>
+				<default-field-of-view-deg type="double">70.0</default-field-of-view-deg>
+			</config>
+		</view>
+		<view n="103">
+			<name>Overhead Panel View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0</x-offset-m>
+				<y-offset-m archive="y">1.3</y-offset-m>
+				<z-offset-m archive="y">-1.06</z-offset-m>
+				<pitch-offset-deg>30</pitch-offset-deg>
+			</config>
+		</view>
+
+		<menubar>
+			<default>
+				<menu n="100">			
+					<label>Boeing 757-300</label>
+					<item n="3">
+					    <enabled>false</enabled>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+
+		<weight n="0">
+			<name>Crew</name>
+			<weight-lb>250</weight-lb>
+			<max-lb>600</max-lb>
+			<min-lb>120</min-lb>
+		</weight>
+		<weight n="1">
+			<name>Pax/Baggage/Cargo</name>
+			<weight-lb>52844</weight-lb>
+			<max-lb>67650</max-lb>
+			<min-lb>0</min-lb>
+		</weight>
+	</sim>
+
+	<instrumentation>
+		<!-- CDU stuff: http://wiki.flightgear.org/index.php/Howto:_Implement_a_Control_Display_Unit -->
+		<cdu>
+			<display>IDENT</display>
+			<ident>
+				<model>757-300</model>
+				<engines>RB211-535E4B</engines>
+			</ident>
+			<input />
+			<serviceable type="bool">true</serviceable>
+		</cdu>
+	</instrumentation>
+
+	<limits n="0">
+		<mass-and-balance>
+		    <maximum-takeoff-mass-lbs>270000</maximum-takeoff-mass-lbs>
+		    <maximum-landing-mass-lbs>224000</maximum-landing-mass-lbs>
+		</mass-and-balance>
+	</limits>
+
+</PropertyList>
