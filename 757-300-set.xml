@@ -15,6 +15,10 @@
 		<flight-model>yasim</flight-model>
 		<aero>757-300-RB211</aero>
 
+		<startup>
+			<splash-texture>Aircraft/757-200/splash-300.png</splash-texture>
+		</startup>
+
 		<model>
 			<path>Aircraft/757-200/Models/757-300.xml</path>
 			<livery>
