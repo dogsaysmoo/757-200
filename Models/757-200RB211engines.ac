@@ -4994,7 +4994,7 @@ refs 4
 116 0.042755 0.498181
 kids 0
 OBJECT poly
-name "Cube"
+name "RPylon"
 crease 45.0
 texture "FIN.png"
 texrep 1 1
@@ -8945,7 +8945,7 @@ refs 3
 522 0.704197 0.288124
 kids 0
 OBJECT poly
-name "Cube.001"
+name "LPylon"
 crease 45.0
 texture "FIN.png"
 texrep 1 1
