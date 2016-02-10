@@ -131,6 +131,17 @@ var fuelsys = {
 		else me.sel[3].setBoolValue(Csel);
 		if (me.emp[4].getBoolValue()) me.sel[4].setBoolValue(0);
 		else me.sel[4].setBoolValue(Csel);
+
+		# In air refueling (C-32B only)
+		if (getprop("systems/refuel/contact")) {
+		    Lsel = 1;
+		    Rsel = 1;
+		    Csel = 1;
+		    for (var tnk=0; tnk<=4; tnk+=1) {
+			if (me.emp[tnk].getBoolValue()) me.lev[tnk].setValue(50);
+			me.sel[tnk].setBoolValue(1);
+		    }
+		}
 	}
 	if (me.emp[0].getBoolValue()) Lsel = 0;
 	if (me.emp[1].getBoolValue()) Rsel = 0;
