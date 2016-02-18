@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<PropertyList include="757-200-main.xml">
+<PropertyList include="757-main.xml">
 
 	<sim>
 		<description>Boeing 757-200 (Pratt and Whitney)</description>

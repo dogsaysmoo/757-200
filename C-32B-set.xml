@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList include="757-main.xml">
+
+	<sim>
+		<description>Boeing C-32B (USAF Special Ops variant of 757-200)</description>
+		<status>early production</status>
+		<author>John Williams, Juuso Tapaninen; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
+		<rating>
+		      	<FDM type="int">3</FDM>
+      			<systems type="int">4</systems>
+      			<cockpit type="int">4</cockpit>
+      			<model type="int">4</model>
+		</rating>
+		<flight-model>yasim</flight-model>
+		<aero>C-32B</aero>
+
+		<variant-of>757-200-RB211</variant-of>
+
+		<startup>
+			<splash-texture>Aircraft/757-200/splash-C-32B.png</splash-texture>
+		</startup>
+
+		<instrumentation>
+ 			<path>Aircraft/757-200/Systems/instrumentation-C32.xml</path>
+		</instrumentation>
+
+		<model>
+			<path>Aircraft/757-200/Models/C-32B.xml</path>
+			<livery>
+				<file>BLN</file>
+			</livery>
+			<variant type="int">2</variant>
+		</model>
+
+		<weight n="0">
+			<name>Crew</name>
+			<weight-lb>250</weight-lb>
+			<max-lb>600</max-lb>
+			<min-lb>120</min-lb>
+		</weight>
+		<weight n="1">
+			<name>Pax/Baggage/Cargo</name>
+			<weight-lb>14844</weight-lb>
+			<max-lb>57125</max-lb>
+			<min-lb>0</min-lb>
+		</weight>
+		<menubar>
+			<default>
+				<menu n="100">			
+					<label>Boeing C-32B</label>
+					<item n="1">
+					    <label>-----</label>
+					    <enabled>false</enabled>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+	</sim>
+
+	<consumables>
+		<fuel>
+			<tank n="3">
+				<name>Fwd Aux</name>
+			</tank>
+			<tank n="4">
+				<name>Aft Aux</name>
+			</tank>
+		</fuel>
+	</consumables>
+
+	<instrumentation>
+		<!-- CDU stuff: http://wiki.flightgear.org/index.php/Howto:_Implement_a_Control_Display_Unit -->
+		<cdu>
+			<display>IDENT</display>
+			<ident>
+				<model>C-32B</model>
+				<engines>RB211-535E4</engines>
+			</ident>
+			<input />
+			<serviceable type="bool">true</serviceable>
+		</cdu>
+		<tacan>
+		    <powered type="bool">false</powered>
+		    <xy type="bool">true</xy>
+		    <frequencies>
+			<selected-frequency n="0">29</selected-frequency>
+			<selected-frequency n="4">Y</selected-frequency>
+		    </frequencies>
+		</tacan>
+		<efis n="0">
+			<tacan alias="/instrumentation/tacan/powered"/>
+		</efis>
+		<efis n="1">
+			<tacan alias="/instrumentation/tacan/powered"/>
+		</efis>
+	</instrumentation>
+
+	<limits n="0">
+		<mass-and-balance>
+		    <maximum-takeoff-mass-lbs>255000</maximum-takeoff-mass-lbs>
+		    <maximum-landing-mass-lbs>210000</maximum-landing-mass-lbs>
+		</mass-and-balance>
+	</limits>
+
+	<nasal>
+		<aar>
+	        	<file>Aircraft/Generic/aar.nas</file>
+		</aar>
+	</nasal>
+	<systems>
+		<refuel>
+			<type>boom</type>
+			<serviceable type="bool">true</serviceable>
+			<max-fuel-transfer-lbs-min>6000</max-fuel-transfer-lbs-min>
+			<offset-x-m>5.0</offset-x-m>
+			<offset-y-m>0.0</offset-y-m>
+			<offset-z-m>6.0</offset-z-m>
+			<range type="int">200</range>
+		</refuel>
+	</systems>
+
+</PropertyList>

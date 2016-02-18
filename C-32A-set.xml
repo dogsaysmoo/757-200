@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<PropertyList include="757-200-main.xml">
+<PropertyList include="757-main.xml">
 
 	<sim>
 		<description>Boeing C-32 (USAF variant of 757-200)</description>
@@ -30,7 +30,7 @@
 			<livery>
 				<file>USA</file>
 			</livery>
-			<variant type="int">0</variant>
+			<variant type="int">2</variant>
 		</model>
 
 		<weight n="0">

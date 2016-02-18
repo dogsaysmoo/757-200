@@ -31,7 +31,34 @@
 	<type>gain</type>
 	<gain>1.0</gain>
 	<enable>
-	    <prop>systems/hydraulic/equipment/enable-sfc</prop>
+	    <condition>
+		<and>
+		<property>systems/hydraulic/equipment/enable-sfc</property>
+		<greater-than-equals>
+		    <property>controls/flight/rudder</property>
+		    <value>0</value>
+		</greater-than-equals>
+		</and>
+	    </condition>
+	</enable>
+	<input>controls/flight/rudder</input>
+	<output>controls/flight/rudder-pos</output>
+    </filter>
+    <filter>
+	<name>Rudder Enable</name>
+	<debug>false</debug>
+	<type>gain</type>
+	<gain>1.0</gain>
+	<enable>
+	    <condition>
+		<and>
+		<property>systems/hydraulic/equipment/enable-sfc</property>
+		<less-than>
+		    <property>controls/flight/rudder</property>
+		    <value>0</value>
+		</less-than>
+		</and>
+	    </condition>
 	</enable>
 	<input>controls/flight/rudder</input>
 	<output>controls/flight/rudder-pos</output>
