@@ -2158,7 +2158,7 @@
        <animation>
         <type>translate</type>
         <object-name>rednav</object-name>
-        <offset-m>32.6</offset-m>
+        <offset-m>32.2</offset-m>
         <axis>
             <x>26.4870</x>
             <y>-18.4652</y>
@@ -2169,7 +2169,7 @@
            <animation>
         <type>translate</type>
         <object-name>greennav</object-name>
-        <offset-m>32.6</offset-m>
+        <offset-m>32.2</offset-m>
         <axis>
             <x>26.4870</x>
             <y>18.4652</y>
