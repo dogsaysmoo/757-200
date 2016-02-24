@@ -2419,7 +2419,7 @@
 		<object-name>WingletR</object-name>
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
-		<texture>USA.png</texture>
+		<texture>C-32A.png</texture>
 	</animation>
 	
 	

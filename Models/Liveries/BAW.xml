@@ -6,6 +6,7 @@
 			<livery>
 				<name>British Airways</name>
 				<texture>BAW.png</texture>
+				<winglets type="bool">false</winglets>
 			</livery>  	  
 		</model>
 	</sim>

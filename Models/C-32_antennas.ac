@@ -7,7 +7,7 @@ kids 1
 OBJECT poly
 name "C32antennas"
 crease 61.0
-texture "USA.png"
+texture "C-32A.png"
 texrep 1 1
 numvert 724
 32.39465 3.09320 0.01458

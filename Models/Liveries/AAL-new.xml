@@ -4,9 +4,9 @@
 	<sim>
 		<model>
 			<livery>
-				<name>American Airlines</name>
-				<texture>AAL.png</texture>
-				<winglets type="bool">false</winglets>
+				<name>American Airlines(New Livery)</name>
+				<texture>AAL-new.png</texture>
+				<winglets type="bool">true</winglets>
 			</livery>  	  
 		</model>
 	</sim>
