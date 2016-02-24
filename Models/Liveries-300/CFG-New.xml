@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+	<sim>
+		<model>
+			<livery>
+				<name>Condor Flugdienst (Since 2013)</name>
+				<texture>CFG-300-New.png</texture>
+				<winglets type="bool">true</winglets>
+			</livery>  	  
+		</model>
+	</sim>
+</PropertyList>
