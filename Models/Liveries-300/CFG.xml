@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Condor Flugdienst (Retro)</name>
-				<texture>CFG-retro-300.png</texture>
+				<texture>CFG-300.png</texture>
 				<winglets type="bool">False</winglets>
 			</livery>  	  
 		</model>
