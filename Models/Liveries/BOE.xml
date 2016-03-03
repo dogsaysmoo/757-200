@@ -6,6 +6,7 @@
 			<livery>
 				<name>BOEING</name>
 				<texture>BOE.png</texture>
+				<winglets type="bool">false</winglets>
 			</livery>  	  
 		</model>
 	</sim>

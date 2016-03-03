@@ -6,6 +6,7 @@
 			<livery>
 				<name>Bare White</name>
 				<texture>BLN-300.png</texture>
+				<winglets type="bool">true</winglets>
 			</livery>  	  
 		</model>
 	</sim>

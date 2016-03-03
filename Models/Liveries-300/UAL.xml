@@ -6,6 +6,7 @@
 			<livery>
 				<name>United Airlines</name>
 				<texture>UAL-300.png</texture>
+				<winglets type="bool">true</winglets>
 			</livery>  	  
 		</model>
 	</sim>

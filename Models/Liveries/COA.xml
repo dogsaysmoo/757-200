@@ -4,8 +4,9 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Continental</name>
+				<name>Continental Airlines</name>
 				<texture>COA.png</texture>
+				<winglets type="bool">true</winglets>
 			</livery>  	  
 		</model>
 	</sim>
