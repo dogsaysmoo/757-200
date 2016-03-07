@@ -22,6 +22,19 @@
 		<path>Aircraft/757-200/Models/757-200-RRengines.xml</path>
 	</model>
 
+	<!-- Winglets on RB211 equipped aircraft -->
+	<model>
+		<name>winglets</name>
+		<path>Aircraft/757-200/Models/winglets.ac</path>
+	</model>
+	<animation>
+		<type>select</type>
+		<object-name>winglets</object-name>
+		<condition>
+		    <property>sim/model/livery/winglets</property>
+		</condition>
+	</animation>
+
 	<!-- 3d cockpit -->
 	<model>
 		<name>Flightdeck</name>
@@ -2158,7 +2171,7 @@
        <animation>
         <type>translate</type>
         <object-name>rednav</object-name>
-        <offset-m>32.6</offset-m>
+        <offset-m>32.2</offset-m>
         <axis>
             <x>26.4870</x>
             <y>-18.4652</y>
@@ -2169,7 +2182,7 @@
            <animation>
         <type>translate</type>
         <object-name>greennav</object-name>
-        <offset-m>32.6</offset-m>
+        <offset-m>32.2</offset-m>
         <axis>
             <x>26.4870</x>
             <y>18.4652</y>
@@ -2179,47 +2192,70 @@
  
  	<!-- strobe lights -->
  
-  <animation>
-   <type>select</type>
-   <object-name>strobelight_1</object-name>
-     <object-name>strobelight_2</object-name> 
-   <condition>
-     <!--property>controls/lighting/strobe-state/state</property-->
-     <property>sim/multiplay/generic/int[3]</property>
-   </condition>
- </animation>
+	<animation>
+	    <type>select</type>
+	    <object-name>strobelight_1</object-name>
+	    <object-name>strobelight_2</object-name> 
+	    <condition>
+		<!--property>controls/lighting/strobe-state/state</property-->
+		<property>sim/multiplay/generic/int[3]</property>
+	    </condition>
+	</animation>
  
-     <animation>
-        <type>translate</type>
-        <object-name>strobelight_1</object-name>
-        <offset-m>33.3</offset-m>
-        <axis>
-            <x>0.55</x>
-            <y>-0.37</y>
-            <z>0.03</z>
-        </axis>
-    </animation>
+	<animation>
+	    <type>translate</type>
+	    <object-name>strobelight_1</object-name>
+	    <offset-m>33.3</offset-m>
+	    <axis>
+		<x>0.55</x>
+		<y>-0.37</y>
+		<z>0.03</z>
+	    </axis>
+	</animation>
     
-         <animation>
-        <type>translate</type>
-        <object-name>strobelight_2</object-name>
-        <offset-m>33.3</offset-m>
-        <axis>
-            <x>0.55</x>
-            <y>0.37</y>
-            <z>0.03</z>
-        </axis>
-    </animation>
+	<animation>
+	    <type>translate</type>
+	    <object-name>strobelight_2</object-name>
+	    <offset-m>33.3</offset-m>
+	    <axis>
+		<x>0.55</x>
+		<y>0.37</y>
+		<z>0.03</z>
+	    </axis>
+	</animation>
     
-        <animation>
-        <type>billboard</type>
-        <object-name>strobelight_2</object-name>
-        <object-name>strobelight_1</object-name>
-        <object-name>beacon_1</object-name>
-        <object-name>beacon_2</object-name>
-        <object-name>rednav</object-name>
-        <object-name>greennav</object-name>
-    </animation>
+	<animation>
+	    <type>translate</type>
+	    <object-name>strobelight_1</object-name>
+	    <property>sim/model/livery/winglets</property>
+	    <factor>2.75</factor>
+	    <axis>
+		<x>0.40</x>
+		<y>-0.27</y>
+		<z>1.0</z>
+	    </axis>
+	</animation>
+	<animation>
+	    <type>translate</type>
+	    <object-name>strobelight_2</object-name>
+	    <property>sim/model/livery/winglets</property>
+	    <factor>2.75</factor>
+	    <axis>
+		<x>0.40</x>
+		<y>0.27</y>
+		<z>1.0</z>
+	    </axis>
+	</animation>
+    
+	<animation>
+	    <type>billboard</type>
+	    <object-name>strobelight_2</object-name>
+	    <object-name>strobelight_1</object-name>
+	    <object-name>beacon_1</object-name>
+	    <object-name>beacon_2</object-name>
+	    <object-name>rednav</object-name>
+	    <object-name>greennav</object-name>
+	</animation>
 
 	
 
@@ -2366,6 +2402,8 @@
 		<object-name>Wing2</object-name>
 		<object-name>Wingroot1</object-name>
 		<object-name>Wingroot2</object-name>
+		<object-name>WingletL</object-name>
+		<object-name>WingletR</object-name>
 		<object-name>Engine</object-name>
 		<object-name>LReverserTurbofan</object-name>
 		<object-name>RReverserTurbofan</object-name>

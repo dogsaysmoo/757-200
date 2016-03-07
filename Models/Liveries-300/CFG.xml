@@ -4,8 +4,9 @@
 	<sim>
 		<model>
 			<livery>
-				<name>Condor Flugdienst</name>
+				<name>Condor Flugdienst (Retro)</name>
 				<texture>CFG-300.png</texture>
+				<winglets type="bool">False</winglets>
 			</livery>  	  
 		</model>
 	</sim>
