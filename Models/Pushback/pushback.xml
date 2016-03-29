@@ -2,14 +2,23 @@
 
 <PropertyList>
 
-  <path>pushback.ac</path>
+  <path>Kalmar_FB250.ac</path>
 
   <model>
     <path>Models/Airport/Pushback/Goldhofert-warning-light.xml</path>
     <offsets>
-	<x-m>-5.898</x-m>
-	<y-m>0.0</y-m>
-	<z-m>2.300</z-m>
+	<x-m>-5.839</x-m>
+	<y-m>0.941</y-m>
+	<z-m>2.707</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Models/Airport/Pushback/Goldhofert-warning-light.xml</path>
+    <offsets>
+	<x-m>-5.839</x-m>
+	<y-m>-0.941</y-m>
+	<z-m>2.707</z-m>
     </offsets>
   </model>
 
