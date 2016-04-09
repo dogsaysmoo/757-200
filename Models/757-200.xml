@@ -85,6 +85,7 @@
 	<!-- Pushback -->
 	<model>
 		<path>Aircraft/757-200/Models/Pushback/pushback.xml</path>
+		<!--path>Models/Airport/Pushback/Kalmar_FB250.xml</path-->
 		<offsets>
 			<x-m>5.1</x-m>
 			<y-m>0</y-m>
@@ -485,7 +486,7 @@
 	<!-- Tutorial marker -->
 	<model>
 		<name>Tutorial marker</name>
-		<path>Models/Aircraft/marker.xml</path>
+		<path>Aircraft/Generic/marker.xml</path>
 	</model>
 
 	<!-- ANIMATIONS -->
