@@ -483,12 +483,6 @@
 		</offsets>
 	</model>
 
-	<!-- Tutorial marker -->
-	<model>
-		<name>Tutorial marker</name>
-		<path>Aircraft/Generic/marker.xml</path>
-	</model>
-
 	<!-- ANIMATIONS -->
 	<!-- Turbofan rotation -->
 
