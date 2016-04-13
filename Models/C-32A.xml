@@ -1309,6 +1309,8 @@
 		<type>translate</type>
 		<object-name>NoseGear.StrutLo</object-name>
 		<object-name>NoseGear.Tires</object-name>
+		<object-name>taxi_lamp</object-name>
+		<object-name>taxi.lamp.glass</object-name>
 		<property>gear/gear[0]/compression-m</property>
 		<axis>
 			<x>0</x>
@@ -1345,8 +1347,10 @@
 		<object-name>NoseGear.ScissorL</object-name>
 		<object-name>NoseGear.ScissorU</object-name>
 		<object-name>NoseGear.Tires</object-name>
-    <object-name>NoseGear.lamp.glass</object-name>
-    <object-name>nosegear_lamp</object-name>
+		<object-name>NoseGear.lamp.glass</object-name>
+		<object-name>nosegear_lamp</object-name>
+		<object-name>taxi_lamp</object-name>
+		<object-name>taxi.lamp.glass</object-name>
 		<property>gear/gear[0]/position-norm</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>95</dep></entry>
@@ -1391,7 +1395,9 @@
 		<object-name>NoseGear.ScissorL</object-name>
 		<object-name>NoseGear.ScissorU</object-name>
 		<object-name>NoseGear.Tires</object-name>
-    <object-name>NoseGear.StrutLo</object-name>
+		<object-name>NoseGear.StrutLo</object-name>
+		<object-name>taxi_lamp</object-name>
+		<object-name>taxi.lamp.glass</object-name>
 		<property>gear/gear[0]/steering-norm</property>
 		<factor>-65</factor>
 		<axis>
