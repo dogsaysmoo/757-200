@@ -964,6 +964,101 @@
 		</center>
 	</animation>
 	
+	<animation>
+		<name>Nose landing lights switches pick</name>
+		<type>pick</type>
+		<object-name>NLndingLtSwtch</object-name>
+		<object-name>NLndingLtSwtch.lights</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/lighting/landing-lights[0]</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Nose landing lights switches rotate</name>
+		<type>rotate</type>
+		<object-name>NLndingLtSwtch</object-name>
+		<object-name>NLndingLtSwtch.lights</object-name>
+		<property>controls/lighting/landing-lights[0]</property>
+		<factor>30</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-0.002213</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.4795</z-m>
+		</center>
+	</animation>
+
+	<!-- Taxi Light -->
+	<animation>
+		<type>pick</type>
+		<object-name>TaxiLtSwtch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/lighting/taxi-lights</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>TaxiLtSwtch</object-name>
+		<property>controls/lighting/taxi-lights</property>
+		<factor>20</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-0.002213</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.4672</z-m>
+		</center>
+	</animation>
+
+	<!-- Runway Turnoff Lights -->
+	<animation>
+		<type>pick</type>
+		<object-name>LTurnoffLtSwtch</object-name>
+		<object-name>RTurnoffLtSwtch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/lighting/turn-off-lights</property>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>LTurnoffLtSwtch</object-name>
+		<object-name>RTurnoffLtSwtch</object-name>
+		<property>controls/lighting/turn-off-lights</property>
+		<factor>20</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-0.002213</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.4672</z-m>
+		</center>
+	</animation>
+
 			<!-- lights -->
 	        <effect>
         <inherits-from>Effects/model-transparent</inherits-from>
@@ -1232,41 +1327,7 @@
 			<z-m>-0.4109</z-m>
 		</center>
 	</animation>
-	
-	
 
-	<animation>
-		<name>Nose landing lights switches pick</name>
-		<type>pick</type>
-		<object-name>NLndingLtSwtch</object-name>
-		<object-name>NLndingLtSwtch.lights</object-name>
-		<action>
-			<button>0</button>
-			<repeatable type="bool">false</repeatable>
-			<binding>
-				<command>property-toggle</command>
-				<property>controls/lighting/landing-lights[1]</property>
-			</binding>
-		</action>
-	</animation>
-	<animation>
-		<name>Nose landing lights switches rotate</name>
-		<type>rotate</type>
-		<object-name>NLndingLtSwtch</object-name>
-		<object-name>NLndingLtSwtch.lights</object-name>
-		<property>controls/lighting/landing-lights[1]</property>
-		<factor>30</factor>
-		<axis>
-			<x>0</x>
-			<y>1</y>
-			<z>0</z>
-		</axis>
-		<center>
-			<x-m>-0.002213</x-m>
-			<y-m>0</y-m>
-			<z-m>-0.4795</z-m>
-		</center>
-	</animation>
 	
 	<animation>
 	<type>pick</type>

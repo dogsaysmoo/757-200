@@ -32,7 +32,7 @@
 
 			<checkbox>
 				<label>Nosegear</label>
-				<property>controls/lighting/landing-lights[1]</property>
+				<property>controls/lighting/landing-lights[0]</property>
 				<binding>
 					<command>dialog-apply</command>
 				</binding>
@@ -61,8 +61,8 @@
 		</checkbox>
 
 		<checkbox>
-			<label>Strobe lights</label>
-			<property>controls/lighting/strobe</property>
+			<label>Beacon</label>
+			<property>controls/lighting/beacon</property>
 			<binding>
 				<command>dialog-apply</command>
 			</binding>
@@ -70,8 +70,8 @@
 		</checkbox>
 
 		<checkbox>
-			<label>Beacon</label>
-			<property>controls/lighting/beacon</property>
+			<label>Strobe lights</label>
+			<property>controls/lighting/strobe</property>
 			<binding>
 				<command>dialog-apply</command>
 			</binding>
@@ -87,16 +87,24 @@
 			<live>true</live>
 		</checkbox>
 
-		<hrule />
-
 		<checkbox>
-			<label>3D light cones</label>
-			<property>controls/lighting/cones</property>
+			<label>Taxi light</label>
+			<property>controls/lighting/taxi-lights</property>
 			<binding>
 				<command>dialog-apply</command>
 			</binding>
 			<live>true</live>
 		</checkbox>
+
+		<checkbox>
+			<label>Runway turn off lights</label>
+			<property>controls/lighting/turn-off-lights</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+
 	</group>
 
 	<hrule />
