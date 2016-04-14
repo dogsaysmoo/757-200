@@ -133,6 +133,13 @@ var light_stat = {
 	} else {
 	    me.nav.setBoolValue(0);
 	}
+	if ((me.taxi.getBoolValue() or me.toff.getBoolValue()) and getprop("sim/current-view/internal")) {
+	    setprop("sim/rendering/als-secondary-lights/use-landing-light",1);
+	    setprop("sim/rendering/als-secondary-lights/landing-light1-offset-deg",2);
+	    setprop("sim/rendering/als-secondary-lights/landing-light3-offset-deg",10);
+	} else {
+	    setprop("sim/rendering/als-secondary-lights/use-landing-light",0);
+	}
     },
 };
 var lighting_status = light_stat.new();
