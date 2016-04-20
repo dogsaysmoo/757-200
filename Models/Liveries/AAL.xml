@@ -6,6 +6,7 @@
 			<livery>
 				<name>American Airlines</name>
 				<texture>AAL.png</texture>
+				<winglets type="bool">false</winglets>
 			</livery>  	  
 		</model>
 	</sim>

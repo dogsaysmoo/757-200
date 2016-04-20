@@ -6,6 +6,7 @@
 			<livery>
 				<name>FINNAIR</name>
 				<texture>FIN.png</texture>
+				<winglets type="bool">true</winglets>
 			</livery>  	  
 		</model>
 	</sim>
