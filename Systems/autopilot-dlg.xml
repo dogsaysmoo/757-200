@@ -54,8 +54,10 @@
 	    <hrule/>
 	    <text>
 		<border>1</border>
-		<label> </label>
+		<label>9999999</label>
 		<halign>center</halign>
+		<property>instrumentation/afds/ap-modes/thrust-mode</property>
+		<live>1</live>
 	    </text>
 	</group>
 	<vrule/>
@@ -404,9 +406,20 @@
 			<command>dialog-apply</command>
 		    </binding>
 		</checkbox>
+	    </group>
+	    <group>
+		<layout>hbox</layout>
 	    	<button>
 		    <pref-width>45</pref-width>
-		    <legend>A/T</legend>
+		    <legend>THR</legend>
+		    <binding>
+		    	<command>nasal</command>
+                    	<script>Boeing757.afds.input(2,1);</script>
+		    </binding>
+	    	</button>
+	    	<button>
+		    <pref-width>45</pref-width>
+		    <legend>SPD</legend>
 		    <binding>
 		    	<command>nasal</command>
                     	<script>Boeing757.afds.input(2,5);</script>
@@ -905,6 +918,84 @@
 	    </button>
 	</group> 
 		
+    </group>
+
+    <hrule/>
+
+    <!-- Thrust Modes -->
+    <group>
+        <layout>hbox</layout>
+	<group>
+	<layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label> Thrust Mode</label>
+        </text>
+        <button>
+            <halign>left</halign>
+            <pref-width>40</pref-width>
+	    <pref-height>25</pref-height>
+            <legend>TO/GA</legend>
+            <binding>
+                <command>nasal</command>
+		<script>Boeing757.afds.input(4,1);</script>
+            </binding>
+        </button>
+        <button>
+            <halign>left</halign>
+            <pref-width>40</pref-width>
+	    <pref-height>25</pref-height>
+            <legend>CLB</legend>
+            <binding>
+                <command>nasal</command>
+		<script>Boeing757.afds.input(4,2);</script>
+            </binding>
+        </button>
+        <button>
+            <halign>left</halign>
+            <pref-width>40</pref-width>
+	    <pref-height>25</pref-height>
+            <legend>1</legend>
+            <binding>
+                <command>nasal</command>
+		<script>Boeing757.afds.input(4,3);</script>
+            </binding>
+        </button>
+        <button>
+            <halign>left</halign>
+            <pref-width>40</pref-width>
+	    <pref-height>25</pref-height>
+            <legend>2</legend>
+            <binding>
+                <command>nasal</command>
+		<script>Boeing757.afds.input(4,4);</script>
+            </binding>
+        </button>
+        <button>
+            <halign>left</halign>
+            <pref-width>40</pref-width>
+	    <pref-height>25</pref-height>
+            <legend>CON</legend>
+            <binding>
+                <command>nasal</command>
+		<script>Boeing757.afds.input(4,5);</script>
+            </binding>
+        </button>
+        <button>
+            <halign>left</halign>
+            <pref-width>40</pref-width>
+	    <pref-height>25</pref-height>
+            <legend>CRZ</legend>
+            <binding>
+                <command>nasal</command>
+		<script>Boeing757.afds.input(4,6);</script>
+            </binding>
+        </button>
+	</group>
+	<group>
+	<layout>hbox</layout>
+	</group>
+
     </group>
 
 </PropertyList>

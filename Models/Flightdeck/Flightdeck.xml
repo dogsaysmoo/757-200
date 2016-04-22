@@ -108,7 +108,7 @@
 	
 		<!-- Doors -->
 
-		<animation>
+	<!--animation>
 		<type>pick</type>
 		<object-name>cockpit-door</object-name>
 		<action>
@@ -121,7 +121,7 @@
 				</script>
 			</binding>
 		</action>
-	</animation>
+	</animation-->
 
 	<animation>
 		<name>Cockpit Door</name>
@@ -1239,7 +1239,7 @@
 		<object-name>nose.light</object-name>
 		<object-name>left.light</object-name>
 		<object-name>right.light</object-name>
-		<property>gear/gear[3]/position-norm</property>
+		<property>gear/gear[2]/position-norm</property>
       <interpolation>
 			<entry><ind>0.0</ind><dep>0.02</dep></entry>
 			<entry><ind>0.05</ind><dep>0.02</dep></entry>
@@ -1254,7 +1254,7 @@
 		<animation>
 		<type>translate</type>
 		<object-name>Gearlight</object-name>
-		<property>gear/gear[3]/position-norm</property>
+		<property>gear/gear[2]/position-norm</property>
       <interpolation>
 			<entry><ind>0.0</ind><dep>0</dep></entry>
 			<entry><ind>0.05</ind><dep>0.001</dep></entry>
@@ -2127,6 +2127,85 @@
 		    <binding>
 			<command>property-toggle</command>
 			<property>instrumentation/efis[1]/mfd/true-north</property>
+		    </binding>
+		</action>
+	</animation>
+
+<!-- EEC Thrust Mode Panel -->
+	<animation>
+		<type>pick</type>
+		<object-name>TOGA_thr.btn</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>Boeing757.afds.input(4,1);</script>
+		    </binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>CLB_thr.btn</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>Boeing757.afds.input(4,2);</script>
+		    </binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>CLB1_thr.btn</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>Boeing757.afds.input(4,3);</script>
+		    </binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>CLB2_thr.btn</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>Boeing757.afds.input(4,4);</script>
+		    </binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>CON_thr.btn</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>Boeing757.afds.input(4,5);</script>
+		    </binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>CRZ_thr.btn</object-name>
+		<action>
+		    <button>0</button>
+		    <repeatable>false</repeatable>
+		    <binding>
+			<command>nasal</command>
+			<script>Boeing757.afds.input(4,6);</script>
 		    </binding>
 		</action>
 	</animation>

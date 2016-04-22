@@ -77,26 +77,57 @@
 	<animation>
 		<name>Speed button light</name>
 		<type>select</type>
-		<object-name>ATtoggle</object-name>
-		<object-name>ATtoggle.001</object-name>
+		<object-name>SPDtoggle</object-name>
 		<condition>
+		    <or>
 			<equals>
 				<property>/instrumentation/afds/ap-modes/speed-mode</property>
 				<value>SPD</value>
 			</equals>
+			<equals>
+				<property>/instrumentation/afds/ap-modes/pitch-mode</property>
+				<value>SPD</value>
+			</equals>
+		    </or>
 		</condition>
 	</animation>
 	<animation>
 		<name>Speed button pick</name>
 		<type>pick</type>
-		<object-name>AT.btn</object-name>
-		<object-name>ATtoggle.001</object-name>
+		<object-name>SPD.btn</object-name>
+		<object-name>SPDtoggle</object-name>
 		<action>
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
 				<script>Boeing757.afds.input(2,5);</script>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<name>THR button light</name>
+		<type>select</type>
+		<object-name>THRtoggle</object-name>
+		<condition>
+			<equals>
+				<property>/instrumentation/afds/ap-modes/speed-mode</property>
+				<value>THR</value>
+			</equals>
+		</condition>
+	</animation>
+	<animation>
+		<name>THR button pick</name>
+		<type>pick</type>
+		<object-name>THR.btn</object-name>
+		<object-name>THRtoggle</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>Boeing757.afds.input(2,1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -352,6 +383,10 @@
                 		<property>instrumentation/afds/ap-modes/pitch-mode</property>
                 		<value>VNAV PTH</value>
             		</equals>
+			<equals>
+				<property>instrumentation/afds/inputs/vertical-index</property>
+				<value>12</value>
+			</equals>
 		    </or>
 		</condition>
 	</animation>

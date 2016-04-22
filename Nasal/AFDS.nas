@@ -12,7 +12,6 @@
 #############################################################################
 
 #Usage : var afds = AFDS.new();
-
 var AFDS = {
     new : func{
         var m = {parents:[AFDS]};
@@ -22,13 +21,14 @@ var AFDS = {
         m.roll_list=["","HDG SEL","HDG HOLD","LNAV","LOC","ROLLOUT",
         "TRK SEL","TRK HOLD","ATT","TO/GA"];
 
-        m.pitch_list=["","ALT","V/S","VNAV PTH","VNAV SPD",
-        "VNAV ALT","G/S","FLARE","FLCH SPD","FPA","TO/GA","CLB CON","FLCH SPD"];
+        m.pitch_list=["","ALT","V/S","VNAV PTH","VNAV SPD","VNAV ALT",
+	"G/S","FLARE","FLCH SPD","FPA","TO/GA","CLB CON","FLCH SPD","SPD"];
 
 	m.bank_limit_list=["AUTO","5","10","15","20","25","30"];
 
         m.step=0;
 	m.heading_change_rate = 0;
+	m.flch_spd_arm = 0;
 
         m.AFDS_node = props.globals.getNode("instrumentation/afds",1);
         m.AFDS_inputs = m.AFDS_node.getNode("inputs",1);
@@ -49,6 +49,8 @@ var AFDS = {
         m.autothrottle_mode = m.AFDS_inputs.initNode("autothrottle-index",0,"INT");
         m.lateral_mode = m.AFDS_inputs.initNode("lateral-index",0,"INT");
         m.vertical_mode = m.AFDS_inputs.initNode("vertical-index",0,"INT");
+	m.thrust_mode = m.AFDS_inputs.initNode("thrust-index",0,"INT");
+	m.thr_armed = m.AFDS_inputs.initNode("thr-armed",0,"INT");
         m.gs_armed = m.AFDS_inputs.initNode("gs-armed",0,"BOOL");
         m.loc_armed = m.AFDS_inputs.initNode("loc-armed",0,"BOOL");
         m.vor_armed = m.AFDS_inputs.initNode("vor-armed",0,"BOOL");
@@ -60,6 +62,7 @@ var AFDS = {
 
         m.ias_setting = m.AP_settings.initNode("target-speed-kt",250); # 100 - 399 #
         m.mach_setting = m.AP_settings.initNode("target-speed-mach",0.40); # 0.40 - 0.95 #
+	m.thrust_setting = m.AP_settings.initNode("target-thrust",88.5,"DOUBLE");
         m.vs_setting = m.AP_settings.initNode("vertical-speed-fpm",0); # -8000 to +6000 #
         m.hdg_setting = m.AP_settings.initNode("heading-bug-deg",360,"INT");
         m.fpa_setting = m.AP_settings.initNode("flight-path-angle",0); # -9.9 to 9.9 #
@@ -76,13 +79,15 @@ var AFDS = {
         m.bank_max = m.AFDS_settings.initNode("bank-max",25);
         m.pitch_min = m.AFDS_settings.initNode("pitch-min",-10);
         m.pitch_max = m.AFDS_settings.initNode("pitch-max",15);
-        m.vnav_alt = m.AFDS_settings.initNode("vnav-alt",35000);
+	m.flch_min = m.AFDS_settings.initNode("flch-min",-16.67);
+	m.flch_max = m.AFDS_settings.initNode("flch-max",16.67);
 
         m.AP_roll_mode = m.AFDS_apmodes.initNode("roll-mode","TO/GA");
         m.AP_roll_arm = m.AFDS_apmodes.initNode("roll-mode-arm"," ");
         m.AP_pitch_mode = m.AFDS_apmodes.initNode("pitch-mode","TO/GA");
         m.AP_pitch_arm = m.AFDS_apmodes.initNode("pitch-mode-arm"," ");
         m.AP_speed_mode = m.AFDS_apmodes.initNode("speed-mode","");
+	m.AP_thrust_mode = m.AFDS_apmodes.initNode("thrust-mode","");
         m.AP_annun = m.AFDS_apmodes.initNode("mode-annunciator"," ");
 
 	m.AP_disengage_alarm = m.AFDS_settings.initNode("alarm",0,"BOOL");
@@ -151,6 +156,7 @@ var AFDS = {
                     me.alt_setting.setValue(alt);
                 } else
                     btn = 0;
+		if (me.autothrottle_mode.getValue() < 5 and me.autothrottle_mode.getValue() > 0) me.autothrottle_mode.setValue(5);
             }
 	    if (btn==2) {
 		# V/S Mode
@@ -165,32 +171,77 @@ var AFDS = {
 		} else {
 		    me.vs_setting.setValue(vs_now);
 	 	}
+		if (me.vertical_mode.getValue() > 7 and me.autothrottle_mode.getValue() > 0)
+		    settimer(func me.autothrottle_mode.setValue(5),2);
 	    }
             if (btn==5) {
                 # VNAV
-                if (vs_now >= -100)
-                {
-                    if (me.FMS_alt.getValue() < alt) me.FMS_alt.setValue(alt);
-                } else {
-                    if (me.FMS_alt.getValue() > alt) me.FMS_alt.setValue(alt);
-                }
-		me.alt_display.setValue(me.FMS_alt.getValue());
+		if (me.vertical_mode.getValue() == 8) {
+		    btn = 8;
+		} else {
+                    if (vs_now >= -100)
+                    {
+                        if (me.FMS_alt.getValue() < alt) me.FMS_alt.setValue(alt);
+                    } else {
+                        if (me.FMS_alt.getValue() > alt) me.FMS_alt.setValue(alt);
+                    }
+		    me.alt_display.setValue(me.FMS_alt.getValue());
+		}
             }
-	    if (btn==8) {
-		# FLCH mode
-		me.alt_setting.setValue(me.alt_display.getValue());
-	    }
             if (btn==11)
             {
 		if (vs_now>0 and vs_now<6000)
                 me.vs_setting.setValue(vs_now);
             }
+	    if (btn==8 or btn==12) {
+		if (btn==8) var change = me.alt_display.getValue() - alt;
+		if (btn==12) var change = me.FMS_alt.getValue() - alt;
+		var sel = btn;
+		btn = 0;
+		me.flch_spd_arm = 1;
+		if (abs(change) > 500) {
+		    if (me.thrust_mode.getValue()>4 or me.thrust_mode.getValue()==0) {
+			if (change > 3000) {
+			    me.thrust_mode.setValue(2);
+			} elsif (change > 0 and change <= 3000) {
+			    if (getprop("instrumentation/altimeter/indicated-altitude-ft") < 18000) {
+				me.thrust_mode.setValue(2);
+			    } else {
+				me.thrust_mode.setValue(5);
+			    }
+			} elsif (change <= -500) {
+			    me.thrust_mode.setValue(8);
+			}
+		    }
+		    if (me.autothrottle_mode.getValue() == 5)
+			me.autothrottle_mode.setValue(1);
+		}
+		settimer(func {
+		    if (me.flch_spd_arm == 1) {
+			if (sel == 8)
+			    me.alt_setting.setValue(me.alt_display.getValue());
+			if (sel == 12)
+			    me.alt_setting.setValue(me.FMS_alt.getValue());
+			me.vertical_mode.setValue(sel);
+		    }
+		},1);
+	    } else {
+		me.flch_spd_arm = 0;
+	    }
 	    if (btn != 2) me.flch_mode.setBoolValue(0);
             me.vertical_mode.setValue(btn);
         }elsif(mode==2){
             # throttle AP controls
+            if(me.vertical_mode.getValue() >= 1 and me.vertical_mode.getValue() <= 5 and me.autothrottle_mode.getValue() == 5) {
+		btn = 1;
+		me.vertical_mode.setValue(13);
+	    }
             if(me.autothrottle_mode.getValue() ==btn) btn=0;
-            if(getprop("position/altitude-agl-ft")<200 or !me.at1.getBoolValue()) btn=0;
+            if(!me.at1.getBoolValue()) btn=0;
+	    if (btn==1) {
+		me.thrust_setting.setValue(getprop("engines/engine[0]/rpm"));
+	    }
+	    if (btn==0 and me.vertical_mode.getValue()==13) me.vertical_mode.setValue(btn);
             me.autothrottle_mode.setValue(btn);
         }elsif(mode==3){
             var arm = 1-((me.loc_armed.getBoolValue() or (4==me.lateral_mode.getValue())));
@@ -207,7 +258,21 @@ var AFDS = {
             }
             me.loc_armed.setBoolValue(arm);
             if((arm==0)and(4==me.lateral_mode.getValue())) me.lateral_mode.setValue(0);
-        }
+        }elsif(mode==4){
+	    # EEC Thrust Mode controls
+	    if(me.thrust_mode.getValue() ==btn) btn=0;
+	    if (btn==1) {
+		if (me.thrust_mode.getValue() == 7) btn=0;
+		if (!getprop("gear/gear[0]/wow")) btn=7;
+	    }
+	    if (btn==3 or btn==4){
+		if (me.thr_armed.getValue()==btn) btn=0;
+		me.thr_armed.setValue(btn);
+	    } else {
+		if (btn==0) me.thrust_setting.setValue(getprop("engines/engine[0]/rpm"));
+		me.thrust_mode.setValue(btn);
+	    }
+	}
     },
 ###################
     setAP : func{
@@ -217,6 +282,10 @@ var AFDS = {
         if((disabled)and(output==0)){output = 1;me.AP.setValue(0);}
         setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
         setprop("autopilot/internal/target-roll-deg",0);
+	if (output == 0) {
+	    if (me.lateral_mode.getValue() == 0) me.input(0,2);
+	    if (me.vertical_mode.getValue() == 0) me.input(1,2);
+	}
         me.AP_passive.setValue(output);
     },
 ###################
@@ -280,7 +349,8 @@ var AFDS = {
         setprop("autopilot/internal/fdm-heading-bug-error-deg",hdgoffset);
         if(getprop("position/altitude-agl-ft")<200){
             me.AP.setValue(0);
-            me.autothrottle_mode.setValue(0);
+            if (!(me.thrust_mode.getValue() == 1 and me.autothrottle_mode.getValue() == 1))
+		 me.autothrottle_mode.setValue(0);
         }
 	me.arm_alarm = me.AP.getBoolValue();
 
@@ -295,6 +365,7 @@ var AFDS = {
                         me.vertical_mode.setValue(6);
                         me.gs_armed.setBoolValue(0);
 			me.flch_mode.setBoolValue(0);
+			me.flch_spd_arm = 0;
                     }
                 }
             }
@@ -326,6 +397,7 @@ var AFDS = {
         }elsif(me.step==3){ ### check vertical modes  ###
             var idx=me.vertical_mode.getValue();
             var test_fpa=me.vs_fpa_selected.getValue();
+	    var alt = getprop("instrumentation/altimeter/indicated-altitude-ft");
             if(idx==2 and test_fpa)idx=9;
             if(idx==9 and !test_fpa)idx=2;
 	    msg = "";
@@ -348,37 +420,65 @@ var AFDS = {
 		me.vertical_mode.setValue(idx);
 	    }
 
-            if ((idx==8)or(idx==1))
+	    if (idx==5)
+	    {
+		if (me.FMS_alt.getValue() != me.alt_setting.getValue())
+		    me.input(1,12);
+	    }
+
+            if (idx==8)
             {
                 # flight level change mode
                 if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.alt_setting.getValue())<50) {
                     # within target altitude: switch to ALT HOLD mode
                     idx=1;
-                } else {
-                    # outside target altitude: change flight level
+		    me.flch_mode.setBoolValue(0);
+		} else {
+		    # outside target altitude: change flight level
 		    me.alt_setting.setValue(me.alt_display.getValue());
-                    idx=8;
 		}
                 me.vertical_mode.setValue(idx);
             }
 
-            if ((idx==5)or(idx==12))
+            if (idx==12)
             {
-                me.vnav_alt.setValue(me.FMS_alt.getValue());
-                me.alt_setting.setValue(me.FMS_alt.getValue());
                 # flight level change mode (VNAV)
-                if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.vnav_alt.getValue())<50) {
+                if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.alt_setting.getValue())<50) {
                     # within target altitude: switch to VNAV ALT mode
                     idx=5;
-                } else {
-                    # outside target altitude: change flight level
+		    me.flch_mode.setBoolValue(0);
+		} else {
+		    # outside target altitude: change flight level
 		    me.alt_display.setValue(me.FMS_alt.getValue());
-                    idx=12;
+		    me.alt_setting.setValue(me.FMS_alt.getValue());
 		}
                 me.vertical_mode.setValue(idx);
             }
-            me.AP_pitch_mode.setValue(me.pitch_list[idx]);
+
+            if ((idx==8)or(idx==12))
+            {
+	    # 8 and 12 for new FLCH modes
+		var change = me.alt_setting.getValue() - alt;
+		if (me.flch_spd_arm == 1) {
+		    if (abs(change) <= 500) {
+			var max_vs = abs(getprop("velocities/vertical-speed-fps"));
+			if (max_vs < 8.33) max_vs = 8.33;
+			me.flch_max.setValue(max_vs);
+			me.flch_min.setValue(-1 * max_vs);
+			me.flch_mode.setBoolValue(1);
+			if (me.autothrottle_mode.getValue() > 0) {
+			    me.autothrottle_mode.setValue(5);
+			    me.thrust_mode.setValue(6);
+			}
+			me.flch_spd_arm = 0;
+		    }
+		}
+	    } else {
+		me.flch_max.setValue(16.67);
+		me.flch_min.setValue(-16.67);
+	    }
             me.AP_pitch_engaged.setBoolValue(idx>0);
+	    me.AP_pitch_mode.setValue(me.pitch_list[idx]);
 	    if (me.flch_mode.getBoolValue() or idx == 8)
                 msg = "ALT";
             if (me.gs_armed.getBoolValue())
@@ -386,6 +486,84 @@ var AFDS = {
             me.AP_pitch_arm.setValue(msg);
 
         }elsif(me.step==4){             ### check speed modes  ###
+	    var idx = me.thrust_mode.getValue();
+	    if (idx==0) {
+		if (me.autothrottle_mode.getValue()==0) {
+		    msg = " ";
+		} else {
+		    msg = "THR";
+		}
+	    }
+	    if (idx==1) {
+		# TO mode
+		if (me.thr_armed.getValue() == 4) {
+		    me.thrust_setting.setValue(88.0);
+		    msg = "TO 2";
+		} elsif (me.thr_armed.getValue() == 3) {
+		    me.thrust_setting.setValue(93.0);
+		    msg = "TO 1";
+		} else {
+		    me.thrust_setting.setValue(98.0);
+		    msg = "TO";
+		}
+		if (getprop("position/altitude-agl-ft")>400) idx = 2;
+	    }
+	    if (idx==2 or idx==3 or idx==4) {
+		# CLB mode
+		if (me.thr_armed.getValue() == 3 and idx != 3) {
+		    idx = 3;
+		} elsif (me.thr_armed.getValue() == 4 and idx != 4) {
+		    idx = 4;
+		} elsif (me.thr_armed.getValue() == 3 and idx == 3) {
+		    idx = 0;
+		} elsif (me.thr_armed.getValue() == 4 and idx == 4) {
+		    idx = 0;
+		}
+		me.thr_armed.setValue(0);
+	    }
+	    if (idx==2) {
+		var targ_thr = me.thrust_setting.getValue();
+		if (targ_thr < 92.0) targ_thr = 92.0;
+		if (me.vertical_mode.getValue()==8 or me.vertical_mode.getValue()==12) {
+		    if (getprop("instrumentation/altimeter/indicated-altitude-ft") > 18000)
+			targ_thr = 110.0;
+		}
+		me.thrust_setting.setValue(targ_thr);
+		msg = "CLB";
+	    }
+	    if (idx==3) {
+		me.thrust_setting.setValue(87.0);
+		if (getprop("instrumentation/altimeter/indicated-altitude-ft") > 12000)
+		   idx = 2;
+		msg = "CLB 1";
+	    } 
+	    if (idx==4) {
+		me.thrust_setting.setValue(82.0);
+		if (getprop("instrumentation/altimeter/indicated-altitude-ft") > 10000)
+		   idx = 3;
+		msg = "CLB 2";
+	    } 
+	    if (idx==5) {
+		me.thrust_setting.setValue(99.8);
+		msg = "CON";
+	    }
+	    if (idx==6) {
+		me.thrust_setting.setValue(84.0);
+		msg = "CRZ";
+	    }
+	    if (idx==7) {
+		me.thrust_setting.setValue(99.0);
+		msg = "GA";
+	    }
+	    if (idx==8) {
+		me.thrust_setting.setValue(52.0);
+		msg = "IDLE";
+	    }
+	    me.thrust_mode.setValue(idx);
+	    if (me.autothrottle_mode.getValue() == 5) msg = "SPD";
+	    me.AP_thrust_mode.setValue(msg);
+	    msg = " ";
+
 	    if (me.ias_mach_selected.getBoolValue()) {
                 var target = int(getprop("instrumentation/airspeed-indicator/indicated-speed-kt")+0.5);
                 if (target >= 100 and target <= 399)
@@ -555,3 +733,9 @@ var update_afds = func {
 	settimer(update_afds, 0);
     }
 }
+
+setlistener("autopilot/internal/disconnect-signal", func (sig) {
+	if (sig.getBoolValue())
+		afds.APyokebtn();
+},0,0);
+

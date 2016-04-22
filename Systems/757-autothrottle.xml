@@ -194,10 +194,10 @@
         <enable>
             <condition>
                 <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
-                <greater-than>
+                <equals>
                     <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
-                </greater-than>				
+                    <value>5</value>
+                </equals>				
                 <not>
                     <property>/instrumentation/afds/inputs/ias-mach-selected</property>
                 </not>
@@ -213,43 +213,6 @@
         </reference>
         <output>
             <prop>/controls/engines/engine[0]/throttle</prop>
-        </output>
-        <config>
-            <Kp>0.05</Kp>
-            <beta>1.0</beta>
-            <alpha>0.1</alpha>
-            <gamma>0.0</gamma>
-            <Ti>10.0</Ti>
-            <Td>0.00001</Td>
-            <u_min>0.0</u_min>
-            <u_max>1.0</u_max>
-        </config>
-    </pid-controller>
-
-    <pid-controller>
-        <name>Auto Throttle2 ias</name>
-        <debug>false</debug>
-        <enable>
-            <condition>
-                <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
-                <greater-than>
-                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
-                </greater-than>				
-                <not>
-                    <property>/instrumentation/afds/inputs/ias-mach-selected</property>
-                </not>				
-                <honor-passive>true</honor-passive>
-            </condition>
-        </enable>
-
-        <input>
-            <prop>/instrumentation/airspeed-indicator/indicated-speed-kt</prop>
-        </input>
-        <reference>
-            <prop>instrumentation/afds/ias-target-kt</prop>
-        </reference>
-        <output>
             <prop>/controls/engines/engine[1]/throttle</prop>
         </output>
         <config>
@@ -271,10 +234,10 @@
         <enable>
             <condition>
                 <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
-                <greater-than>
+                <equals>
                     <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
-                </greater-than>				
+                    <value>5</value>
+                </equals>				
                 <property>/instrumentation/afds/inputs/ias-mach-selected</property>
                 <honor-passive>true</honor-passive>
             </condition>
@@ -288,41 +251,6 @@
         </reference>
         <output>
             <prop>/controls/engines/engine[0]/throttle</prop>
-        </output>
-        <config>
-            <Kp>20.0</Kp>
-            <beta>1.0</beta>
-            <alpha>0.1</alpha>
-            <gamma>0.0</gamma>
-            <Ti>10.0</Ti>
-            <Td>0.00001</Td>
-            <u_min>0.0</u_min>
-            <u_max>1.0</u_max>
-        </config>
-    </pid-controller>
-
-    <pid-controller>
-        <name>Auto Throttle2 mach</name>
-        <debug>false</debug>
-        <enable>
-            <condition>
-                <!--property>/instrumentation/afds/inputs/at-armed[0]</property-->
-                <greater-than>
-                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
-                    <value>0</value>
-                </greater-than>				
-                <property>/instrumentation/afds/inputs/ias-mach-selected</property>
-                <honor-passive>true</honor-passive>
-            </condition>
-        </enable>
-
-        <input>
-            <prop>/instrumentation/airspeed-indicator/indicated-mach</prop>
-        </input>
-        <reference>
-            <prop>/autopilot/settings/target-speed-mach</prop>
-        </reference>
-        <output>
             <prop>/controls/engines/engine[1]/throttle</prop>
         </output>
         <config>
@@ -337,4 +265,82 @@
         </config>
     </pid-controller>
 
+<!-- Thrust hold modes -->
+    <pid-controller>
+        <name>Auto Throttle1 THR</name>
+        <debug>false</debug>
+        <enable>
+            <condition>
+                <greater-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+                </greater-than>				
+                <less-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>5</value>
+                </less-than>				
+                <honor-passive>true</honor-passive>
+            </condition>
+        </enable>
+
+        <input>
+            <prop>engines/engine[0]/rpm</prop>
+        </input>
+        <reference>
+            <prop>autopilot/settings/target-thrust</prop>
+        </reference>
+        <output>
+            <prop>/controls/engines/engine[0]/throttle</prop>
+        </output>
+        <config>
+            <Kp>0.01</Kp>
+            <beta>1.0</beta>
+            <alpha>0.1</alpha>
+            <gamma>0.0</gamma>
+            <Ti>1.5</Ti>
+            <Td>0.0001</Td>
+            <u_min>0.0</u_min>
+            <u_max>1.0</u_max>
+        </config>
+    </pid-controller>
+
+    <pid-controller>
+        <name>Auto Throttle2 THR</name>
+        <debug>false</debug>
+        <enable>
+            <condition>
+                <greater-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>0</value>
+                </greater-than>				
+                <less-than>
+                    <property>/instrumentation/afds/inputs/autothrottle-index</property>
+                    <value>5</value>
+                </less-than>				
+                <honor-passive>true</honor-passive>
+            </condition>
+        </enable>
+
+        <input>
+            <prop>engines/engine[1]/rpm</prop>
+        </input>
+        <reference>
+            <prop>autopilot/settings/target-thrust</prop>
+        </reference>
+        <output>
+            <prop>/controls/engines/engine[1]/throttle</prop>
+        </output>
+        <config>
+            <Kp>0.01</Kp>
+            <beta>1.0</beta>
+            <alpha>0.1</alpha>
+            <gamma>0.0</gamma>
+            <Ti>1.5</Ti>
+            <Td>0.0001</Td>
+            <u_min>0.0</u_min>
+            <u_max>1.0</u_max>
+        </config>
+    </pid-controller>
+
 </PropertyList>
+
