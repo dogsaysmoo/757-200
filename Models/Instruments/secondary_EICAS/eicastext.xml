@@ -58,7 +58,7 @@
 		</font-resolution>
 	</text>
     
-            <layer>
+	<layer>
             <name>SPD annun</name>
             <type>text</type>
             <font>arial_black</font>
@@ -71,7 +71,7 @@
             <chunks>
                 <chunk>
                     <type>text-value</type>
-                    <property>instrumentation/afds/ap-modes/speed-mode</property>
+                    <property>instrumentation/afds/ap-modes/thrust-mode</property>
                 </chunk>
             </chunks>
             <transformations>
@@ -84,7 +84,7 @@
                     <offset>112</offset>
                 </transformation>
             </transformations>
-        </layer>
+	</layer>
 
 
 <!-- engines-->

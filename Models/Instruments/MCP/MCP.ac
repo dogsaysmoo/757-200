@@ -1805,7 +1805,7 @@ refs 4
 10 0.911741018295 0.426562994719
 kids 0
 OBJECT poly
-name "AT.btn"
+name "SPD.btn"
 data 8
 Mesh.020
 texture "MCP.png"
@@ -1858,7 +1858,7 @@ refs 4
 7 0.379233986139 0.0986860021949
 kids 0
 OBJECT poly
-name "AT.btn.001"
+name "SPD.btn.001"
 data 8
 Mesh.021
 texture "MCP.png"
@@ -1879,7 +1879,7 @@ refs 4
 1 0.459897011518 0.121223002672
 kids 0
 OBJECT poly
-name "ATtoggle"
+name "THRtoggle"
 data 8
 Mesh.022
 texture "MCP.png"
@@ -1900,7 +1900,7 @@ refs 4
 1 0.911634027958 0.426562994719
 kids 0
 OBJECT poly
-name "ATtoggle.001"
+name "SPDtoggle"
 data 8
 Mesh.023
 texture "MCP.png"
@@ -2672,7 +2672,7 @@ refs 3
 34 0.0 0.0
 kids 0
 OBJECT poly
-name "CLB.btn"
+name "THR.btn"
 data 8
 Mesh.028
 texture "MCP.png"
@@ -2725,7 +2725,7 @@ refs 4
 7 0.10689599812 0.290174007416
 kids 0
 OBJECT poly
-name "CLB.btn.001"
+name "THR.btn.001"
 data 8
 Mesh.029
 texture "MCP.png"
