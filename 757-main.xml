@@ -35,24 +35,6 @@
 			</B757-->
 			<cabin-visible type="bool">1</cabin-visible>
 			<hide-yoke type="bool">0</hide-yoke>
-			<door>
-				<position-x-m type="float">-20.38</position-x-m>
-				<position-y-m type="float"> -2.89</position-y-m>
-				<position-z-m type="float"> -0.24</position-z-m>
-				<jetway-hood-deg type="float">6</jetway-hood-deg>
-			</door>
-			<door>
-				<position-x-m type="float">-11.32</position-x-m>
-				<position-y-m type="float"> -3.21</position-y-m>
-				<position-z-m type="float"> -0.24</position-z-m>
-				<jetway-hood-deg type="float">0</jetway-hood-deg>
-			</door>
-			<door>
-				<position-x-m type="float"> 0.55</position-x-m>
-				<position-y-m type="float">-3.21</position-y-m>
-				<position-z-m type="float">-0.24</position-z-m>
-				<jetway-hood-deg type="float">0</jetway-hood-deg>
-			</door>
 			<pushback>
 				<kp type="double">-0.05</kp>
 				<kd type="double">0</kd>
@@ -60,6 +42,18 @@
 				<td type="double">0.00001</td>
 				<position-norm type="double">0</position-norm>
 			</pushback>
+			<door>
+				<position-x-m type="float"> 4.55</position-x-m>
+				<position-y-m type="float">-1.90</position-y-m>
+				<position-z-m type="float"> 0.61</position-z-m>
+				<jetway-hood-deg type="float">5</jetway-hood-deg>
+			</door>
+			<door>
+				<position-x-m type="float">13.26</position-x-m>
+				<position-y-m type="float">-1.90</position-y-m>
+				<position-z-m type="float"> 0.61</position-z-m>
+				<jetway-hood-deg type="float">4</jetway-hood-deg>
+			</door>
 			<animation>
 			        <type>scale</type>
 			        <x-offset>11</x-offset>
