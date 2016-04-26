@@ -93,7 +93,7 @@
         <volume>
             <property>engines/engine[0]/rpm</property>
             <min>0.0</min>
-            <max>0.6</max>
+            <max>1.0</max>
         </volume>
         <volume>
             <property>sim/sound/effects/volume</property>
@@ -109,18 +109,20 @@
 
     <engine>
         <name>left engine inside</name>
-        <path>Sounds/jet-trent2.wav</path>
+        <path>Sounds/jet-trent1.wav</path>
         <mode>looped</mode>
         <condition>
+	  <and>
             <greater-than>
                 <property>engines/engine[0]/rpm</property>
                 <value>2</value>
             </greater-than>
             <property>sim/current-view/internal</property>
+	  </and>
         </condition>
         <volume>
             <property>engines/engine[0]/thrust-lbs</property>
-            <factor>0.000002</factor>
+            <factor>0.000015</factor>
             <min>0.0</min>
             <max>0.825</max>
         </volume>
@@ -275,18 +277,20 @@
 
     <engine>
         <name>right engine inside</name>
-        <path>Sounds/jet-trent2.wav</path>
+        <path>Sounds/jet-trent1.wav</path>
         <mode>looped</mode>
         <condition>
+	  <and>
             <greater-than>
                 <property>engines/engine[1]/rpm</property>
                 <value>2</value>
             </greater-than>
             <property>sim/current-view/internal</property>
+	  </and>
         </condition>
         <volume>
             <property>engines/engine[1]/thrust-lbs</property>
-            <factor>0.000002</factor>
+            <factor>0.000015</factor>
             <min>0.0</min>
             <max>0.825</max>
         </volume>
@@ -295,7 +299,7 @@
         </volume>
         <position>
             <x>16.9</x>
-            <y>-6.39</y>
+            <y>-6.4</y>
             <z>-1</z>
         </position>
         <reference-dist>200.0</reference-dist>
@@ -456,6 +460,7 @@
         <property>/surface-positions/flap-pos-norm</property>
         <volume>
             <property>sim/sound/effects/volume</property>
+	    <factor>0.75</factor>
         </volume>
         <!--position>
             <x>-9</x>
@@ -470,10 +475,9 @@
         <name>wind</name>
         <mode>looped</mode>
         <path>Sounds/wind.wav</path>
-		<condition>
-			<property>/velocities/airspeed-kt</property>
-            <not><property>sim/current-view/internal</property></not>
-		</condition>
+	<condition>
+            <property>sim/current-view/internal</property>
+	</condition>
         <volume>
             <property>/position/altitude-ft</property>
             <factor>-0.000015</factor>
