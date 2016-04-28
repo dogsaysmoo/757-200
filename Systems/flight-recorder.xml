@@ -14,7 +14,7 @@
  -->
 
     <config n="0">
-        <name type="string">747-8 Flight Recorder</name>
+        <name type="string">757 Flight Recorder</name>
 
         <!-- include generic stuff -->
 	<signals include="/Aircraft/Generic/flightrecorder/components/environment.xml"/>
@@ -99,6 +99,9 @@
                 <type>bool</type><property type="string">controls/lighting/taxi-lights</property>
             </signal>
             <signal>
+                <type>bool</type><property type="string">controls/lighting/turn-off-lights</property>
+            </signal>
+            <signal>
                 <type>bool</type><property type="string">controls/lighting/logo-lights</property>
             </signal>
             <signal>
@@ -107,10 +110,10 @@
             <signal>
                 <type>bool</type><property type="string">controls/lighting/landing-lights[0]</property>
             </signal>
-            <signal>
+            <!--signal>
                 <type>bool</type><property type="string">controls/lighting/landing-lights[1]</property>
             </signal>
-            <!--signal>
+            <signal>
                 <type>bool</type><property type="string">controls/lighting/landing-lights[2]</property>
             </signal-->
 

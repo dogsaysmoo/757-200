@@ -38,7 +38,8 @@ var light_stat = {
 	m.strobe_sw = m.light_controls.getNode("strobe",0);
 	m.logo_sw = m.light_controls.getNode("logo-lights",0);
 #	m.wing_sw = m.light_controls.getNode("wing-lights",0);
-	m.taxi_sw = m.light_controls.getNode("landing-lights[1]",0);
+	m.taxi_sw = m.light_controls.getNode("taxi-lights",0);
+	m.toff_sw = m.light_controls.getNode("turn-off-lights",0);
 	m.Lland_sw = m.light_controls.getNode("landing-lights[0]",0);
 #	m.Rland_sw = m.light_controls.getNode("landing-lights[2]",0);
 	
@@ -47,8 +48,10 @@ var light_stat = {
 	m.strobe = props.globals.initNode("systems/electrical/lighting/strobe",0,"BOOL");
 	m.logo = props.globals.initNode("systems/electrical/lighting/logo-lights",0,"BOOL");
 #	m.wing = props.globals.initNode("systems/electrical/lighting/wing-lights",0,"BOOL");
+	m.taxi = props.globals.initNode("systems/electrical/lighting/taxi-lights",0,"BOOL");
+	m.toff = props.globals.initNode("systems/electrical/lighting/turn-off-lights",0,"BOOL");
 	m.Lland = props.globals.initNode("systems/electrical/lighting/landing-lights[0]",0,"BOOL");
-	m.taxi = props.globals.initNode("systems/electrical/lighting/landing-lights[1]",0,"BOOL");
+	m.Cland = props.globals.initNode("systems/electrical/lighting/landing-lights[1]",0,"BOOL");
 #	m.Rland = props.globals.initNode("systems/electrical/lighting/landing-lights[2]",0,"BOOL");
 
 	return m;
@@ -80,16 +83,28 @@ var light_stat = {
 #		me.wing.setBoolValue(0);
 #	    }
 	    # Taxi light:
-	    if (me.taxi_sw.getBoolValue() and getprop("gear/gear[0]/position-norm") > 0.75) {
+	    if (me.taxi_sw.getBoolValue() and getprop("gear/gear[0]/position-norm") > 0.99) {
 		me.taxi.setBoolValue(1);
 	    } else {
 		me.taxi.setBoolValue(0);
+	    }
+	    # Runway turn off lights:
+	    if (me.toff_sw.getBoolValue() and getprop("gear/gear[0]/position-norm") > 0.99) {
+		me.toff.setBoolValue(1);
+	    } else {
+		me.toff.setBoolValue(0);
 	    }
 	    # Left landing light:
 	    if (me.Lland_sw.getBoolValue()) {
 		me.Lland.setBoolValue(1);
 	    } else {
 		me.Lland.setBoolValue(0);
+	    }
+	    # Center landing lights:
+	    if (me.Lland_sw.getBoolValue() and getprop("gear/gear[0]/position-norm") > 0.99) {
+		me.Cland.setBoolValue(1);
+	    } else {
+		me.Cland.setBoolValue(0);
 	    }
 	    # Right landing light:
 #	    if (me.Rland_sw.getBoolValue()) {
@@ -103,7 +118,9 @@ var light_stat = {
 	    me.logo.setBoolValue(0);
 #	    me.wing.setBoolValue(0);
 	    me.taxi.setBoolValue(0);
+	    me.toff.setBoolValue(0);
 	    me.Lland.setBoolValue(0);
+	    me.Cland.setBoolValue(0);
 #	    me.Rland.setBoolValue(0);
 	}
 	if ((getprop("systems/electrical/left-bus") > 22.5 or getprop("systems/electrical/right-bus") > 22.5) and !getprop("sim/crashed")) {
@@ -115,6 +132,13 @@ var light_stat = {
 	    }
 	} else {
 	    me.nav.setBoolValue(0);
+	}
+	if ((me.taxi.getBoolValue() or me.toff.getBoolValue()) and getprop("sim/current-view/internal")) {
+	    setprop("sim/rendering/als-secondary-lights/use-landing-light",1);
+	    setprop("sim/rendering/als-secondary-lights/landing-light1-offset-deg",2);
+	    setprop("sim/rendering/als-secondary-lights/landing-light3-offset-deg",10);
+	} else {
+	    setprop("sim/rendering/als-secondary-lights/use-landing-light",0);
 	}
     },
 };

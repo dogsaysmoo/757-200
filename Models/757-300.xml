@@ -1307,6 +1307,8 @@
 		<type>translate</type>
 		<object-name>NoseGear.StrutLo</object-name>
 		<object-name>NoseGear.Tires</object-name>
+		<object-name>taxi_lamp</object-name>
+		<object-name>taxi.lamp.glass</object-name>
 		<property>gear/gear[0]/compression-m</property>
 		<axis>
 			<x>0</x>
@@ -1343,8 +1345,10 @@
 		<object-name>NoseGear.ScissorL</object-name>
 		<object-name>NoseGear.ScissorU</object-name>
 		<object-name>NoseGear.Tires</object-name>
-    <object-name>NoseGear.lamp.glass</object-name>
-    <object-name>nosegear_lamp</object-name>
+		<object-name>NoseGear.lamp.glass</object-name>
+		<object-name>nosegear_lamp</object-name>
+		<object-name>taxi_lamp</object-name>
+		<object-name>taxi.lamp.glass</object-name>
 		<property>gear/gear[0]/position-norm</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>95</dep></entry>
@@ -1389,7 +1393,9 @@
 		<object-name>NoseGear.ScissorL</object-name>
 		<object-name>NoseGear.ScissorU</object-name>
 		<object-name>NoseGear.Tires</object-name>
-    <object-name>NoseGear.StrutLo</object-name>
+		<object-name>NoseGear.StrutLo</object-name>
+		<object-name>taxi_lamp</object-name>
+		<object-name>taxi.lamp.glass</object-name>
 		<property>gear/gear[0]/steering-norm</property>
 		<factor>-65</factor>
 		<axis>
@@ -2023,6 +2029,55 @@
         	<max>5</max>
     	</animation>
 
+	<animation>
+		<name>Center landing lights</name>
+		<type>select</type>
+		<object-name>center_light1</object-name>
+		<object-name>center_light2</object-name>
+		<condition>
+			<property>sim/multiplay/generic/int[5]</property>
+		</condition>
+	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>center_light1</object-name>
+        	<center>
+        	    <x-m> 0.84</x-m>
+        	    <y-m> 0.12</y-m>
+        	    <z-m>-1.54</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>0.02</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>center_light2</object-name>
+        	<center>
+        	    <x-m> 0.84</x-m>
+        	    <y-m>-0.12</y-m>
+        	    <z-m>-1.54</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>-0.02</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
 
 	<animation>
 		<name>Nose gear landing light</name>
@@ -2112,6 +2167,85 @@
                     </entry>
             	</interpolation>
       </animation-->
+
+	<!-- Taxi Light -->
+	<animation>
+		<type>select</type>
+		<object-name>taxi_light</object-name>
+		<condition>
+			<property>sim/multiplay/generic/int[6]</property>
+		</condition>
+	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>taxi_light</object-name>
+        	<center>
+        	    <x-m> 1.04</x-m>
+        	    <y-m>0.0</y-m>
+        	    <z-m>-2.53</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>0</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+
+	<!-- Runway turnoff lights -->
+	<animation>
+		<type>select</type>
+		<object-name>rwy_turnoff1</object-name>
+		<object-name>rwy_turnoff2</object-name>
+		<condition>
+			<property>sim/multiplay/generic/int[8]</property>
+		</condition>
+	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>rwy_turnoff1</object-name>
+        	<center>
+        	    <x-m> 0.89</x-m>
+        	    <y-m>-0.17</y-m>
+        	    <z-m>-1.34</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y> 0.1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>rwy_turnoff2</object-name>
+        	<center>
+        	    <x-m> 0.89</x-m>
+        	    <y-m> 0.17</y-m>
+        	    <z-m>-1.34</z-m>
+        	</center>
+        	<axis>
+        	    <x>-1</x>
+        	    <y>-0.1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
 
 		<!-- beacon lighting -->
  
@@ -2262,6 +2396,11 @@
    		<object-name>light_wing2</object-name>
    		<object-name>light_wing3</object-name>
    		<object-name>light_wing4</object-name>
+		<object-name>center_light1</object-name>
+		<object-name>center_light2</object-name>
+		<object-name>rwy_turnoff1</object-name>
+		<object-name>rwy_turnoff2</object-name>
+		<object-name>taxi_light</object-name>
    		<object-name>strobelight_1</object-name>
    		<object-name>strobelight_2</object-name>
     		<object-name>beacon_1</object-name>
