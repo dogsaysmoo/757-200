@@ -5,347 +5,506 @@
 <!-- cockpit x=22.5 y=0 z=0.78   -->
 
 <fx>
-
-    <engine>
-        <name>left engine</name>
-        <path>Sounds/jet-trent2.wav</path>
-        <mode>looped</mode>
-        <condition>
+	<engin>
+		<name>757_a11</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n11.wav</path>
+		<condition>
             <greater-than>
                 <property>engines/engine[0]/rpm</property>
-                <value>2</value>
+                <value>0.1</value>
             </greater-than>
-            <not><property>sim/current-view/internal</property></not>
         </condition>
-        <volume>
-            <property>engines/engine[0]/thrust-lbs</property>
-            <factor>0.000015</factor>
-            <min>0.0</min>
-            <max>1</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>6.39</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>200.0</reference-dist>
-        <max-dist>5000.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>left n1</name>
-        <path>Sounds/jet-trent1.wav</path>
-        <mode>looped</mode>
-        <condition>
-            <greater-than>
-                <property>engines/engine[0]/rpm</property>
-                <value>2</value>
-            </greater-than>
-            <not><property>sim/current-view/internal</property></not>
-        </condition>
-        <pitch>
+		<pitch>
             <property>/engines/engine[0]/rpm</property>
             <offset>0</offset>
-            <factor>0.02</factor>
+            <factor>0.019</factor>
             <min>0.0</min>
             <max>2.0</max>
         </pitch>
-        <volume>
-            <property>engines/engine[0]/rpm</property>
-            <factor>0.1</factor>
-            <min>0.0</min>
-            <max>0.6</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>6.39</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>3000.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>left reverse thrust</name>
-        <path>Sounds/exhaust_loop.wav</path>
-        <mode>looped</mode>
-        <condition>
-            <and>
-                <greater-than>
-                    <property>engines/engine[0]/rpm</property>
-                    <value>2</value>
-                </greater-than>
-                <greater-than>
-                    <property>surface-positions/left-reverser-pos-norm</property>
-                    <value>0</value>
-                </greater-than>
-            </and>
-        </condition>
-        <volume>
-            <property>surface-positions/left-reverser-pos-norm</property>
-        </volume>
-        <volume>
-            <property>engines/engine[0]/rpm</property>
-            <min>0.0</min>
-            <max>1.0</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>6.39</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>3000.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>left engine inside</name>
-        <path>Sounds/jet-trent1.wav</path>
-        <mode>looped</mode>
-        <condition>
-	  <and>
-            <greater-than>
-                <property>engines/engine[0]/rpm</property>
-                <value>2</value>
-            </greater-than>
-            <property>sim/current-view/internal</property>
-	  </and>
-        </condition>
-        <volume>
-            <property>engines/engine[0]/thrust-lbs</property>
-            <factor>0.000015</factor>
-            <min>0.0</min>
-            <max>0.825</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>6.39</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>200.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>left n1 inside</name>
-        <path>Sounds/jet-trent1.wav</path>
-        <mode>looped</mode>
-        <condition>
-            <greater-than>
-                <property>engines/engine[0]/rpm</property>
-                <value>2</value>
-            </greater-than>
-            <property>sim/current-view/internal</property>
-        </condition>
-        <pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<volume>
             <property>/engines/engine[0]/rpm</property>
             <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.4</max>
+        </volume>
+		<position>
+            <x>0</x>
+            <y>100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_a12</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n12.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			
+			<less-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>17.6</value>
+            </less-than>
+        </condition>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.014</factor>
+            <min>0.0</min>
+            <max>1.5</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-2</offset>
+            <factor>0.03</factor>
+            <min>2.0</min>
+            <max>2.5</max>
+        </volume>
+		<position>
+            <x>0</x>
+            <y>100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_a13</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n13.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			
+			<less-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>15.8</value>
+            </less-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.009</factor>
+            <min>0.0</min>
+            <max>1.1</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-4</offset>
+            <factor>0.06</factor>
+            <min>4.0</min>
+            <max>6.0</max>
+        </volume>
+		<position>
+            <x>0</x>
+            <y>100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_a14</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n14.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			
+			<greater-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>4</value>
+            </greater-than>
+			<less-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>15.8</value>
+            </less-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.009</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-6</offset>
+            <factor>0.08</factor>
+            <min>6.0</min>
+            <max>8.0</max>
+        </volume>
+		<position>
+            <x>0</x>
+            <y>100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	
+	
+	<engin>
+		<name>757_a21</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n21.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			<greater-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>4</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.019</factor>
+            <min>0.0</min>
+            <max>2.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.5</max>
+        </volume>
+		<position>
+            <x>0</x>
+            <y>100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_a22</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n22.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			<greater-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0.5</offset>
             <factor>0.005</factor>
             <min>0.0</min>
             <max>1.0</max>
         </pitch>
-        <volume>
-            <property>engines/engine[0]/rpm</property>
-            <factor>0.05</factor>
-            <min>0.0</min>
-            <max>0.5</max>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-1</offset>
+            <factor>0.02</factor>
+            <min>1.0</min>
+            <max>2.0</max>
         </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>6.39</y>
-            <z>-1</z>
+		<position>
+            <x>0</x>
+            <y>100</y>
+            <z>0</z>
         </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>300.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>right engine</name>
-        <path>Sounds/jet-trent2.wav</path>
-        <mode>looped</mode>
-        <condition>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	
+	
+	
+	
+	<engin>
+		<name>757_b11</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n11.wav</path>
+		<condition>
             <greater-than>
                 <property>engines/engine[1]/rpm</property>
-                <value>2</value>
+                <value>0.1</value>
             </greater-than>
-            <not><property>sim/current-view/internal</property></not>
         </condition>
-        <volume>
-            <property>engines/engine[1]/thrust-lbs</property>
-            <factor>0.000015</factor>
-            <min>0.0</min>
-            <max>1</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>-6.39</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>200.0</reference-dist>
-        <max-dist>5000.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>right n1</name>
-        <path>Sounds/jet-trent1.wav</path>
-        <mode>looped</mode>
-        <condition>
-            <greater-than>
-                <property>engines/engine[1]/rpm</property>
-                <value>2</value>
-            </greater-than>
-            <not><property>sim/current-view/internal</property></not>
-        </condition>
-        <volume>
-            <property>engines/engine[1]/rpm</property>
-            <factor>0.1</factor>
-            <min>0.0</min>
-            <max>0.6</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <pitch>
+		<pitch>
             <property>/engines/engine[1]/rpm</property>
             <offset>0</offset>
             <factor>0.02</factor>
             <min>0.0</min>
             <max>2.0</max>
         </pitch>
-        <position>
-            <x>16.9</x>
-            <y>-6.4</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>3000.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>right reverse thrust</name>
-        <path>Sounds/exhaust_loop.wav</path>
-        <mode>looped</mode>
-        <condition>
-            <and>
-                <greater-than>
-                    <property>engines/engine[1]/rpm</property>
-                    <value>2</value>
-                </greater-than>
-                <greater-than>
-                    <property>surface-positions/right-reverser-pos-norm</property>
-                    <value>0</value>
-                </greater-than>
-            </and>
-        </condition>
-        <volume>
-            <property>surface-positions/right-reverser-pos-norm</property>
-        </volume>
-        <volume>
-            <property>engines/engine[1]/rpm</property>
-            <min>0.0</min>
-            <max>1.0</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>-6.4</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>3000.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>right engine inside</name>
-        <path>Sounds/jet-trent1.wav</path>
-        <mode>looped</mode>
-        <condition>
-	  <and>
-            <greater-than>
-                <property>engines/engine[1]/rpm</property>
-                <value>2</value>
-            </greater-than>
-            <property>sim/current-view/internal</property>
-	  </and>
-        </condition>
-        <volume>
-            <property>engines/engine[1]/thrust-lbs</property>
-            <factor>0.000015</factor>
-            <min>0.0</min>
-            <max>0.825</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>-6.4</y>
-            <z>-1</z>
-        </position>
-        <reference-dist>200.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engine>
-
-    <engine>
-        <name>right n1 inside</name>
-        <path>Sounds/jet-trent1.wav</path>
-        <mode>looped</mode>
-        <condition>
-            <greater-than>
-                <property>engines/engine[1]/rpm</property>
-                <value>2</value>
-            </greater-than>
-            <property>sim/current-view/internal</property>
-        </condition>
-        <pitch>
+		<volume>
             <property>/engines/engine[1]/rpm</property>
             <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.8</max>
+        </volume>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<position>
+            <x>-100</x>
+            <y>0</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_b12</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n12.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.015</factor>
+            <min>0.0</min>
+            <max>1.5</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>-2</offset>
+            <factor>0.03</factor>
+            <min>2.0</min>
+            <max>2.5</max>
+        </volume>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<position>
+            <x>0</x>
+            <y>-100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_b13</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n13.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			
+			<less-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>15.8</value>
+            </less-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.01</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>-4</offset>
+            <factor>0.06</factor>
+            <min>4.0</min>
+            <max>6.0</max>
+        </volume>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<position>
+            <x>0</x>
+            <y>-100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_b14</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n14.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			
+			<greater-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>4</value>
+            </greater-than>
+			<less-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>15.8</value>
+            </less-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.01</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>-6</offset>
+            <factor>0.08</factor>
+            <min>6.0</min>
+            <max>8.0</max>
+        </volume>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<position>
+            <x>0</x>
+            <y>-100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	
+	
+	
+	
+	<engin>
+		<name>757_b21</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n21.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			<greater-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>4</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.02</factor>
+            <min>0.0</min>
+            <max>2.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.5</max>
+        </volume>
+		<position>
+            <x>0</x>
+            <y>-100</y>
+            <z>0</z>
+        </position>
+		<reference-dist>10.0</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	<engin>
+		<name>757_b22</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/757_n22.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+			<greater-than>
+                <property>sim/current-view/z-offset-m</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0.5</offset>
             <factor>0.005</factor>
             <min>0.0</min>
             <max>1.0</max>
         </pitch>
-        <volume>
-            <property>engines/engine[1]/rpm</property>
-            <factor>0.05</factor>
-            <min>0.0</min>
-            <max>0.5</max>
+		<volume>
+			<property>sim/current-view/internal</property>
+		</volume>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>-1</offset>
+            <factor>0.02</factor>
+            <min>1.0</min>
+            <max>2.0</max>
         </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>16.9</x>
-            <y>-6.39</y>
-            <z>-1</z>
+		<position>
+            <x>0</x>
+            <y>-100</y>
+            <z>0</z>
         </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>300.0</max-dist>
-    </engine>
-
+		<reference-dist>9999</reference-dist>
+        <max-dist>99999</max-dist>
+	</engin>
+	
+	
+	
+	
+	
+	
     <rumble>
         <name>rumble</name>
         <mode>looped</mode>
-        <path>Sounds/rumble.wav</path>
+        <path>Sounds/FL2070/roll.wav</path>
         <condition>
             <or>
                 <property>/gear/gear[0]/wow</property>
@@ -356,15 +515,8 @@
         <volume>
             <property>/velocities/groundspeed-kt</property>
             <type>log</type>
-            <factor>0.2</factor>
+            <factor>0.8</factor>
         </volume>
-        <position>
-            <x>-9</x>
-            <y>0</y>
-            <z>-5</z>
-        </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>250.0</max-dist>
     </rumble>
 
     <gear1>
@@ -391,7 +543,6 @@
 
     <gear1>
         <name>gear-lock</name>
-	<mode>once</mode>
         <path>Sounds/gear-lck.wav</path>
         <condition>
             <equals>
@@ -413,20 +564,18 @@
 
     <squeal1>
         <name>squeal</name>
-	<mode>once</mode>
         <path>/Aircraft/757-200/Sounds/touchdown.wav</path>
         <condition>
             <or>
                 <property>/gear/gear[0]/wow</property>
                 <property>/gear/gear[1]/wow</property>
-                <property>/gear/gear[3]/wow</property>
+                <property>/gear/gear[2]/wow</property>
             </or>
         </condition>
         <volume>
             <property>sim/sound/effects/volume</property>
-	    <factor>0.5</factor>
         </volume>
-        <!--volume>
+        <volume>
             <property>/velocities/speed-down-fps</property>
             <factor>0.05</factor>
         </volume>
@@ -438,7 +587,7 @@
             <internal>dt_stop</internal>
             <factor>0.05</factor>
             <max>1.0</max>
-        </volume-->
+        </volume>
         <pitch>
             <property>/velocities/airspeed-kt</property>
             <factor>0.0025</factor>
@@ -460,47 +609,24 @@
         <property>/surface-positions/flap-pos-norm</property>
         <volume>
             <property>sim/sound/effects/volume</property>
-	    <factor>0.75</factor>
+            <max>0.5</max>
         </volume>
-        <!--position>
-            <x>-9</x>
-            <y>0</y>
-            <z>0</z>
-        </position>
-        <reference-dist>5.0</reference-dist>
-        <max-dist>10.0</max-dist-->
     </flap>
 
     <wind>
         <name>wind</name>
         <mode>looped</mode>
-        <path>Sounds/wind.wav</path>
-	<condition>
-            <property>sim/current-view/internal</property>
-	</condition>
-        <volume>
-            <property>/position/altitude-ft</property>
-            <factor>-0.000015</factor>
-            <offset>1.0</offset>
-            <min>0.1</min>
-            <max>1.0</max>
-        </volume>
+        <path>Sounds/FL2070/wind.wav</path>
+        <property>/velocities/groundspeed-kt</property>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
         <volume>
             <property>/velocities/airspeed-kt</property>
-            <factor>0.0015</factor>
-            <min>0.03</min>
-            <max>0.25</max>
+            <factor>0.003</factor>
+			<offset>-0.001</offset>
+			<min>0.001</min>
         </volume>
-        <pitch>
-            <property>/velocities/airspeed-kt</property>
-            <factor>0.01</factor>
-            <offset>1.25</offset>
-        </pitch>
-        <position>
-            <x>-24</x>
-            <y>0</y>
-            <z>0.86</z>
-        </position>
         <reference-dist>1.0</reference-dist>
         <max-dist>2.0</max-dist>
     </wind>
@@ -581,51 +707,7 @@
         <reference-dist>0.5</reference-dist>
         <max-dist>1.0</max-dist>
     </speedbrake>
-
-    <!--engines>
-        <name>left reverse-thrust</name>
-        <mode>looped</mode>
-        <path>Sounds/exhaust_loop.wav</path>
-        <condition>
-            <property>engines/engine[0]/running</property>
-        </condition>
-        <volume>
-            <property>surface-positions/reverser-norm[0]</property>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>2.75</x>
-            <y>9.8</y>
-            <z>-3</z>
-        </position>
-        <reference-dist>250.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engines>
-
-    <engines>
-        <name>right reverse-thrust</name>
-        <mode>looped</mode>
-        <path>Sounds/exhaust_loop.wav</path>
-        <condition>
-            <property>engines/engine[1]/running</property>
-        </condition>
-        <volume>
-            <property>surface-positions/reverser-norm[1]</property>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
-        <position>
-            <x>2.75</x>
-            <y>-9.8</y>
-            <z>-3</z>
-        </position>
-        <reference-dist>250.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engines-->
-
+	
     <apoff>
         <name>autopilot disengage</name>
         <mode>once</mode>
@@ -692,13 +774,40 @@
         </volume>
     </overspeed>
     <avhum>
-        <path>/Sounds/avionics-400Hz.wav</path>
+        <path>Sounds/FL2070/757_inside.wav</path>
         <mode>looped</mode>
         <type>avionics</type>
-        <property>/systems/electrical/outputs/efis</property>
+		<name>avn</name>
+		<condition>
+			<property>/systems/electrical/outputs/efis</property>
+		</condition>
         <volume>
-	    <factor>0.1</factor>
+			<property>sim/current-view/internal</property>
         </volume>
+    </avhum>
+	<avhum>
+        <path>Sounds/FL2070/757_inside.wav</path>
+        <mode>looped</mode>
+        <type>avionics</type>
+		<name>avn-off</name>
+		<condition>
+			<not><property>/systems/electrical/outputs/efis</property></not>
+		</condition>
+        <volume>
+			<property>sim/current-view/internal</property>
+        </volume>
+		<volume>
+			<internal>dt_play</internal>
+			<factor>-0.05</factor>
+			<offset>1</offset>
+			<min>-1</min>
+        </volume>
+		<pitch>
+			<internal>dt_play</internal>
+			<factor>-0.05</factor>
+			<offset>1</offset>
+			<min>-1</min>
+        </pitch>
     </avhum>
         
     <stall>
@@ -706,7 +815,7 @@
    	<path>Sounds/stall.wav</path>
    	<property>/sim/alarms/stall-warning</property>
    	<volume>
-    	    <property>/velocities/airspeed-kt</property>
+    	<property>/velocities/airspeed-kt</property>
 	    <min>30.0</min>
    	</volume>
     </stall>
@@ -714,31 +823,28 @@
     <!-- APU sounds -->
     <apu>
 	<name>APUstart</name>
-	<path>Aircraft/757-200/Sounds/apu_strt.wav</path>
+	<path>Sounds/FL2070/0apu0.wav</path>
 	<mode>once</mode>
 	<condition>
-	    <and>
-		<not>
-		  <property>engines/apu/running</property>
-		</not>
 		<equals>
 		  <property>controls/APU/off-start-run</property>
 		  <value>1</value>
 		</equals>
-	    </and>
 	</condition>
     </apu>
+	
     <apu>
 	<name>APUrun</name>
-        <path>Aircraft/757-200/Sounds/apu_run.wav</path>
+        <path>Sounds/FL2070/0apu1.wav</path>
 	<mode>looped</mode>
 	<condition>
 	    <property>engines/apu/running</property>
 	</condition>
     </apu>
+	
     <apu>
 	<name>APUstop</name>
-	<path>Aircraft/757-200/Sounds/apu_stop.wav</path>
+	<path>Sounds/FL2070/0apu2.wav</path>
 	<mode>once</mode>
 	<condition>
 	    <and>
@@ -753,6 +859,432 @@
 	    </and>
 	</condition>
     </apu>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<engout>
+		<name>x757_a11</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n11.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.019</factor>
+            <min>0.0</min>
+            <max>2.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.5</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_a12</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n12.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.014</factor>
+            <min>0.0</min>
+            <max>1.5</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-1</offset>
+            <factor>0.02</factor>
+            <min>1.0</min>
+            <max>1.5</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_a13</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n13.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.013</factor>
+            <min>0.0</min>
+            <max>1.3</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-4</offset>
+            <factor>0.06</factor>
+            <min>4.0</min>
+            <max>6.0</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_a14</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n14.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.009</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-6</offset>
+            <factor>0.08</factor>
+            <min>6.0</min>
+            <max>8.0</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_a21</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n21.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.019</factor>
+            <min>0.0</min>
+            <max>2.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.5</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_a22</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n22.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[0]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>0</offset>
+            <factor>0.01</factor>
+            <min>0.0</min>
+            <max>1</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[0]/rpm</property>
+            <offset>-1</offset>
+            <factor>0.02</factor>
+            <min>1.0</min>
+            <max>1.5</max>
+        </volume>
+	</engout>
+	
+	
+	
+	
+	<engout>
+		<name>x757_b11</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n11.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.019</factor>
+            <min>0.0</min>
+            <max>2.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.5</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_b12</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n12.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.014</factor>
+            <min>0.0</min>
+            <max>1.5</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>-1</offset>
+            <factor>0.02</factor>
+            <min>1.0</min>
+            <max>1.5</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_b13</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n13.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.014</factor>
+            <min>0.0</min>
+            <max>1.4</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>-4</offset>
+            <factor>0.06</factor>
+            <min>4.0</min>
+            <max>6.0</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_b14</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n14.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.009</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>-6</offset>
+            <factor>0.08</factor>
+            <min>6.0</min>
+            <max>8.0</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_b21</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n21.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.019</factor>
+            <min>0.0</min>
+            <max>2.0</max>
+        </pitch>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<volume>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.1</factor>
+            <min>0.0</min>
+            <max>0.5</max>
+        </volume>
+	</engout>
+	
+	<engout>
+		<name>x757_b22</name>
+		<mode>looped</mode>
+        <path>Sounds/FL2070/x757_n22.wav</path>
+		<condition>
+            <greater-than>
+                <property>engines/engine[1]/rpm</property>
+                <value>0.1</value>
+            </greater-than>
+        </condition>
+		<volume>
+			<property>sim/current-view/internal</property>
+			<offset>1</offset>
+            <factor>-1</factor>
+		</volume>
+		<pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <offset>0</offset>
+            <factor>0.01</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </pitch>
+		<volume>
+            <property>/engines/engine[1]s/rpm</property>
+            <offset>-1</offset>
+            <factor>0.02</factor>
+            <min>1.0</min>
+            <max>1.5</max>
+        </volume>
+	</engout>
+
 
 </fx>
 
