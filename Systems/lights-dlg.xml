@@ -14,42 +14,14 @@
 	<group>
 		<layout>vbox</layout>
 
-		<text>
+		<checkbox>
 			<label>Landing lights</label>
-		</text>
-
-		<group>
-			<layout>hbox</layout>
-
-			<checkbox>
-				<label>Left</label>
-				<property>controls/lighting/landing-lights[0]</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-
-			<checkbox>
-				<label>Nosegear</label>
-				<property>controls/lighting/landing-lights[0]</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-
-			<checkbox>
-				<label>Right</label>
-				<property>controls/lighting/landing-lights[0]</property>
-				<binding>
-					<command>dialog-apply</command>
-				</binding>
-				<live>true</live>
-			</checkbox>
-		</group>
-
-		<hrule/>
+			<property>controls/lighting/landing-lights[0]</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
 
 		<checkbox>
 			<label>Navigation lights</label>
