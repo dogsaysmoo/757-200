@@ -342,6 +342,10 @@
 				<desc>cycle autobrake setting</desc>
 			</key>
 			<key>
+				<name>l</name>
+				<desc>toggle landing lights</desc>
+			</key>
+			<!--key>
 				<name>Ctrl-z</name>
 				<desc>toggle autopilot master arm switch</desc>
 			</key>
@@ -352,7 +356,7 @@
 			<key>
 				<name>Ctrl-o</name>
 				<desc>toggle autothrottle TO/GA hold</desc>
-			</key>
+			</key-->
 			<key>
 				<name>w</name>
 				<desc>walk forward toward view direction</desc>
@@ -629,7 +633,7 @@
 			</key>
 
 			<!-- Custom autopilot hotkeys -->
-			<key n="15">
+			<!--key n="15">
 				<name>Ctrl-O</name>
 				<desc>Toggle TO/GA lock</desc>
 				<binding>
@@ -662,7 +666,7 @@
 					<command>property-toggle</command>
 					<property>autopilot/settings/autothrottle</property>
 				</binding>
-			</key>
+			</key-->
 
 			<!-- Autopilot dialog override -->
 			<key n="267">

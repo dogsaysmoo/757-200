@@ -4,7 +4,7 @@
 	<sim>
 		<model>
 			<livery>
-				<name>British Airways (Old Livery)</name>
+				<name>British Airways (1984-97 Livery)</name>
 				<texture>BAW-old.png</texture>
 				<winglets type="bool">false</winglets>
 			</livery>  	  
