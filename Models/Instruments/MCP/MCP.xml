@@ -244,7 +244,7 @@
 	</animation>
 
 	<animation>
-		<name>Speed knob pick</name>
+		<name>Speed knob pick IAS</name>
 		<type>pick</type>
 		<object-name>SPD.knob</object-name>
 		<action>
@@ -263,16 +263,6 @@
                         	<min>100</min>
                         	<max>399</max>
                 	</binding>
-                	<binding>
-                        	<condition>
-                                        <property>instrumentation/afds/inputs/ias-mach-selected</property>
-                        	</condition>
-                        	<command>property-adjust</command>
-                        	<property>/autopilot/settings/target-speed-mach</property>
-                        	<step>0.001</step>
-                        	<min>0.40</min>
-                        	<max>0.95</max>
-			</binding>
 		</action>
 		<action>
 			<button>1</button>
@@ -290,6 +280,31 @@
 	                        <min>100</min>
         	                <max>399</max>
                 	</binding>
+		</action>
+	</animation>
+	<animation>
+		<name>Speed knob pick MACH</name>
+		<type>pick</type>
+		<object-name>SPD.knob</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable type="bool">true</repeatable>
+                	<binding>
+                        	<condition>
+                                        <property>instrumentation/afds/inputs/ias-mach-selected</property>
+                        	</condition>
+                        	<command>property-adjust</command>
+                        	<property>/autopilot/settings/target-speed-mach</property>
+                        	<step>0.001</step>
+                        	<min>0.40</min>
+                        	<max>0.95</max>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable type="bool">true</repeatable>
 	                <binding>
         	                <condition>
                                         <property>instrumentation/afds/inputs/ias-mach-selected</property>
