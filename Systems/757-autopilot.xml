@@ -590,7 +590,7 @@
       <prop>/autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
-      <Kp>0.5</Kp>
+      <Kp>0.3</Kp>
       <beta>1.0</beta>
       <alpha>0.1</alpha>
       <gamma>0.0</gamma>
@@ -828,7 +828,7 @@
       <prop>autopilot/internal/lookahead-10-sec-airspeed-kt</prop>
     </input>
     <reference>
-      <prop>instrumentation/afds/ias-target-kt</prop>
+      <prop>autopilot/internal/target-ias-kt</prop>
     </reference>
     <output>
       <prop>/autopilot/internal/target-pitch-deg</prop>
@@ -892,13 +892,13 @@
       <prop>autopilot/internal/lookahead-15-sec-mach</prop>
     </input>
     <reference>
-      <prop>/autopilot/settings/target-speed-mach</prop>
+      <prop>/autopilot/internal/target-mach</prop>
     </reference>
     <output>
       <prop>/autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
-	<Kp>-0.05</Kp>
+	<Kp>-0.08</Kp>
 	<beta>1</beta>
 	<alpha>0.1</alpha>
 	<gamma>0</gamma>

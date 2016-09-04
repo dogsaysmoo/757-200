@@ -35,6 +35,7 @@ var AFDS = {
         m.AFDS_apmodes = m.AFDS_node.getNode("ap-modes",1);
         m.AFDS_settings = m.AFDS_node.getNode("settings",1);
         m.AP_settings = props.globals.getNode("autopilot/settings",1);
+	m.AP_internal = props.globals.getNode("autopilot/internal",1);
 
         m.AP = m.AFDS_inputs.initNode("AP",0,"BOOL");
         m.AP_disengaged = m.AFDS_inputs.initNode("AP-disengage",0,"BOOL");
@@ -60,8 +61,10 @@ var AFDS = {
         m.bank_switch = m.AFDS_inputs.initNode("bank-limit-switch",0,"INT");
         m.bank_setting = m.AFDS_inputs.initNode("bank-limit-setting","AUTO");
 
-        m.ias_setting = m.AP_settings.initNode("target-speed-kt",250); # 100 - 399 #
+        m.ias_setting = m.AP_settings.initNode("target-speed-kt",200); # 100 - 399 #
         m.mach_setting = m.AP_settings.initNode("target-speed-mach",0.40); # 0.40 - 0.95 #
+	m.ias_internal = m.AP_internal.initNode("target-ias-kt",200);
+	m.mach_internal = m.AP_internal.initNode("target-mach",0.40);
 	m.thrust_setting = m.AP_settings.initNode("target-thrust",88.5,"DOUBLE");
         m.vs_setting = m.AP_settings.initNode("vertical-speed-fpm",0); # -8000 to +6000 #
         m.hdg_setting = m.AP_settings.initNode("heading-bug-deg",360,"INT");
@@ -186,6 +189,7 @@ var AFDS = {
                         if (me.FMS_alt.getValue() > alt) me.FMS_alt.setValue(alt);
                     }
 		    me.alt_display.setValue(me.FMS_alt.getValue());
+		    btn = 12;
 		}
             }
             if (btn==11)
@@ -213,11 +217,11 @@ var AFDS = {
 			    me.thrust_mode.setValue(8);
 			}
 		    }
-		    if (me.autothrottle_mode.getValue() == 5)
-			me.autothrottle_mode.setValue(1);
 		}
 		settimer(func {
 		    if (me.flch_spd_arm == 1) {
+			if (me.autothrottle_mode.getValue() == 5)
+			    me.autothrottle_mode.setValue(1);
 			if (sel == 8)
 			    me.alt_setting.setValue(me.alt_display.getValue());
 			if (sel == 12)
@@ -240,6 +244,7 @@ var AFDS = {
             if(!me.at1.getBoolValue()) btn=0;
 	    if (btn==1) {
 		me.thrust_setting.setValue(getprop("engines/engine[0]/rpm"));
+		if (getprop("instrumentation/altimeter/indicated-altitude-ft") < 200 and me.thrust_mode.getValue() != 1) btn = 0;
 	    }
 	    if (btn==0 and me.vertical_mode.getValue()==13) me.vertical_mode.setValue(btn);
             me.autothrottle_mode.setValue(btn);
@@ -408,13 +413,13 @@ var AFDS = {
 		me.alt_setting.setValue(me.alt_display.getValue());
 		if ((idx==2 and me.vs_setting.getValue()>0) or (idx==9 and me.fpa_setting.getValue()>0)) var climb = 1;
 		if ((idx==2 and me.vs_setting.getValue()<=0) or (idx==9 and me.fpa_setting.getValue()<=0)) var climb = 0;
-		if ((climb == 1) and (me.alt_setting.getValue() > getprop("instrumentation/altimeter/indicated-altitude-ft")))
+		if (climb == 1 and me.alt_setting.getValue() > alt)
 		{
-		    if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.alt_setting.getValue())<50) idx=1;
+		    if (abs(alt-me.alt_setting.getValue())<500) idx=8;
 		}
-		if ((climb == 0) and (me.alt_setting.getValue() < getprop("instrumentation/altimeter/indicated-altitude-ft"))) 
+		if (climb == 0 and me.alt_setting.getValue() < alt) 
                 {
-		    if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.alt_setting.getValue())<50) idx=1;
+		    if (abs(alt-me.alt_setting.getValue())<500) idx=8;
 		}
 		if (idx != 2) me.flch_mode.setBoolValue(0);
 		me.vertical_mode.setValue(idx);
@@ -426,10 +431,45 @@ var AFDS = {
 		    me.input(1,12);
 	    }
 
+            if ((idx==8)or(idx==12))
+            {
+	    # 8 and 12 for new FLCH modes
+		var change = me.alt_setting.getValue() - alt;
+		if (me.flch_spd_arm == 1) {
+		    if (abs(change) <= 500) {
+			var max_vs = abs(getprop("velocities/vertical-speed-fps"));
+			if (max_vs < 8.33) max_vs = 8.33;
+			me.flch_max.setValue(max_vs);
+			me.flch_min.setValue(-1 * max_vs);
+			me.flch_mode.setBoolValue(1);
+			me.pitch_min.setValue(-10);
+			me.pitch_max.setValue(15);
+			if (me.autothrottle_mode.getValue() > 0) {
+			    me.autothrottle_mode.setValue(5);
+			    me.thrust_mode.setValue(6);
+			}
+			me.flch_spd_arm = 0;
+		    } else {
+			if (change >= 0) {
+			    me.pitch_min.setValue(1.5);
+			    me.pitch_max.setValue(15);
+			} else {
+			    me.pitch_min.setValue(-10);
+			    me.pitch_max.setValue(0);
+			}
+		    }
+		}
+	    } else {
+		me.flch_max.setValue(16.67);
+		me.flch_min.setValue(-16.67);
+		me.pitch_min.setValue(-10);
+		me.pitch_max.setValue(15);
+	    }
+
             if (idx==8)
             {
                 # flight level change mode
-                if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.alt_setting.getValue())<50) {
+                if (abs(alt-me.alt_setting.getValue())<50) {
                     # within target altitude: switch to ALT HOLD mode
                     idx=1;
 		    me.flch_mode.setBoolValue(0);
@@ -443,7 +483,7 @@ var AFDS = {
             if (idx==12)
             {
                 # flight level change mode (VNAV)
-                if (abs(getprop("instrumentation/altimeter/indicated-altitude-ft")-me.alt_setting.getValue())<50) {
+                if (abs(alt-me.alt_setting.getValue())<50) {
                     # within target altitude: switch to VNAV ALT mode
                     idx=5;
 		    me.flch_mode.setBoolValue(0);
@@ -454,29 +494,6 @@ var AFDS = {
 		}
                 me.vertical_mode.setValue(idx);
             }
-
-            if ((idx==8)or(idx==12))
-            {
-	    # 8 and 12 for new FLCH modes
-		var change = me.alt_setting.getValue() - alt;
-		if (me.flch_spd_arm == 1) {
-		    if (abs(change) <= 500) {
-			var max_vs = abs(getprop("velocities/vertical-speed-fps"));
-			if (max_vs < 8.33) max_vs = 8.33;
-			me.flch_max.setValue(max_vs);
-			me.flch_min.setValue(-1 * max_vs);
-			me.flch_mode.setBoolValue(1);
-			if (me.autothrottle_mode.getValue() > 0) {
-			    me.autothrottle_mode.setValue(5);
-			    me.thrust_mode.setValue(6);
-			}
-			me.flch_spd_arm = 0;
-		    }
-		}
-	    } else {
-		me.flch_max.setValue(16.67);
-		me.flch_min.setValue(-16.67);
-	    }
             me.AP_pitch_engaged.setBoolValue(idx>0);
 	    me.AP_pitch_mode.setValue(me.pitch_list[idx]);
 	    if (me.flch_mode.getBoolValue() or idx == 8)
@@ -487,6 +504,8 @@ var AFDS = {
 
         }elsif(me.step==4){             ### check speed modes  ###
 	    var idx = me.thrust_mode.getValue();
+	    var ias_now = getprop("instrumentation/airspeed-indicator/indicated-speed-kt");
+	    var mach_now = getprop("instrumentation/airspeed-indicator/indicated-mach");
 	    if (idx==0) {
 		if (me.autothrottle_mode.getValue()==0) {
 		    msg = " ";
@@ -565,14 +584,33 @@ var AFDS = {
 	    msg = " ";
 
 	    if (me.ias_mach_selected.getBoolValue()) {
-                var target = int(getprop("instrumentation/airspeed-indicator/indicated-speed-kt")+0.5);
+                var target = int(ias_now+0.5);
                 if (target >= 100 and target <= 399)
                     me.ias_setting.setValue(target);
             } else {
-                var target = (int(1000 * getprop("instrumentation/airspeed-indicator/indicated-mach"))) * 0.001;
+                var target = (int(1000 * mach_now)) * 0.001;
                 if (target >= 0.4 and target <= 0.95)
                     me.mach_setting.setValue(target);
             }
+
+	    if (me.ias_mach_selected.getBoolValue()) {
+		if (me.mach_setting.getValue() - mach_now > 0.006) {
+		    me.mach_internal.setValue(mach_now + 0.006);
+		} elsif (mach_now - me.mach_setting.getValue() > 0.006) {
+		    me.mach_internal.setValue(mach_now - 0.006);
+		} else {
+		    me.mach_internal.setValue(me.mach_setting.getValue());
+		}
+	    } else {
+		if (me.ias_setting.getValue() - ias_now > 15) {
+		    me.ias_internal.setValue(ias_now + 15);
+		} elsif (ias_now - me.ias_setting.getValue() > 15) {
+		    me.ias_internal.setValue(ias_now - 15);
+		} else {
+		    me.ias_internal.setValue(me.ias_setting.getValue());
+		}
+	    }
+
             if (getprop("controls/engines/engine/reverser")) {
                 # auto-throttle disables when reverser is enabled
                 me.autothrottle_mode.setValue(0);
