@@ -23,9 +23,6 @@
             <min>0.0</min>
             <max>1</max>
         </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
         <position>
             <x>16.9</x>
             <y>6.39</y>
@@ -59,9 +56,6 @@
             <min>0.0</min>
             <max>0.6</max>
         </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
         <position>
             <x>16.9</x>
             <y>6.39</y>
@@ -85,18 +79,11 @@
                     <property>surface-positions/left-reverser-pos-norm</property>
                     <value>0</value>
                 </greater-than>
+                <not><property>sim/current-view/internal</property></not>
             </and>
         </condition>
         <volume>
             <property>surface-positions/left-reverser-pos-norm</property>
-        </volume>
-        <volume>
-            <property>engines/engine[0]/rpm</property>
-            <min>0.0</min>
-            <max>1.0</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
         </volume>
         <position>
             <x>16.9</x>
@@ -125,9 +112,6 @@
             <factor>0.000015</factor>
             <min>0.0</min>
             <max>0.825</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
         </volume>
         <position>
             <x>16.9</x>
@@ -162,9 +146,6 @@
             <min>0.0</min>
             <max>0.5</max>
         </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
         <position>
             <x>16.9</x>
             <y>6.39</y>
@@ -172,6 +153,36 @@
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>300.0</max-dist>
+    </engine>
+
+    <engine>
+        <name>left reverser inside</name>
+        <path>Sounds/exhaust_loop.wav</path>
+        <mode>looped</mode>
+        <condition>
+            <and>
+                <greater-than>
+                    <property>engines/engine[0]/rpm</property>
+                    <value>2</value>
+                </greater-than>
+                <greater-than>
+                    <property>surface-positions/left-reverser-pos-norm</property>
+                    <value>0</value>
+                </greater-than>
+                <property>sim/current-view/internal</property>
+            </and>
+        </condition>
+        <volume>
+            <property>surface-positions/left-reverser-pos-norm</property>
+	    <factor>0.3</factor>
+        </volume>
+        <position>
+            <x>16.9</x>
+            <y>6.39</y>
+            <z>-1</z>
+        </position>
+        <reference-dist>10.0</reference-dist>
+        <max-dist>3000.0</max-dist>
     </engine>
 
     <engine>
@@ -190,9 +201,6 @@
             <factor>0.000015</factor>
             <min>0.0</min>
             <max>1</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
         </volume>
         <position>
             <x>16.9</x>
@@ -219,9 +227,6 @@
             <factor>0.1</factor>
             <min>0.0</min>
             <max>0.6</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
         </volume>
         <pitch>
             <property>/engines/engine[1]/rpm</property>
@@ -253,6 +258,7 @@
                     <property>surface-positions/right-reverser-pos-norm</property>
                     <value>0</value>
                 </greater-than>
+                <not><property>sim/current-view/internal</property></not>
             </and>
         </condition>
         <volume>
@@ -262,9 +268,6 @@
             <property>engines/engine[1]/rpm</property>
             <min>0.0</min>
             <max>1.0</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
         </volume>
         <position>
             <x>16.9</x>
@@ -293,9 +296,6 @@
             <factor>0.000015</factor>
             <min>0.0</min>
             <max>0.825</max>
-        </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
         </volume>
         <position>
             <x>16.9</x>
@@ -330,9 +330,6 @@
             <min>0.0</min>
             <max>0.5</max>
         </volume>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
         <position>
             <x>16.9</x>
             <y>-6.39</y>
@@ -340,6 +337,36 @@
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>300.0</max-dist>
+    </engine>
+
+    <engine>
+        <name>right reverser inside</name>
+        <path>Sounds/exhaust_loop.wav</path>
+        <mode>looped</mode>
+        <condition>
+            <and>
+                <greater-than>
+                    <property>engines/engine[1]/rpm</property>
+                    <value>2</value>
+                </greater-than>
+                <greater-than>
+                    <property>surface-positions/left-reverser-pos-norm</property>
+                    <value>0</value>
+                </greater-than>
+                <property>sim/current-view/internal</property>
+            </and>
+        </condition>
+        <volume>
+            <property>surface-positions/right-reverser-pos-norm</property>
+	    <factor>0.3</factor>
+        </volume>
+        <position>
+            <x>16.9</x>
+            <y>-6.39</y>
+            <z>-1</z>
+        </position>
+        <reference-dist>10.0</reference-dist>
+        <max-dist>3000.0</max-dist>
     </engine>
 
     <rumble>
@@ -372,9 +399,6 @@
         <mode>in-transit</mode>
         <path>Aircraft/757-200/Sounds/gear.wav</path>
         <property>/gear/gear[0]/position-norm</property>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
         <pitch>
             <internal>dt_play</internal>
             <offset>0.7</offset>
@@ -399,9 +423,6 @@
                 <value>0</value>
             </equals>
         </condition>
-        <volume>
-            <property>sim/sound/effects/volume</property>
-        </volume>
 <position>
             <x>0</x>
             <y>0</y>
@@ -657,7 +678,7 @@
         <reference-dist>10.0</reference-dist>
         <max-dist>100.0</max-dist>
     </seatbelt>
-    <nosmoke>
+    <!--nosmoke>
         <name>No smoking sign</name>
         <path>Aircraft/757-200/Sounds/cabinalert.wav</path>
         <mode>once</mode>
@@ -674,7 +695,7 @@
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>100.0</max-dist>
-    </nosmoke>
+    </nosmoke-->
 
     <!-- Overspeed warning -->
     <overspeed>
@@ -717,15 +738,10 @@
 	<path>Aircraft/757-200/Sounds/apu_strt.wav</path>
 	<mode>once</mode>
 	<condition>
-	    <and>
-		<not>
-		  <property>engines/apu/running</property>
-		</not>
-		<equals>
+		<greater-than>
 		  <property>controls/APU/off-start-run</property>
-		  <value>1</value>
-		</equals>
-	    </and>
+		  <value>0</value>
+		</greater-than>
 	</condition>
     </apu>
     <apu>
@@ -741,16 +757,10 @@
 	<path>Aircraft/757-200/Sounds/apu_stop.wav</path>
 	<mode>once</mode>
 	<condition>
-	    <and>
-		<greater-than>
-		  <property>engines/apu/rpm</property>
-		  <value>50</value>
-		</greater-than>
 		<equals>
 		  <property>controls/APU/off-start-run</property>
 		  <value>0</value>
 		</equals>
-	    </and>
 	</condition>
     </apu>
 
