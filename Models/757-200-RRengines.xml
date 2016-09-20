@@ -98,8 +98,68 @@
   			<z2-m>-0.2317</z2-m>
  		</axis>
         </animation>
-        
-       	<!--animation>
+
+	<!--animation>
+		<type>shader</type>
+		<shader>chrome</shader>
+		<texture>chrome1.png</texture>
+		<object-name>IntakeL</object-name>
+		<object-name>IntakeR</object-name>
+	</animation-->
+
+	<effect>
+		<name>Left Lightmap</name>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
+		<parameters>
+		    <lightmap-enabled>1</lightmap-enabled>
+		    <lightmap-multi>1</lightmap-multi>
+		    <lightmap-factor n="0">0.0</lightmap-factor>
+		    <lightmap-factor n="1">0.0</lightmap-factor>
+		    <lightmap-factor n="2">
+			<use>systems/electrical/lighting/wing-lights</use>
+		    </lightmap-factor>
+		    <lightmap-color n="2">0.5 0.5 0.5</lightmap-color>
+		    <lightmap-factor n="3">
+			<use>/environment/moonlight</use>
+		    </lightmap-factor>
+		    <lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
+		    <texture n="3">
+			<image>Aircraft/757-200/Models/Effects/LRR-lightmap.png</image>
+		    </texture>
+		</parameters>
+    		<object-name>engine.1</object-name>
+    		<object-name>left.reverser</object-name>
+    		<object-name>LPylon</object-name>
+		<object-name>IntakeL</object-name>
+	</effect>
+
+	<effect>
+		<name>Right Lightmap</name>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
+		<parameters>
+		    <lightmap-enabled>1</lightmap-enabled>
+		    <lightmap-multi>1</lightmap-multi>
+		    <lightmap-factor n="0">0.0</lightmap-factor>
+		    <lightmap-factor n="1">0.0</lightmap-factor>
+		    <lightmap-factor n="2">
+			<use>systems/electrical/lighting/wing-lights</use>
+		    </lightmap-factor>
+		    <lightmap-color n="2">0.5 0.5 0.5</lightmap-color>
+		    <lightmap-factor n="3">
+			<use>/environment/moonlight</use>
+		    </lightmap-factor>
+		    <lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
+		    <texture n="3">
+			<image>Aircraft/757-200/Models/Effects/RRR-lightmap.png</image>
+		    </texture>
+		</parameters>
+    		<object-name>engine.2</object-name>
+    		<object-name>right.reverser</object-name>
+    		<object-name>RPylon</object-name>
+		<object-name>IntakeR</object-name>
+	</effect>
+
+       	<animation>
 		<type>material</type>
     		<object-name>engine.1</object-name>
     		<object-name>engine.2</object-name>
@@ -108,42 +168,7 @@
 		<property-base>sim/model/livery</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>FIN.png</texture>
-	</animation-->
-
-	<animation>
-		<type>shader</type>
-		<shader>chrome</shader>
-		<texture>chrome1.png</texture>
-		<object-name>IntakeL</object-name>
-		<object-name>IntakeR</object-name>
 	</animation>
-
-	<effect>
-		<name>EngineRR Lightmap</name>
-		<inherits-from>Effects/model-combined</inherits-from>
-		<parameters>
-			<lightmap-enabled>1</lightmap-enabled>
-			<lightmap-multi>1</lightmap-multi>
-			<lightmap-factor n="0">0.0</lightmap-factor>
-			<lightmap-color n="0">0.5 0.5 0.5</lightmap-color>
-			<lightmap-factor n="1">0.0</lightmap-factor>
-			<lightmap-color n="1">0.5 0.5 0.5</lightmap-color>
-			<lightmap-factor n="2">0.0</lightmap-factor>
-			<lightmap-factor n="3">
-			    <use>/environment/moonlight</use>
-			</lightmap-factor>
-			<lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
-			<texture n="3">
-			    <image>Aircraft/757-200/Models/Effects/lightmap.png</image>
-			</texture>
-		</parameters>
-    		<object-name>engine.1</object-name>
-    		<object-name>engine.2</object-name>
-    		<object-name>left.reverser</object-name>
-    		<object-name>right.reverser</object-name>
-    		<object-name>LPylon</object-name>
-    		<object-name>RPylon</object-name>
-	</effect>
 
 </PropertyList>
 

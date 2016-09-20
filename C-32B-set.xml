@@ -29,6 +29,7 @@
 			<path>Aircraft/757-200/Models/C-32B.xml</path>
 			<livery>
 				<file>BLN</file>
+				<texture>C-32B.png</texture>
 			</livery>
 			<variant type="int">2</variant>
 		</model>

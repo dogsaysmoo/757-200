@@ -75,30 +75,67 @@
 	</animation>
 
 	<effect>
-		<name>EngineRR Lightmap</name>
-		<inherits-from>Effects/model-combined</inherits-from>
+		<name>Left Lightmap</name>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
 		<parameters>
-			<lightmap-enabled>1</lightmap-enabled>
-			<lightmap-multi>1</lightmap-multi>
-			<lightmap-factor n="0">0.0</lightmap-factor>
-			<lightmap-color n="0">0.5 0.5 0.5</lightmap-color>
-			<lightmap-factor n="1">0.0</lightmap-factor>
-			<lightmap-color n="1">0.5 0.5 0.5</lightmap-color>
-			<lightmap-factor n="2">0.0</lightmap-factor>
-			<lightmap-factor n="3">
-			    <use>/environment/moonlight</use>
-			</lightmap-factor>
-			<lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
-			<texture n="3">
-			    <image>Aircraft/757-200/Models/Effects/lightmap.png</image>
-			</texture>
+		    <lightmap-enabled>1</lightmap-enabled>
+		    <lightmap-multi>1</lightmap-multi>
+		    <lightmap-factor n="0">0.0</lightmap-factor>
+		    <lightmap-factor n="1">0.0</lightmap-factor>
+		    <lightmap-factor n="2">
+			<use>systems/electrical/lighting/wing-lights</use>
+		    </lightmap-factor>
+		    <lightmap-color n="2">0.5 0.5 0.5</lightmap-color>
+		    <lightmap-factor n="3">
+			<use>/environment/moonlight</use>
+		    </lightmap-factor>
+		    <lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
+		    <texture n="3">
+			<image>Aircraft/757-200/Models/Effects/LPW-lightmap.png</image>
+		    </texture>
 		</parameters>
-		<object-name>Engine</object-name>
+		<object-name>EngineL</object-name>
+		<object-name>LReverserTurbofan</object-name>
+		<object-name>PylonL</object-name>
+		<object-name>IntakeL</object-name>
+	</effect>
+
+	<effect>
+		<name>Right Lightmap</name>
+		<inherits-from>Effects/model-combined-deferred</inherits-from>
+		<parameters>
+		    <lightmap-enabled>1</lightmap-enabled>
+		    <lightmap-multi>1</lightmap-multi>
+		    <lightmap-factor n="0">0.0</lightmap-factor>
+		    <lightmap-factor n="1">0.0</lightmap-factor>
+		    <lightmap-factor n="2">
+			<use>systems/electrical/lighting/wing-lights</use>
+		    </lightmap-factor>
+		    <lightmap-color n="2">0.5 0.5 0.5</lightmap-color>
+		    <lightmap-factor n="3">
+			<use>/environment/moonlight</use>
+		    </lightmap-factor>
+		    <lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
+		    <texture n="3">
+			<image>Aircraft/757-200/Models/Effects/RPW-lightmap.png</image>
+		    </texture>
+		</parameters>
+		<object-name>EngineR</object-name>
+		<object-name>RReverserTurbofan</object-name>
+		<object-name>PylonR</object-name>
+		<object-name>IntakeR</object-name>
+	</effect>
+
+       	<animation>
+		<type>material</type>
+		<object-name>EngineL</object-name>
+		<object-name>EngineR</object-name>
 		<object-name>LReverserTurbofan</object-name>
 		<object-name>RReverserTurbofan</object-name>
-		<object-name>PylonL</object-name>
-		<object-name>PylonR</object-name>
-	</effect>
+		<property-base>sim/model/livery</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>FIN.png</texture>
+	</animation>
 
 </PropertyList>
 
