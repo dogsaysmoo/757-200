@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+    <name>landing and logo light map</name>
+    <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <parameters>
+        <lightmap-enabled type="int">1</lightmap-enabled>
+        <lightmap-multi type="int">1</lightmap-multi>
+        <lightmap-factor type="float" n="0">
+	    <use>systems/electrical/lighting/logo-lights</use>
+	</lightmap-factor>
+        <lightmap-color type="vec3d" n="0">0.5 0.5 0.5</lightmap-color>
+        <lightmap-factor type="float" n="1">
+	    <use>systems/electrical/lighting/landing-lights[0]</use>
+	</lightmap-factor>
+        <lightmap-color type="vec3d" n="1">0.5 0.5 0.5</lightmap-color>
+        <lightmap-factor type="float" n="2">
+	    <use>systems/electrical/lighting/wing-lights</use>
+	</lightmap-factor>
+        <lightmap-color type="vec3d" n="2">0.7 0.7 0.7</lightmap-color>
+        <lightmap-factor type="float" n="3">
+	    <use>/environment/moonlight</use>
+	</lightmap-factor>
+	<lightmap-color type="vec3d" n="3">0.1 0.1 0.15</lightmap-color>
+        <texture n="3">
+            <image>Aircraft/757-200/Models/Effects/lightmap-200.png</image>
+        </texture>
+    </parameters>
+</PropertyList>
+
