@@ -2128,6 +2128,9 @@
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
 			</less-than>
+			<not>
+			  <property>/sim/rendering/rembrandt/enabled</property> 
+		    	</not>
 		    </and>
 		</condition>
 	</animation>
@@ -2141,6 +2144,9 @@
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
 			</less-than>
+			<not>
+			  <property>/sim/rendering/rembrandt/enabled</property> 
+		    	</not>
 		    </and>
 		</condition>
 	</animation>
@@ -2154,6 +2160,9 @@
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
 			</less-than>
+			<not>
+			  <property>/sim/rendering/rembrandt/enabled</property> 
+		    	</not>
 		    </and>
 		</condition>
 	</animation>
