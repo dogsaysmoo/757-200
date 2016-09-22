@@ -713,10 +713,15 @@
         </volume>
     </overspeed>
     <avhum>
-        <path>/Sounds/avionics-400Hz.wav</path>
+        <path>Aircraft/757-200/Sounds/avhum.wav</path>
         <mode>looped</mode>
         <type>avionics</type>
-        <property>/systems/electrical/outputs/efis</property>
+	<condition>
+	  <and>
+            <property>sim/current-view/internal</property>
+            <property>/systems/electrical/outputs/efis</property>
+	  </and>
+	</condition>
         <volume>
 	    <factor>0.1</factor>
         </volume>
