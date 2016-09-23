@@ -37,7 +37,7 @@ var light_stat = {
 	m.nav_sw = m.light_controls.getNode("nav-lights",0);
 	m.strobe_sw = m.light_controls.getNode("strobe",0);
 	m.logo_sw = m.light_controls.getNode("logo-lights",0);
-#	m.wing_sw = m.light_controls.getNode("wing-lights",0);
+	m.wing_sw = m.light_controls.getNode("wing-lights",1);
 	m.taxi_sw = m.light_controls.getNode("taxi-lights",0);
 	m.toff_sw = m.light_controls.getNode("turn-off-lights",0);
 	m.Lland_sw = m.light_controls.getNode("landing-lights[0]",0);
@@ -47,7 +47,7 @@ var light_stat = {
 	m.nav = props.globals.initNode("systems/electrical/lighting/nav-lights",0,"BOOL");
 	m.strobe = props.globals.initNode("systems/electrical/lighting/strobe",0,"BOOL");
 	m.logo = props.globals.initNode("systems/electrical/lighting/logo-lights",0,"BOOL");
-#	m.wing = props.globals.initNode("systems/electrical/lighting/wing-lights",0,"BOOL");
+	m.wing = props.globals.initNode("systems/electrical/lighting/wing-lights",0,"BOOL");
 	m.taxi = props.globals.initNode("systems/electrical/lighting/taxi-lights",0,"BOOL");
 	m.toff = props.globals.initNode("systems/electrical/lighting/turn-off-lights",0,"BOOL");
 	m.Lland = props.globals.initNode("systems/electrical/lighting/landing-lights[0]",0,"BOOL");
@@ -77,11 +77,11 @@ var light_stat = {
 		me.logo.setBoolValue(0);
 	    }
 	    # Wing lights:
-#	    if (me.wing_sw.getBoolValue()) {
-#		me.wing.setBoolValue(1);
-#	    } else {
-#		me.wing.setBoolValue(0);
-#	    }
+	    if (me.wing_sw.getBoolValue()) {
+		me.wing.setBoolValue(1);
+	    } else {
+		me.wing.setBoolValue(0);
+	    }
 	    # Taxi light:
 	    if (me.taxi_sw.getBoolValue() and getprop("gear/gear[0]/position-norm") > 0.99) {
 		me.taxi.setBoolValue(1);
@@ -116,7 +116,7 @@ var light_stat = {
 	    me.beacon.setBoolValue(0);
 	    me.strobe.setBoolValue(0);
 	    me.logo.setBoolValue(0);
-#	    me.wing.setBoolValue(0);
+	    me.wing.setBoolValue(0);
 	    me.taxi.setBoolValue(0);
 	    me.toff.setBoolValue(0);
 	    me.Lland.setBoolValue(0);

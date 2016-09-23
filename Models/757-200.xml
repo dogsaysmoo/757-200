@@ -2128,6 +2128,9 @@
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
 			</less-than>
+			<not>
+			  <property>/sim/rendering/rembrandt/enabled</property> 
+		    	</not>
 		    </and>
 		</condition>
 	</animation>
@@ -2141,6 +2144,9 @@
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
 			</less-than>
+			<not>
+			  <property>/sim/rendering/rembrandt/enabled</property> 
+		    	</not>
 		    </and>
 		</condition>
 	</animation>
@@ -2154,6 +2160,9 @@
 			  <property>position/altitude-agl-ft</property>
 			  <value>220</value>
 			</less-than>
+			<not>
+			  <property>/sim/rendering/rembrandt/enabled</property> 
+		    	</not>
 		    </and>
 		</condition>
 	</animation>
@@ -2433,6 +2442,58 @@
 	    <object-name>greennav</object-name>
 	</animation>
 
+	<!-- Wing lights -->
+	<animation>
+		<type>select</type>
+		<object-name>winglightL</object-name>
+		<object-name>winglightR</object-name>
+		<condition>
+			<property>sim/multiplay/generic/int[9]</property>
+		</condition>
+	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>winglightL</object-name>
+        	<center>
+        	    <x-m>11.525</x-m>
+        	    <y-m>-1.938</y-m>
+        	    <z-m> 0.593</z-m>
+        	</center>
+        	<axis>
+        	    <x>0.5</x>
+        	    <y>1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+	<animation>
+        	<type>flash</type>
+		<object-name>winglightR</object-name>
+        	<center>
+        	    <x-m>11.525</x-m>
+        	    <y-m> 1.938</y-m>
+        	    <z-m> 0.593</z-m>
+        	</center>
+        	<axis>
+        	    <x>-0.5</x>
+        	    <y>-1</y>
+        	    <z>0</z>
+        	</axis>
+        	<power>10</power>
+        	<factor>2</factor>
+        	<offset>0</offset>
+        	<two-sides type="bool">false</two-sides>
+        	<min>1</min>
+        	<max>5</max>
+    	</animation>
+
+	
+
 	
 
     
@@ -2444,6 +2505,8 @@
    		<object-name>light_wing2</object-name>
    		<object-name>light_wing3</object-name>
    		<object-name>light_wing4</object-name>
+		<object-name>winglightL</object-name>
+		<object-name>winglightR</object-name>
 		<object-name>center_light1</object-name>
 		<object-name>center_light2</object-name>
 		<object-name>rwy_turnoff1</object-name>
@@ -2465,51 +2528,6 @@
  		<object-name>Windshield</object-name>
 		<object-name>shadow</object-name>
     </effect>
-    
-    <!--effect>
-        <inherits-from>Aircraft/757-200/Models/Effects/reflect</inherits-from>
-		<object-name>Fuselage</object-name>
-		<object-name>Tailcone</object-name>
-		<object-name>Rudder</object-name>
-		<object-name>VStab</object-name>
-		<object-name>Engine</object-name>
-		<object-name>Wing1</object-name>
-		<object-name>Wing2</object-name>
-		<object-name>PylonL</object-name>
-		<object-name>PylonR</object-name>
-		<object-name>LReverserTurbofan</object-name>
-		<object-name>RReverserTurbofan</object-name>
-		<object-name>NoseGear.RightDr2</object-name>
-		<object-name>NoseGear.RightDr1</object-name>
-		<object-name>NoseGear.LeftDr1</object-name>
-		<object-name>NoseGear.LeftDr2</object-name>
-    		<object-name>MainGearDr1</object-name>
-    		<object-name>MainGearDr2</object-name>
-    		<object-name>MainGearDr3</object-name>
-    		<object-name>MainGearDr4</object-name>
-    		<object-name>Fuseage.001</object-name>
-    		<object-name>SpoilOutL1</object-name>
-    		<object-name>SpoilOutL2</object-name>
-    		<object-name>SpoilOutL3</object-name>
-    		<object-name>SpoilOutL4</object-name>
-    		<object-name>SpoilOutR1</object-name>
-    		<object-name>SpoilOutR2</object-name>
-    		<object-name>SpoilOutR3</object-name>
-    		<object-name>SpoilOutR4</object-name>
-    		<object-name>SpoilInL1</object-name>
-    		<object-name>SpoilInL2</object-name>
-    		<object-name>SpoilInL3</object-name>
-    		<object-name>SpoilInL4</object-name>
-    		<object-name>SpoilInR1</object-name>
-    		<object-name>SpoilInR2</object-name>
-    		<object-name>SpoilInR3</object-name>
-    		<object-name>SpoilInR4</object-name>
-    		<object-name>SpoilInR1</object-name>
-    		<object-name>Slat1</object-name>
-    		<object-name>Slat2</object-name>
-    		<object-name>Slat3</object-name>
-    		<object-name>Slat4</object-name>
-    </effect-->
     
     <animation>
 	<type>rotate</type>
@@ -2584,13 +2602,6 @@
 		<object-name>Wingroot2</object-name>
 		<object-name>WingletL</object-name>
 		<object-name>WingletR</object-name>
-		<object-name>Engine</object-name>
-		<object-name>LReverserTurbofan</object-name>
-		<object-name>RReverserTurbofan</object-name>
-		<object-name>engine.1</object-name>
-		<object-name>engine.2</object-name>
-		<object-name>left.reverser</object-name>
-		<object-name>right.reverser</object-name>
 		<object-name>NoseGear.LeftDr2</object-name>
 		<object-name>NoseGear.RightDr2</object-name>
 		<object-name>NoseGear.RightDr1</object-name>
@@ -3008,27 +3019,7 @@
   
 	<effect>
 		<name>Landing/Logo Lightmap</name>
-		<inherits-from>Effects/model-combined</inherits-from>
-		<parameters>
-			<lightmap-enabled>1</lightmap-enabled>
-			<lightmap-multi>1</lightmap-multi>
-			<lightmap-factor n="0">
-			    <use>systems/electrical/lighting/logo-lights</use>
-			</lightmap-factor>
-			<lightmap-color n="0">0.5 0.5 0.5</lightmap-color>
-			<lightmap-factor n="1">
-			    <use>systems/electrical/lighting/landing-lights[0]</use>
-			</lightmap-factor>
-			<lightmap-color n="1">0.5 0.5 0.5</lightmap-color>
-			<lightmap-factor n="2">0.0</lightmap-factor>
-			<lightmap-factor n="3">
-			    <use>/environment/moonlight</use>
-			</lightmap-factor>
-			<lightmap-color n="3">0.1 0.1 0.15</lightmap-color>
-			<texture n="3">
-			    <image>Aircraft/757-200/Models/Effects/lightmap.png</image>
-			</texture>
-		</parameters>
+		<inherits-from>Aircraft/757-200/Models/Effects/lightmap-200</inherits-from>
 		<object-name>Fuselage</object-name>
 		<object-name>Wingroot1</object-name>
 		<object-name>Wingroot2</object-name>
@@ -3036,12 +3027,76 @@
 		<object-name>NoseGear.RightDr2</object-name>
 		<object-name>NoseGear.RightDr1</object-name>
 		<object-name>NoseGear.LeftDr1</object-name>
-	    	<object-name>MainGearDr2</object-name>
+    		<object-name>MainGearDr1</object-name>
+    		<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
+    		<object-name>MainGearDr4</object-name>
 		<object-name>Rudder</object-name>
 		<object-name>VStab</object-name>
     		<object-name>VHFantenna.top</object-name>
     		<object-name>VHFantenna.bot</object-name>
+		<object-name>Wing1</object-name>
+		<object-name>Wing2</object-name>
+    		<object-name>Fuseage.001</object-name>
+    		<object-name>SpoilOutL1</object-name>
+    		<object-name>SpoilOutL2</object-name>
+    		<object-name>SpoilOutL3</object-name>
+    		<object-name>SpoilOutL4</object-name>
+    		<object-name>SpoilOutR1</object-name>
+    		<object-name>SpoilOutR2</object-name>
+    		<object-name>SpoilOutR3</object-name>
+    		<object-name>SpoilOutR4</object-name>
+    		<object-name>SpoilInL1</object-name>
+    		<object-name>SpoilInL2</object-name>
+    		<object-name>SpoilInL3</object-name>
+    		<object-name>SpoilInL4</object-name>
+    		<object-name>SpoilInR1</object-name>
+    		<object-name>SpoilInR2</object-name>
+    		<object-name>SpoilInR3</object-name>
+    		<object-name>SpoilInR4</object-name>
+    		<object-name>SpoilInR1</object-name>
+    		<object-name>Slat1</object-name>
+    		<object-name>Slat2</object-name>
+    		<object-name>Slat3</object-name>
+    		<object-name>Slat4</object-name>
+    		<object-name>WingletL</object-name>
+    		<object-name>WingletR</object-name>
+    		<object-name>Aileron1</object-name>
+    		<object-name>Aileron2</object-name>
+    		<object-name>Flap1</object-name>
+    		<object-name>Flap2</object-name>
+    		<object-name>Flap3</object-name>
+    		<object-name>Flap4</object-name>
+    		<object-name>Flap5</object-name>
+    		<object-name>Flap6</object-name>
+    		<object-name>Flap7</object-name>
+    		<object-name>Flap8</object-name>
+    		<object-name>pala1.001</object-name>
+    		<object-name>pala1.002</object-name>
+    		<object-name>pala1.003</object-name>
+    		<object-name>pala1.004</object-name>
+    		<object-name>pala1</object-name>
+    		<object-name>pala2</object-name>
+    		<object-name>FlapTk1</object-name>
+    		<object-name>FlapTk2</object-name>
+    		<object-name>FlapTk3</object-name>
+    		<object-name>FlapTk4</object-name>
+    		<object-name>FlapTk5</object-name>
+    		<object-name>FlapTk6</object-name>
+    		<object-name>FlapTk7</object-name>
+    		<object-name>FlapTk8</object-name>
+    		<object-name>FlapTk1.001</object-name>
+    		<object-name>FlapTk2.001</object-name>
+    		<object-name>FlapTk3.001</object-name>
+    		<object-name>FlapTk4.001</object-name>
+    		<object-name>FlapTk5.001</object-name>
+    		<object-name>FlapTk6.001</object-name>
+    		<object-name>FlapTk7.001</object-name>
+    		<object-name>FlapTk8.001</object-name>
+    		<object-name>HorzStab1</object-name>
+    		<object-name>HorzStab2</object-name>
+    		<object-name>Elevator1</object-name>
+    		<object-name>Elevator2</object-name>
 	</effect>
 
 </PropertyList>

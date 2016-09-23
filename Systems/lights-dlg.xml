@@ -60,6 +60,15 @@
 		</checkbox>
 
 		<checkbox>
+			<label>Wing lights</label>
+			<property>controls/lighting/wing-lights</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+
+		<checkbox>
 			<label>Taxi light</label>
 			<property>controls/lighting/taxi-lights</property>
 			<binding>
