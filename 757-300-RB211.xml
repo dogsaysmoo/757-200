@@ -63,8 +63,8 @@
 	<!-- ELEVATORS -->
 	<hstab x="-45.135" y="1.88" z="1.723" length="6.531" chord="4.242" twist="0.0" taper="0.411" sweep="28.8" camber="0.1">
 		<stall aoa="20" width="7" peak="1.5" />
-		<flap0 start="0.0" end="1.0" lift="1.8" drag="1.3" />
-		<control-input axis="/controls/flight/elevator-pos" control="FLAP0" />
+		<flap0 start="0.0" end="1.0" lift="1.8" drag="1.5" />
+		<control-input axis="/controls/flight/elevator-pos" control="FLAP0" src0="-1.0" dst0="-0.7" src1="1.0" dst1="0.7" />
 		<control-input axis="/controls/flight/elevator-trim" control="FLAP0" />
 		<control-output control="FLAP0"  prop="/surface-positions/elevator-pos-norm" />
 	</hstab>

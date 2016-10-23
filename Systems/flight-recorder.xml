@@ -105,6 +105,9 @@
                 <type>bool</type><property type="string">controls/lighting/logo-lights</property>
             </signal>
             <signal>
+                <type>bool</type><property type="string">controls/lighting/wing-lights</property>
+            </signal>
+            <signal>
                 <type>bool</type><property type="string">controls/lighting/cabin-lights</property>
             </signal>
             <signal>
