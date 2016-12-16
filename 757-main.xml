@@ -96,7 +96,7 @@
 		<flight-recorder include="Systems/flight-recorder.xml"/> 
 
 		<startup>
-			<splash-texture>Aircraft/757-200/splash.png</splash-texture>
+			<splash-texture>Aircraft/757-200/splash-N757AF.png</splash-texture>
 		</startup>
 
 		<sound>
@@ -196,7 +196,7 @@
 			</config>
 		</view>
 		<view n="100">
-			<name>Cabin View</name>
+			<name>Cabin View (Starboard)</name>
 			<type>lookfrom</type>
 			<internal archive="y">true</internal>
 			<config>
@@ -209,6 +209,19 @@
 			</config>
 		</view>
 		<view n="101">
+			<name>First Class (Port)</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">-0.94</x-offset-m>
+				<y-offset-m archive="y">1.75</y-offset-m>
+				<z-offset-m archive="y">7.80</z-offset-m>
+				<heading-offset-deg>90</heading-offset-deg>
+				<pitch-offset-deg>-10</pitch-offset-deg>
+			</config>
+		</view>
+		<view n="102">
 			<name>Gear View</name>
 			<type>lookfrom</type>
 			<internal archive="y">false</internal>
@@ -220,7 +233,7 @@
 				<pitch-offset-deg>0</pitch-offset-deg>
 			</config>
 		</view>
-		<view n="102">
+		<view n="103">
 			<name>Copilot View</name>
 			<type>lookfrom</type>
 			<internal archive="y">true</internal>
@@ -233,7 +246,7 @@
 				<default-field-of-view-deg type="double">70.0</default-field-of-view-deg>
 			</config>
 		</view>
-		<view n="103">
+		<view n="104">
 			<name>Overhead Panel View</name>
 			<type>lookfrom</type>
 			<internal archive="y">true</internal>
@@ -259,7 +272,7 @@
 
 		<menubar>
 			<default>
-				<menu n="100">			
+				<menu n="100">
 					<label>Boeing 757-200</label>
 					<enabled type="bool">true</enabled>
 
