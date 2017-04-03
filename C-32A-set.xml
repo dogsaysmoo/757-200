@@ -6,6 +6,21 @@
 		<description>Boeing C-32 (USAF variant of 757-200)</description>
 		<status>early production</status>
 		<author>John Williams, Juuso Tapaninen; original 757-200 authors Liam Gathercole, Skyop, Isais Prestes</author>
+
+		<tags>
+			<tag>transport</tag>
+			<tag>boeing</tag>
+			<tag>jet</tag>
+			<tag>retractable-gear</tag>
+			<tag>glass-cockpit</tag>
+			<tag>ifr</tag>
+			<tag>2010s</tag>
+			<tag>2000s</tag>
+			<tag>1990s</tag>
+			<tag>etops</tag>
+			<tag>twin-engine</tag>
+		</tags>
+
 		<rating>
 		      	<FDM type="int">3</FDM>
       			<systems type="int">4</systems>
