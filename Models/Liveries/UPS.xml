@@ -4,9 +4,8 @@
 	<sim>
 		<model>
 			<livery>
-				<name>White Tail</name>
-				<texture>BLN.png</texture>
-				<winglets type="bool">true</winglets>
+				<name>UPS Airlines</name>
+				<texture>Liveries/UPS.png</texture>
 			</livery>  	  
 		</model>
 	</sim>
