@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Icelandair</name>
-				<texture>Liveries/FIN.png</texture>
+				<texture>Liveries/ICE.png</texture>
 				<winglets type="bool">true</winglets>
 			</livery>  	  
 		</model>
