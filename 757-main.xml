@@ -68,6 +68,7 @@
 		</model>
 		
 		<multiplay>
+		    <fallback-model-index type="int">208</fallback-model-index>
           	    <generic>
 	          	<int n="0" type="int">  0 </int>  <!-- Dual Control boolean light switches-->
 			<int n="2" alias="/systems/electrical/lighting/beacon"/>
@@ -243,6 +244,7 @@
 				<y-offset-m archive="y">1.3</y-offset-m>
 				<z-offset-m archive="y">3</z-offset-m>
 				<pitch-offset-deg>30</pitch-offset-deg>
+				<default-field-of-view-deg>36</default-field-of-view-deg>
 			</config>
 		</view>
 		<chase-distance-m>-90</chase-distance-m>
