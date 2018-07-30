@@ -64,11 +64,11 @@
 			            <y-m>-0.180</y-m>
 			            <z-m>0.9109</z-m>
 			        </center>
-		    	</animation>
+			</animation>
+			<fallback-model-index type="int">208</fallback-model-index>
 		</model>
 		
 		<multiplay>
-		    <fallback-model-index type="int">208</fallback-model-index>
           	    <generic>
 	          	<int n="0" type="int">  0 </int>  <!-- Dual Control boolean light switches-->
 			<int n="2" alias="/systems/electrical/lighting/beacon"/>
