@@ -337,6 +337,14 @@
 							</script>
 						</binding>
 					</item>
+					<item>
+						<name>groundservices</name>
+						<label>Toggle Ground Services</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>/services/enable</property>
+						</binding>
+					</item>
 				</menu>
 			</default>
 		</menubar>

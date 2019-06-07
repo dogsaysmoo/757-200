@@ -92,6 +92,14 @@
 			<z-m>-3.37</z-m>
 		</offsets>
 	</model>
+
+	<!-- Ground services -->
+	<model>
+		<path>Aircraft/757-200/Models/Services/services_200.ac</path>
+		<condition>
+			<property>/services/enable</property>
+		</condition>
+	</model>
 	
 	<model>
 	    <name>cabin</name>

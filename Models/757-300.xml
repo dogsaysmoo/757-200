@@ -61,6 +61,14 @@
 		</offsets>
 	</model>
 
+	<!-- Ground services -->
+	<model>
+		<path>Aircraft/757-200/Models/Services/services_300.ac</path>
+		<condition>
+			<property>/services/enable</property>
+		</condition>
+	</model>
+
 	<!-- Cabin and seats -->	
 	<!--model>
 	    <name>cabin</name>
