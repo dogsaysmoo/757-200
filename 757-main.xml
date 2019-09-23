@@ -64,7 +64,8 @@
 			            <y-m>-0.180</y-m>
 			            <z-m>0.9109</z-m>
 			        </center>
-		    	</animation>
+			</animation>
+			<fallback-model-index type="int">208</fallback-model-index>
 		</model>
 		
 		<multiplay>
@@ -256,6 +257,7 @@
 				<y-offset-m archive="y">1.3</y-offset-m>
 				<z-offset-m archive="y">3</z-offset-m>
 				<pitch-offset-deg>30</pitch-offset-deg>
+				<default-field-of-view-deg>36</default-field-of-view-deg>
 			</config>
 		</view>
 		<chase-distance-m>-90</chase-distance-m>
