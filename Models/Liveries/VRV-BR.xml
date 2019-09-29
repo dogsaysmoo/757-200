@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 	<sim>
 		<model>
 			<livery>
-				<name>White Tail</name>
-				<texture>BLN.png</texture>
+				<name>Varig Brasil</name>
+				<texture>VRV-BR.png</texture>
 				<winglets type="bool">true</winglets>
 			</livery>  	  
 		</model>

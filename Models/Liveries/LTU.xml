@@ -4,9 +4,9 @@
 	<sim>
 		<model>
 			<livery>
-				<name>White Tail</name>
-				<texture>BLN.png</texture>
-				<winglets type="bool">true</winglets>
+				<name>Lufttransport Unternehmen</name>
+				<texture>LTU.png</texture>
+				<winglets type="bool">false</winglets>
 			</livery>  	  
 		</model>
 	</sim>

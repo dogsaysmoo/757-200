@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+	<sim>
+		<model>
+			<livery>
+				<name>TRUMP N757AF</name>
+				<texture>N757AF.png</texture>
+				<winglets type="bool">true</winglets>
+			</livery>
+		</model>
+	</sim>
+</PropertyList>
+<!-- #MakeAmericaGreatAgain -->

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <PropertyList>
 	<sim>
 		<model>
 			<livery>
-				<name>Air Finland</name>
-				<texture>AIR.png</texture>
+				<name>Air China</name>
+				<texture>CCA.png</texture>
 				<winglets type="bool">false</winglets>
 			</livery>  	  
 		</model>
