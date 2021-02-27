@@ -1020,11 +1020,11 @@
 				<command>nasal</command>
 				<script>Boeing757.afds.input(3,0);</script>
 			</binding>
-			<binding>
+			<!--binding>
                         <command>property-assign</command>
                 	        <property>instrumentation/nav/slaved-to-gps</property>
         	                <value type="bool">false</value>
-	                </binding>
+	                </binding-->
 		</action>
 	</animation>
 

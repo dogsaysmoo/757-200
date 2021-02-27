@@ -7,7 +7,10 @@
 				<name>American Airlines</name>
 				<texture>AAL.png</texture>
 				<winglets type="bool">false</winglets>
-			</livery>  	  
+			</livery>
+			<reflection>
+				<reflection-correction>-0.1</reflection-correction>
+			</reflection>
 		</model>
 	</sim>
 </PropertyList>

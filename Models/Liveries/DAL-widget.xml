@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+ <!-- Delta Airlines Retro livery by E-Savageair  Background:Delta Air Lines was created as Huff Daland Dusters, Incorporated, an aerial crop dusting operation, on May 30, 1924 in Macon, Georgia. Formed with a Huff-Daland Duster, the first true crop duster, the plane was deployed to combat the boll weevil in 1925. Delta Air Corporation owned the plane (now in the Southern Museum of Flight). The company moved to Monroe, Louisiana in 1925. Collett E. Woolman, one of the original directors, purchased the company on September 13, 1928, and renamed it Delta Air Service. It began carrying passengers on June 17, 1929. The single passenger sat in a chair placed in the bin where the pesticide was usually kept.[18]
+
+Delta grew through the addition of routes and the acquisition of other airlines. They replaced propeller planes with jets in the 1960s and entered international competition to Europe in the 1970s and across the Pacific in the 1980s. The logo of Delta Air Lines, originally unveiled in 1959, is reminiscent of the swept-wing design of the DC-8 airplanes. Often termed as the "widget" logo, the current version consists of two 3D triangles.[19] Source from Wikipedia.org   To "Keep Climbing", unzip file and place the xml file in the "liveries" folder and the .png files into "models" files. Run FlightGear if you find your paint, you can "Climb Higher".  Have a Good flight and thank you for downloading ESA. --> 	<sim>
+		<model>
+			<livery>
+				<name>Delta Airlines Retro</name>
+				<texture>DAL-widget.png</texture>
+				<winglets type="bool">false</winglets>
+			</livery>  	  
+		</model>
+	</sim>
+</PropertyList>

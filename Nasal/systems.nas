@@ -7,14 +7,6 @@ if (getprop("sim/model/variant") == 3) {
 	aircraft.livery.init("Aircraft/757-200/Models/Liveries-300");
 } else {
 	aircraft.livery.init("Aircraft/757-200/Models/Liveries");
-
-	setlistener("sim/model/livery/file", func (pnt) {
-	    if    (pnt.getValue() == "DAL-widget"
-		or pnt.getValue() == "G-TCBB"
-		or pnt.getValue() == "TWA"
-		or pnt.getValue() == "USA")
-		setprop("sim/model/livery/winglets",0);
-	},0,0);
 }
 
 ## LIGHTS

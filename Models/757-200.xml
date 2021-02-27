@@ -2625,7 +2625,7 @@
 		 var livery_update = aircraft.livery_update.new("Aircraft/757-200/Models/Liveries", 10);
 		</load>
 		<unload>
-		 livery_update.stop();
+		livery_update.stop();
 		</unload>
 	</nasal>
 	
@@ -3020,7 +3020,6 @@
 	<effect>
 		<name>Landing/Logo Lightmap</name>
 		<inherits-from>Aircraft/757-200/Models/Effects/lightmap-200</inherits-from>
-		<object-name>Fuselage</object-name>
 		<object-name>Wingroot1</object-name>
 		<object-name>Wingroot2</object-name>
 		<object-name>NoseGear.LeftDr2</object-name>
@@ -3031,13 +3030,10 @@
     		<object-name>MainGearDr2</object-name>
     		<object-name>MainGearDr3</object-name>
     		<object-name>MainGearDr4</object-name>
-		<object-name>Rudder</object-name>
-		<object-name>VStab</object-name>
     		<object-name>VHFantenna.top</object-name>
     		<object-name>VHFantenna.bot</object-name>
 		<object-name>Wing1</object-name>
 		<object-name>Wing2</object-name>
-    		<object-name>Fuseage.001</object-name>
     		<object-name>SpoilOutL1</object-name>
     		<object-name>SpoilOutL2</object-name>
     		<object-name>SpoilOutL3</object-name>
@@ -3097,6 +3093,15 @@
     		<object-name>HorzStab2</object-name>
     		<object-name>Elevator1</object-name>
     		<object-name>Elevator2</object-name>
+	</effect>
+	
+	<effect>
+		<name>Landing/Logo Lightmap with reflection</name>
+		<inherits-from>Aircraft/757-200/Models/Effects/reflection-200</inherits-from>
+		<object-name>Fuselage</object-name>
+		<object-name>Rudder</object-name>
+		<object-name>VStab</object-name>
+		<object-name>Fuseage.001</object-name>
 	</effect>
 
 </PropertyList>

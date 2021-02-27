@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+    <name>landing and logo light map</name>
+    <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <parameters>
+		<reflection-enabled type="int">1</reflection-enabled>
+		<reflection-dynamic type="int">1</reflection-dynamic>
+		<reflect_map-enabled type="int">0</reflect_map-enabled>
+		<reflection-correction type="float"><use>/sim/model/reflection/reflection-correction</use></reflection-correction>
+		<reflection-type type="int">2</reflection-type>
+		<ambient-correction type="float"><use>/sim/model/reflection/ambient-correction</use></ambient-correction>
+        <lightmap-enabled type="int">1</lightmap-enabled>
+        <lightmap-multi type="int">1</lightmap-multi>
+        <lightmap-factor type="float" n="0">
+			<use>systems/electrical/lighting/logo-lights</use>
+		</lightmap-factor>
+        <lightmap-color type="vec3d" n="0">0.5 0.5 0.5</lightmap-color>
+        <lightmap-factor type="float" n="1">
+			<use>systems/electrical/lighting/landing-lights[0]</use>
+		</lightmap-factor>
+        <lightmap-color type="vec3d" n="1">0.5 0.5 0.5</lightmap-color>
+        <lightmap-factor type="float" n="2">
+			<use>systems/electrical/lighting/wing-lights</use>
+		</lightmap-factor>
+        <lightmap-color type="vec3d" n="2">0.7 0.7 0.7</lightmap-color>
+        <lightmap-factor type="float" n="3">
+			<use>/environment/moonlight</use>
+		</lightmap-factor>
+		<lightmap-color type="vec3d" n="3">0.1 0.1 0.15</lightmap-color>
+        <texture n="3">
+            <image>Aircraft/757-200/Models/Effects/lightmap-200.png</image>
+        </texture>
+		<texture n="5">
+			<type>cubemap</type>
+			<images>
+				<positive-x>Aircraft/Generic/Effects/CubeMaps/fgfs-sky/1.png</positive-x>
+				<negative-x>Aircraft/Generic/Effects/CubeMaps/fgfs-sky/4.png</negative-x>
+				<positive-y>Aircraft/Generic/Effects/CubeMaps/fgfs-sky/2.png</positive-y>
+				<negative-y>Aircraft/Generic/Effects/CubeMaps/fgfs-sky/3.png</negative-y>
+				<positive-z>Aircraft/Generic/Effects/CubeMaps/fgfs-sky/6.png</positive-z>
+				<negative-z>Aircraft/Generic/Effects/CubeMaps/fgfs-sky/5.png</negative-z>
+			</images>
+		</texture>
+    </parameters>
+</PropertyList>
+

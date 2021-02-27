@@ -769,6 +769,28 @@
 	</condition>
     </apu>
 
+    <pax-env>
+	<name>pax</name>
+	<mode>looped</mode>
+	<path>Aircraft/757-200/Sounds/envelope_s.wav</path>
+	<condition>
+	  <or>
+	    <less-than>
+		<property>velocities/vertical-speed-fps</property>
+		<value>-88</value>
+	    </less-than>
+	    <less-than>
+		<property>orientation/roll-deg</property>
+		<value>-70</value>
+	    </less-than>
+	    <greater-than>
+		<property>orientation/roll-deg</property>
+		<value>70</value>
+	    </greater-than>
+	   </or>
+	</condition>
+    </pax-env>
+
 </fx>
 
 </PropertyList>

@@ -8,6 +8,10 @@
 				<texture>BLN-300.png</texture>
 				<winglets type="bool">true</winglets>
 			</livery>  	  
+			<reflection>
+				<reflection-correction>-0.5</reflection-correction>
+				<ambient-correction>0</ambient-correction>
+			</reflection>
 		</model>
 	</sim>
 </PropertyList>
