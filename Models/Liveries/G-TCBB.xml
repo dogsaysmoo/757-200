@@ -5,7 +5,7 @@
 		<model>
 			<livery>
 				<name>Thomas Cook "Egypt"</name>
-				<texture>Liveries/G-TCBB.png</texture>
+				<texture>G-TCBB.png</texture>
 				<winglets type="bool">false</winglets>
 			</livery>  	  
 		</model>
